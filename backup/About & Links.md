@@ -17,5 +17,5 @@ Arcaea：`EnonyaBTe(265746790)`（已淡坑）
 
 Links:
 
-+ [lgswdn](https://lgswdn.github.io/)
++ [lgswdn](https://lgswdn.github.io/) - lgsdwn-SA chan
 
