@@ -5,5 +5,6 @@
     "GMEEK_VERSION":"last",
     "singlePage":["link","about"],
     "startSite":"09/01/2019",
+    "urlMode":"issue",
     "bottomText":"Copyright @Enonya, 转载请注明出处"
 }
