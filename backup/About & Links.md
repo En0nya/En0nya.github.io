@@ -6,9 +6,9 @@ Enonya です。
 
 東方/邦多利/音游
 
-MaimaiDX 国服：`En0nya / lgd⭐suki`
+MaimaiDX 国服：`En0nya`
 
-BMS/LR2：`Enonya 181734`
+BMS：LR2IR `Enonya 181734(KB)`，MochaIR `En0nya 7960(BM)`
 
 Arcaea：`EnonyaBTe(265746790)`（已淡坑）
 
