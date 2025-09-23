@@ -84,6 +84,7 @@ if __name__ == "__main__":
     md_to_html("./links.md")
     md_to_html("./contact.md")
     md_to_html("./categories.md")
+    md_to_html("./resource.md")
     build_html("posts")
 
     if len(sys.argv) > 2:

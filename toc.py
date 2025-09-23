@@ -1,115 +1,129 @@
 
 import os
-from pathlib import Path
+import re
+from datetime import datetime
 
-def extract_title_from_md(file_path):
-
+def extract_title_skip_yaml(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            first_line = f.readline().strip()
+            lines = f.readlines()
             
-            if first_line.startswith("##"):
-                title = first_line.lstrip("##").strip()
+        in_yaml_header = False
+        yaml_header_end = False
+        
+        for i, line in enumerate(lines):
+            line = line.strip()
+            
+            if not in_yaml_header and (line == '---' or line.startswith('```yaml') or line == '```'):
+                in_yaml_header = True
+                continue
+            
+            if in_yaml_header and not yaml_header_end:
+                if line == '---' or line == '```':
+                    yaml_header_end = True
+                    in_yaml_header = False
+                continue
+            
+            if not line:
+                continue
+            
+            if in_yaml_header:
+                continue
+            
+            if line.startswith('##'):
+                title = line.lstrip('##').strip()
                 return title if title else os.path.basename(file_path)
             else:
                 return os.path.basename(file_path)
+        
+        return os.path.basename(file_path)
                 
     except Exception as e:
-        print(f"✗ Error occurred while reading {file_path}: {e}")
+        print(f"Error occurred while reading {file_path}: {e}")
         return os.path.basename(file_path)
 
-def generate_directory_index(root_dir, output_file=None):
+def get_file_mod_time(file_path):
+    try:
+        mod_time = os.path.getmtime(file_path)
+        mod_date = datetime.fromtimestamp(mod_time)
+        return mod_date.strftime("%y 年 %m 月 %d 日"), mod_time
+    except Exception as e:
+        print(f"Error acquiring modification time {file_path}: {e}")
+        return "Unknown time.", 0
+
+def scan_markdown_files(root_dir):
     md_files = []
     
     for root, dirs, files in os.walk(root_dir):
+        dirs[:] = [d for d in dirs if not d.startswith('.')]
+        
         for file in files:
             if file.lower().endswith(('.md', '.markdown')):
                 file_path = os.path.join(root, file)
                 rel_path = os.path.relpath(file_path, root_dir)
-                title = extract_title_from_md(file_path)
+                title = extract_title_skip_yaml(file_path)
+                mod_time_str, mod_timestamp = get_file_mod_time(file_path)
+                
                 md_files.append({
                     'path': rel_path,
                     'title': title,
-                    'full_path': file_path
+                    'full_path': file_path,
+                    'mod_time': mod_time_str,
+                    'mod_timestamp': mod_timestamp,
+                    'dirname': os.path.dirname(rel_path),
+                    'filename': file
                 })
     
-    md_files.sort(key=lambda x: x['path'])
-    
-    directory_content = generate_directory_content(md_files, root_dir)
-    
-    if output_file:
-        save_directory_index(directory_content, output_file)
-    
-    return directory_content, md_files
+    return md_files
 
-def generate_directory_content(md_files, root_dir):
+def generate_directory_index(md_files, root_dir):
+    md_files.sort(key=lambda x: x['mod_timestamp'], reverse=True)
+    
     content = []
     content.append("## Categories\n")
-    content.append(f"**Total posts**: {len(md_files)}")
+    content.append(f"*文章总数: {len(md_files)}*\n")
+    content.append(f"*Last update: {datetime.now().strftime('%Y 年 %m 月 %d 日 %H:%M')}*")
     content.append("")
     
-    file_dict = {}
+    dir_files = {}
     for file_info in md_files:
-        dir_path = os.path.dirname(file_info['path'])
-        if dir_path not in file_dict:
-            file_dict[dir_path] = []
-        file_dict[dir_path].append(file_info)
+        dir_path = file_info['dirname']
+        if dir_path not in dir_files:
+            dir_files[dir_path] = []
+        dir_files[dir_path].append(file_info)
     
-    for dir_path in sorted(file_dict.keys()):
-        if dir_path == '.':
-            content.append("### Root")
-        else:
-            content.append(f"### 📁 {dir_path}")
-        content.append("")
+    for dir_path in sorted(dir_files.keys()):
+        files_in_dir = dir_files[dir_path]
         
-        for file_info in file_dict[dir_path]:
-            link_path = file_info['path'].replace('.md', '.html').replace('.markdown', '.html')
-            content.append(f"- [{file_info['title']}]({link_path})")
+        for file_info in files_in_dir:
+            html_path = file_info['path'].replace('.md', '.html').replace('.markdown', '.html')
+            content.append(f"- [⌈{file_info['title']}⌋]({html_path})    *`{file_info['mod_time']}`*")
         content.append("")
     
     return "\n".join(content)
 
-def save_directory_index(content, output_file):
 
-    try:
-        with open(output_file, 'w', encoding='utf-8') as f:
-            f.write(content)
-        print(f"✓ TOC saved: {output_file}")
-
-    except Exception as e:
-        print(f"✗ Error occurred: {e}")
-
-def display_directory_tree(md_files):
-    print("=" * 7)
-    
-    current_dir = None
-    for file_info in md_files:
-        dir_path = os.path.dirname(file_info['path'])
-        if dir_path != current_dir:
-            if dir_path == '.':
-                print("\n📂 /")
-            else:
-                print(f"\n📂 {dir_path}/")
-            current_dir = dir_path
-            print("─" * 30)
-        
-        print(f"  📄 {file_info['title']}")
-        print(f"    → {file_info['path']}")
-
-if __name__ == "__main__":
-
+def main():
     target_directory = "posts"
     
-    print(f"* Scanning: {os.path.abspath(target_directory)}")
-    print("=" * 7)
+    if not os.path.exists(target_directory):
+        print(f"Direct directory doesn't exist: {target_directory}")
+        return
     
-    directory_content, md_files = generate_directory_index(target_directory)
+    print("-" * 7)
     
-    display_directory_tree(md_files)
+    md_files = scan_markdown_files(target_directory)
     
-    print("\n" + "=" * 7)
+    directory_content = generate_directory_index(md_files, target_directory)
     
     output_filename = "categories.md"
         
-    generate_directory_index(target_directory, output_filename)
-    
+    try:
+        with open(output_filename, 'w', encoding='utf-8') as f:
+            f.write(directory_content)
+        print(f"Table of contents saved: {output_filename}")
+    except Exception as e:
+        print(f"Error occurred while saving toc: {e}")
+
+if __name__ == "__main__":
+    main()
