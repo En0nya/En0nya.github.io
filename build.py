@@ -51,7 +51,7 @@ def build_html(directory_path):
     success_count = 0
     
     for i, file_path in enumerate(md_files, 1):
-        result = build_html(file_path)
+        result = md_to_html(file_path)
         if result:
             success_count += 1
 
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     md_to_html("./contact.md")
     md_to_html("./categories.md")
     md_to_html("./resource.md")
-    build_html("./posts")
+    build_html("posts")
 
     if len(sys.argv) > 2:
         message_argv = sys.argv[1]
