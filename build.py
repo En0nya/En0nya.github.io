@@ -42,20 +42,20 @@ def build_html(directory_path):
 
     for root, dirs, files in os.walk(directory_path):
         for file in files:
-            if file.lowfile_pathwith(('.md', '.markdown')):
+            if file.lower().endswith(('.md', '.markdown')):
                 file_path = os.path.join(root, file)
                 md_files.append(file_path)
     
-    print(f"🔍 {len(md_files)} md files were found.")
+    print(f"✓ {len(md_files)} md files were found.")
     
     success_count = 0
     
     for i, file_path in enumerate(md_files, 1):
-        result = build(file_path)
+        result = build_html(file_path)
         if result:
             success_count += 1
 
-    print(f"❤️ Successfully convert {success_count} files.")
+    print(f"✓ Successfully convert {success_count} files.")
     
 
 def depoly_to_git(repo_path = "./", commit_message = "Auto update"):
@@ -69,7 +69,7 @@ def depoly_to_git(repo_path = "./", commit_message = "Auto update"):
 
         origin = repo.remote(name = 'origin')
         origin.push()
-        print("🎉Deployed to remote repo.")
+        print("✓ Deployed to remote repo.")
 
     except GitCommandError as g:
         print(f"GitError: {g}")
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     md_to_html("./contact.md")
     md_to_html("./categories.md")
     md_to_html("./resource.md")
-    build_html("posts")
+    build_html("./posts")
 
     if len(sys.argv) > 2:
         message_argv = sys.argv[1]

@@ -39,7 +39,7 @@ def extract_title_skip_yaml(file_path):
         return os.path.basename(file_path)
                 
     except Exception as e:
-        print(f"Error occurred while reading {file_path}: {e}")
+        print(f"✗ Error occurred while reading {file_path}: {e}")
         return os.path.basename(file_path)
 
 def get_file_mod_time(file_path):
@@ -48,7 +48,7 @@ def get_file_mod_time(file_path):
         mod_date = datetime.fromtimestamp(mod_time)
         return mod_date.strftime("%y 年 %m 月 %d 日"), mod_time
     except Exception as e:
-        print(f"Error acquiring modification time {file_path}: {e}")
+        print(f"✗ Error acquiring modification time {file_path}: {e}")
         return "Unknown time.", 0
 
 def scan_markdown_files(root_dir):
@@ -107,7 +107,7 @@ def main():
     target_directory = "posts"
     
     if not os.path.exists(target_directory):
-        print(f"Direct directory doesn't exist: {target_directory}")
+        print(f"✗ Direct directory doesn't exist: {target_directory}")
         return
     
     print("-" * 7)
@@ -121,9 +121,9 @@ def main():
     try:
         with open(output_filename, 'w', encoding='utf-8') as f:
             f.write(directory_content)
-        print(f"Table of contents saved: {output_filename}")
+        print(f"✓ Table of contents saved: {output_filename}")
     except Exception as e:
-        print(f"Error occurred while saving toc: {e}")
+        print(f"✗ Error occurred while saving toc: {e}")
 
 if __name__ == "__main__":
     main()
