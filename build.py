@@ -79,6 +79,8 @@ def depoly_to_git(repo_path = "./", commit_message = "Auto update"):
 
 if __name__ == "__main__":
 
+    os.system("py toc.py")
+
     md_to_html("./404.md")
     md_to_html("./index.md")
     md_to_html("./links.md")
