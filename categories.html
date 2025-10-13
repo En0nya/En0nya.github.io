@@ -6,6 +6,17 @@
     <title>Enonya's Blog</title>
 
 	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/code.css">
+
+	<script src="/js/highlight.min.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((el) => {
+		  hljs.highlightElement(el);
+		});
+	  });
+	</script>
     
 	<script>
         window.MathJax = {
@@ -49,7 +60,7 @@
         <article>
             <h2>Categories</h2>
 <p><em>文章总数: 3</em></p>
-<p><em>Last update: 2025 年 10 月 13 日 20:14</em></p>
+<p><em>Last update: 2025 年 10 月 13 日 20:49</em></p>
 <ul>
 <li>
 <p><a href="posts\algor\comp-geo.html">⌈计算几何⌋</a>    <em><code>25 年 10 月 10 日</code></em></p>
