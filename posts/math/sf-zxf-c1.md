@@ -3,7 +3,7 @@
 约定：
 
 - $\mathbb{R, Q, N, Z, N+}$ 分别代表全体实数，全体有理数，全体自然数，全体整数，全体正整数。
-- $\forall, \exist, \exist!$ 分别代表对任意，存在，存在唯一。
+- $\forall, \exists, \exists!$ 分别代表对任意，存在，存在唯一。
 - $e$ 为自然对数的底数，$\epsilon$ 表示一较小正数，$\delta$ 表示一正数。
 
 Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极限存在一点逻辑错误（（
@@ -31,7 +31,7 @@ Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极
 > **定义 1.1**（Weierstrass / $\epsilon-N$ 定义）：
 > 
 > 设数列 $\{a_n\}_{n=1}^{\infty}$，实数 $L$，
-> 如果 $\forall \epsilon > 0, \exist N \text{ s.t. }\forall n > N, |a_n - L| < \epsilon$，那么称 $L$ 为数列 $\{a_n\}$ 的**极限**，或者称 $\{a_n\}$ 收敛于 $L$。
+> 如果 $\forall \epsilon > 0, \exists N \text{ s.t. }\forall n > N, |a_n - L| < \epsilon$，那么称 $L$ 为数列 $\{a_n\}$ 的**极限**，或者称 $\{a_n\}$ 收敛于 $L$。
 >
 > 记作 $\lim_{n \to \infty} \{a_n\} = L$。
 
@@ -39,12 +39,12 @@ Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极
 说明：
 
 $$
-\begin{align}
-\forall \epsilon, \exist N \text{ s.t. } \forall n > N, |a_n - L| < \epsilon \\
-\forall \epsilon, \exist N \text{ s.t. } \forall n \geq N, |a_n - L| < \epsilon \\
-\forall \epsilon, \exist N \text{ s.t. } \forall n \geq N, |a_n - L| \leq \epsilon \\
-\forall \epsilon, \exist N \text{ s.t. } \forall n > N, |a_n - L| \leq \epsilon \\
-\end{align}
+\begin{aligned}
+\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |a_n - L| < \epsilon \\
+\forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| < \epsilon \\
+\forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| \leq \epsilon \\
+\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |a_n - L| \leq \epsilon \\
+\end{aligned}
 $$
 
 以上四式全部等价，原因很简单，由于对 $N$ 的限制是存在，我们只需要找到一个就行，是否取等只需要左右移动一下就行。
@@ -55,7 +55,7 @@ $\epsilon$ 则是任意，所以其实我们可以令 $\eta = \epsilon + 1$，�
 
 当我们需要证明 $\{a_n\}$ 不收敛于一个数 $L$ 的时候，我们只需要使用 1.1 的逆否命题：
 
-> $\exist \epsilon > 0, \forall N \text{ s.t. } \exist n > N, |a_n - L| \ge \epsilon$
+> $\exists \epsilon > 0, \forall N \text{ s.t. } \exists n > N, |a_n - L| \ge \epsilon$
 
 即可。
 
@@ -63,7 +63,7 @@ $\epsilon$ 则是任意，所以其实我们可以令 $\eta = \epsilon + 1$，�
 
 套用定义 1.1，我们只需要证明：
 
-$\forall \epsilon > 0, \exist N \text{ s.t. } \forall n > N, |(1 - \dfrac{1}{n + 1}) - 1| < \epsilon$ 即可。
+$\forall \epsilon > 0, \exists N \text{ s.t. } \forall n > N, |(1 - \dfrac{1}{n + 1}) - 1| < \epsilon$ 即可。
 
 换句话说：$\dfrac{1}{n + 1} < \epsilon \iff n > \dfrac{1}{\epsilon} - 1$。
 
