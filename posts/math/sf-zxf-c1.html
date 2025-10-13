@@ -73,22 +73,22 @@
 </blockquote>
 <p>说明：</p>
 <p>$$
-\begin{aligned}
+\begin{cases}
 \forall \epsilon, \exists N \text{ s.t. } \forall n &gt; N, |a_n - L| &lt; \epsilon \
 \forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| &lt; \epsilon \
 \forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| \leq \epsilon \
 \forall \epsilon, \exists N \text{ s.t. } \forall n &gt; N, |a_n - L| \leq \epsilon \
-\end{aligned}
+\end{cases}
 $$</p>
 <p>以上四式全部等价，原因很简单，由于对 $N$ 的限制是存在，我们只需要找到一个就行，是否取等只需要左右移动一下就行。</p>
 <p>$\epsilon$ 则是任意，所以其实我们可以令 $\eta = \epsilon + 1$，然后把 $\eta$ 带入上面定义就行。</p>
 <p>说明2：</p>
 <p>当我们需要证明 ${a_n}$ 不收敛于一个数 $L$ 的时候，我们只需要使用 1.1 的逆否命题：</p>
-<blockquote>
 <p>$\exists \epsilon &gt; 0, \forall N \text{ s.t. } \exists n &gt; N, |a_n - L| \ge \epsilon$</p>
-</blockquote>
 <p>即可。</p>
+<blockquote>
 <p><strong>例题1</strong>：证明 $\lim_{n \to \infty}(\dfrac{n}{n + 1} - 1) = 1$。</p>
+</blockquote>
 <p>套用定义 1.1，我们只需要证明：</p>
 <p>$\forall \epsilon &gt; 0, \exists N \text{ s.t. } \forall n &gt; N, |(1 - \dfrac{1}{n + 1}) - 1| &lt; \epsilon$ 即可。</p>
 <p>换句话说：$\dfrac{1}{n + 1} &lt; \epsilon \iff n &gt; \dfrac{1}{\epsilon} - 1$。</p>
