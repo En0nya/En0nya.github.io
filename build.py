@@ -46,7 +46,7 @@ def build_html(directory_path):
                 file_path = os.path.join(root, file)
                 md_files.append(file_path)
     
-    print(f"✓ {len(md_files)} md files were found.")
+    print(f"🔍 {len(md_files)} md files were found.")
     
     success_count = 0
     
@@ -55,7 +55,7 @@ def build_html(directory_path):
         if result:
             success_count += 1
 
-    print(f"✓ Successfully convert {success_count} files.")
+    print(f"❤️ Successfully convert {success_count} files.")
     
 
 def depoly_to_git(repo_path = "./", commit_message = "Auto update"):
@@ -69,7 +69,7 @@ def depoly_to_git(repo_path = "./", commit_message = "Auto update"):
 
         origin = repo.remote(name = 'origin')
         origin.push()
-        print("✓ Deployed to remote repo.")
+        print("🎉Deployed to remote repo.")
 
     except GitCommandError as g:
         print(f"GitError: {g}")
@@ -79,14 +79,11 @@ def depoly_to_git(repo_path = "./", commit_message = "Auto update"):
 
 if __name__ == "__main__":
 
-    os.system("py toc.py")
-
     md_to_html("./404.md")
     md_to_html("./index.md")
     md_to_html("./links.md")
     md_to_html("./contact.md")
     md_to_html("./categories.md")
-    md_to_html("./resource.md")
     build_html("posts")
 
     if len(sys.argv) > 2:

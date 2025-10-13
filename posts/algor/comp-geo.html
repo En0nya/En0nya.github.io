@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+    <script src="/js/Mathjax.js" async></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>计算几何</h2>
+<h3>浮点数比较</h3>
+<p>浮点数表示的原理暂且不提。</p>
+<p>判断是否就是给定一个 $\epsilon$，然后比较两浮点数之差的绝对值是否小于这个 $\epsilon$，如果是那么认为两数取等。</p>
+<p>一般来说 $\epsilon$ 比精度要求多取两位。</p>
+<p>如果不相等就可以直接大小比较。</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">epsilon</span><span class="p">();</span><span class="w"> </span><span class="c1">// in &lt;limits&gt;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">feq</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">eps</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>向量叉积</h3>
+<p>若 $\textbf{A} = (x_1, y_1), \textbf{B} = (x_2, y_2)$，$\textbf{A, B}$ 的叉积为一个向量 $\textbf{C}$。</p>
+<p>其中 $|\textbf{C}| = x_1y_2 - x_2y_1$，且 $(\textbf{A, B, C})$ 构成右手系（右手食指为 $\textbf{A}$，中指为 $\textbf{B}$，大拇指为 $\textbf{C}$）</p>
+<ul>
+<li>一个特性：叉积是有顺序的，$\textbf{A} \times \textbf{B} = -(\textbf{B} \times \textbf{A})$。</li>
+<li>叉积还可以判断两个向量的位置关系：<ul>
+<li>如果 $\textbf{A} \times \textbf{B} &gt; 0$，那么由 $\textbf{A}$ 逆时针旋转到 $\textbf{B}$ 的方向只需要转一个优角。</li>
+<li>如果 $\textbf{A} \times \textbf{B} &lt; 0$，那么需要转过一个劣角</li>
+<li>如果 $\textbf{A} \times \textbf{B} = 0$，那么两向量一定共线但是方向不能确定是否相同。</li>
+</ul>
+</li>
+</ul>
+<p>怎么理解？以 $\textbf{A}$ 为坐标原点，观察 $\textbf{B}$ 的落点就能看出来了。</p>
+<h3>点是否在线段上</h3>
+<p>已知两个端点 $P, Q$，有一点 $A$。</p>
+<p>可以先判断 $\vec{AP}, \vec{AQ}$ 是否共线，如果不共线那么 $A$ 必定不在 $P, Q$ 上</p>
+<p>如果共线，还可能在线段外，此时判断一下 $\vec{AP}, \vec{AQ}$ 是否异向就可以。</p>
+<h3>点是否在三角形上（内）</h3>
+<p>如果多边形只是三角形的话方法会简单一些。</p>
+<p>任意取出两个顶点计算其和点构成的三角形面积，三个三角形面积之和若等于三角形就说明点在三角形内（上）。</p>
+<p>由于在二维平面上，叉积的意义表示两向量构成平行四边形的面积，所以也可以用来计算三角形的面积即：</p>
+<p>$S_{\Delta APQ} = \dfrac{1}{2}\times |\vec{AP} \times \vec{AQ}|$</p>
+<p>要判断是否在边上只需要套用上面的方法。</p>
+<h3>线段相交</h3>
+<p>由于接下来的很多问题都需要判断是否相交所以先在这里提及。</p>
+<p>在算法竞赛的计算几何里，由于浮点数的误差存在，所以一般不会考虑使用类似平面解析几何那样的计算法。</p>
+<p>不妨先粗略的判定两条线段 $AB,CD$ 是否有相交的可能，“隔得太远”显然是不可能相交的。</p>
+<p>我们分别以这两条线段为对角线构建两个矩形，如果没有重合区域那么显然是不相交的，此为 <strong>快速排斥实验</strong></p>
+<p>只需要判断由 $CD$ 生成的矩形是否存在一个顶点在 $AB$ 生成的矩形内部（上）即可。</p>
+<p>当然通过了快速排斥实验不代表它们一定相交，万一没有相互穿过只是差不多贴近了呢？</p>
+<p>此时可以直接判断 $C,D$ 两点是否在线段 $AB$ 的两边，这个利用叉积很容易做到，此为 <strong>跨立实验</strong></p>
+<h3>求线段交点</h3>
+<p>秉持能不要解析几何就不要解析几何的原则，有一个这样的方法：</p>
+<p><img alt="polygon4.png" src="../../medias/polygon4.png" /></p>
+<p>假定我们需要求 $OC, AB$ 的交点 $P$ 坐标，其实主要就是要知道 $P$ 在 $OC$ 或者 $AB$ 上的位置比例。</p>
+<p>一个想法是直接做垂线 $AD, BE$，然后可以知道 $\Delta APD \sim \Delta BPE$。</p>
+<p>那么 $\dfrac{AP}{BP} = \dfrac{AD}{BE}$，$AD, BE$ 又分别是两个三角形的高。</p>
+<p>于是可以知道 $\dfrac{AP}{BP} = \dfrac{S_{\Delta AOC}}{S_{\Delta BOC}}$。</p>
+<p>显然这个比值可以转化为水平和竖直方向的坐标：$\dfrac{AP}{BP} = \dfrac{x_A - x_P}{x_P - x_B} = \dfrac{y_A - y_P}{y_P - y_B}$。</p>
+<p>分别解方程即可得到（$L, R$ 分为两三角形面积）：</p>
+<p>$$
+\begin{cases}
+x_P = \dfrac{Lx_B + Rx_A}{L + R}\
+y_P = \dfrac{Ly_B + Ry_A}{L + R}
+\end{cases}
+$$</p>
+<p>$L, R$ 计算方法已经介绍了，不多赘述。</p>
+<h3>点是否在多边形内（PIP 问题）</h3>
+<p>以下默认为平面多边形，在多边形上不加说明考虑进入在多边形内的情况。</p>
+<ul>
+<li>简单多边形：没有边自交的多边形</li>
+</ul>
+<p><img alt="polygon1.png" src="../../medias/polygon1.png" /></p>
+<p>左边两个就是简单多边形，右边两个一般在 PIP 中不考虑，因为这类多边形的内部定义需要单独讨论。</p>
+<h4>Ray casting</h4>
+<p>对于简单多边形，有一个 Jordan curve 定理告诉我们，当我们从一点发出一条射线与多边形相交时，每相交一次就改变一次内外关系。</p>
+<p>所以我们只需要判断相交次数的奇偶性就可以了，不过还有一些细节：</p>
+<p>首先就是射线，由于我们用射线判断相交并不是那么方便，我们可以取一个数据范围之外的点 $F$，取线段 $PF$ 来进行判断</p>
+<p>理所应当的，还需要判断点是否在多边形的边上，这里就是 $O(n)$ 的复杂度瓶颈了。</p>
+<p>另外可能这条射线会和多边形的点相交，在处理时会比较棘手，例如：</p>
+<p><img alt="polygon2.png" src="../../medias/polygon2.png" /></p>
+<p>所以我们在选取 $PF$ 时可以随机选取多做几次（反正这里不是复杂度瓶颈），或者是取一些比较特殊的无理数。</p>
+<h4>计算角度和（也可以叫回转数法）</h4>
+<p>不妨从点在三角形内的那个方法推广。</p>
+<p>注意到对于任意多边形，如果点在内部，则点和相邻两顶点构成的所有三角形必定完全覆盖整个多边形。</p>
+<p>那么我们只需要计算 $\forall i, \angle &lt;\vec{X_iP}, \vec{X_{i+1}P}&gt;$ 的和是否为 $2\pi$。</p>
+<p>在外部的话，按照顺序依次加和的结果一定是 $0$（需要按顺序求 到角），所以实现一般判断是否非零即可。</p>
+<p>如图：</p>
+<p><img alt="polygon3.png" src="../../medias/polygon3.png" /></p>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

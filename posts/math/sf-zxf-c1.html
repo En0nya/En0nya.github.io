@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+    <script src="/js/Mathjax.js" async></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>数学分析笔记 - zxf - Chapter 1</h2>
+<p>约定：</p>
+<ul>
+<li>$\mathbb{R, Q, N, Z, N+}$ 分别代表全体实数，全体有理数，全体自然数，全体整数，全体正整数。</li>
+<li>$\forall, \exist, \exist!$ 分别代表对任意，存在，存在唯一。</li>
+<li>$e$ 为自然对数的底数，$\epsilon$ 表示一较小正数，$\delta$ 表示一正数。</li>
+</ul>
+<p>Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极限存在一点逻辑错误（（</p>
+<h3>数列极限</h3>
+<p>一个例子：现在有数列 ${a_n} = \dfrac{1}{n}, n = 1,2,3,\dots$。</p>
+<p>当 $n$ 越来越大的时候，$a_n$ 会越来越接近 $0$，称 $0$ 为 $a_n$ 的极限。</p>
+<p>这个说法没有本质上的错误，但是它过于描述性，我们需要用一个严谨一点的数学语言描述，应该怎么办？</p>
+<p>考虑用到极限的距离来描述，$|a_n - 0|$ 在 $n$ 变大时越来越小。</p>
+<p>这还是不够，思考一下，我们到底需要使用极限来做什么？</p>
+<p>一种想法是由于 $n$ 越来越大的时候 $a_n$ 会几乎挤在一起，我们为了方便想要用一个固定的常数来代替他们，当然这样的代替是有代价的，代价就是会出现一点误差。</p>
+<p>如果我们在这个“极限” $L$ （此处为 $0$）的附近限定一个区间，只会有极少数的元素落在区间外面，用数学的语言就是，给定一个误差 $\epsilon$，我们希望大部分的 $a_n$ 都满足 $|a_n - L| &lt; \epsilon$，仅有部分 $n \le N$ 的 $a_n$ 不满足此条件，那么在可以接受这个误差 $\epsilon$ 的前提下我们就可以用 $L$ 来代表 ${a_n}$。</p>
+<p>既然是要给定误差，那么这个极限肯定要对于任意 $\epsilon$ 都满足要求，能够找出一个 $N$ 使得 $a_n$ 在给定范围内。</p>
+<p>于是我们便能得到一个严谨的定义：</p>
+<blockquote>
+<p><strong>定义 1.1</strong>（Weierstrass / $\epsilon-N$ 定义）：</p>
+<p>设数列 ${a_n}_{n=1}^{\infty}$，实数 $L$，
+如果 $\forall \epsilon &gt; 0, \exist N \text{ s.t. }\forall n &gt; N, |a_n - L| &lt; \epsilon$，那么称 $L$ 为数列 ${a_n}$ 的<strong>极限</strong>，或者称 ${a_n}$ 收敛于 $L$。</p>
+<p>记作 $\lim_{n \to \infty} {a_n} = L$。</p>
+</blockquote>
+<p>说明：</p>
+<p>$$
+\begin{align}
+\forall \epsilon, \exist N \text{ s.t. } \forall n &gt; N, |a_n - L| &lt; \epsilon \
+\forall \epsilon, \exist N \text{ s.t. } \forall n \geq N, |a_n - L| &lt; \epsilon \
+\forall \epsilon, \exist N \text{ s.t. } \forall n \geq N, |a_n - L| \leq \epsilon \
+\forall \epsilon, \exist N \text{ s.t. } \forall n &gt; N, |a_n - L| \leq \epsilon \
+\end{align}
+$$</p>
+<p>以上四式全部等价，原因很简单，由于对 $N$ 的限制是存在，我们只需要找到一个就行，是否取等只需要左右移动一下就行。</p>
+<p>$\epsilon$ 则是任意，所以其实我们可以令 $\eta = \epsilon + 1$，然后把 $\eta$ 带入上面定义就行。</p>
+<p>说明2：</p>
+<p>当我们需要证明 ${a_n}$ 不收敛于一个数 $L$ 的时候，我们只需要使用 1.1 的逆否命题：</p>
+<blockquote>
+<p>$\exist \epsilon &gt; 0, \forall N \text{ s.t. } \exist n &gt; N, |a_n - L| \ge \epsilon$</p>
+</blockquote>
+<p>即可。</p>
+<p><strong>例题1</strong>：证明 $\lim_{n \to \infty}(\dfrac{n}{n + 1} - 1) = 1$。</p>
+<p>套用定义 1.1，我们只需要证明：</p>
+<p>$\forall \epsilon &gt; 0, \exist N \text{ s.t. } \forall n &gt; N, |(1 - \dfrac{1}{n + 1}) - 1| &lt; \epsilon$ 即可。</p>
+<p>换句话说：$\dfrac{1}{n + 1} &lt; \epsilon \iff n &gt; \dfrac{1}{\epsilon} - 1$。</p>
+<p><em>证明</em>：</p>
+<p>令 $N = [\dfrac{1}{\epsilon} - 1]$，则 $n &gt; N$ 时有 $n &gt; \dfrac{1}{\epsilon} - 1$，可得 $|(1 - \dfrac{1}{n + 1}) - 1| &lt; \epsilon$ 恒成立。</p>
+<p>其中 $[\,]$ 为高斯记号。</p>
+<p>□</p>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
