@@ -98,7 +98,7 @@ def generate_directory_index(md_files, root_dir):
         for file_info in files_in_dir:
             html_path = file_info['path'].replace('.md', '.html').replace('.markdown', '.html')
             html_path = "posts\\" + html_path
-            content.append(f"- [⌈{file_info['title']}⌋]({html_path})    *`{file_info['mod_time']}`*")
+            content.append(f"- [⌈{file_info['title']}⌋]({html_path})  最后更新时间：*`{file_info['mod_time']}`*")
         content.append("")
     
     return "\n".join(content)
