@@ -11,10 +11,12 @@ from git import Repo, GitCommandError
 
 html_tmp = open("./template.html", "r", encoding = "utf-8").read()
 
-def escape_fix_1(content):
-    # 使用正则表达式匹配 \{内容\} 模式，并转义为 \\{内容\\}
+def escape_fix(content):
+    # 匹配 \{\} 转义 \\{内容\\}
     result = re.sub(r'\\\{(.*?)\\\}', r'\\\\{\1\\\\}', content)
+    result = re.sub(r'\\\\', r'\\\\\\\\', result)
     return result
+
 def md_to_html(file_name, html_template = html_tmp):
 
     html_file_name = os.path.splitext(file_name)[0] + '.html'
@@ -23,7 +25,7 @@ def md_to_html(file_name, html_template = html_tmp):
         with open(file_name, "r", encoding = "utf-8") as f:
             md_content = f.read()
 
-        md_content = escape_fix_1(md_content)
+        md_content = escape_fix(md_content)
         html_content = mkd.markdown(
             md_content,
             extensions = ['extra', 'codehilite']
