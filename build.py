@@ -14,7 +14,9 @@ html_tmp = open("./template.html", "r", encoding = "utf-8").read()
 def escape_fix(content):
     # 匹配 \{\} 转义 \\{内容\\}
     result = re.sub(r'\\\{(.*?)\\\}', r'\\\\{\1\\\\}', content)
-    result = re.sub(r'\\\\', r'\\\\\\\\', result)
+    return result
+def escape_fix2(content):
+    result = re.sub(r'\\\\', r'\\\\\\\\', content)
     return result
 
 def md_to_html(file_name, html_template = html_tmp):
@@ -26,6 +28,7 @@ def md_to_html(file_name, html_template = html_tmp):
             md_content = f.read()
 
         md_content = escape_fix(md_content)
+        md_content = escape_fix2(md_content)
         html_content = mkd.markdown(
             md_content,
             extensions = ['extra', 'codehilite']
