@@ -84,14 +84,16 @@
 <p>记作 $\lim\limits_{n \to \infty} {a_n} = L$。</p>
 </blockquote>
 <p>说明：</p>
-<p>$$
+<p>
+<script type="math/tex; mode=display">
 \begin{align}
-\forall \epsilon, \exists N \text{ s.t. } \forall n &gt; N, |a_n - L| &lt; \epsilon \
-\forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| &lt; \epsilon \
-\forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| \leq \epsilon \
-\forall \epsilon, \exists N \text{ s.t. } \forall n &gt; N, |a_n - L| \leq \epsilon \
+\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |a_n - L| < \epsilon \\
+\forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| < \epsilon \\
+\forall \epsilon, \exists N \text{ s.t. } \forall n \geq N, |a_n - L| \leq \epsilon \\
+\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |a_n - L| \leq \epsilon \\
 \end{align}
-$$</p>
+</script>
+</p>
 <p>以上四式全部等价，原因很简单，由于对 $N$ 的限制是存在，我们只需要找到一个就行，是否取等只需要左右移动一下就行。</p>
 <p>$\epsilon$ 则是任意，所以其实我们可以令 $\eta = \epsilon + 1$，然后把 $\eta$ 带入上面定义就行。</p>
 <p>说明2：</p>
