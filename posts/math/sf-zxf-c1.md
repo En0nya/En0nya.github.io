@@ -91,11 +91,13 @@ tips: $\left\{1,2,3,4,5,\infty,7,8,\dots\right\}$ 这东西有问题，$\infty$ 
 
 举个例子，
 
-$\left\{2^{-n}\right\}_{n=1}^{\infty}$
-
-$\left\{\dfrac{1}{n}\right\}_{n = 1}^{\infty}$
-
-$\left\{0\right\}_{n = 1}^{\infty}$
+$$
+\begin{aligned}
+\left\{2^{-n}\right\}_{n=1}^{\infty} \\
+\left\{\dfrac{1}{n}\right\}_{n = 1}^{\infty} \\
+\left\{0\right\}_{n = 1}^{\infty} \\
+\end{aligned}
+$$
 
 在 $n \to \infty$ 的时候极限都为 $0$，这几个**数列**都能称为无穷小量（最后一个是常值数列）。
 
