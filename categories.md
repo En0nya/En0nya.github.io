@@ -2,7 +2,7 @@
 
 *文章总数: 3*
 
-*Last update: 2025 年 10 月 14 日 20:05*
+*Last update: 2025 年 10 月 14 日 20:09*
 
 - [⌈计算几何⌋](posts\algor\comp-geo.html)    *`25 年 10 月 10 日`*
 

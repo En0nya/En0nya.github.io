@@ -1,7 +1,5 @@
 ## 数学分析笔记 - zxf - Chapter 1
 
-本篇里有一定的数学公式渲染错误，例如数列的 $\left\{\right\}$ 可能不会显示，多行公式仅有一行，会尽快修好。
-
 约定：
 
 - $\mathbb{R, Q, N, Z, N+}$ 分别代表全体实数，全体有理数，全体自然数，全体整数，全体正整数。
@@ -91,13 +89,11 @@ tips: $\left\{1,2,3,4,5,\infty,7,8,\dots\right\}$ 这东西有问题，$\infty$ 
 
 举个例子，
 
-$$
-\begin{aligned}
-\left\{2^{-n}\right\}_{n=1}^{\infty} \\
-\left\{\dfrac{1}{n}\right\}_{n = 1}^{\infty} \\
-\left\{0\right\}_{n = 1}^{\infty} \\
-\end{aligned}
-$$
+$\left\{2^{-n}\right\}_{n=1}^{\infty}$
+
+$\left\{\dfrac{1}{n}\right\}_{n = 1}^{\infty}$
+
+$\left\{0\right\}_{n = 1}^{\infty}$
 
 在 $n \to \infty$ 的时候极限都为 $0$，这几个**数列**都能称为无穷小量（最后一个是常值数列）。
 
