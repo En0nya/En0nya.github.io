@@ -26,7 +26,7 @@ def md_to_html(file_name, html_template = html_tmp):
         md_content = escape_fix_1(md_content)
         html_content = mkd.markdown(
             md_content,
-            extensions = ['extra', 'codehilite', 'mdx_math']
+            extensions = ['extra', 'codehilite']
         )
 
         result_content = html_template.replace("{{content}}", html_content)
