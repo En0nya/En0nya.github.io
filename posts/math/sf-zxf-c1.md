@@ -86,6 +86,7 @@ _证明_：
 tips: $\left\{1,2,3,4,5,\infty,7,8,\dots\right\}$ 这东西有问题，$\infty$ 并不是实数，不能放到数列里面，自然也不能用来反驳这个注记。
 
 > **定义 1.2**：称 $\left\{x_n\right\}_{n=1}^{\infty}$ 为**无穷小量**。
+>
 > 如果 $\lim\limits_{n \to \infty}\left\{x_n\right\} = 0$。
 
 举个例子，$\left\{2^{-n}\right\}_{n=1}^{\infty},\left\{\dfrac{1}{n}\right\}_{n = 1}^{\infty},\left\{0\right\}_{n = 1}^{\infty}$
