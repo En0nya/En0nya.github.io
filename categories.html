@@ -17,28 +17,35 @@
 		});
 	  });
 	</script>
+
+    <link rel="stylesheet" href="/css/katex.min.css">
+
+    <script defer src="/js/katex.min.js"></script>
+
+    <script defer src="/js/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
     
-	<script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true,
-                processEnvironments: true
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                renderActions: {
-                    addMenu: [0, '', '']
-                }
-            },
-            chtml: {
-                displayAlign: 'center',
-                displayIndent: '2em'
-            }
-        };
-    </script>
-    <script src="/js/Mathjax.js" async></script>
+	<!-- <script> -->
+        <!-- window.MathJax = { -->
+            <!-- tex: { -->
+                <!-- inlineMath: [['$', '$'], ['\\(', '\\)']], -->
+                <!-- displayMath: [['$$', '$$'], ['\\[', '\\]']], -->
+                <!-- processEscapes: true, -->
+                <!-- processEnvironments: true -->
+            <!-- }, -->
+            <!-- options: { -->
+                <!-- skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'], -->
+                <!-- renderActions: { -->
+                    <!-- addMenu: [0, '', ''] -->
+                <!-- } -->
+            <!-- }, -->
+            <!-- chtml: { -->
+                <!-- displayAlign: 'center', -->
+                <!-- displayIndent: '2em' -->
+            <!-- } -->
+        <!-- }; -->
+    <!-- </script> -->
+    <!-- <script src="/js/Mathjax.js" async></script> -->
     
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
@@ -60,7 +67,7 @@
         <article>
             <h2>Categories</h2>
 <p><em>文章总数: 3</em></p>
-<p><em>Last update: 2025 年 10 月 14 日 18:12</em></p>
+<p><em>Last update: 2025 年 10 月 14 日 18:22</em></p>
 <ul>
 <li>
 <p><a href="posts\algor\comp-geo.html">⌈计算几何⌋</a>    <em><code>25 年 10 月 10 日</code></em></p>
@@ -81,15 +88,15 @@
         </footer>
     </div>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof MathJax !== 'undefined') {
-                MathJax.startup.defaultReady();
-                MathJax.typesetPromise().catch(function(err) {
-                    console.log('MathJax typeset error:', err);
-                });
-            }
-        });
-    </script>
+    <!-- <script> -->
+        <!-- document.addEventListener('DOMContentLoaded', function() { -->
+            <!-- if (typeof MathJax !== 'undefined') { -->
+                <!-- MathJax.startup.defaultReady(); -->
+                <!-- MathJax.typesetPromise().catch(function(err) { -->
+                    <!-- console.log('MathJax typeset error:', err); -->
+                <!-- }); -->
+            <!-- } -->
+        <!-- }); -->
+    <!-- </script> -->
 </body>
 </html>
