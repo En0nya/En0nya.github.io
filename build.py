@@ -27,8 +27,8 @@ def md_to_html(file_name, html_template = html_tmp):
         with open(file_name, "r", encoding = "utf-8") as f:
             md_content = f.read()
 
-        md_content = escape_fix(md_content)
         md_content = escape_fix2(md_content)
+        md_content = escape_fix(md_content)
         html_content = mkd.markdown(
             md_content,
             extensions = ['extra', 'codehilite']

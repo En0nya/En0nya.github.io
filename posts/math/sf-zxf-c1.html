@@ -59,7 +59,7 @@
         
         <article>
             <h2>数学分析笔记 - zxf - Chapter 1</h2>
-<p>本篇里有一定的数学公式渲染错误，例如数列的 $\left\\{\right\\}$ 可能不会显示，多行公式仅有一行，会尽快修好。</p>
+<p>本篇里有一定的数学公式渲染错误，例如数列的 $\left\{\right\}$ 可能不会显示，多行公式仅有一行，会尽快修好。</p>
 <p>约定：</p>
 <ul>
 <li>$\mathbb{R, Q, N, Z, N+}$ 分别代表全体实数，全体有理数，全体自然数，全体整数，全体正整数。</li>
@@ -68,20 +68,20 @@
 </ul>
 <p>Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极限存在一点逻辑错误（（</p>
 <h3>数列极限</h3>
-<p>一个例子：现在有数列 $\left\\{a_n\right\\} = \dfrac{1}{n}, n = 1,2,3,\dots$。</p>
+<p>一个例子：现在有数列 $\left\{a_n\right\} = \dfrac{1}{n}, n = 1,2,3,\dots$。</p>
 <p>当 $n$ 越来越大的时候，$a_n$ 会越来越接近 $0$，称 $0$ 为 $a_n$ 的极限。</p>
 <p>这个说法没有本质上的错误，但是它过于描述性，我们需要用一个严谨一点的数学语言描述，应该怎么办？</p>
 <p>考虑用到极限的距离来描述，$|a_n - 0|$ 在 $n$ 变大时越来越小。</p>
 <p>这还是不够，思考一下，我们到底需要使用极限来做什么？</p>
 <p>一种想法是由于 $n$ 越来越大的时候 $a_n$ 会几乎挤在一起，我们为了方便想要用一个固定的常数来代替他们，当然这样的代替是有代价的，代价就是会出现一点误差。</p>
-<p>如果我们在这个“极限” $L$ （此处为 $0$）的附近限定一个区间，只会有极少数的元素落在区间外面，用数学的语言就是，给定一个误差 $\epsilon$，我们希望大部分的 $a_n$ 都满足 $|a_n - L| &lt; \epsilon$，仅有部分 $n \le N$ 的 $a_n$ 不满足此条件，那么在可以接受这个误差 $\epsilon$ 的前提下我们就可以用 $L$ 来代表 $\left\\{a_n\right\\}$。</p>
+<p>如果我们在这个“极限” $L$ （此处为 $0$）的附近限定一个区间，只会有极少数的元素落在区间外面，用数学的语言就是，给定一个误差 $\epsilon$，我们希望大部分的 $a_n$ 都满足 $|a_n - L| &lt; \epsilon$，仅有部分 $n \le N$ 的 $a_n$ 不满足此条件，那么在可以接受这个误差 $\epsilon$ 的前提下我们就可以用 $L$ 来代表 $\left\{a_n\right\}$。</p>
 <p>既然是要给定误差，那么这个极限肯定要对于任意 $\epsilon$ 都满足要求，能够找出一个 $N$ 使得 $a_n$ 在给定范围内。</p>
 <p>于是我们便能得到一个严谨的定义：</p>
 <blockquote>
 <p><strong>定义 1.1</strong>（Weierstrass / $\epsilon-N$ 定义）：</p>
-<p>设数列 $\left\\{a_n\right\\}_{n=1}^{\infty}$，实数 $L$，
-如果 $\forall \epsilon &gt; 0, \exists N \text{ s.t. }\forall n &gt; N, |a_n - L| &lt; \epsilon$，那么称 $L$ 为数列 $\left\\{a_n\right\\}$ 的<strong>极限</strong>，或者称 $\left\\{a_n\right\\}$ 收敛于 $L$。</p>
-<p>记作 $\lim\limits_{n\to\infty}\left\\{a_n\right\\} = L$。</p>
+<p>设数列 $\left\{a_n\right\}_{n=1}^{\infty}$，实数 $L$，
+如果 $\forall \epsilon &gt; 0, \exists N \text{ s.t. }\forall n &gt; N, |a_n - L| &lt; \epsilon$，那么称 $L$ 为数列 $\left\{a_n\right\}$ 的<strong>极限</strong>，或者称 $\left\{a_n\right\}$ 收敛于 $L$。</p>
+<p>记作 $\lim\limits_{n\to\infty}\left\{a_n\right\} = L$。</p>
 </blockquote>
 <p>说明：</p>
 <p>$$
@@ -95,7 +95,7 @@ $$</p>
 <p>以上四式全部等价，原因很简单，由于对 $N$ 的限制是存在，我们只需要找到一个就行，是否取等只需要左右移动一下就行。</p>
 <p>$\epsilon$ 则是任意，所以其实我们可以令 $\eta = \epsilon + 1$，然后把 $\eta$ 带入上面定义就行。</p>
 <p>说明2：</p>
-<p>当我们需要证明 $\left\\{a_n\right\\}$ 不收敛于一个数 $L$ 的时候，我们只需要使用 1.1 的逆否命题：</p>
+<p>当我们需要证明 $\left\{a_n\right\}$ 不收敛于一个数 $L$ 的时候，我们只需要使用 1.1 的逆否命题：</p>
 <p>$\exists \epsilon &gt; 0, \forall N \text{ s.t. } \exists n &gt; N, |a_n - L| \ge \epsilon$</p>
 <p>即可。</p>
 <blockquote>
@@ -112,21 +112,21 @@ $$</p>
 <blockquote>
 <p>记：数列的极限与其靠前的有限项<strong>无关</strong></p>
 </blockquote>
-<p>这个是显然的，本身极限就是在 $n$ 足够大时考虑，举个例子，我们有数列：$\left\\{1,1,4,5,1,4,19,19,810,\dfrac{1}{10},\dfrac{1}{11}\dots\dfrac{1}{n}\dots\right\\}$，其极限为 $0$，和前面几项没有关系。</p>
-<p>tips: $\left\\{1,2,3,4,5,\infty,7,8,\dots\right\\}$ 这东西有问题，$\infty$ 并不是实数，不能放到数列里面，自然也不能用来反驳这个注记。</p>
+<p>这个是显然的，本身极限就是在 $n$ 足够大时考虑，举个例子，我们有数列：$\left\{1,1,4,5,1,4,19,19,810,\dfrac{1}{10},\dfrac{1}{11}\dots\dfrac{1}{n}\dots\right\}$，其极限为 $0$，和前面几项没有关系。</p>
+<p>tips: $\left\{1,2,3,4,5,\infty,7,8,\dots\right\}$ 这东西有问题，$\infty$ 并不是实数，不能放到数列里面，自然也不能用来反驳这个注记。</p>
 <blockquote>
-<p><strong>定义 1.2</strong>：称 $\left\\{x_n\right\\}_{n=1}^{\infty}$ 为<strong>无穷小量</strong>。</p>
-<p>如果 $\lim\limits_{n \to \infty}\left\\{x_n\right\\} = 0$。</p>
+<p><strong>定义 1.2</strong>：称 $\left\{x_n\right\}_{n=1}^{\infty}$ 为<strong>无穷小量</strong>。</p>
+<p>如果 $\lim\limits_{n \to \infty}\left\{x_n\right\} = 0$。</p>
 </blockquote>
 <p>举个例子，</p>
-<p>$\left\\{2^{-n}\right\\}_{n=1}^{\infty}$</p>
-<p>$\left\\{\dfrac{1}{n}\right\\}_{n = 1}^{\infty}$</p>
-<p>$\left\\{0\right\\}_{n = 1}^{\infty}$</p>
+<p>$\left\{2^{-n}\right\}_{n=1}^{\infty}$</p>
+<p>$\left\{\dfrac{1}{n}\right\}_{n = 1}^{\infty}$</p>
+<p>$\left\{0\right\}_{n = 1}^{\infty}$</p>
 <p>在 $n \to \infty$ 的时候极限都为 $0$，这几个<strong>数列</strong>都能称为无穷小量（最后一个是常值数列）。</p>
 <blockquote>
-<p><strong>例题1.2</strong>：证明 $q \in \mathbb{R}, |q| &lt; 1, \left\\{q^n\right\\}$ 为无穷小量。</p>
+<p><strong>例题1.2</strong>：证明 $q \in \mathbb{R}, |q| &lt; 1, \left\{q^n\right\}$ 为无穷小量。</p>
 </blockquote>
-<p>换句话说就是要证明 $\lim\limits_{n \to \infty}\left\\{q^n\right\\} = 0$。</p>
+<p>换句话说就是要证明 $\lim\limits_{n \to \infty}\left\{q^n\right\} = 0$。</p>
 <p>写出定义：</p>
 <p>$\forall \epsilon &gt; 0, \exists N\text{ s.t. }n &gt; N, |q^n - 0| &lt; \epsilon$。</p>
 <p>首先注意到 $q = 0$ 的时候就直接是无穷小量了，不需要证明。</p>
@@ -140,28 +140,28 @@ $$</p>
 <p>其实我们只需要考虑 $\epsilon \in (0, 1)$ 就行，因为如果更小的 $\epsilon$ 能够满足，更大的显然也能满足。</p>
 <p>所以证明如下：</p>
 <p><em>证明</em>：</p>
-<p>原命题即：$\lim\limits_{n \to \infty}\left\\{q^n\right\\} = 0 \iff \forall \epsilon &gt; 0, \exists N \text{ s.t. } \forall n &gt; N, |q^n - 0| &lt; \epsilon$。</p>
-<p>当 $q = 0$ 时，原序列即 $\\{0\\}_{n = 1}^{\infty}$，命题成立。</p>
+<p>原命题即：$\lim\limits_{n \to \infty}\left\{q^n\right\} = 0 \iff \forall \epsilon &gt; 0, \exists N \text{ s.t. } \forall n &gt; N, |q^n - 0| &lt; \epsilon$。</p>
+<p>当 $q = 0$ 时，原序列即 $\{0\}_{n = 1}^{\infty}$，命题成立。</p>
 <p>当 $q \neq 0$ 时，取 $N = [\dfrac{\ln\epsilon}{\ln|q|}]$，此时有 $n \ln|q| &lt; \ln\epsilon$。</p>
 <p>即 $\forall \epsilon \in (0, 1), \forall n &gt; N, |q^n - 0| &lt; \epsilon$。</p>
 <p>当 $\epsilon \geq 1$ 时，取 $\eta \in (0, 1)$，令 $N = [\dfrac{\ln\eta}{\ln|q|}]$，则 $n \ln|q| &lt; \ln\eta &lt; \ln\eta + 1 \leq \ln\epsilon$。</p>
-<p>综上可知，$\forall \epsilon &gt; 0, \forall n &gt; N |q^n - 0| &lt; \epsilon \iff \lim\limits_{n\to \infty}\left\\{q_n\right\\}$。</p>
+<p>综上可知，$\forall \epsilon &gt; 0, \forall n &gt; N |q^n - 0| &lt; \epsilon \iff \lim\limits_{n\to \infty}\left\{q_n\right\}$。</p>
 <p>□</p>
 <blockquote>
 <p><strong>例题1.3</strong>：$a &gt; 1$，证明 $\lim\limits_{n \to \infty} \sqrt[n]{a} = 1$。</p>
 </blockquote>
 <p>就是要证明，$\forall \epsilon &gt; 0, \exists N \text{ s.t. } \forall n &gt; N, |\sqrt[n]{a} - 1| &lt; \epsilon$。</p>
 <p>仍旧是需要找到 $n$ 和 $\epsilon$ 的关系，这里由于有个 $-1$，并没有那么好处理，当然直接暴力拆开绝对值讨论是可以的……不过很麻烦。</p>
-<p>考虑换元！令 $x_n = \sqrt[n]{a} - 1$，原命题即证明 $\lim\limits_{n\to \infty}\left\\{x_n\right\\} = 0$</p>
+<p>考虑换元！令 $x_n = \sqrt[n]{a} - 1$，原命题即证明 $\lim\limits_{n\to \infty}\left\{x_n\right\} = 0$</p>
 <p>但有一个问题，$\lim\limits_{n \to \infty} \sqrt[n]{a} = 1$ 和 $\lim\limits_{n \to \infty} (\sqrt[n]{a} - 1) = 0$ 等价吗？</p>
 <p>我们并没有对极限的加减乘除做出定义！所以我们来证明一下：</p>
 <blockquote>
-<p><strong>引理 1.1</strong>：若 $\lim\limits_{n \to \infty}\left\\{x_n\right\\} = a, \lim\limits_{n \to \infty}\left\\{y_n\right\\} = b$，则 $\lim\limits_{n \to \infty}\left\\{(x_n + y_n)\right\\} = a + b$。</p>
+<p><strong>引理 1.1</strong>：若 $\lim\limits_{n \to \infty}\left\{x_n\right\} = a, \lim\limits_{n \to \infty}\left\{y_n\right\} = b$，则 $\lim\limits_{n \to \infty}\left\{(x_n + y_n)\right\} = a + b$。</p>
 </blockquote>
 <p><em>证明</em>：</p>
-<p>由 $\lim\limits_{n \to \infty}\left\\{x_n\right\\} = a \iff \forall \epsilon &gt; 0, \exists N_1 \text{ s.t. } \forall n &gt; N_1, |x_n - a| &lt; \epsilon$。</p>
+<p>由 $\lim\limits_{n \to \infty}\left\{x_n\right\} = a \iff \forall \epsilon &gt; 0, \exists N_1 \text{ s.t. } \forall n &gt; N_1, |x_n - a| &lt; \epsilon$。</p>
 <p>同理 $\forall \epsilon &gt; 0, \exists N_2 \text{ s.t. } \forall n &gt; N_2, |y_n - b| &lt; \epsilon$。</p>
-<p>令 $N = \max\left\\{N_1, N_2\right\\}$，有：</p>
+<p>令 $N = \max\left\{N_1, N_2\right\}$，有：</p>
 <p>$\forall \epsilon &gt; 0, \forall n &gt; N, |x_n - a| &lt; \epsilon \text{ } \land \text{ } |y_n - b| &lt; \epsilon$。</p>
 <p>又因为 $|(x_n + y_n) - (a + b)| \leq |x_n - a| + |y_n - b| &lt; 2\epsilon$，有 $\forall \eta &gt; 0, \exists N \text{ s.t. } \forall n &gt; N, |(x_n + y_n) - (a + b)| &lt; \eta$。</p>
 <p>□</p>
@@ -170,10 +170,10 @@ $$</p>
 <p>直接取对数建立不起什么关系，但我们想到，就算是找关系也不一定需要找最严格的下界，因为只关心存在性，我们不妨调整范围，使用放缩。</p>
 <p>用二项式定理展开后一项：$a = \sum\limits_{i = 0}^{n}\dbinom{n}{n - i}x_n^i$。</p>
 <p>取第二项 $n x_n$，$a &gt; nx_n$，所以 $x_n &lt; \dfrac{a}{n}$，这里又怎么办呢？</p>
-<p>时刻注意我们的 $n$ 是取一个非常大的值，我们考虑用 $\left\\{\dfrac{a}{n}\right\\}$ 的极限来代替。</p>
+<p>时刻注意我们的 $n$ 是取一个非常大的值，我们考虑用 $\left\{\dfrac{a}{n}\right\}$ 的极限来代替。</p>
 <p>由例题1.1，可以知道其为一个无穷小量, 换句话说 $\forall \epsilon, \exists N \text{ s.t. } \forall n &gt; N, |\dfrac{a}{n} - 0| &lt; \epsilon \iff \dfrac{a}{n} &lt; \epsilon$。</p>
 <p>而 $0 &lt; x_n &lt; \dfrac{a}{n}$，换句话说：</p>
-<p>$\forall \epsilon, \exists N \text{ s.t. } \forall n &gt; N, |x_n - 0| &lt; \epsilon \iff \left\\{x_n\right\\}$ 为无穷小量。</p>
+<p>$\forall \epsilon, \exists N \text{ s.t. } \forall n &gt; N, |x_n - 0| &lt; \epsilon \iff \left\{x_n\right\}$ 为无穷小量。</p>
 <p>结合引理即可证明本例题，证明过程略。</p>
 <p><strong>注意</strong>：这里证明使用放缩的时候其实应该标注 $n \ge 1$，但默认如此所以略去，如果在证明时取了第三项（例如证明 $\lim\limits_{n \to \infty}\sqrt[n]{n} = 1$ 时），应该标注 $n \geq 2$ 并讨论 $n = 1$。</p>
 <blockquote>
