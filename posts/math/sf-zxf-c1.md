@@ -1,6 +1,6 @@
 ## 数学分析笔记 - zxf - Chapter 1
 
-本篇里有一定的数学公式渲染错误，例如数列的 $\{\}$ 可能不会显示，多行公式仅有一行，会尽快修好。
+本篇里有一定的数学公式渲染错误，例如数列的 $\left\{\right\}$ 可能不会显示，多行公式仅有一行，会尽快修好。
 
 约定：
 
@@ -12,7 +12,7 @@ Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极
 
 ### 数列极限
 
-一个例子：现在有数列 $\{a_n\} = \dfrac{1}{n}, n = 1,2,3,\dots$。
+一个例子：现在有数列 $\left\{a_n\right\} = \dfrac{1}{n}, n = 1,2,3,\dots$。
 
 当 $n$ 越来越大的时候，$a_n$ 会越来越接近 $0$，称 $0$ 为 $a_n$ 的极限。
 
@@ -24,7 +24,7 @@ Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极
 
 一种想法是由于 $n$ 越来越大的时候 $a_n$ 会几乎挤在一起，我们为了方便想要用一个固定的常数来代替他们，当然这样的代替是有代价的，代价就是会出现一点误差。
 
-如果我们在这个“极限” $L$ （此处为 $0$）的附近限定一个区间，只会有极少数的元素落在区间外面，用数学的语言就是，给定一个误差 $\epsilon$，我们希望大部分的 $a_n$ 都满足 $|a_n - L| < \epsilon$，仅有部分 $n \le N$ 的 $a_n$ 不满足此条件，那么在可以接受这个误差 $\epsilon$ 的前提下我们就可以用 $L$ 来代表 $\{a_n\}$。
+如果我们在这个“极限” $L$ （此处为 $0$）的附近限定一个区间，只会有极少数的元素落在区间外面，用数学的语言就是，给定一个误差 $\epsilon$，我们希望大部分的 $a_n$ 都满足 $|a_n - L| < \epsilon$，仅有部分 $n \le N$ 的 $a_n$ 不满足此条件，那么在可以接受这个误差 $\epsilon$ 的前提下我们就可以用 $L$ 来代表 $\left\{a_n\right\}$。
 
 既然是要给定误差，那么这个极限肯定要对于任意 $\epsilon$ 都满足要求，能够找出一个 $N$ 使得 $a_n$ 在给定范围内。
 
@@ -32,10 +32,10 @@ Fun fact：其实极限（limits）是不可到达的，文学上说的挑战极
 
 > **定义 1.1**（Weierstrass / $\epsilon-N$ 定义）：
 > 
-> 设数列 $\{a_n\}_{n=1}^{\infty}$，实数 $L$，
-> 如果 $\forall \epsilon > 0, \exists N \text{ s.t. }\forall n > N, |a_n - L| < \epsilon$，那么称 $L$ 为数列 $\{a_n\}$ 的**极限**，或者称 $\{a_n\}$ 收敛于 $L$。
+> 设数列 $\left\{a_n\right\}_{n=1}^{\infty}$，实数 $L$，
+> 如果 $\forall \epsilon > 0, \exists N \text{ s.t. }\forall n > N, |a_n - L| < \epsilon$，那么称 $L$ 为数列 $\left\{a_n\right\}$ 的**极限**，或者称 $\left\{a_n\right\}$ 收敛于 $L$。
 >
-> 记作 $\lim\limits_{n \to \infty} \{a_n\} = L$。
+> 记作 $\lim\limits_{n\to\infty}\left\{a_n\right\} = L$。
 
 
 说明：
@@ -55,7 +55,7 @@ $\epsilon$ 则是任意，所以其实我们可以令 $\eta = \epsilon + 1$，�
 
 说明2：
 
-当我们需要证明 $\{a_n\}$ 不收敛于一个数 $L$ 的时候，我们只需要使用 1.1 的逆否命题：
+当我们需要证明 $\left\{a_n\right\}$ 不收敛于一个数 $L$ 的时候，我们只需要使用 1.1 的逆否命题：
 
 $\exists \epsilon > 0, \forall N \text{ s.t. } \exists n > N, |a_n - L| \ge \epsilon$
 
@@ -73,7 +73,7 @@ _证明_：
 
 令 $N = [\dfrac{1}{\epsilon} - 1]$，则 $n > N$ 时有 $n > \dfrac{1}{\epsilon} - 1$，可得 $|(1 - \dfrac{1}{n + 1}) - 1| < \epsilon$ 恒成立。
 
-其中 $[\,]$ 为高斯记号。
+其中 $\left[\,\right]$ 为高斯记号。
 
 □
 
@@ -81,17 +81,20 @@ _证明_：
 
 > 记：数列的极限与其靠前的有限项**无关**
 
-这个是显然的，本身极限就是在 $n$ 足够大时考虑，举个例子，我们有数列：$\{1,1,4,5,1,4,19,19,810,\dfrac{1}{10},\dfrac{1}{11}\dots\dfrac{1}{n}\dots\}$，其极限为 $0$，和前面几项没有关系。
+这个是显然的，本身极限就是在 $n$ 足够大时考虑，举个例子，我们有数列：$\left\{1,1,4,5,1,4,19,19,810,\dfrac{1}{10},\dfrac{1}{11}\dots\dfrac{1}{n}\dots\right\}$，其极限为 $0$，和前面几项没有关系。
 
-tips: $\{1,2,3,4,5,\infty,7,8,\dots\}$ 这东西有问题，$\infty$ 并不是实数，不能放到数列里面，自然也不能用来反驳这个注记。
+tips: $\left\{1,2,3,4,5,\infty,7,8,\dots\right\}$ 这东西有问题，$\infty$ 并不是实数，不能放到数列里面，自然也不能用来反驳这个注记。
 
-> **定义 1.2**：称 $\{x_n\}_{n=1}^{\infty}$ 为**无穷小量**，如果 $\lim\limits_{n \to \infty}\{x_n\} = 0$。
+> **定义 1.2**：称 $\left\{x_n\right\}_{n=1}^{\infty}$ 为**无穷小量**。
+> 如果 $\lim\limits_{n \to \infty}\left\{x_n\right\} = 0$。
 
-举个例子，$\{2^{-n}\}_{n=1}^{\infty},\{\dfrac{1}{n}\}_{n = 1}^{\infty},\{0\}_{n = 1}^{\infty}$ 在 $n \to \infty$ 的时候极限都为 $0$，这几个**数列**都能称为无穷小量（最后一个是常值数列）。
+举个例子，$\left\{2^{-n}\right\}_{n=1}^{\infty},\left\{\dfrac{1}{n}\right\}_{n = 1}^{\infty},\left\{0\right\}_{n = 1}^{\infty}$
 
-> **例题1.2**：证明 $q \in \mathbb{R}, |q| < 1, \{q^n\}$ 为无穷小量。
+在 $n \to \infty$ 的时候极限都为 $0$，这几个**数列**都能称为无穷小量（最后一个是常值数列）。
 
-换句话说就是要证明 $\lim\limits_{n \to \infty}\{q^n\} = 0$。
+> **例题1.2**：证明 $q \in \mathbb{R}, |q| < 1, \left\{q^n\right\}$ 为无穷小量。
+
+换句话说就是要证明 $\lim\limits_{n \to \infty}\left\{q^n\right\} = 0$。
 
 写出定义：
 
@@ -119,7 +122,7 @@ $|q^n| = |q|^n < \epsilon$，两边同时取对数：$n\ln|q| < \ln\epsilon$。
 
 _证明_：
 
-原命题即：$\lim\limits_{n \to \infty}\{q^n\} = 0 \iff \forall \epsilon > 0, \exists N \text{ s.t. } \forall n > N, |q^n - 0| < \epsilon$。
+原命题即：$\lim\limits_{n \to \infty}\left\{q^n\right\} = 0 \iff \forall \epsilon > 0, \exists N \text{ s.t. } \forall n > N, |q^n - 0| < \epsilon$。
 
 当 $q = 0$ 时，原序列即 $\{0\}_{n = 1}^{\infty}$，命题成立。
 
@@ -129,7 +132,7 @@ _证明_：
 
 当 $\epsilon \geq 1$ 时，取 $\eta \in (0, 1)$，令 $N = [\dfrac{\ln\eta}{\ln|q|}]$，则 $n \ln|q| < \ln\eta < \ln\eta + 1 \leq \ln\epsilon$。
 
-综上可知，$\forall \epsilon > 0, \forall n > N |q^n - 0| < \epsilon \iff \lim\limits_{n\to \infty} \{q_n\}$。
+综上可知，$\forall \epsilon > 0, \forall n > N |q^n - 0| < \epsilon \iff \lim\limits_{n\to \infty}\left\{q_n\right\}$。
 
 □
 
@@ -139,21 +142,21 @@ _证明_：
 
 仍旧是需要找到 $n$ 和 $\epsilon$ 的关系，这里由于有个 $-1$，并没有那么好处理，当然直接暴力拆开绝对值讨论是可以的……不过很麻烦。
 
-考虑换元！令 $x_n = \sqrt[n]{a} - 1$，原命题即证明 $\lim\limits_{n\to \infty}\{x_n\} = 0$
+考虑换元！令 $x_n = \sqrt[n]{a} - 1$，原命题即证明 $\lim\limits_{n\to \infty}\left\{x_n\right\} = 0$
 
 但有一个问题，$\lim\limits_{n \to \infty} \sqrt[n]{a} = 1$ 和 $\lim\limits_{n \to \infty} (\sqrt[n]{a} - 1) = 0$ 等价吗？
 
 我们并没有对极限的加减乘除做出定义！所以我们来证明一下：
 
-> **引理 1.1**：若 $\lim\limits_{n \to \infty}\{x_n\} = a, \lim\limits_{n \to \infty}\{y_n\} = b$，则 $\lim\limits_{n \to \infty}(x_n + y_n) = a + b$。
+> **引理 1.1**：若 $\lim\limits_{n \to \infty}\left\{x_n\right\} = a, \lim\limits_{n \to \infty}\left\{y_n\right\} = b$，则 $\lim\limits_{n \to \infty}\left\{(x_n + y_n)\right\} = a + b$。
 
 _证明_：
 
-由 $\lim\limits_{n \to \infty}\{x_n\} = a \iff \forall \epsilon > 0, \exists N_1 \text{ s.t. } \forall n > N_1, |x_n - a| < \epsilon$。
+由 $\lim\limits_{n \to \infty}\left\{x_n\right\} = a \iff \forall \epsilon > 0, \exists N_1 \text{ s.t. } \forall n > N_1, |x_n - a| < \epsilon$。
 
 同理 $\forall \epsilon > 0, \exists N_2 \text{ s.t. } \forall n > N_2, |y_n - b| < \epsilon$。
 
-令 $N = \max\{N_1, N_2\}$，有：
+令 $N = \max\left\{N_1, N_2\right\}$，有：
 
 $\forall \epsilon > 0, \forall n > N, |x_n - a| < \epsilon \text{ } \land \text{ } |y_n - b| < \epsilon$。
 
@@ -171,13 +174,13 @@ $\forall \epsilon > 0, \forall n > N, |x_n - a| < \epsilon \text{ } \land \text{
 
 取第二项 $n x_n$，$a > nx_n$，所以 $x_n < \dfrac{a}{n}$，这里又怎么办呢？
 
-时刻注意我们的 $n$ 是取一个非常大的值，我们考虑用 $\{\dfrac{a}{n}\}$ 的极限来代替。
+时刻注意我们的 $n$ 是取一个非常大的值，我们考虑用 $\left\{\dfrac{a}{n}\right\}$ 的极限来代替。
 
 由例题1.1，可以知道其为一个无穷小量, 换句话说 $\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |\dfrac{a}{n} - 0| < \epsilon \iff \dfrac{a}{n} < \epsilon$。
 
 而 $0 < x_n < \dfrac{a}{n}$，换句话说：
 
-$\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |x_n - 0| < \epsilon \iff \{x_n\}$ 为无穷小量。
+$\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |x_n - 0| < \epsilon \iff \left\{x_n\right\}$ 为无穷小量。
 
 结合引理即可证明本例题，证明过程略。
 
