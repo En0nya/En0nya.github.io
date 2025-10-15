@@ -194,3 +194,193 @@ $\forall \epsilon, \exists N \text{ s.t. } \forall n > N, |x_n - 0| < \epsilon \
 > **例题 1.4**，证明：$\lim\limits_{n \to \infty}\dfrac{3n^2 + 2n}{n^2 - 1} = 3$。
 
 简单放缩即可，不再赘述。
+
+> **命题 1.2**：收敛的数列的极限一定是唯一的。
+
+证明：
+
+设数列 $\lim\limits_{n \to \infty}\{x_n\} = a \land \lim\limits_{n\to \infty}{x_n} = b$。
+
+其中 $a,b \in \mathbb{R}$，下证 $a = b$。
+
+先用定义写一遍，$x_n \to a, (n \to \infty) \Rightarrow, \forall \epsilon > 0, \exists N_1 \text{ s.t. } \forall n > N_1, |x_n - a| < \epsilon$。
+
+并且 $x_n \to b, (n \to \infty) \Rightarrow \forall \epsilon > 0, \exists N_2 \text{ s.t. } \forall n > N_2, |x_n - b| < \epsilon$。
+
+当 $n > \max\{N_1, N_2\}$，两个不等式都成立。
+
+考虑计算 $a, b$ 的距离，然后再做证明，
+
+此时 $|a - b| = |(a - x_n) - (b - x_n)| \le |x_n - a| + |x_n - b| < 2\epsilon$。
+
+由于 $\epsilon$ 是任意的，所以 $a = b$，否则一定无法满足任意。
+
+> **命题 1.3**：收敛的数列一定是**有界的**。
+
+证明：假设 $x_n$ 收敛于 $a, a \in \mathbb{R}$。
+
+**有界**：就是证明 $\exists \text{A constant number }M > 0 \text{ s.t. } |x_n| \le M, \forall n \ge 1$。
+
+特别的，可以取 $\epsilon = 1$，由于 $x_n \to a$，所以 $\exists N \text{ s.t. } |x_n - a| < 1, \forall n > N$。
+
+这样做的目的是确定 $N$（因为由 $\epsilon$ 决定），进而找到值域。
+
+由此可以得到 $|x_n| = |(x_n - a) + a|$，用一次绝对值不等式：
+
+$|x_n| \le |x_n - a| + |a| < 1 + |a|, \forall n > N$。
+
+取 $M = \max\{|x_1|, \dots, |x_{n - 1}|, 1 + |a|\}$。
+
+所以此时就有 $\forall n \ge 1 ,|x_n| \le M$。
+
+□
+
+> 命题 1.3：（保序性）：设 $x_n \to a \in \mathbb{R} \land y_n \to b \in \mathbb{R}(n \to \infty)$
+> 1. $\text{if }x_n \ge y_n \text{ and n is large enough}$，那么 $a \ge b$。（大于号也无所谓，比如 $\{\dfrac{2}{n}\}, \{\dfrac{1}{n}\}$ 的极限都是 $0$）
+> 2. 反过来一样吗？$a > b \Rightarrow \exists N \in \mathbb{N_+}\text{ s.t. } \forall n > N, x_n \ge y_n$。
+> 
+> 理解就是，$n$ 充分大的时候你 $x_n, y_n$ 都分别集中在 $a, b$ 附近，可以用 $a, b$ 代表它们，直接比较就行了。
+
+证明第二条：
+
+假设 $a > b$，开始用定义写：
+
+$x_n \to a \Rightarrow, \forall \epsilon > 0, \exists N_1, \text{ s.t. } \forall n > N_1, |x_n - a| < \epsilon \iff a - \epsilon < x_n < a + \epsilon, (n > N_1)$。
+
+
+$y_n \to b \Rightarrow, \forall \epsilon > 0, \exists N_2, \text{ s.t. } \forall n > N_2, |x_n - b| < \epsilon \iff b - \epsilon < y_n < b + \epsilon, (n > N_2)$。
+
+我们画个图，就是希望 $b + \epsilon < a - \epsilon$。
+
+由于只是存在性，所以取一个比较特殊的 $\epsilon = \dfrac{a - b}{2}$。
+
+然后就有 $x_n > \dfrac{a + b}{2}, (n > N_1)\land y_n < \dfrac{a + b}{2}, (n > N_2)$。
+
+当 $N = \max\{N_1, N_2\}$，就有 $x_n > y_n, (n > N)$。
+
+□
+
+然后证明第一条：
+
+考虑反证，如果不成立，那么一定 $a < b$，用第二条可以知道此时
+
+$\exists N \ge 1$，$x_n < y_n$，矛盾。
+
+□
+
+> 推论：命题 1.4：假设 $\lim\limits_{n\to\infty}\{x_n\} = a \in \mathbb{R}$
+> 1. 如果 $a > 0$，一定存在 $N_1 \in \mathbb{N_+}, \forall n>N_1, x_n > \dfrac{a}{2} > 0$。
+> 2. 如果 $a < 0$，一定存在 $N_2 \in \mathbb{N_+}, \forall n>N_2, x_n < \dfrac{a}{2} < 0$。
+
+证明一个来看看，其实画个图就好了。
+
+用定义写一下，$\forall \epsilon > 0, \exists N \text{ s.t. } n > N, |x_n - a| < \epsilon$。
+
+特别的，取 $\epsilon = \dfrac{a}{2}$，可以知道 $\exists N_1, \forall n > N_1, |x_n - a| < \dfrac{a}{2}$。
+
+然后有 $\dfrac{a}{2} < x_n < \dfrac{3a}{2}$。
+
+□
+
+第二个同理证明（等会写一下）
+
+> 命题 1.5（两边夹法则）（用来找数列的极限）
+>
+> 假设有三个数列 $x_n \le y_n \le z_n, (n = 1,2,3,\dots)$。
+>
+> 如果 $x_n \to a, z_n \to a (n \to \infty) \Rightarrow y_n \to a(n \to \infty)$
+
+各自用定义写一下。
+
+$\forall \epsilon > 0, \exists N \text{ s.t. } n > N, |x_n - a| < \epsilon, |z_n - a| < \epsilon$。
+
+当 $n > N$ 时：
+
+$a - \epsilon < x_n < a + \epsilon$
+
+$a - \epsilon < z_n < a + \epsilon$
+
+各取一边：
+
+$a - \epsilon < x_n \le y_n \le z_n < a + \epsilon, (n > N)$。
+
+所以就有 $|y_n - a| < \epsilon$
+
+也就是 $\forall \epsilon > 0, \exists N \text{ s.t. } n > N, |y_n - a| < \epsilon$。
+
+□
+
+> 例子：求 $\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2 + 1} + \dfrac{2}{n^2 + 2} + \dots + \dfrac{n}{n^2 + n}\right)$。
+
+考虑放缩：
+
+$x_n \le \sum\limits_{i = 1}^{n}\dfrac{i}{n^2 + 1} = \dfrac{n(n + 1)}{2n^2 + 2}$，后者 $\lim = \dfrac{1}{2}$。
+
+下界分母全部换成 $n^2 + n$，极限也是 $\dfrac{1}{2}$。
+
+然后由两边夹法则直接证明了 $\lim\limits_{n\to\infty}\{x_n\} = \dfrac{1}{2}$。
+
+> 命题 1.6（数列极限的四则运算），设 $\lim\limits_{n\to\infty}\{x_n\} = a, \lim\limits_{n\to\infty}\{y_n\} = b, a,b\in \mathbb{R}$。
+> 1. $\forall \alpha \in \mathbb{R}, \alpha x_n \to \alpha a$
+> 2. $\forall x_n + y_n \to a+b$（上次证明过了） 
+> 3. 一二结合就是线性结合：$\alpha x_n + \beta y_n \to \alpha a + \beta b$。
+> 4. $x_ny_n \to ab$。
+> 5. $\text{if }b\neq 0, \dfrac{x_n}{y_n} \to \dfrac{a}{b}$。
+
+证明一下第四条：
+
+写出定义（这里略去了，脑补即可）
+
+当 $n > N$ 时，有 
+
+$$
+\begin{cases}
+|x_n - a| < \epsilon \\
+|y_n - b| < \epsilon
+\end{cases}
+$$
+
+想要证明还是往定义写就行：
+
+$|x_ny_n - ab| = |x_ny_n - ay_n + ay_n - ab| \le |y_n||x_n - a| + |a||x_n - b|$。
+
+看起来好像做完了，但是 $|y_n|$ 是个变量，咋办？
+
+用数列的有界性！这样就可以变成一个常数了。
+
+由于 $y_n$ 收敛，所以 $\exists M > 0, \text{ s.t. } |y_n| \le M, \forall n \ge 1$。
+
+然后就有 $|x_ny_n - ab| \le (M + |a|)\epsilon$，前面是个常数，于是整完了。
+
+□
+
+然后证明 5.
+
+
+就 $y_n \to \dfrac{1}{b}$，
+
+就，显然考虑 $\dfrac{x_n}{y_n}$ 是否有定义是有必要的。
+
+由于 $b \neq 0$，不妨假设 $b > 0$ ，$b < 0$ 同理即可。
+
+然后用推论， $y_n \to b > 0 \Rightarrow \exists N^\prime, \forall n > N^\prime, y_n > \dfrac{b}{2} > 0$，然后就没事了
+
+于是现在继续用定义证明 $\dfrac{1}{y} \to \dfrac{1}{b}$
+
+下面比较简单，直接做就行。
+
+> 一个对例题的推广，当 $a \in \mathbb{R_+}$，证明 $\lim\limits_{n\to \infty}\sqrt[n]{a} = 1$。
+
+只需要证明 $a \in (0, 1)$ 就可以，转化一下问题，我们直接去 $b = \dfrac{1}{a}$
+
+然后直接用一下运算法则就可以了。
+
+### 无穷大量
+
+> 定义 1.2：如果 $\forall G > 0, \exists N \in \mathbb{N_+} \text{ s.t. } n > N, |x_n| > G$，那么称数列 $\{x_n\}$ 为无穷大量。
+>
+> 如果 $x_n > G$，那么称为正无穷大量。
+> 
+> 如果 $\forall G, x_n < -G$，则为负无穷大量。
+
+注意和无穷小量区分。

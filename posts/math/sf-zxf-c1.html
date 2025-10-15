@@ -179,6 +179,125 @@ $$</p>
 <p><strong>例题 1.4</strong>，证明：$\lim\limits_{n \to \infty}\dfrac{3n^2 + 2n}{n^2 - 1} = 3$。</p>
 </blockquote>
 <p>简单放缩即可，不再赘述。</p>
+<blockquote>
+<p><strong>命题 1.2</strong>：收敛的数列的极限一定是唯一的。</p>
+</blockquote>
+<p>证明：</p>
+<p>设数列 $\lim\limits_{n \to \infty}\{x_n\} = a \land \lim\limits_{n\to \infty}{x_n} = b$。</p>
+<p>其中 $a,b \in \mathbb{R}$，下证 $a = b$。</p>
+<p>先用定义写一遍，$x_n \to a, (n \to \infty) \Rightarrow, \forall \epsilon &gt; 0, \exists N_1 \text{ s.t. } \forall n &gt; N_1, |x_n - a| &lt; \epsilon$。</p>
+<p>并且 $x_n \to b, (n \to \infty) \Rightarrow \forall \epsilon &gt; 0, \exists N_2 \text{ s.t. } \forall n &gt; N_2, |x_n - b| &lt; \epsilon$。</p>
+<p>当 $n &gt; \max\{N_1, N_2\}$，两个不等式都成立。</p>
+<p>考虑计算 $a, b$ 的距离，然后再做证明，</p>
+<p>此时 $|a - b| = |(a - x_n) - (b - x_n)| \le |x_n - a| + |x_n - b| &lt; 2\epsilon$。</p>
+<p>由于 $\epsilon$ 是任意的，所以 $a = b$，否则一定无法满足任意。</p>
+<blockquote>
+<p><strong>命题 1.3</strong>：收敛的数列一定是<strong>有界的</strong>。</p>
+</blockquote>
+<p>证明：假设 $x_n$ 收敛于 $a, a \in \mathbb{R}$。</p>
+<p><strong>有界</strong>：就是证明 $\exists \text{A constant number }M &gt; 0 \text{ s.t. } |x_n| \le M, \forall n \ge 1$。</p>
+<p>特别的，可以取 $\epsilon = 1$，由于 $x_n \to a$，所以 $\exists N \text{ s.t. } |x_n - a| &lt; 1, \forall n &gt; N$。</p>
+<p>这样做的目的是确定 $N$（因为由 $\epsilon$ 决定），进而找到值域。</p>
+<p>由此可以得到 $|x_n| = |(x_n - a) + a|$，用一次绝对值不等式：</p>
+<p>$|x_n| \le |x_n - a| + |a| &lt; 1 + |a|, \forall n &gt; N$。</p>
+<p>取 $M = \max\{|x_1|, \dots, |x_{n - 1}|, 1 + |a|\}$。</p>
+<p>所以此时就有 $\forall n \ge 1 ,|x_n| \le M$。</p>
+<p>□</p>
+<blockquote>
+<p>命题 1.3：（保序性）：设 $x_n \to a \in \mathbb{R} \land y_n \to b \in \mathbb{R}(n \to \infty)$
+1. $\text{if }x_n \ge y_n \text{ and n is large enough}$，那么 $a \ge b$。（大于号也无所谓，比如 $\{\dfrac{2}{n}\}, \{\dfrac{1}{n}\}$ 的极限都是 $0$）
+2. 反过来一样吗？$a &gt; b \Rightarrow \exists N \in \mathbb{N_+}\text{ s.t. } \forall n &gt; N, x_n \ge y_n$。</p>
+<p>理解就是，$n$ 充分大的时候你 $x_n, y_n$ 都分别集中在 $a, b$ 附近，可以用 $a, b$ 代表它们，直接比较就行了。</p>
+</blockquote>
+<p>证明第二条：</p>
+<p>假设 $a &gt; b$，开始用定义写：</p>
+<p>$x_n \to a \Rightarrow, \forall \epsilon &gt; 0, \exists N_1, \text{ s.t. } \forall n &gt; N_1, |x_n - a| &lt; \epsilon \iff a - \epsilon &lt; x_n &lt; a + \epsilon, (n &gt; N_1)$。</p>
+<p>$y_n \to b \Rightarrow, \forall \epsilon &gt; 0, \exists N_2, \text{ s.t. } \forall n &gt; N_2, |x_n - b| &lt; \epsilon \iff b - \epsilon &lt; y_n &lt; b + \epsilon, (n &gt; N_2)$。</p>
+<p>我们画个图，就是希望 $b + \epsilon &lt; a - \epsilon$。</p>
+<p>由于只是存在性，所以取一个比较特殊的 $\epsilon = \dfrac{a - b}{2}$。</p>
+<p>然后就有 $x_n &gt; \dfrac{a + b}{2}, (n &gt; N_1)\land y_n &lt; \dfrac{a + b}{2}, (n &gt; N_2)$。</p>
+<p>当 $N = \max\{N_1, N_2\}$，就有 $x_n &gt; y_n, (n &gt; N)$。</p>
+<p>□</p>
+<p>然后证明第一条：</p>
+<p>考虑反证，如果不成立，那么一定 $a &lt; b$，用第二条可以知道此时</p>
+<p>$\exists N \ge 1$，$x_n &lt; y_n$，矛盾。</p>
+<p>□</p>
+<blockquote>
+<p>推论：命题 1.4：假设 $\lim\limits_{n\to\infty}\{x_n\} = a \in \mathbb{R}$
+1. 如果 $a &gt; 0$，一定存在 $N_1 \in \mathbb{N_+}, \forall n&gt;N_1, x_n &gt; \dfrac{a}{2} &gt; 0$。
+2. 如果 $a &lt; 0$，一定存在 $N_2 \in \mathbb{N_+}, \forall n&gt;N_2, x_n &lt; \dfrac{a}{2} &lt; 0$。</p>
+</blockquote>
+<p>证明一个来看看，其实画个图就好了。</p>
+<p>用定义写一下，$\forall \epsilon &gt; 0, \exists N \text{ s.t. } n &gt; N, |x_n - a| &lt; \epsilon$。</p>
+<p>特别的，取 $\epsilon = \dfrac{a}{2}$，可以知道 $\exists N_1, \forall n &gt; N_1, |x_n - a| &lt; \dfrac{a}{2}$。</p>
+<p>然后有 $\dfrac{a}{2} &lt; x_n &lt; \dfrac{3a}{2}$。</p>
+<p>□</p>
+<p>第二个同理证明（等会写一下）</p>
+<blockquote>
+<p>命题 1.5（两边夹法则）（用来找数列的极限）</p>
+<p>假设有三个数列 $x_n \le y_n \le z_n, (n = 1,2,3,\dots)$。</p>
+<p>如果 $x_n \to a, z_n \to a (n \to \infty) \Rightarrow y_n \to a(n \to \infty)$</p>
+</blockquote>
+<p>各自用定义写一下。</p>
+<p>$\forall \epsilon &gt; 0, \exists N \text{ s.t. } n &gt; N, |x_n - a| &lt; \epsilon, |z_n - a| &lt; \epsilon$。</p>
+<p>当 $n &gt; N$ 时：</p>
+<p>$a - \epsilon &lt; x_n &lt; a + \epsilon$</p>
+<p>$a - \epsilon &lt; z_n &lt; a + \epsilon$</p>
+<p>各取一边：</p>
+<p>$a - \epsilon &lt; x_n \le y_n \le z_n &lt; a + \epsilon, (n &gt; N)$。</p>
+<p>所以就有 $|y_n - a| &lt; \epsilon$</p>
+<p>也就是 $\forall \epsilon &gt; 0, \exists N \text{ s.t. } n &gt; N, |y_n - a| &lt; \epsilon$。</p>
+<p>□</p>
+<blockquote>
+<p>例子：求 $\lim\limits_{n\to\infty}\left(\dfrac{1}{n^2 + 1} + \dfrac{2}{n^2 + 2} + \dots + \dfrac{n}{n^2 + n}\right)$。</p>
+</blockquote>
+<p>考虑放缩：</p>
+<p>$x_n \le \sum\limits_{i = 1}^{n}\dfrac{i}{n^2 + 1} = \dfrac{n(n + 1)}{2n^2 + 2}$，后者 $\lim = \dfrac{1}{2}$。</p>
+<p>下界分母全部换成 $n^2 + n$，极限也是 $\dfrac{1}{2}$。</p>
+<p>然后由两边夹法则直接证明了 $\lim\limits_{n\to\infty}\{x_n\} = \dfrac{1}{2}$。</p>
+<blockquote>
+<p>命题 1.6（数列极限的四则运算），设 $\lim\limits_{n\to\infty}\{x_n\} = a, \lim\limits_{n\to\infty}\{y_n\} = b, a,b\in \mathbb{R}$。
+1. $\forall \alpha \in \mathbb{R}, \alpha x_n \to \alpha a$
+2. $\forall x_n + y_n \to a+b$（上次证明过了） 
+3. 一二结合就是线性结合：$\alpha x_n + \beta y_n \to \alpha a + \beta b$。
+4. $x_ny_n \to ab$。
+5. $\text{if }b\neq 0, \dfrac{x_n}{y_n} \to \dfrac{a}{b}$。</p>
+</blockquote>
+<p>证明一下第四条：</p>
+<p>写出定义（这里略去了，脑补即可）</p>
+<p>当 $n &gt; N$ 时，有 </p>
+<p>$$
+\begin{cases}
+|x_n - a| &lt; \epsilon \\
+|y_n - b| &lt; \epsilon
+\end{cases}
+$$</p>
+<p>想要证明还是往定义写就行：</p>
+<p>$|x_ny_n - ab| = |x_ny_n - ay_n + ay_n - ab| \le |y_n||x_n - a| + |a||x_n - b|$。</p>
+<p>看起来好像做完了，但是 $|y_n|$ 是个变量，咋办？</p>
+<p>用数列的有界性！这样就可以变成一个常数了。</p>
+<p>由于 $y_n$ 收敛，所以 $\exists M &gt; 0, \text{ s.t. } |y_n| \le M, \forall n \ge 1$。</p>
+<p>然后就有 $|x_ny_n - ab| \le (M + |a|)\epsilon$，前面是个常数，于是整完了。</p>
+<p>□</p>
+<p>然后证明 5.</p>
+<p>就 $y_n \to \dfrac{1}{b}$，</p>
+<p>就，显然考虑 $\dfrac{x_n}{y_n}$ 是否有定义是有必要的。</p>
+<p>由于 $b \neq 0$，不妨假设 $b &gt; 0$ ，$b &lt; 0$ 同理即可。</p>
+<p>然后用推论， $y_n \to b &gt; 0 \Rightarrow \exists N^\prime, \forall n &gt; N^\prime, y_n &gt; \dfrac{b}{2} &gt; 0$，然后就没事了</p>
+<p>于是现在继续用定义证明 $\dfrac{1}{y} \to \dfrac{1}{b}$</p>
+<p>下面比较简单，直接做就行。</p>
+<blockquote>
+<p>一个对例题的推广，当 $a \in \mathbb{R_+}$，证明 $\lim\limits_{n\to \infty}\sqrt[n]{a} = 1$。</p>
+</blockquote>
+<p>只需要证明 $a \in (0, 1)$ 就可以，转化一下问题，我们直接去 $b = \dfrac{1}{a}$</p>
+<p>然后直接用一下运算法则就可以了。</p>
+<h3>无穷大量</h3>
+<blockquote>
+<p>定义 1.2：如果 $\forall G &gt; 0, \exists N \in \mathbb{N_+} \text{ s.t. } n &gt; N, |x_n| &gt; G$，那么称数列 $\{x_n\}$ 为无穷大量。</p>
+<p>如果 $x_n &gt; G$，那么称为正无穷大量。</p>
+<p>如果 $\forall G, x_n &lt; -G$，则为负无穷大量。</p>
+</blockquote>
+<p>注意和无穷小量区分。</p>
         </article>
         
         <footer>
