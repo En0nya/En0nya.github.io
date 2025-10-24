@@ -350,7 +350,9 @@ $x_n \le \sum\limits_{i = 1}^{n}\dfrac{i}{n^2 + 1} = \dfrac{n(n + 1)}{2n^2 + 2}$
 
 #### 命题 1.6 数列极限的四则运算
 
-> 设 $\lim\limits_{n\to\infty}\{x_n\} = a, \lim\limits_{n\to\infty}\{y_n\} = b, a,b\in \mathbb{R}$。
+> 设 $\lim\limits_{n\to\infty}\{x_n\} = a$。
+> 
+> $\lim\limits_{n\to\infty}\{y_n\} = b, a,b\in \mathbb{R}$。
 >
 > 1. $\forall \alpha \in \mathbb{R}, \alpha x_n \to \alpha a$
 >
@@ -504,7 +506,11 @@ $\dfrac{C_N}{n} + G > \dfrac{G}{2}$，取 $H = \dfrac{G}{2}$，于是就能证�
 
 #### 命题 1.7 
 
-> 设 $\{x_n\}_{n = 1}^{\infty}$，$x_n \neq 0,\forall n > 0$，则如果 $\{x_n\}$ 为无穷大量，$\iff \lim\limits_{n\to \infty}\dfrac{1}{x_n} = 0$。
+> 设 $\{x_n\}_{n = 1}^{\infty}, x_n \neq 0,\forall n > 0$。
+> 
+> 如果 $\{x_n\}$ 为无穷大量，
+> 
+> $\iff \lim\limits_{n\to\infty}\dfrac{1}{x_n} = 0$。
 
 证明：若 $\{x_n\}$ 为无穷大量则 $\forall G > 0, \exists N , \forall n > N, |x_n| > G \Rightarrow |\dfrac{1}{x_n}| < \dfrac{1}{G}(*)$。
 
@@ -534,7 +540,11 @@ $\dfrac{C_N}{n} + G > \dfrac{G}{2}$，取 $H = \dfrac{G}{2}$，于是就能证�
 
 #### 命题 1.8
 
-> $\{x_n\}_{n = 1}^{\infty}$ 为无穷大量，$\{y_n\}_{n = 1}^{\infty}$ 满足：$|y_n|$ 在某一项之后大于 $\delta$，其中 $\delta$ 为某个正常量。
+> $\{x_n\}_{n = 1}^{\infty}$ 为无穷大量。
+> 
+> $\{y_n\}_{n = 1}^{\infty}$ 满足：
+> 
+> $|y_n|$ 在某一项之后大于 $\delta$，其中 $\delta$ 为某个正常量。
 >
 > 则 $\{x_ny_n\}_{n = 1}^{\infty}$ 也为无穷大量。
 
@@ -650,7 +660,9 @@ $x_{n} - x_{N_1} > y_{n} - y_{N_1}$。
 
 #### 例题 1.6 
  
-> $\{x_n\}_{n = 1}^{\infty}$ 为一数列，且 $\lim\limits_{n \to \infty}\{x_n\} = a$，$a \in \mathbb{r} \cup \{+\infty, -\infty\}$。
+> $\{x_n\}_{n = 1}^{\infty}$ 为一数列。
+> 
+> 且 $\lim\limits_{n \to \infty}\{x_n\} = a, a \in \mathbb{r} \cup \{+\infty, -\infty\}$。
 >
 > 那么 $\lim\limits_{n \to \infty}\left(\dfrac{\sum\limits_{i = 1}^{n}x_i}{n}\right) = a \in \mathbb{r}$。
 
@@ -914,8 +926,3 @@ $0 \le |\dfrac{a^n}{n!}| = \dfrac{a^n}{n!} \le \dfrac{1}{n!} \le \dfrac{1}{n} \t
 Case2: $|a| > 1$：
 
 不会做我就找特例看看！令 $a = 2$。
-
----
-
-
-
