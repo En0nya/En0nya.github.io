@@ -205,3 +205,32 @@
         background: #888;
     }
 }
+
+/* 性能优化 */
+.toc-sidebar {
+    will-change: transform;
+    contain: layout style;
+}
+
+.toc-list {
+    contain: layout;
+}
+
+/* 大文件优化 */
+.toc-sidebar.virtual-scroll {
+    overflow-y: auto;
+}
+
+/* 加载状态 */
+.toc-loading .toc-list {
+    opacity: 0.6;
+}
+
+.toc-loading::after {
+    content: '加载中...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #666;
+}
