@@ -31,7 +31,7 @@
 }
 
 .toc-sidebar.collapsed::before {
-    content: '📑';
+    content: '≡';
     position: absolute;
     top: 50%;
     left: 50%;
@@ -61,7 +61,7 @@
     
     /* 移动端按钮样式 */
     .toc-sidebar::before {
-        content: '📑';
+        content: '≡';
         position: absolute;
         top: 50%;
         left: 50%;
