@@ -43,8 +43,8 @@ class TOCManager {
         this.tocSidebar.className = 'toc-sidebar';
         this.tocSidebar.innerHTML = `
             <div class="toc-header">
-                <h3 class="toc-title">📑 目录</h3>
-                <button class="toc-toggle" aria-label="切换目录">📌</button>
+                <h3 class="toc-title">目录</h3>
+                <button class="toc-toggle" aria-label="切换目录">≡</button>
             </div>
             <div class="toc-content">
                 <ul class="toc-list"></ul>
