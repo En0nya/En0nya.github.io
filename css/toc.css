@@ -1,4 +1,4 @@
-/* TOC Sidebar Styles */
+/* TOC 侧边栏样式 */
 .toc-sidebar {
     position: fixed;
     left: 20px;
@@ -19,19 +19,20 @@
 
 /* 桌面端折叠状态 */
 .toc-sidebar.collapsed {
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    overflow: hidden;
+    width: 50px !important;
+    height: 50px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    cursor: pointer;
 }
 
 .toc-sidebar.collapsed .toc-header,
 .toc-sidebar.collapsed .toc-content {
-    display: none;
+    display: none !important;
 }
 
 .toc-sidebar.collapsed::before {
-    content: '≡';
+    content: '≡' !important;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -48,20 +49,21 @@
         bottom: 20px;
         top: auto;
         transform: none;
-        width: 50px;
-        height: 50px;
-        padding: 0;
-        overflow: hidden;
+        width: 50px !important;
+        height: 50px !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        cursor: pointer;
     }
     
     .toc-sidebar .toc-header,
     .toc-sidebar .toc-content {
-        display: none;
+        display: none !important;
     }
     
     /* 移动端按钮样式 */
     .toc-sidebar::before {
-        content: '≡';
+        content: '≡' !important;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -73,25 +75,26 @@
     
     /* 移动端展开状态 */
     .toc-sidebar.expanded {
-        width: calc(100vw - 40px);
-        height: 60vh;
-        padding: 20px;
-        overflow-y: auto;
+        width: calc(100vw - 40px) !important;
+        height: 60vh !important;
+        padding: 20px !important;
+        overflow-y: auto !important;
         bottom: 20px;
         left: 20px;
+        cursor: default;
     }
     
     .toc-sidebar.expanded::before {
-        display: none;
+        display: none !important;
     }
     
     .toc-sidebar.expanded .toc-header,
     .toc-sidebar.expanded .toc-content {
-        display: block;
+        display: block !important;
     }
     
     .toc-sidebar.expanded .toc-toggle {
-        display: block;
+        display: block !important;
         position: absolute;
         top: 10px;
         right: 10px;

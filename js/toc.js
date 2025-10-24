@@ -1,14 +1,15 @@
 class TOCManager {
     constructor() {
         this.tocSidebar = null;
-        this.isCollapsed = false;
         this.headings = [];
+        this.isCollapsed = false;
         this.scrollTimeout = null;
         this.init();
     }
 
     init() {
-        // 延迟初始化，确保 DOM 完全加载
+        console.log('Initializing TOC...');
+        
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.initializeTOC());
         } else {
@@ -25,8 +26,10 @@ class TOCManager {
                 this.renderTOC();
                 this.setupEventListeners();
                 this.setupScrollSpy();
+                console.log(`TOC initialized with ${this.headings.length} headings`);
             } else {
-                this.hideTOC(); // 没有标题时隐藏
+                this.hideTOC();
+                console.log('No headings found for TOC');
             }
         } catch (error) {
             console.error('TOC initialization failed:', error);
@@ -34,8 +37,8 @@ class TOCManager {
     }
 
     createTOCSidebar() {
-        // 检查是否已存在 TOC
         if (document.querySelector('.toc-sidebar')) {
+            this.tocSidebar = document.querySelector('.toc-sidebar');
             return;
         }
 
@@ -43,8 +46,8 @@ class TOCManager {
         this.tocSidebar.className = 'toc-sidebar';
         this.tocSidebar.innerHTML = `
             <div class="toc-header">
-                <h3 class="toc-title">≡</h3>
-                <button class="toc-toggle" aria-label="切换目录">≡</button>
+                <h3 class="toc-title">📑 目录</h3>
+                <button class="toc-toggle" aria-label="切换目录">📌</button>
             </div>
             <div class="toc-content">
                 <ul class="toc-list"></ul>
@@ -56,16 +59,12 @@ class TOCManager {
     extractHeadings() {
         const article = document.querySelector('article');
         if (!article) {
-            console.warn('No article element found for TOC');
+            console.warn('No article element found');
             return;
         }
 
-        // 使用更高效的选择器
-        const headingElements = article.querySelectorAll('h1, h2, h3, h4, h5, h6');
-        
-        this.headings = Array.from(headingElements)
+        this.headings = Array.from(article.querySelectorAll('h1, h2, h3, h4, h5, h6'))
             .filter(heading => {
-                // 跳过导航和页眉中的标题
                 return !heading.closest('header') && 
                        !heading.closest('nav') && 
                        !heading.closest('.toc-sidebar') &&
@@ -75,7 +74,6 @@ class TOCManager {
                 const level = parseInt(heading.tagName.substring(1));
                 const text = heading.textContent.trim();
                 
-                // 生成稳定的 ID
                 let id = heading.id;
                 if (!id || id === '') {
                     id = this.generateStableId(text, index);
@@ -84,7 +82,7 @@ class TOCManager {
                 
                 return {
                     element: heading,
-                    level: Math.min(level, 6), // 确保级别不超过6
+                    level: Math.min(level, 6),
                     text: text,
                     id: id
                 };
@@ -94,13 +92,12 @@ class TOCManager {
     }
 
     generateStableId(text, index) {
-        // 更健壮的 ID 生成，避免特殊字符问题
         const baseId = text
             .toLowerCase()
             .replace(/[^a-z0-9\u4e00-\u9fa5]/g, '-')
             .replace(/-+/g, '-')
             .replace(/^-|-$/g, '')
-            .substring(0, 50); // 限制长度
+            .substring(0, 50);
         
         return baseId || `heading-${index + 1}`;
     }
@@ -109,7 +106,6 @@ class TOCManager {
         const tocList = this.tocSidebar.querySelector('.toc-list');
         if (!tocList) return;
 
-        // 使用 DocumentFragment 提高性能
         const fragment = document.createDocumentFragment();
         
         this.headings.forEach(heading => {
@@ -126,31 +122,41 @@ class TOCManager {
             fragment.appendChild(li);
         });
 
-        tocList.innerHTML = ''; // 清空现有内容
+        tocList.innerHTML = '';
         tocList.appendChild(fragment);
     }
 
     setupEventListeners() {
-        const toggleBtn = this.tocSidebar.querySelector('.toc-toggle');
-        
-        toggleBtn.addEventListener('click', () => {
-            this.toggleTOC();
-        });
-
-        // 使用事件委托提高性能
+        // 修复：将点击事件绑定到整个TOC侧边栏
         this.tocSidebar.addEventListener('click', (e) => {
+            // 如果点击的是TOC链接，执行滚动
             if (e.target.classList.contains('toc-link')) {
                 e.preventDefault();
                 const targetId = e.target.getAttribute('href').substring(1);
                 this.scrollToHeading(targetId);
                 
+                // 移动端点击链接后自动收起
                 if (window.innerWidth <= 768 && this.tocSidebar.classList.contains('expanded')) {
                     setTimeout(() => this.toggleTOC(), 300);
                 }
             }
+            // 修复：如果侧边栏处于折叠状态，点击任何地方都触发展开/收起
+            else if (this.tocSidebar.classList.contains('collapsed') || 
+                    (window.innerWidth <= 768 && !this.tocSidebar.classList.contains('expanded'))) {
+                this.toggleTOC();
+            }
         });
 
-        // 防抖的 resize 处理
+        // 原有的toggle按钮仍然保留功能
+        const toggleBtn = this.tocSidebar.querySelector('.toc-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // 防止事件冒泡
+                this.toggleTOC();
+            });
+        }
+
+        // 防抖的resize处理
         window.addEventListener('resize', () => {
             clearTimeout(this.resizeTimeout);
             this.resizeTimeout = setTimeout(() => this.handleResponsive(), 150);
@@ -159,25 +165,25 @@ class TOCManager {
         this.handleResponsive();
     }
 
-	toggleTOC() {
-		if (window.innerWidth <= 768) {
-			const isExpanded = this.tocSidebar.classList.toggle('expanded');
-			// 移除按钮文本更新，因为现在使用 CSS 伪元素
-		} else {
-			this.isCollapsed = !this.isCollapsed;
-			this.tocSidebar.classList.toggle('collapsed', this.isCollapsed);
-			// 移除按钮文本更新
-		}
-	}
+    toggleTOC() {
+        if (window.innerWidth <= 768) {
+            const isExpanded = this.tocSidebar.classList.toggle('expanded');
+            // 移除按钮文本更新，使用CSS伪元素
+        } else {
+            this.isCollapsed = !this.isCollapsed;
+            this.tocSidebar.classList.toggle('collapsed', this.isCollapsed);
+            // 移除按钮文本更新，使用CSS伪元素
+        }
+    }
 
-	handleResponsive() {
-		if (window.innerWidth <= 768) {
-			this.tocSidebar.classList.add('collapsed');
-			this.tocSidebar.classList.remove('expanded');
-		} else {
-			this.tocSidebar.classList.remove('collapsed', 'expanded');
-		}
-	}
+    handleResponsive() {
+        if (window.innerWidth <= 768) {
+            this.tocSidebar.classList.add('collapsed');
+            this.tocSidebar.classList.remove('expanded');
+        } else {
+            this.tocSidebar.classList.remove('collapsed', 'expanded');
+        }
+    }
 
     scrollToHeading(headingId) {
         const heading = document.getElementById(headingId);
@@ -195,7 +201,6 @@ class TOCManager {
     }
 
     setupScrollSpy() {
-        // 使用 Intersection Observer 替代 scroll 事件，性能更好
         if ('IntersectionObserver' in window) {
             this.setupIntersectionObserver();
         } else {
@@ -206,7 +211,7 @@ class TOCManager {
     setupIntersectionObserver() {
         const observerOptions = {
             root: null,
-            rootMargin: '-20% 0px -70% 0px', // 调整触发区域
+            rootMargin: '-20% 0px -70% 0px',
             threshold: 0
         };
 
@@ -226,21 +231,19 @@ class TOCManager {
             }
         }, observerOptions);
 
-        // 观察所有标题
         this.headings.forEach(heading => {
             this.observer.observe(heading.element);
         });
     }
 
     setupLegacyScrollSpy() {
-        // 回退方案：使用防抖的 scroll 事件
         const updateActiveLink = () => {
             let currentActive = null;
             let minDistance = Infinity;
 
             this.headings.forEach(heading => {
                 const rect = heading.element.getBoundingClientRect();
-                const distanceFromTop = Math.abs(rect.top - 100); // 距离视口顶部的距离
+                const distanceFromTop = Math.abs(rect.top - 100);
 
                 if (rect.top <= 150 && distanceFromTop < minDistance) {
                     minDistance = distanceFromTop;
@@ -260,7 +263,6 @@ class TOCManager {
             this.scrollTimeout = requestAnimationFrame(updateActiveLink);
         });
 
-        // 初始更新
         updateActiveLink();
     }
 
@@ -288,9 +290,8 @@ class TOCManager {
     }
 }
 
-// 增强的初始化逻辑
+// 初始化逻辑
 function initializeTOC() {
-    // 等待 MathJax 完成（如果存在）
     if (typeof MathJax !== 'undefined' && MathJax.startup) {
         MathJax.startup.promise
             .then(() => {
@@ -302,10 +303,9 @@ function initializeTOC() {
                 window.tocManager = new TOCManager();
             });
     } else {
-        // 没有 MathJax，直接初始化
         setTimeout(() => {
             window.tocManager = new TOCManager();
-        }, 500); // 给 DOM 更多时间加载
+        }, 500);
     }
 }
 
@@ -316,13 +316,10 @@ if (document.readyState === 'loading') {
     initializeTOC();
 }
 
-// 处理动态内容加载
 window.addEventListener('load', () => {
-    // 如果 TOC 还没有初始化，现在初始化
     if (!window.tocManager) {
         setTimeout(initializeTOC, 1000);
     }
 });
 
-// 导出给其他脚本使用
 window.TOCManager = TOCManager;
