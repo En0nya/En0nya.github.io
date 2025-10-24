@@ -159,27 +159,25 @@ class TOCManager {
         this.handleResponsive();
     }
 
-    toggleTOC() {
-        if (window.innerWidth <= 768) {
-            const isExpanded = this.tocSidebar.classList.toggle('expanded');
-            this.tocSidebar.querySelector('.toc-toggle').textContent = 
-                isExpanded ? '✕' : '📑';
-        } else {
-            this.isCollapsed = !this.isCollapsed;
-            this.tocSidebar.classList.toggle('collapsed', this.isCollapsed);
-            this.tocSidebar.querySelector('.toc-toggle').textContent = 
-                this.isCollapsed ? '📑' : '📌';
-        }
-    }
+	toggleTOC() {
+		if (window.innerWidth <= 768) {
+			const isExpanded = this.tocSidebar.classList.toggle('expanded');
+			// 移除按钮文本更新，因为现在使用 CSS 伪元素
+		} else {
+			this.isCollapsed = !this.isCollapsed;
+			this.tocSidebar.classList.toggle('collapsed', this.isCollapsed);
+			// 移除按钮文本更新
+		}
+	}
 
-    handleResponsive() {
-        if (window.innerWidth <= 768) {
-            this.tocSidebar.classList.add('collapsed');
-            this.tocSidebar.classList.remove('expanded');
-        } else {
-            this.tocSidebar.classList.remove('collapsed', 'expanded');
-        }
-    }
+	handleResponsive() {
+		if (window.innerWidth <= 768) {
+			this.tocSidebar.classList.add('collapsed');
+			this.tocSidebar.classList.remove('expanded');
+		} else {
+			this.tocSidebar.classList.remove('collapsed', 'expanded');
+		}
+	}
 
     scrollToHeading(headingId) {
         const heading = document.getElementById(headingId);

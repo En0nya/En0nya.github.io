@@ -1,4 +1,4 @@
-/* TOC 侧边栏样式 */
+/* TOC Sidebar Styles */
 .toc-sidebar {
     position: fixed;
     left: 20px;
@@ -17,11 +17,86 @@
     overflow-y: auto;
 }
 
+/* 桌面端折叠状态 */
 .toc-sidebar.collapsed {
     width: 50px;
     height: 50px;
     padding: 0;
     overflow: hidden;
+}
+
+.toc-sidebar.collapsed .toc-header,
+.toc-sidebar.collapsed .toc-content {
+    display: none;
+}
+
+.toc-sidebar.collapsed::before {
+    content: '📑';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* 移动端基础状态（按钮模式） */
+@media (max-width: 768px) {
+    .toc-sidebar {
+        position: fixed;
+        left: 10px;
+        bottom: 20px;
+        top: auto;
+        transform: none;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .toc-sidebar .toc-header,
+    .toc-sidebar .toc-content {
+        display: none;
+    }
+    
+    /* 移动端按钮样式 */
+    .toc-sidebar::before {
+        content: '📑';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5em;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    
+    /* 移动端展开状态 */
+    .toc-sidebar.expanded {
+        width: calc(100vw - 40px);
+        height: 60vh;
+        padding: 20px;
+        overflow-y: auto;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .toc-sidebar.expanded::before {
+        display: none;
+    }
+    
+    .toc-sidebar.expanded .toc-header,
+    .toc-sidebar.expanded .toc-content {
+        display: block;
+    }
+    
+    .toc-sidebar.expanded .toc-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1002;
+    }
 }
 
 .toc-header {
@@ -78,17 +153,10 @@
     border-left: 3px solid transparent;
 }
 
-.toc-link:hover {
+.toc-link:hover, .toc-link.active {
     background: #f8f9fa;
     color: #3498db;
     border-left-color: #3498db;
-}
-
-.toc-link.active {
-    background: #e3f2fd;
-    color: #3498db;
-    border-left-color: #3498db;
-    font-weight: 500;
 }
 
 /* 层级缩进 */
@@ -97,46 +165,6 @@
 .toc-level-4 { padding-left: 45px; }
 .toc-level-5 { padding-left: 60px; }
 .toc-level-6 { padding-left: 75px; }
-
-/* 移动端样式 */
-@media (max-width: 1200px) {
-    .toc-sidebar {
-        left: 10px;
-        width: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    .toc-sidebar {
-        position: fixed;
-        left: 10px;
-        top: auto;
-        bottom: 20px;
-        transform: none;
-        width: 50px;
-        height: 50px;
-        padding: 0;
-        overflow: hidden;
-    }
-    
-    .toc-sidebar.expanded {
-        width: calc(100vw - 40px);
-        height: 60vh;
-        padding: 20px;
-        overflow-y: auto;
-        bottom: 20px;
-        left: 20px;
-        top: auto;
-        transform: none;
-    }
-    
-    .toc-toggle {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 1001;
-    }
-}
 
 /* 深色模式支持 */
 @media (prefers-color-scheme: dark) {
@@ -153,13 +181,8 @@
         color: #e8e8e8;
     }
     
-    .toc-link:hover {
+    .toc-link:hover, .toc-link.active {
         background: #3d3d3d;
-        color: #4fc3f7;
-    }
-    
-    .toc-link.active {
-        background: #2d4d6d;
         color: #4fc3f7;
     }
     
@@ -188,10 +211,6 @@
     border-radius: 3px;
 }
 
-.toc-sidebar::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
-}
-
 @media (prefers-color-scheme: dark) {
     .toc-sidebar::-webkit-scrollbar-track {
         background: #3d3d3d;
@@ -200,37 +219,4 @@
     .toc-sidebar::-webkit-scrollbar-thumb {
         background: #666;
     }
-    
-    .toc-sidebar::-webkit-scrollbar-thumb:hover {
-        background: #888;
-    }
-}
-
-/* 性能优化 */
-.toc-sidebar {
-    will-change: transform;
-    contain: layout style;
-}
-
-.toc-list {
-    contain: layout;
-}
-
-/* 大文件优化 */
-.toc-sidebar.virtual-scroll {
-    overflow-y: auto;
-}
-
-/* 加载状态 */
-.toc-loading .toc-list {
-    opacity: 0.6;
-}
-
-.toc-loading::after {
-    content: '加载中...';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #666;
 }
