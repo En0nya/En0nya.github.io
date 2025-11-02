@@ -926,3 +926,498 @@ $0 \le |\dfrac{a^n}{n!}| = \dfrac{a^n}{n!} \le \dfrac{1}{n!} \le \dfrac{1}{n} \t
 Case2: $|a| > 1$：
 
 不会做我就找特例看看！令 $a = 2$。
+
+### 例题 1.12 关于 e
+
+非常重要：
+
+> $x_n = (1 + \dfrac{1}{n})^n$。
+>
+> 则 $x_n$ 收敛，且 $\lim\limits_{n\to\infty}\{x_n\} = e$。
+>
+> $e \sim 2.71828$，称之为自然对数的底数。
+
+（这也是复利的表达式）
+
+证明：
+
+$x_n = (1 + \dfrac{1}{n})^n = \sum\limits_{n = 0}^{n}\dbinom{n}{i}(\dfrac{1}{n})^i = 1 + 1 + \dfrac{n(n + 1)}{2}\dfrac{1}{n^2} + \cdots$。
+
+$= 1 + 1 + \dfrac{1}{2!}(1 - \dfrac{1}{n}) + \dfrac{1}{3!}(1 - \dfrac{1}{n})(1 - \dfrac{2}{n}) + \cdots < 1 + 1 + \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots + \dfrac{1}{n!}$。
+
+对 $n \ge 2$：
+
+$(1 + \dfrac{1}{n})^n < 1 + 1 + \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots + \dfrac{1}{n!} \le 1 + 1 + \dfrac{1}{2 \times 1} + \dfrac{1}{3 \times 2} + \cdots + \dfrac{1}{n(n - 1)}$。
+
+$= 1 + 1 + (1 - \dfrac{1}{2}) + (\dfrac{1}{2} - \dfrac{1}{3}) + \cdots + (\dfrac{1}{n - 1} - \dfrac{1}{n}) = 3 - \dfrac{1}{n} \le 3$。
+
+于是我们找到了一个上界。
+
+下界也能找到：$2$。
+
+现在我们只需要说明 $x_n$ 是单调的就能够证明 $x_n$ 收敛。 
+
+列出表达式：
+
+$x_n = 1 + 1 + \dfrac{1}{2!}(1 - \dfrac{1}{n}) + \dfrac{1}{3!}(1- \dfrac{1}{n})(1 - \dfrac{2}{n}) + \cdots$
+
+$x_{n + 1} = 1 + 1 + \dfrac{1}{2!}(1 - \dfrac{1}{n + 1}) + \dfrac{1}{3!}(1- \dfrac{1}{n + 1})(1 - \dfrac{2}{n + 1}) + \cdots$
+
+由于 $1 - \dfrac{1}{n} < 1 - \dfrac{1}{n + 1}, 1 - \dfrac{2}{n} < 1 - \dfrac{2}{n + 1}, \cdots$。
+
+所以 $x_n < x_{n + 1}, \forall n \ge 1$。
+
+由单调有界定理：$x_n$ 收敛。
+
+> 注：$(1 + \dfrac{1}{n})^n$ 是单调递增地趋向于 $e$，所以 $(1 + \dfrac{1}{n})^n \le e, \forall n \ge 1$。
+
+其实应该取严格小于，当我们能够证明 $e$ 为无理数的时候就可以取了。
+
+不过我们要承认：$e \in (2, 3), e\not\in \mathbb{Q}$。
+
+由此可以说明，$\mathbb{Q}$ 对极限运算是不封闭的。
+
+类似的，可以证明 $(1 + \dfrac{1}{n})^{n + 1}$ 是单调递减的，且有下界，并且也收敛于 $e$，证明方式只需要拆一个 $(1 + \dfrac{1}{n})$ 出来。
+
+（注意这里是可以拆开的，并不是说因为 $n \to \infty$ 就不能拆了，这里只是拆开了一项，没有影响）
+
+由此也可以推出：$(1 + \dfrac{1}{n})^n < e < (1 + \dfrac{1}{n})^{n + 1}$，取对数还能推出别的几个不等式
+
+（不过其实现在我们都还不知道 $e^x, \ln x$ 这几个**函数**是怎么定义的，这里由于是数列所以不需要关心是否连续，但如果是函数就需要考虑一下了）。
+
+一种可行的定义方式：$e^x = \lim\limits_{n\to \infty}(1 + \dfrac{x}{n})^n$。
+
+证明极限存在就略去了，$x$ 为正为负的时候要分开说明（负数部分稍微有点困难）。
+
+另一种定义方式是直接使用级数：$\sum\limits_{n = 0}^{\infty}\dfrac{x^n}{n!} = e^x$
+
+注记：$(1 + \dfrac{1}{n})^n < e < (1 + \dfrac{1}{n})^{n + 1} \iff n\ln(1 + \dfrac{1}{n}) < 1 < (n + 1)\ln(1 + \dfrac{1}{n}) \iff \dfrac{1}{n + 1} < \ln(1 + \dfrac{1}{n}) < \dfrac{1}{n}, \forall n \ge 1$。
+
+#### 例题 1.13
+
+> 设 $x_n = \sum\limits_{i = 1}^{n} \dfrac{1}{i} - \ln n$。
+>
+> 证明 $x_n$ 收敛。
+
+还是用单调有界定理：
+
+$x_{n + 1} = 1 + \dfrac{1}{2} + \dfrac{1}{3} + \cdots + \dfrac{1}{n} + \dfrac{1}{n + 1} - \ln(n + 1)$。
+
+$x_{n} = 1 + \dfrac{1}{2} + \dfrac{1}{3} + \cdots + \dfrac{1}{n} - \ln(n)$。
+
+$x_{n + 1} - x_n = \dfrac{1}{n + 1} - \ln(1 + \dfrac{1}{n})$
+
+然后这就是上面注记里面那个不等式，所以 $x_{n + 1} - x_n < 0$。
+
+所以是单调递减的。
+
+于是只需要说明存在下界，用注记中的不等式直接累加：
+
+$$
+\begin{aligned}
+\ln(1 + 1) &< 1 \\
+\ln(1 + \dfrac{1}{2}) &< \dfrac{1}{2} \\
+\ln(1 + \dfrac{1}{3}) &< \dfrac{1}{3} \\
+\cdots \\
+\ln(1 + \dfrac{1}{n}) &< \dfrac{1}{n}
+\end{aligned}
+$$
+
+所以 $\sum\limits_{i = 1}^{n}\dfrac{1}{i} > \ln(n + 1) \Rightarrow x_n > \ln(1 + \dfrac{1}{n}) > \dfrac{1}{n + 1} > 0$。
+
+于是有下界 $0$，就证明了收敛性。 
+
+### 实数基本定理
+
+#### 定理 1.3 闭区间套定理
+
+> 假设一列闭区间 $\{[a_n, b_n]\}$ 满足。
+>
+> 1. $[a_{n + 1}, b_{n + 1}] \subset [a_n, b_n]$。
+>
+> 2. $(b_n - a_n) \to 0 (n\to \infty)$。
+>
+> 那么称这个闭区间列为闭区间套。
+>
+> 且，存在唯一的一点 $\xi \in [a_n, b_n] \cap \mathbb{R}, (\forall n \ge 1), 且 a_n \to \xi \land b_n \to \xi$。
+>
+> 或者写作 $\bigcap\limits_{i = 1}^{\infty} [a_i, b_i] = \xi \in \mathbb{R}$。
+
+证明：利用单调有界定理。
+
++ $a_1 \le a_2 \le a_3 \le \dots \le a_{n + 1} \le b_{1}$，$a_n$ 单调递增有上界。
++ $b_1 \ge b_2 \ge b_3 \ge \dots \ge b_{n + 1} \ge a_{1}$，$b_n$ 单调递减有下界。
+
+所以 $\lim\limits_{n\to\infty} \{a_n\}, \lim\limits_{n\to \infty}\{b_n\}$ 都存在。
+
+分别记为 $\xi_1, \xi_2$，显然 $a_n \le \xi_1, b_n \ge \xi_2$。
+
+即证 $\xi_1 = \xi_2$。
+
+如果它们都落在这些区间内那就很好办，但我们还不能说明这一点。
+
+我们换个思路：
+
+$\xi_2 = \lim\limits_{n\to\infty}\{b_n\} = \lim\limits_{n\to\infty}(b_n - a_n + a_n) = \lim\limits_{n\to\infty}(b_n - a_n) + \lim\limits_{n\to\infty}\{a_n\} = 0 + \xi_1$
+
+所以 $a_n \le \xi \le b_n (\forall n)$
+
+下证 $\xi$ 是唯一的。
+
+反证，若还有 $\eta$ 满足 $\eta \in [a_n, b_n], \forall n, a_n \to \eta, b_n \to \eta$。
+
+此时我们用一下刚才那个想法，由于 $\xi, \eta$ 都在所有的闭区间内。
+
+那么 $0 \le |\xi - \eta| \le b_n - a_n \to 0(n\to \infty)$
+
+换句话说 $|\xi - \eta| = 0$，那么 $\xi = \eta$
+
+#### 定义 1.3 可数集
+
+> 设 $A$ 为一个非空数集。
+>
+> 如果 $A$ 中的元素可以按照某种规则进行排序，比如 $\{a_1, a_2, a_3, a_4 \dots\}$。
+>
+> 那么称 $A$ 为可数集。
+
+#### 命题 
+
+> 全体有理数 $\mathbb{Q}$ 是可数的。
+
+证明：$\mathbb{Q} = \{0, \pm \dfrac{1}{1}, \pm\dfrac{2}{1}, \pm \dfrac{1}{2}, \pm \dfrac{3}{1}, \pm\dfrac{1}{3}, \pm\dfrac{4}{1}, \pm\dfrac{3}{2}, \pm\dfrac{2}{3}, \pm\dfrac{1}{4}, \cdots\}$。
+
+#### 命题
+
+> 全体实数 $\mathbb{R}$ 是不可数的。
+
+证明：
+
+考虑反证，假设 $\mathbb{R}$ 可数。
+
+则 $\mathbb{R} = \{x_1, x_2, x_3, \cdots\}$。
+
+画在实轴上。
+
+取闭区间 $[a_1, b_1] \text{ s.t. } x_1 \not\in [a_1, b_1]$，这是总能做到的。
+
+将区间三等分，$[a_1, \dfrac{2a_1 + b_1}{3}], [\dfrac{2a_1 + b_1}{3}, \dfrac{a_1 + 2b_1}{3}], [\dfrac{a_1 + 2b_1}{3}, b_1]$。
+
+我们构造一个闭区间套：
+
+$x_n \not\in [a_n, b_n], \forall n$。
+
+$[a_{n + 1}, b_{n + 1}] \subset [a_n, b_n]$（取三等分中间那部分）。
+
+且 $\lim\limits_{n\to\infty} (b_n - a_n) = 0$。
+
+并且 $\bigcap\limits_{i = 1}^{\infty}[a_i, b_i] = \xi \in \mathbb{R}$。
+
+由于 $\forall n, x_n \not\in [a_n, b_n]$，所以 $\xi \not\in \mathbb{R}$，矛盾。
+
+#### 定义 子列
+
+> 设 $\{x_n\}$ 为一个数列，而 $n_1 < n_2 < n_3 < \cdots < n_k < \cdots$ 是一列单调增加的正整数。
+>
+> 那么 $\{x_{n_1}, x_{n_2}, \cdots x_{n_k}, \cdots\}$ 为 $\{x_{n}\}$ 的子列。
+
+注：$n_k \ge k$。
+
+#### 命题 子列的收敛性
+
+> 如果原来的数列是收敛于 $a$ 的 $\iff$ 那么其所有子列收敛于 $a$。
+
+证明：任取子列 $\{x_{n_k}\} \subset \{x_n\}$。
+
+$\forall \epsilon > 0, \exists N \text{ s.t. } \forall n > N, |x_n - a| < \epsilon$
+
+当 $k \ge N$ 时，有 $n_k \ge k \ge N$，所以 $|x_{n_k} - a| < \epsilon$，即 $\forall \epsilon > 0, \exists N, \text{ s.t. } \forall k > N, |x_{n_k} - a| < \epsilon$。
+
+□（充分性）
+
+必要性之后证明。
+
+> 推论：如果数列 $\{x_n\}$ 有两个子列 $\{x_{n_{k1}}\}, \{x_{n_{k2}}\}$ 分别收敛于不同的极限点，那么 $\{x_n\}$ 一定不收敛。
+
+#### 定理 Bolzano-Weierstrass 定理/致密性定理
+
+> 有界的数列一定存在收敛的子列
+
+比如 $\sin(\dfrac{n\pi}{2})$。
+
+使用闭区间套定理：
+
+假设 $x_n$ 是有界的，$a_1 \le x_n \le b_1, \forall n \ge 1$。
+
+把 $[a_1, b_1]$ 等分为 $[a_1, \dfrac{a_1 + b_1}{2}], [\dfrac{a_1 + b_1}{2}, b_1]$。
+
+其中至少存在一个闭区间包含 $\{x_n\}$ 中的无穷多项，选出这个区间记为 $[a_2, b_2]$，然后递归的选下去。
+
+换句话说构造一个闭区间套，每个闭区间都包含无穷多项。
+
++ $[a_n, b_n] \subset [a_{n - 1}, b_{n - 1}]\subset \cdots \subset[a_1, b_1]$。
+
++ $b_n - a_n = \dfrac{b_{n - 1} - a_{n - 1}}{2}$。
+
++ $\forall [a_n, b_n] \text{ includes infinity elements of } \{x_n\}$
+
+接下来从 $[a_1, b_1]$ 中选出一项 $x_{n_1}$。
+
+然后从 $[a_2, b_2] / \{x_{n_1}\}$ 中选出第二项 $x_{n_2}$，且 $n_1 < n_2$。
+
+...
+
+从 $[a_k, b_k] / \{x_{n_1}, x_{n_2}, \cdots, x_{n_{k - 1}}\}$ 记作 $x_{n_k}$，（仍旧保证下标严格单调）。
+
+
+由闭区间套定理，$\exists ! \xi \in [a_n, b_n], (\forall n)\text{ s.t. } a_n \to \xi \land b_n \to \xi$。
+
+令 $k \to \infty$，
+
+由两边夹法则：$a_k \le x_k \le b_k \Rightarrow x_k \to \xi$。
+
+所以存在一个 $\{x_n\}$ 的子列收敛于 $\xi$。
+
+#### 命题 致密性定理的推论
+
+自然而然可以考虑一下无界。
+
+> 设 $\{x_n\}$ 为无界数列，那么一定存在 $\{x_{n_k}\} \subset \{x_n\}$，使得：
+>
+> $\{|x_{n_k}|\} \to +\infty (k \to \infty)$（发散）。
+
+证明，由于 $\forall M > 0, \exists \text{infinity elements} \in \{x_n\} \text{ s.t. their absolute value are greater than } M$。
+
++ 1 不是 $\{x_n\}$ 的界，那么 $\exists n_1 \text{ s.t. } |x_{n_1}| > 1$。
+
++ 显然 $\{x_n\} / \{x_1, x_2, \cdots, x_{n_1}\}$ 无界，
+    + 所以可以取 $x_{n_2}(n_2 > n_2), |x_{n_2}| > 2$。
+
+然后往下依次取。
+
+$|x_{n_k}| > k$，两边令 $k \to \infty$：
+
+那么 $|x_{n_k}|$ 是正无穷大量。
+
+#### 定理 Cauthy收敛原理
+
+> 数列 $\{x_n\}$ 收敛：
+>
+> $\iff \forall \epsilon > 0, \exists N, \text{ when } m, n \ge N, |x_n - x_m| < \epsilon$。
+
+一个比较直观的理解是 $n, m$ 足够大之后都集中在一块，距离可以做到任意小。
+
+还可以推出不收敛的条件：$\exists \epsilon > 0, \forall N, \exists m, n \ge N \text{ s.t. } |x_n - x_m| > \epsilon$
+
+证明：
+
+先证明 $\Rightarrow$：假设 $\{x_n\}$ 收敛于 $x \in \mathbb{R}$。
+
+由定义：$\forall \epsilon > 0, \exists N, \forall n > N |x_n - x| < \dfrac{\epsilon}{2}$。
+
+当 $m > N, |x_m - x| < \dfrac{\epsilon}{2}$。
+
+所以，当 $m, n \ge N$ 时，有 $|x_n - x_m| = |(x_n - x) - (x_m - x)| \le |x_n - x| + |x_m - x| < \epsilon$。
+
+再证明 $\Leftarrow$：
+
+先证明 $x_n$ 是有界的，再用 Weierstrass 定理证明 $x_n$ 收敛。
+
+证明有界的话，取个特殊的 $\epsilon = 1$（因为界需要是个特定常数，不能是一个任取的 $\epsilon$），换句话说：
+
+$\epsilon = 1, \exists N_0, \text{ s.t. } \forall m, n \ge N_0, |x_n - x_m| < 1$。
+
+特别的，$|x_n - x_{N_0}| < 1 ,(n > N_0)$。
+
+使用绝对值不等式：$|x_n| = |x_n - x_{N_0} + x_{N_0}| \le |x_n - x_{N_0}| + |x_{N_0}| < 1 + |x_{N_0}|$。
+
+所以 $|x_n| \le \max\{|x_1|, |x_2|, |x_3|, \cdots, |x_{N_0 - 1} |, 1 + |x_{N_0}|\} = M$。
+
+（后半我都能代替了，然后前半是有限项）
+
+换句话说 $\{x_n\}$ 有界。
+
+由致密性定理，$\exists \{x_{n_k}\} \subset \{x_n\} \text{ s.t. } \lim\limits_{k\to \infty}\{x_{n_k}\} = a \in \mathbb{R}$。
+
+现在希望证明 $x_n$ 收敛，一个空拆：$x_n - a= x_n - x_{n_k} + x_{n_k} - a$。
+
+后面是收敛于零，证明 $x_n - x_{n_k} \to 0$ 就行。
+
+由已知条件：$\forall \epsilon > 0, \exists N, \forall n, m \ge N, |x_n - x_m| < \epsilon$。
+
+当 $n, k > N, n_k \ge k > N \Rightarrow |x_n - x_{n_k}| < \epsilon$。
+
+由于 $\{x_{n_k}\} \to a (k\to \infty)$。
+
+对上面的 $\epsilon$ 来说，$\exists N^\prime, \forall k > N^\prime, |x_{n_k} - a| < \epsilon$。
+
+取 $N_1 = \max\{N, N^\prime\}$，
+
+当 $n > N_1, k > N_1$ 时：
+
+$|x_n - a| \le |x_n - x_{n_k}| + |x_{n_k} - a| < 2\epsilon$
+
+□
+
+#### 例题 一个应用
+
+> 证明：$\{x_n\} = 1 - \dfrac{1}{2} + \dfrac{1}{3} - \dfrac{1}{4} + \cdots + \dfrac{(-1)^{n - 1}}{n}$ 是收敛的
+
+证明：
+
+$\forall \epsilon > 0, \forall m > n \ge 1$。
+
+则：$|x_m - x_n| = |\dfrac{(-1)^{n + 1}}{n} + \dfrac{(-1)^{n + 1}}{n + 2} + \cdots + \dfrac{(-1)^{m - 1}}{m}|$
+
+提一下：$= |\dfrac{1}{n + 1} - \dfrac{1}{n + 2} + \dfrac{1}{n + 1} + \cdots + \dfrac{(-1)^{m - n - 1}}{m}|$。
+
+Case1：如果 $m - n - 1$ 是奇数，此时有偶数项
+
+上式 $< \dfrac{1}{n + 1}$。
+
+只需要拉出来两两配对就能证明。
+
+Case2：如果 $m - n - 1$ 是偶数，此时有奇数项
+
+同理，上式 $< \dfrac{1}{n + 1}$。
+
+由于 $\lim\limits_{n \to \infty}\dfrac{1}{n + 1} = 0$。
+
+所以 $\forall \epsilon > 0, \exists N, \text{ s.t. } \forall n > N, \dfrac{1}{n + 1} < \epsilon$。
+
+也就是 $|x_m - x_n| < \dfrac{1}{n + 1} < \epsilon$。
+
+由 Cauthy 收敛原理，$\{x_n\}$ 收敛。
+
+#### 定理 压缩映射原理
+
+> 设 $\{x_n\}$ 满足：
+>
+> $|x_{n + 1} - x_n| \le r \times |x_n - x_{n - 1}|, 0 < r < 1$
+>
+> 则 $\{x_n\}$ 收敛。
+
+一个直观理解就是两项之间的距离越来越短。
+
+> 注意 $r = 1$ 时，就算 $|x_{n + 1} - x_n| < |x_n - x_{n - 1}|$ 也不能保证 $x_n$ 收敛。
+> 
+> 反例：$x_n = \sum\limits_{i = 1}^{n}\dfrac{1}{i}$。
+
+证明（压缩映射原理）：
+
+任取 $\forall m > n \in \mathbb{N}$
+
+想要用 Cauthy 来证明，所以我们在中间插入：
+
+$x_m - x_n = (x_m - x_{m - 1}) + (x_{m - 1} - x_{m - 2}) + \cdots + (x_{n + 1} - x_n)$。
+
+加绝对值，利用 $r^{t}|x_2 - x_1|$ 放缩：
+
+$|x_m - x_n| = |(x_m - x_{m - 1}) + (x_{m - 1} - x_{m - 2}) + \cdots + (x_{n + 1} - x_n)| \le |x_{n + 1} - x_{n}| + \cdots + |x_{m} - x_{m - 1}| \le r^{n - 1} |x_2 - x_1| + r^n |x_2 - x_1| + \cdots + r^{m - 2}|x_2 - x_1|$。
+
+记 $|x_2 - x_1| = a$。
+
+后面 $= a\sum\limits_{i = n - 1}^{m - 2}r^{i} = a\dfrac{r^{n - 1}(1 - r^{m - n - 2})}{1 - r}$。
+
+$r < 1 \Rightarrow$。
+
+上面：$< a\dfrac{r^{n - 1}}{1 - r} = \dfrac{a}{r(1 - r)}r^n$。
+
+由于 $|r| < 1$，所以 $\lim\limits_{n\to\infty}r^n = 0$。
+
+所以 $\forall \epsilon, \exists N, \text{ s.t. } \forall n > N,|r^n| < \epsilon$。
+
+所以 $|x_m - x_n| < \dfrac{a}{r(1 - r)}\epsilon = C\epsilon$。
+
+$C$ 是常数，由 Cauthy 收敛原理，$x_n$ 收敛。
+
+当然，从上面这里 $r^n$ 取极限，可以知道 $r$ 不能取 $1$。
+
+#### 定义 Cauthy 列/基本列
+
+> 如果 $\{x_n\}$ 满足：
+>
+> $\forall \epsilon > 0, \exists N, \forall m > n \ge N, |x_n - x_m| < \epsilon$。
+>
+> 称 $\{x_n\}$ 为 Cauthy 列/基本列
+
+#### 例题
+
+> $x_1 = 3, x_{n + 1} = 3 + \dfrac{4}{x_n}$。
+>
+> 证明：$\{x_n\}$ 收敛。
+
+单调有界可以做，（类似第二次作业的 T11，需要奇偶讨论）。
+
+来用用压缩映射原理：
+
+证明：
+
+$x_{n + 1} - x_n = 3 + \dfrac{4}{x_n} - 3 - \dfrac{4}{x_{n - 1}} = \dfrac{4(x_{n - 1} - x_n)}{x_n x_{n - 1}}$。
+
+全部上个绝对值
+
+$|x_{n + 1} - x_n| = |3 + \dfrac{4}{x_n} - 3 - \dfrac{4}{x_{n - 1}}| = |\dfrac{4(x_{n - 1} - x_n)}{x_n x_{n - 1}}| \le \dfrac{4}{9}|x_{n} - x_{n - 1}|, \forall n \ge 2$。
+
+使用压缩映射原理。
+
+（归纳证明一下 $x_n \ge 3$ 需要）
+
+#### 定义 覆盖
+
+> 假设 $E$ 是由一族（可能可数，可能不可数的东西放一起）区间构成的集合。
+>
+> $A$ 为另外一个集合。
+>
+> 如果 $\forall x \in A, \exists I \in E, \text{ s.t. } x \in I$，那么称：
+>
+> $E$ 能够覆盖 $A$。
+
+#### 定理 有限开覆盖定理
+
+> 如果一族开区间构成的集合 $E$ 覆盖一个闭区间 $I$。
+>
+> 那么，总可以从 $E$ 中选取有限个开区间使得它们覆盖 $I$。
+
+证明：
+
+用 Cauthy 收敛原理证明（Weierstrass 其实更简单）：
+
+构造集合：$\mathbf{F} = \{[s,t]: [s,t] \text{ could be covered by limited open intervals in } E\}$。
+
+下证：$I \in \mathbf{F}$，（这个构造是个常用方法）考虑反证（不要求 $\mathbf{F}$ 非空）：
+
+假设 $I = [a,b] \not\in \mathbf{F}$。
+
+故一定存在 $x_1 \in I, \text{ s.t. } [x_1 - 1, x_1 + 1] \cap I \not\in \mathbf{F}$。
+
+画图：
+
+```
+|-----|-----|-----|-------|
+x1-1  a    x1    x1+1     b
+```
+
+若不然，则 $[x - 1, x + 1] \cap I \in \mathbf{F}, \forall x \in I$。
+
+特别的，取 $x = a$。
+
+```
+|-----|-----|-----|
+a-1   a    a+1    b
+```
+
+显然：$[a, a+1] \text{ or } I \in \mathbf{F}$，
+
+如果是 $I \in \mathbf{F}$，那么矛盾。
+
+如果是 $[a, a+1] \in \mathbf{F}$。
+
+再取 $x = a + 1 \Rightarrow [a, a + 2] \text{ or } I \in \mathbf{F}$，
+
+如果是 $I$，矛盾。
+
+然后这样递归的取下去，经过有限 $t$ 步之后，$a + t > b$ 换句话说 $[a,b] \in \mathbf{F}$。
+
+这是矛盾的所以，
+
+一定存在 $x_1 \in I, \text{ s.t. } [x_1 - 1, x_1 + 1] \cap I \not\in \mathbf{F}$。

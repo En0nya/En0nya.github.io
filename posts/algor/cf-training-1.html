@@ -61,23 +61,21 @@
         </header>
         
         <article>
-            <h2>Categories</h2>
-<p><em>文章总数: 6</em></p>
-<p><em>Last update: 2025 年 11 月 02 日 14:59</em></p>
-<ul>
-<li><a href="posts\algor\icpc-25-xian-vp.html">⌈ICPC Asia Reginal Xi'an 2025 VP⌋</a>  最后更新时间：<em><code>25 年 10 月 26 日</code></em></li>
-<li><a href="posts\algor\cf-training-1.html">⌈CF 杂题训练 1⌋</a>  最后更新时间：<em><code>25 年 10 月 24 日</code></em></li>
-<li>
-<p><a href="posts\algor\comp-geo.html">⌈计算几何⌋</a>  最后更新时间：<em><code>25 年 10 月 10 日</code></em></p>
-</li>
-<li>
-<p><a href="posts\logs\2025-10-04.html">⌈缙云山⌋</a>  最后更新时间：<em><code>25 年 10 月 04 日</code></em></p>
-</li>
-<li>
-<p><a href="posts\math\sf-assignments-1.html">⌈数学分析习题记录⌋</a>  最后更新时间：<em><code>25 年 10 月 31 日</code></em></p>
-</li>
-<li><a href="posts\math\sf-zxf-c1.html">⌈数学分析笔记 - zxf - Chapter 1⌋</a>  最后更新时间：<em><code>25 年 10 月 29 日</code></em></li>
-</ul>
+            <h2>CF 杂题训练 1</h2>
+<p>感觉打 ACM 这个东西还是需要保持手感，毕竟我们想要牌子只需要手速够快罚时够少就行了。</p>
+<p>随便做点简单题。</p>
+<h3>1352 G - Special Permutation</h3>
+<p>看到 $2$ 的 diff 第一时间是直接考虑奇偶分开然后放一起。</p>
+<p>于是我们发现中间衔接部分需要做点处理。</p>
+<p>只需要交换两个就行了，应该算是签到。</p>
+<h3>2155 D - Batteries</h3>
+<p>这个交互和之前 23 杭州的那个链和菊花的题思想有点像。</p>
+<p>大部分都要用鸽巢原理或者说最坏情况来考虑上界，就会发现需要的次数并没有实际那么多。</p>
+<p>围成一个环，考虑任意两个好灯之间的距离，最大不会超过 $d = \lceil\dfrac{n}{a}\rceil$。</p>
+<p>如果 $a$ 比较小，我们从距离更大的点对开始询问可能会在问到之前就用尽次数。</p>
+<p>所以我们从距离比较小的点对开始枚举，最坏情况下我们枚举到 $d$ 的时候就一定能找到。</p>
+<p>所以次数就是 $\sum\limits_{i = 1}^{d}(n - i) = nd - \dfrac{d(d + 1)}{2}$。</p>
+<p>$nd = \lceil\dfrac{n}{a}\rceil$，所以显然可以做到。</p>
         </article>
         
         <footer>
