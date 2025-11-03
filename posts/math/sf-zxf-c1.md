@@ -1198,7 +1198,7 @@ $|x_{n_k}| > k$，两边令 $k \to \infty$：
 
 那么 $|x_{n_k}|$ 是正无穷大量。
 
-#### 定理 Cauthy收敛原理
+#### 定理 Cauchy收敛原理
 
 > 数列 $\{x_n\}$ 收敛：
 >
@@ -1286,7 +1286,7 @@ Case2：如果 $m - n - 1$ 是偶数，此时有奇数项
 
 也就是 $|x_m - x_n| < \dfrac{1}{n + 1} < \epsilon$。
 
-由 Cauthy 收敛原理，$\{x_n\}$ 收敛。
+由 Cauchy 收敛原理，$\{x_n\}$ 收敛。
 
 #### 定理 压缩映射原理
 
@@ -1306,7 +1306,7 @@ Case2：如果 $m - n - 1$ 是偶数，此时有奇数项
 
 任取 $\forall m > n \in \mathbb{N}$
 
-想要用 Cauthy 来证明，所以我们在中间插入：
+想要用 Cauchy 来证明，所以我们在中间插入：
 
 $x_m - x_n = (x_m - x_{m - 1}) + (x_{m - 1} - x_{m - 2}) + \cdots + (x_{n + 1} - x_n)$。
 
@@ -1328,17 +1328,17 @@ $r < 1 \Rightarrow$。
 
 所以 $|x_m - x_n| < \dfrac{a}{r(1 - r)}\epsilon = C\epsilon$。
 
-$C$ 是常数，由 Cauthy 收敛原理，$x_n$ 收敛。
+$C$ 是常数，由 Cauchy 收敛原理，$x_n$ 收敛。
 
 当然，从上面这里 $r^n$ 取极限，可以知道 $r$ 不能取 $1$。
 
-#### 定义 Cauthy 列/基本列
+#### 定义 Cauchy 列/基本列
 
 > 如果 $\{x_n\}$ 满足：
 >
 > $\forall \epsilon > 0, \exists N, \forall m > n \ge N, |x_n - x_m| < \epsilon$。
 >
-> 称 $\{x_n\}$ 为 Cauthy 列/基本列
+> 称 $\{x_n\}$ 为 Cauchy 列/基本列
 
 #### 例题
 
@@ -1380,7 +1380,7 @@ $|x_{n + 1} - x_n| = |3 + \dfrac{4}{x_n} - 3 - \dfrac{4}{x_{n - 1}}| = |\dfrac{4
 
 证明：
 
-用 Cauthy 收敛原理证明（Weierstrass 其实更简单）：
+用 Cauchy 收敛原理证明（Weierstrass 其实更简单）：
 
 构造集合：$\mathbf{F} = \{[s,t]: [s,t] \text{ could be covered by limited open intervals in } E\}$。
 

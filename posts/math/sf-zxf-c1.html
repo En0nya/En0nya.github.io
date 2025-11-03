@@ -824,7 +824,7 @@ $$</p>
 <p>然后往下依次取。</p>
 <p>$|x_{n_k}| &gt; k$，两边令 $k \to \infty$：</p>
 <p>那么 $|x_{n_k}|$ 是正无穷大量。</p>
-<h4>定理 Cauthy收敛原理</h4>
+<h4>定理 Cauchy收敛原理</h4>
 <blockquote>
 <p>数列 $\{x_n\}$ 收敛：</p>
 <p>$\iff \forall \epsilon &gt; 0, \exists N, \text{ when } m, n \ge N, |x_n - x_m| &lt; \epsilon$。</p>
@@ -872,7 +872,7 @@ $$</p>
 <p>由于 $\lim\limits_{n \to \infty}\dfrac{1}{n + 1} = 0$。</p>
 <p>所以 $\forall \epsilon &gt; 0, \exists N, \text{ s.t. } \forall n &gt; N, \dfrac{1}{n + 1} &lt; \epsilon$。</p>
 <p>也就是 $|x_m - x_n| &lt; \dfrac{1}{n + 1} &lt; \epsilon$。</p>
-<p>由 Cauthy 收敛原理，$\{x_n\}$ 收敛。</p>
+<p>由 Cauchy 收敛原理，$\{x_n\}$ 收敛。</p>
 <h4>定理 压缩映射原理</h4>
 <blockquote>
 <p>设 $\{x_n\}$ 满足：</p>
@@ -886,7 +886,7 @@ $$</p>
 </blockquote>
 <p>证明（压缩映射原理）：</p>
 <p>任取 $\forall m &gt; n \in \mathbb{N}$</p>
-<p>想要用 Cauthy 来证明，所以我们在中间插入：</p>
+<p>想要用 Cauchy 来证明，所以我们在中间插入：</p>
 <p>$x_m - x_n = (x_m - x_{m - 1}) + (x_{m - 1} - x_{m - 2}) + \cdots + (x_{n + 1} - x_n)$。</p>
 <p>加绝对值，利用 $r^{t}|x_2 - x_1|$ 放缩：</p>
 <p>$|x_m - x_n| = |(x_m - x_{m - 1}) + (x_{m - 1} - x_{m - 2}) + \cdots + (x_{n + 1} - x_n)| \le |x_{n + 1} - x_{n}| + \cdots + |x_{m} - x_{m - 1}| \le r^{n - 1} |x_2 - x_1| + r^n |x_2 - x_1| + \cdots + r^{m - 2}|x_2 - x_1|$。</p>
@@ -897,13 +897,13 @@ $$</p>
 <p>由于 $|r| &lt; 1$，所以 $\lim\limits_{n\to\infty}r^n = 0$。</p>
 <p>所以 $\forall \epsilon, \exists N, \text{ s.t. } \forall n &gt; N,|r^n| &lt; \epsilon$。</p>
 <p>所以 $|x_m - x_n| &lt; \dfrac{a}{r(1 - r)}\epsilon = C\epsilon$。</p>
-<p>$C$ 是常数，由 Cauthy 收敛原理，$x_n$ 收敛。</p>
+<p>$C$ 是常数，由 Cauchy 收敛原理，$x_n$ 收敛。</p>
 <p>当然，从上面这里 $r^n$ 取极限，可以知道 $r$ 不能取 $1$。</p>
-<h4>定义 Cauthy 列/基本列</h4>
+<h4>定义 Cauchy 列/基本列</h4>
 <blockquote>
 <p>如果 $\{x_n\}$ 满足：</p>
 <p>$\forall \epsilon &gt; 0, \exists N, \forall m &gt; n \ge N, |x_n - x_m| &lt; \epsilon$。</p>
-<p>称 $\{x_n\}$ 为 Cauthy 列/基本列</p>
+<p>称 $\{x_n\}$ 为 Cauchy 列/基本列</p>
 </blockquote>
 <h4>例题</h4>
 <blockquote>
@@ -931,7 +931,7 @@ $$</p>
 <p>那么，总可以从 $E$ 中选取有限个开区间使得它们覆盖 $I$。</p>
 </blockquote>
 <p>证明：</p>
-<p>用 Cauthy 收敛原理证明（Weierstrass 其实更简单）：</p>
+<p>用 Cauchy 收敛原理证明（Weierstrass 其实更简单）：</p>
 <p>构造集合：$\mathbf{F} = \{[s,t]: [s,t] \text{ could be covered by limited open intervals in } E\}$。</p>
 <p>下证：$I \in \mathbf{F}$，（这个构造是个常用方法）考虑反证（不要求 $\mathbf{F}$ 非空）：</p>
 <p>假设 $I = [a,b] \not\in \mathbf{F}$。</p>
