@@ -2,9 +2,9 @@
 
 *文章总数: 6*
 
-*Last update: 2025 年 11 月 04 日 08:54*
+*Last update: 2025 年 11 月 04 日 08:59*
 
-- [⌈ICPC Asia Reginal Xi'an 2025 VP⌋](posts\algor\icpc-25-xian-vp.html)  最后更新时间：*`25 年 10 月 26 日`*
+- [⌈ICPC Asia Reginal Xi'an 2025 VP⌋](posts\algor\icpc-25-xian-vp.html)  最后更新时间：*`25 年 11 月 04 日`*
 - [⌈CF 杂题训练 1⌋](posts\algor\cf-training-1.html)  最后更新时间：*`25 年 10 月 24 日`*
 - [⌈计算几何⌋](posts\algor\comp-geo.html)  最后更新时间：*`25 年 10 月 10 日`*
 

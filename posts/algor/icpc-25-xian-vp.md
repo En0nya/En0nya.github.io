@@ -58,63 +58,91 @@
 我觉得这个做法看起来比较正确，但是还没调过，由于时间关系先把代码放这里之后再调。
 
 ```cpp
-#include <bits/stdc++.h>
 
-#define int long long
+#include <bits/stdc++.h>
 
 using namespace std;
 
-const int si = 2e5 + 10;
+#define endl '\n'
+#define int long long 
 
-int n, a[si], sum[si], ans[si];
+const int si = 5e5 + 10;
+const int inf = 1e9 + 7;
 
-int ask(int l, int r) { return sum[r] - sum[l - 1]; }
-bool valid(int l, int r, int mx) {
-    return ask(l, r - 1) > mx && l >= 1 && r <= n;
-}
-int sear(int pos) {
-    int l = 3, r = pos + 1;
-    while(l < r) {
-        int mid = (l + r) >> 1;
-        if(valid(pos - mid + 1, pos, a[pos])) 
-            r = mid;
-        else l = mid + 1;
-    }
-    if(l <= pos) return l;
-    else return -1;
-}
-void solve(int n) {
-    for(int i = 1; i <= n; ++i) ans[i] = 0;
-    int t = n + 1;
-    for(int i = n; i >= 3; --i) {
-        int len = sear(i);
-		// cout << "len at " << i << " = " << len << endl;
-        if(len == -1) continue;
-		if(len >= t) continue;	
-		for(int j = len; i - j + 1 >= 1; ++j) {
-			ans[j] = max(ans[j], ask(i - j + 1, i));
-		}
-		t = len;
-    }
-}
+int n, a[si], t[si];
+int ans[si], dir[si];
+bool vis[si], case1[si];
+
+struct Node {
+	int id, d;
+	bool operator < (const Node &b) const {
+		return d > b.d;
+	}
+};
+std::vector<int> to[si];
+std::priority_queue<Node> q2, q3;
 
 signed main() {
-    cin.tie(0) -> sync_with_stdio(false);
-    cout.tie(0);
 
-    int T; cin >> T;
-    while(T--) {
-        cin >> n;
-        sum[0] = 0;
-        for(int i = 1; i <= n; ++i) cin >> a[i];
-        sort(a + 1, a + 1 + n);
-        for(int i = 1; i <= n; ++i)
-        sum[i] = sum[i - 1] + a[i];
-        solve(n);
-        for(int i = 1; i <= n; ++i) cout << ans[i] << " ";
-        cout << endl;
-    }
-    return 0;
+	cin.tie(0) -> sync_with_stdio(false);
+	cout.tie(0);
+
+	cin >> n;
+	for(int i = 1; i <= n; ++i) 
+		cin >> t[i], to[t[i]].push_back(i);
+	for(int i = 1; i <= n; ++i) cin >> a[i];
+
+	for(int i = 1; i <= n; ++i) {
+		if(a[t[i]] > a[i]) dir[i] = 0;
+		else dir[i] = 1;
+		case1[i] = false;
+	}
+	for(int i = 1; i <= n; ++i) {
+		if(dir[i] != dir[t[i]]) {
+			q2.push((Node){i, abs(a[i] - a[t[i]])});
+		}
+		else case1[i] = true;
+		vis[i] = false; // 是否已经被丢入了 3
+	}
+
+	while(!q2.empty() || !q3.empty()) {
+		int t2, t3;
+		if(q2.empty()) t2 = inf;
+		else t2 = q2.top().d;
+		if(q3.empty()) t3 = inf;
+		else t3 = q3.top().d * 2;
+	
+		if(t2 < t3) {
+			auto [i, d] = q2.top();
+			q2.pop();
+			if(vis[i] || ans[t[i]] != 0) continue;
+
+			ans[i] = d;
+			for(auto x : to[i]) {
+				vis[x] = true;
+				q3.push((Node){x, abs(a[x] - a[i])});
+			}
+		}
+		else {
+			auto [i, d] = q3.top();
+			q3.pop();
+			if(ans[i] != 0) continue;
+
+			if(case1[i] == true) 
+				ans[i] = d * 2 + ans[t[i]];
+			else ans[i] = d + (d - ans[t[i]]);
+
+			for(auto x : to[i]) {
+				vis[x] = true;
+				q3.push((Node){x, abs(a[x] - a[i])});
+			}
+		}
+	}
+
+	for(int i = 1; i <= n; ++i) cout << ans[i] << " ";
+	cout << endl;
+
+	return 0;
 }
 ```
 
