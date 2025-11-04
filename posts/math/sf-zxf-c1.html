@@ -188,7 +188,7 @@ $$</p>
 <p>证明：$\lim\limits_{n \to \infty}\dfrac{3n^2 + 2n}{n^2 - 1} = 3$。</p>
 </blockquote>
 <p>简单放缩即可，不再赘述。</p>
-<h4>命题 1.2</h4>
+<h4>命题 1.1</h4>
 <blockquote>
 <p>收敛的数列的极限一定是唯一的。</p>
 </blockquote>
@@ -201,7 +201,7 @@ $$</p>
 <p>考虑计算 $a, b$ 的距离，然后再做证明，</p>
 <p>此时 $|a - b| = |(a - x_n) - (b - x_n)| \le |x_n - a| + |x_n - b| &lt; 2\epsilon$。</p>
 <p>由于 $\epsilon$ 是任意的，所以 $a = b$，否则一定无法满足任意。</p>
-<h4>命题 1.3 有界性</h4>
+<h4>命题 1.2 有界性</h4>
 <blockquote>
 <p>收敛的数列一定是<strong>有界的</strong>。</p>
 </blockquote>
@@ -335,7 +335,7 @@ $$</p>
 <p>只需要证明 $a \in (0, 1)$ 就可以，转化一下问题，我们直接去 $b = \dfrac{1}{a}$</p>
 <p>然后直接用一下运算法则就可以了。</p>
 <h3>无穷大量</h3>
-<h4>定义 1.2 无穷大量</h4>
+<h4>定义 1.3 无穷大量</h4>
 <blockquote>
 <p>如果 $\forall G &gt; 0, \exists N \in \mathbb{N_+} \text{ s.t. } n &gt; N, |x_n| &gt; G$，那么称数列 $\{x_n\}$ 为无穷大量。</p>
 <p>如果 $x_n &gt; G$，那么称为正无穷大量。</p>
@@ -353,7 +353,8 @@ n,&amp;(n\equiv 1 (\mod 2)) \\
 $$</p>
 <h4>例题 1.6</h4>
 <blockquote>
-<p>$\{x_n\}<em _infty="\infty" _to="\to" n="n">{n = 1}^{\infty}$ 为一数列，且 $\lim\limits</em>$。}\{x_n\} = a$，$a \in \mathbb{r} \cup \{+\infty, -\infty\</p>
+<p>$\{x_n\}_{n = 1}^{\infty}$ 为一数列。</p>
+<p>且 $\lim\limits_{n \to \infty}\{x_n\} = a, a \in \mathbb{r} \cup \{+\infty, -\infty\}$。</p>
 <p>那么 $\lim\limits_{n \to \infty}\left(\dfrac{\sum\limits_{i = 1}^{n}x_i}{n}\right) = a \in \mathbb{r}$。</p>
 </blockquote>
 <ol>
@@ -515,7 +516,7 @@ $$</p>
 <p>于是当 $n &gt; \max\{N, N_1\}$，可以有原式 $&lt; (M + 1)\epsilon$。</p>
 <p>原命题证毕。</p>
 <h3>单调有界定理</h3>
-<h4>定义 1.2 上下确界</h4>
+<h4>定义 1.4 上下确界</h4>
 <blockquote>
 <p>设 $S$ 为一数集且不为空集，若 $\exists$ 常量 $M &gt; 0, \text{ s.t. } x \le M, \forall x \in S$，则称 $M$ 为 $S$ 的一个上界。</p>
 <p>如果 $x \ge m, \forall x \in S$，则称 $M$ 为 $S$ 的一个下界。</p>
@@ -636,7 +637,7 @@ $$</p>
 <p>$0 \le |\dfrac{a^n}{n!}| = \dfrac{a^n}{n!} \le \dfrac{1}{n!} \le \dfrac{1}{n} \to 0$。</p>
 <p>Case2: $|a| &gt; 1$：</p>
 <p>不会做我就找特例看看！令 $a = 2$。</p>
-<h3>例题 1.12 关于 e</h3>
+<h4>例题 1.12 关于 e</h4>
 <p>非常重要：</p>
 <blockquote>
 <p>$x_n = (1 + \dfrac{1}{n})^n$。</p>
@@ -697,7 +698,7 @@ $$</p>
 <p>所以 $\sum\limits_{i = 1}^{n}\dfrac{1}{i} &gt; \ln(n + 1) \Rightarrow x_n &gt; \ln(1 + \dfrac{1}{n}) &gt; \dfrac{1}{n + 1} &gt; 0$。</p>
 <p>于是有下界 $0$，就证明了收敛性。 </p>
 <h3>实数基本定理</h3>
-<h4>定理 1.3 闭区间套定理</h4>
+<h4>定理 1.4 闭区间套定理</h4>
 <blockquote>
 <p>假设一列闭区间 $\{[a_n, b_n]\}$ 满足。</p>
 <ol>
@@ -729,18 +730,18 @@ $$</p>
 <p>此时我们用一下刚才那个想法，由于 $\xi, \eta$ 都在所有的闭区间内。</p>
 <p>那么 $0 \le |\xi - \eta| \le b_n - a_n \to 0(n\to \infty)$</p>
 <p>换句话说 $|\xi - \eta| = 0$，那么 $\xi = \eta$</p>
-<h4>定义 1.3 可数集</h4>
+<h4>定义 1.5 可数集</h4>
 <blockquote>
 <p>设 $A$ 为一个非空数集。</p>
 <p>如果 $A$ 中的元素可以按照某种规则进行排序，比如 $\{a_1, a_2, a_3, a_4 \dots\}$。</p>
 <p>那么称 $A$ 为可数集。</p>
 </blockquote>
-<h4>命题</h4>
+<h4>命题 1.9 有理数集可数</h4>
 <blockquote>
 <p>全体有理数 $\mathbb{Q}$ 是可数的。</p>
 </blockquote>
 <p>证明：$\mathbb{Q} = \{0, \pm \dfrac{1}{1}, \pm\dfrac{2}{1}, \pm \dfrac{1}{2}, \pm \dfrac{3}{1}, \pm\dfrac{1}{3}, \pm\dfrac{4}{1}, \pm\dfrac{3}{2}, \pm\dfrac{2}{3}, \pm\dfrac{1}{4}, \cdots\}$。</p>
-<h4>命题</h4>
+<h4>命题 1.10 实数集不可数</h4>
 <blockquote>
 <p>全体实数 $\mathbb{R}$ 是不可数的。</p>
 </blockquote>
@@ -756,13 +757,13 @@ $$</p>
 <p>且 $\lim\limits_{n\to\infty} (b_n - a_n) = 0$。</p>
 <p>并且 $\bigcap\limits_{i = 1}^{\infty}[a_i, b_i] = \xi \in \mathbb{R}$。</p>
 <p>由于 $\forall n, x_n \not\in [a_n, b_n]$，所以 $\xi \not\in \mathbb{R}$，矛盾。</p>
-<h4>定义 子列</h4>
+<h4>定义 1.6 子列</h4>
 <blockquote>
 <p>设 $\{x_n\}$ 为一个数列，而 $n_1 &lt; n_2 &lt; n_3 &lt; \cdots &lt; n_k &lt; \cdots$ 是一列单调增加的正整数。</p>
 <p>那么 $\{x_{n_1}, x_{n_2}, \cdots x_{n_k}, \cdots\}$ 为 $\{x_{n}\}$ 的子列。</p>
 </blockquote>
 <p>注：$n_k \ge k$。</p>
-<h4>命题 子列的收敛性</h4>
+<h4>命题 1.11 子列的收敛性</h4>
 <blockquote>
 <p>如果原来的数列是收敛于 $a$ 的 $\iff$ 那么其所有子列收敛于 $a$。</p>
 </blockquote>
@@ -774,7 +775,7 @@ $$</p>
 <blockquote>
 <p>推论：如果数列 $\{x_n\}$ 有两个子列 $\{x_{n_{k1}}\}, \{x_{n_{k2}}\}$ 分别收敛于不同的极限点，那么 $\{x_n\}$ 一定不收敛。</p>
 </blockquote>
-<h4>定理 Bolzano-Weierstrass 定理/致密性定理</h4>
+<h4>定理 1.5 Bolzano-Weierstrass 定理/致密性定理</h4>
 <blockquote>
 <p>有界的数列一定存在收敛的子列</p>
 </blockquote>
@@ -803,7 +804,7 @@ $$</p>
 <p>令 $k \to \infty$，</p>
 <p>由两边夹法则：$a_k \le x_k \le b_k \Rightarrow x_k \to \xi$。</p>
 <p>所以存在一个 $\{x_n\}$ 的子列收敛于 $\xi$。</p>
-<h4>命题 致密性定理的推论</h4>
+<h4>命题 1.12 致密性定理的推论</h4>
 <p>自然而然可以考虑一下无界。</p>
 <blockquote>
 <p>设 $\{x_n\}$ 为无界数列，那么一定存在 $\{x_{n_k}\} \subset \{x_n\}$，使得：</p>
@@ -824,7 +825,7 @@ $$</p>
 <p>然后往下依次取。</p>
 <p>$|x_{n_k}| &gt; k$，两边令 $k \to \infty$：</p>
 <p>那么 $|x_{n_k}|$ 是正无穷大量。</p>
-<h4>定理 Cauchy收敛原理</h4>
+<h4>定理 1.6 Cauchy收敛原理</h4>
 <blockquote>
 <p>数列 $\{x_n\}$ 收敛：</p>
 <p>$\iff \forall \epsilon &gt; 0, \exists N, \text{ when } m, n \ge N, |x_n - x_m| &lt; \epsilon$。</p>
@@ -856,7 +857,7 @@ $$</p>
 <p>当 $n &gt; N_1, k &gt; N_1$ 时：</p>
 <p>$|x_n - a| \le |x_n - x_{n_k}| + |x_{n_k} - a| &lt; 2\epsilon$</p>
 <p>□</p>
-<h4>例题 一个应用</h4>
+<h4>1.14 例题 一个应用</h4>
 <blockquote>
 <p>证明：$\{x_n\} = 1 - \dfrac{1}{2} + \dfrac{1}{3} - \dfrac{1}{4} + \cdots + \dfrac{(-1)^{n - 1}}{n}$ 是收敛的</p>
 </blockquote>
@@ -873,7 +874,7 @@ $$</p>
 <p>所以 $\forall \epsilon &gt; 0, \exists N, \text{ s.t. } \forall n &gt; N, \dfrac{1}{n + 1} &lt; \epsilon$。</p>
 <p>也就是 $|x_m - x_n| &lt; \dfrac{1}{n + 1} &lt; \epsilon$。</p>
 <p>由 Cauchy 收敛原理，$\{x_n\}$ 收敛。</p>
-<h4>定理 压缩映射原理</h4>
+<h4>定理 1.7 压缩映射原理</h4>
 <blockquote>
 <p>设 $\{x_n\}$ 满足：</p>
 <p>$|x_{n + 1} - x_n| \le r \times |x_n - x_{n - 1}|, 0 &lt; r &lt; 1$</p>
@@ -899,13 +900,13 @@ $$</p>
 <p>所以 $|x_m - x_n| &lt; \dfrac{a}{r(1 - r)}\epsilon = C\epsilon$。</p>
 <p>$C$ 是常数，由 Cauchy 收敛原理，$x_n$ 收敛。</p>
 <p>当然，从上面这里 $r^n$ 取极限，可以知道 $r$ 不能取 $1$。</p>
-<h4>定义 Cauchy 列/基本列</h4>
+<h4>定义 1.7 Cauchy 列/基本列</h4>
 <blockquote>
 <p>如果 $\{x_n\}$ 满足：</p>
 <p>$\forall \epsilon &gt; 0, \exists N, \forall m &gt; n \ge N, |x_n - x_m| &lt; \epsilon$。</p>
 <p>称 $\{x_n\}$ 为 Cauchy 列/基本列</p>
 </blockquote>
-<h4>例题</h4>
+<h4>例题 1.15</h4>
 <blockquote>
 <p>$x_1 = 3, x_{n + 1} = 3 + \dfrac{4}{x_n}$。</p>
 <p>证明：$\{x_n\}$ 收敛。</p>
@@ -918,14 +919,14 @@ $$</p>
 <p>$|x_{n + 1} - x_n| = |3 + \dfrac{4}{x_n} - 3 - \dfrac{4}{x_{n - 1}}| = |\dfrac{4(x_{n - 1} - x_n)}{x_n x_{n - 1}}| \le \dfrac{4}{9}|x_{n} - x_{n - 1}|, \forall n \ge 2$。</p>
 <p>使用压缩映射原理。</p>
 <p>（归纳证明一下 $x_n \ge 3$ 需要）</p>
-<h4>定义 覆盖</h4>
+<h4>定义 1.7 覆盖</h4>
 <blockquote>
 <p>假设 $E$ 是由一族（可能可数，可能不可数的东西放一起）区间构成的集合。</p>
 <p>$A$ 为另外一个集合。</p>
 <p>如果 $\forall x \in A, \exists I \in E, \text{ s.t. } x \in I$，那么称：</p>
 <p>$E$ 能够覆盖 $A$。</p>
 </blockquote>
-<h4>定理 有限开覆盖定理</h4>
+<h4>定理 1.8 有限开覆盖定理</h4>
 <blockquote>
 <p>如果一族开区间构成的集合 $E$ 覆盖一个闭区间 $I$。</p>
 <p>那么，总可以从 $E$ 中选取有限个开区间使得它们覆盖 $I$。</p>
@@ -935,26 +936,64 @@ $$</p>
 <p>构造集合：$\mathbf{F} = \{[s,t]: [s,t] \text{ could be covered by limited open intervals in } E\}$。</p>
 <p>下证：$I \in \mathbf{F}$，（这个构造是个常用方法）考虑反证（不要求 $\mathbf{F}$ 非空）：</p>
 <p>假设 $I = [a,b] \not\in \mathbf{F}$。</p>
-<p>故一定存在 $x_1 \in I, \text{ s.t. } [x_1 - 1, x_1 + 1] \cap I \not\in \mathbf{F}$。</p>
+<p>Claim：一定存在 $x_1 \in I, \text{ s.t. } [x_1 - 1, x_1 + 1] \cap I \not\in \mathbf{F}$。</p>
+<p>下面说明为什么一定存在这样的 $x_1$。</p>
+<p>若不然，则 $[x - 1, x + 1] \cap I \in \mathbf{F}, \forall x \in I$。</p>
 <p>画图：</p>
 <div class="codehilite"><pre><span></span><code>|-----|-----|-----|-------|
 x1-1  a    x1    x1+1     b
 </code></pre></div>
 
-<p>若不然，则 $[x - 1, x + 1] \cap I \in \mathbf{F}, \forall x \in I$。</p>
 <p>特别的，取 $x = a$。</p>
 <div class="codehilite"><pre><span></span><code>|-----|-----|-----|
 a-1   a    a+1    b
 </code></pre></div>
 
-<p>显然：$[a, a+1] \text{ or } I \in \mathbf{F}$，</p>
-<p>如果是 $I \in \mathbf{F}$，那么矛盾。</p>
+<p>根据此时的条件：$[a, a+1] \text{ or } I \in \mathbf{F}$，</p>
+<p>如果是 $I \in \mathbf{F}$，那么和最早的假设矛盾，。</p>
 <p>如果是 $[a, a+1] \in \mathbf{F}$。</p>
+<p>由于是 $\forall x$，</p>
 <p>再取 $x = a + 1 \Rightarrow [a, a + 2] \text{ or } I \in \mathbf{F}$，</p>
 <p>如果是 $I$，矛盾。</p>
 <p>然后这样递归的取下去，经过有限 $t$ 步之后，$a + t &gt; b$ 换句话说 $[a,b] \in \mathbf{F}$。</p>
-<p>这是矛盾的所以，</p>
-<p>一定存在 $x_1 \in I, \text{ s.t. } [x_1 - 1, x_1 + 1] \cap I \not\in \mathbf{F}$。</p>
+<p>这是与最初 $I \not\in \mathbf{F}$ 的假设矛盾的</p>
+<p>所以，<strong>一定存在</strong> $x_1 \in I, \text{ s.t. } [x_1 - 1, x_1 + 1] \cap I \not\in \mathbf{F}$。</p>
+<p>同样的，我们可以取到 $x_2 \in [a_1, b_1], \text{ s.t. } [x_2 - \dfrac{1}{2}, x_2 + \dfrac{1}{2}] \cap I \not\in \mathbf{F}$。</p>
+<p>更进一步，可以取 $x_n \in [a_{n - 1}, b_{n - 1}], \text{ s.t. } [x_n - \dfrac{1}{n}, x_n + \dfrac{1}{n}] \cap I \not\in\mathbf{F}$。</p>
+<p>由于 $\forall m &gt; n, [a_m, b_m] \subset [a_n, b_n]; x_m, x_n \in [a_{n - 1}, b_{n - 1}] \Rightarrow |x_m - x_n| &lt; \dfrac{2}{n - 1},(n &gt; 1)$。</p>
+<p>由 Cauchy 收敛原理，$\{x_n\}$ 收敛，设收敛于 $\xi$。</p>
+<p>显然，$\xi \in [a, b]$，换句话说 $\exists (\alpha, \beta) \in E \text{ s.t. } \xi \in (\alpha, \beta)$。</p>
+<p>由于 $x_n \to \xi (n \to \infty) \Rightarrow \exists N \text{ s.t. } [x_N - \dfrac{1}{N}, x_N + \dfrac{1}{N}] \subset (\alpha, \beta)$（$N$ 要去足够大，这里就是闭区间套定理的形式）。</p>
+<p>换句话说 $[a_N, b_N] = [x_N - \dfrac{1}{N}, x_N - \dfrac{1}{N}] \cap [a_{N - 1}, b_{N - 1}] \subset [\alpha, \beta]$。</p>
+<p>所以 $[a_N, b_N] \in \mathbf{F}$，矛盾，一直向上追溯，得到 $I \not\in \mathbf{F}$ 不成立。</p>
+<p>所以 $[a, b]$ 可以被 $E$ 中有限个开区间覆盖。</p>
+<blockquote>
+<p>注记：$I$ 不能改为闭区间，$E$ 不能不是开区间族。</p>
+</blockquote>
+<h4>Ex. 六大实数定理的闭环</h4>
+<p>现在已经做到：</p>
+<p>确界原理 -&gt; 单调有界原理 -&gt; 闭区间套定理 -&gt; Weierstrass 定理 -&gt; Cauchy 收敛原理 -&gt; 有限开区间覆盖定理</p>
+<p>为了做到闭环：我们需要使用有限开区间覆盖定理证明确界原理。</p>
+<blockquote>
+<p>确界原理：若非空数集 $S$ 存在上界 $M$，则 $\sup S$ 必然存在，下界同理。</p>
+</blockquote>
+<p>假设 $S$ 为一个非空实数集，并且有上界 $M$。</p>
+<p>下证其存在 $\sup S$，考虑反证。</p>
+<p>任取 $x_0 \in S \Rightarrow x_0 \le M$。</p>
+<p>若 $x_0 = M$ 则 $\sup S = M$。</p>
+<p>反之：定义闭区间 $[x_0, M] = I$，设 $S$ 无最小上界。</p>
+<p>那么 $\forall x \in I$，只有两种情况：</p>
+<p>Case1：若 $x$ 为 $S$ 的一个上界，由于 $x$ 不是最小上界。</p>
+<p>因此，存在更小上界 $x_1$，从而 $\exists x$ 的某个小邻域 $(x - \delta_x, x + \delta_x) \text{ s.t. } \forall y \in (x - \delta_x, x + \delta_x); \forall t \in S, t &lt; y$。</p>
+<p>Case2：若 $x$ 不是 $S$ 的一个上界，自然存在 $x_2 \in S \text{ s.t. } x_2 &gt; x$。</p>
+<p>所以存在某个小邻域 $(x - \delta_x, x + \delta_x)$，其中所有元素都不是 $S$ 的上界。</p>
+<p>令 $x_0$ 取遍 $[x_0, M]$ 中所有点，产生一个开区间族 $O = \{(x_n - \delta_{x_n}), x_n + \delta_{x_n}\}$。</p>
+<p>$O$ 要么是 Case1 要么是 Case2，换句话说某个邻域内的点应该为同一类。</p>
+<p>且 $[x_0, M]$ 被 $O$ 覆盖，由有限开覆盖定理。</p>
+<p>可以找到有限个开区间 $O_1, O_2, \cdots O_n$ 使得其覆盖 $[x_0, M]$。</p>
+<p>显然 $M$ 所在的开区间是 Case1，（且可以假设这个开区间被选中，没选中加进去也无所谓）</p>
+<p>经过有限步的推导，可以说明 $x_0$ 那个邻域属于 Case1，所以它是 $S$ 的上界。 </p>
+<p>于是就矛盾了，这就说明 $S$ 中所有点都是它的上界，如果是单点集的话那最小上界就存在，否则不存在。</p>
         </article>
         
         <footer>
