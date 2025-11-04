@@ -152,10 +152,9 @@ $\forall \epsilon > 0, \exists \delta = \min\{\dfrac{1}{2}, \dfrac{\epsilon}{4}\
 
 ![img](../../medias/sf-2-1.png)
 
-$S_{ABC} < S_{\mathop{AOC}\limits^\frown} < S_{DOC}$。
+$S_{AOB} < S_{\mathop{AOC}\limits^\frown} < S_{DOC}$。
 
-$\dfrac{1}{2}\sin x < \dfrac{1}{2}x < \dfrac{1}{2}\tan x \Rightarrow \cos x < \dfrac{sin x}{x} < 1 |x| \in (0, \dfrac{\pi}{2})$。
-
+$\dfrac{1}{2}\sin x < \dfrac{1}{2}x < \dfrac{1}{2}\tan x \Rightarrow \cos x < \dfrac{\sin x}{x} < 1 |x| \in (0, \dfrac{\pi}{2})$。
 
 
 于是 $\sin x < x < \tan x, (x \in (0, \dfrac{\pi}{2}))$。
@@ -164,8 +163,8 @@ $1 - 2\sin^2(\dfrac{x}{2}) < \dfrac{\sin x}{x} < 1$，由于 $|\sin(\dfrac{x}{2}
 
 所以 $\lim\limits_{x \to 0} |\sin(\dfrac{x}{2})| \le 0 \Rightarrow \lim\limits_{x \to 0} \sin^2(\dfrac{x}{2}) = 0 \Rightarrow \lim\limits_{x \to 0}(1 - \sin^2(\dfrac{x}{2})) = 1 - 0 = 1$
 
-由两边夹法则：$\lim\limits_{x \to 0} \dfrac{\sin}{x} = 1$
+由两边夹法则：$\lim\limits_{x \to 0} \dfrac{\sin x}{x} = 1$
 
-但有一个问题：这个东西能够推 $(\sin x)^\prime = \cos x$，而这是微积分的基础，圆的面积公式是通过积分做到的（割圆术），我们上面用了一个扇形的面积公式，这就循环论证了。
+但有一个问题：这个东西能够推 $(\sin x)^\prime = \cos x$（直接用定义求导数就能发现需要这个），而这是微积分的基础，圆的面积公式是通过积分做到的（割圆术），我们上面用了一个扇形的面积公式，这就循环论证了。
 
-所以稍微会有点问题，要不然就只能承认某一个东西是公理。
+所以稍微会有点问题，要不然就只能承认某一个东西是公理，或者尝试用别的方法，一个比较直接的想法是用 $\sin$ 的级数定义，但我现在还不会。
