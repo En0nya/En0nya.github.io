@@ -170,8 +170,189 @@
 <p>$1 - 2\sin^2(\dfrac{x}{2}) &lt; \dfrac{\sin x}{x} &lt; 1$，由于 $|\sin(\dfrac{x}{2})| &lt; |\dfrac{x}{2}|, |x| \in (0, \dfrac{\pi}{2})$。</p>
 <p>所以 $\lim\limits_{x \to 0} |\sin(\dfrac{x}{2})| \le 0 \Rightarrow \lim\limits_{x \to 0} \sin^2(\dfrac{x}{2}) = 0 \Rightarrow \lim\limits_{x \to 0}(1 - \sin^2(\dfrac{x}{2})) = 1 - 0 = 1$</p>
 <p>由两边夹法则：$\lim\limits_{x \to 0} \dfrac{\sin x}{x} = 1$</p>
-<p>但有一个问题：这个东西能够推 $(\sin x)^\prime = \cos x$（直接用定义求导数就能发现需要这个），而这是微积分的基础，圆的面积公式是通过积分做到的（割圆术），我们上面用了一个扇形的面积公式，这就循环论证了。</p>
+<p>但有一个问题：这个东西能够推 $(\sin x)^\prime = \cos x$（直接用定义求导数就能发现需要知道 $\dfrac{\sin\Delta x}{\Delta x}$ 的极限），而这是微积分的基础，圆的面积公式是通过积分做到的（割圆术），我们上面用了一个扇形的面积公式，这就循环论证了。</p>
 <p>所以稍微会有点问题，要不然就只能承认某一个东西是公理，或者尝试用别的方法，一个比较直接的想法是用 $\sin$ 的级数定义，但我现在还不会。</p>
+<h4>命题 2.7 函数极限的四则运算</h4>
+<blockquote>
+<p>假设 $\lim\limits_{x \to x_0} f(x) = A, \lim\limits_{x \to x_0} g(x) = B; A, B \in \mathbb{R}$。</p>
+<p>1) $\forall \alpha, \beta \in \mathbb{R} \Rightarrow \lim\limits_{x \to x_0} (\alpha f(x) + \beta g(x)) = \alpha A + \beta B$。</p>
+<p>2) $\lim\limits_{x\to x_0}[f(x) g(x)] = A\cdot B$。</p>
+<p>3) $g(x) \text{ has no zero point and } B \not = 0 \Rightarrow \lim\limits_{x \to x_0} [\dfrac{f(x)}{g(x)}] = \dfrac{A}{B}$。</p>
+</blockquote>
+<p>证明和数列的证明差不多。</p>
+<h4>例题 2.2</h4>
+<blockquote>
+<p>$\alpha \in \mathbb{R}:\lim\limits_{x \to 0} \dfrac{\sin(\alpha x)}{x} = \alpha$。</p>
+</blockquote>
+<p>证明：</p>
+<p>当 $\alpha \not= 0$ 时，设 $\alpha x = t$。</p>
+<p>且 $x \to 0 \iff t \to 0$。</p>
+<p>故原式等价于：$\lim\limits_{t \to 0} \dfrac{\sin t}{\dfrac{t}{\alpha}} = \alpha \lim\limits_{t\to 0} \dfrac{\sin t}{t} = \alpha$ 。</p>
+<h4>定理 2.1 Heine 定理</h4>
+<blockquote>
+<p>假设 $x_0 \in \mathbb{R}, \lim\limits_{x\to x_0} f(x) = A \not= \infty \iff \forall \{x_n\} \text{ s.t. } x_n \to x_0 (n \to \infty) \text{ and } x_n \not= x_0, \text{we would have } f(x_n) \to A (n\to \infty)$。</p>
+</blockquote>
+<p>也称作函数极限和数列极限的关系。</p>
+<p>意思就是，对于所有极限为 $x_0$ 的数列 $\{x_n\}$，有 $f(x_n) \to A$ 是 $\lim\limits_{x\to x_0} f(x) = A$ 的充要条件（这里和上面数学语言是反过来说的，不过无所谓）</p>
+<p>证明：</p>
+<p>$\Rightarrow$ 是简单的：设 $\lim\limits_{x \to x_0} f(x) = A$。</p>
+<p>取数列 $\{x_n\} \text{ s.t. } \lim\limits_{n \to \infty} x_n = x_0 \text{ and } x_n \not= x_0$。</p>
+<p>（不取等主要是由于不能保证 $f(x_0)$ 有定义）。</p>
+<p>$\lim\limits_{x\to x_0} f(x) = A \iff \forall \epsilon &gt; 0, \exists \delta &gt; 0, \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta, |f(x) - A| &lt; \epsilon$。</p>
+<p>$\lim\limits_{n \to \infty} x_n = x_0$，对上述 $\delta &gt; 0, \exists N, \text{ s.t. } \forall n &gt; N, |x_n - x_0| &lt; \delta$。</p>
+<p>由上两行，$\forall \epsilon &gt; 0, \exists N, \text{ s.t. } \forall n &gt; N, |f(x_n) - A| &lt; \epsilon$。</p>
+<p>下证 $\Leftarrow$：</p>
+<p>也就是对于任意一个 $\{x_n\} \to x_0(n\to \infty)$，被 $f$ 作用之后收敛于 $A$ 能推出 $f(x) \to A (x\to x_0)$。</p>
+<p>由于是从特殊到一般所以考虑反证。</p>
+<p>假设 $x\to x_0, f(x) \not\to A$（$f(x)$ 不趋近于 $A$）。</p>
+<p>此命题等价于 $\exists \epsilon_0 &gt; 0, \forall \delta &gt; 0, \exists x \text{ s.t. } 0 &lt; |x - x_0| &lt; \delta: |f(x) - A| \ge \epsilon_0$。</p>
+<ul>
+<li>取 $\delta = 1$，则存在 $x_1 \text{ s.t. } 0 &lt; |x_1 - x_0| &lt; 1: |f(x_1) - A| \ge \epsilon_0$</li>
+<li>取 $\delta = \dfrac{1}{2}$，则存在 $x_2 \text{ s.t. } 0 &lt; |x_2 - x_0| &lt; \dfrac{1}{2}: |f(x_2) - A| \ge \epsilon_0$</li>
+<li>$\cdots\cdots$</li>
+<li>取 $\delta = \dfrac{1}{n}$，则存在 $x_n \text{ s.t. } 0 &lt; |x_n - x_0| &lt; \dfrac{1}{n}: |f(x_n) - A| \ge \epsilon_0$</li>
+</ul>
+<p>此时构造了数列 $\{x_n\} \text{ s.t. } x_n \not= x_0 \text{ and } \lim\limits_{n\to \infty} x_n = x_0$。</p>
+<p>但是 $|f(x_n) - A| \ge \epsilon_0, \forall n$，这就说明 $\{f(x_n)\}$ 不可能收敛于 $A$，这与已知条件矛盾。</p>
+<h4>例题 2.3 用 Heine 定理证明极限不存在</h4>
+<blockquote>
+<p>证明：$x\to 0, \cos(\dfrac{1}{x})$ 的极限不存在。</p>
+</blockquote>
+<p>取数列 $\{x_n\} = \dfrac{1}{2n\pi}$。</p>
+<p>显然其收敛于 $0$。$\cos(\dfrac{1}{x_n}) = \cos(2n\pi) = 0$。</p>
+<p>若其极限存在，根据 Heine 定理，$A = 0$。</p>
+<p>再取一个数列 $\{y_n\} = \dfrac{1}{(2n + 1)\pi}$，其极限还是 $0$。</p>
+<p>然而 $\cos(\dfrac{1}{y_n}) = -1$。矛盾了，所以它一定不收敛。</p>
+<h3>函数的单侧极限</h3>
+<h4>定义 2.2 单侧极限</h4>
+<blockquote>
+<p>假设 $x_0 \in \mathbb{R}, \rho &gt; 0, (x_0 - \rho, x_0) \subset D_f$。</p>
+<p>如果 $\exists A \in \mathbb{R} \text{ s.t. } \forall \epsilon &gt; 0, \exists \delta &gt; 0 \text{ when } -\delta &lt; x - x_0 &lt; 0: |f(x) - A| &lt; \epsilon$。</p>
+<p>则称 $A$ 为 $f(x)$ 在 $x_0$ 点的左极限，记作 $\lim\limits_{x\to x_0^-} f(x) = A$。</p>
+<p>假设 $x_0 \in \mathbb{R}, \rho &gt; 0, (x_0, x_0 + \rho) \subset D_f$。</p>
+<p>如果 $\exists B \in \mathbb{R} \text{ s.t. } \forall \epsilon &gt; 0, \exists \delta &gt; 0 \text{ when } 0 &lt; x - x_0 &lt; \delta: |f(x) - B| &lt; \epsilon$。</p>
+<p>则称 $B$ 为 $f(x)$ 在 $x_0$ 点的右极限，记作 $\lim\limits_{x\to x_0^+} f(x) = B$。</p>
+<p>推论：$\lim\limits_{x\to x_0} f(x) = C$ 存在，当且仅当 $f(x)$ 在 $x_0$ 处的左右极限存在且均等于 $C$。</p>
+</blockquote>
+<h4>例题 2.4</h4>
+<blockquote>
+<p>函数 $f(x) = \begin{cases} \dfrac{\sin(2x)}{x},&amp;(x &gt; 0) \\ 1 - x,&amp;(x &lt; 0)\end{cases}$。</p>
+</blockquote>
+<p>$\lim\limits_{x \to 0^+} f(x)= \lim\limits_{x \to 0^+} \dfrac{\sin(2x)}{x} = 2$。</p>
+<p>$\lim\limits_{x \to 0^-} f(x)= \lim\limits_{x \to 0^-} (1 - x) = 1$。</p>
+<p>所以 $\lim\limits_{x \to 0} f(x)$ 不存在（$x \to 0$ 意味着可以任意从左边或者右边趋近）。</p>
+<h4>定义 2.3 无穷远点处的极限</h4>
+<blockquote>
+<p>$\lim\limits_{x\to +\infty} f(x) = A \in \mathbb{R}$ 的定义：</p>
+<p>$\forall \epsilon &gt; 0, \exists X &gt; 0 \text{ s.t. when } x &gt; X: |f(x) - A| &lt; \epsilon$。</p>
+<p>$\lim\limits_{x\to -\infty} f(x) = B \in \mathbb{R}$ 的定义：</p>
+<p>$\forall \epsilon &gt; 0, \exists X &gt; 0 \text{ s.t. when } x &lt; -X: |f(x) - B| &lt; \epsilon$。</p>
+<p>tips: $\lim\limits_{x\to +\infty} f(x) = +\infty$ （尽管这样写不严谨）的意义：$\forall G &gt; 0, \exists X \text{ s.t. when } x &gt; X: f(x) &gt; G$（正负号排列组合一下也很好写）。</p>
+<p>也有当 $x \to +\infty$ 极限为一个数的那种，类似于 $\forall \epsilon &gt; 0, \exists X \text{ s.t. when } x &gt; X: |f(x) - A| &lt; \epsilon$。</p>
+</blockquote>
+<p>总之，如果要描述自变量充分大就模仿数列极限里 $n &gt; N$。</p>
+<p>如果要描述极限充分大就是模仿无穷大量定义，正负号注意一下就可以。</p>
+<h4>例题 2.5</h4>
+<blockquote>
+<p>$f(x) = e^{\frac{1}{x}}, (x \not = 0)$。</p>
+<p>讨论 $\lim\limits_{x\to 0^+} f(x), \lim\limits_{x\to 0^-} f(x), \lim\limits_{x\to +\infty}f(x), \lim\limits_{x \to -\infty}f(x)$。</p>
+</blockquote>
+<p>换元，令 $t = \dfrac{1}{x}$：</p>
+<ul>
+<li>当 $x \to 0^+ \iff t \to +\infty$。</li>
+<li>当 $x \to 0^- \iff t \to -\infty$。</li>
+<li>当 $x \to +\infty \iff t \to 0^+$。</li>
+<li>
+<p>当 $x \to -\infty \iff t \to 0^-$。</p>
+</li>
+<li>
+<p>$\lim\limits_{x \to 0^+} e^{\frac{1}{x}} = \lim\limits_{t \to +\infty} e^t = +\infty$。</p>
+</li>
+<li>$\lim\limits_{x \to 0^-} e^{\frac{1}{x}} = \lim\limits_{t \to -\infty} e^t = 0$。</li>
+<li>$\lim\limits_{x \to +\infty} e^{\frac{1}{x}} = \lim\limits_{t \to 0^+} e^t = 1$</li>
+<li>$\lim\limits_{x \to -\infty} e^{\frac{1}{x}} = \lim\limits_{t \to 0^-} e^t = 1$</li>
+</ul>
+<h4>定理 2.2 e</h4>
+<blockquote>
+<p>$\lim\limits_{x \to \infty}(1+\dfrac{1}{x})^x = e$。</p>
+<p>$\lim\limits_{x \to \infty}(1 - \dfrac{1}{x})^x = \dfrac{1}{e}$</p>
+</blockquote>
+<p>证明：</p>
+<p>先考虑证明：$\lim\limits_{x \to +\infty}(1 + \dfrac{1}{x})^x = e$。</p>
+<p>由于 $[x] \le x \le [x] + 1$，于是可以转换为数列的情况。</p>
+<p>想要使用 Heine 定理，但是我们没有办法列出所有的 $\{x_n\} \to \infty$。</p>
+<p>所以放缩：</p>
+<p>$\dfrac{1}{[x]} \ge \dfrac{1}{x} \ge \dfrac{1}{[x] + 1}$。</p>
+<p>换句话说：</p>
+<p>$\Rightarrow(1 + \dfrac{1}{[x] + 1}) \le (1 + \dfrac{1}{x}) \le (1 + \dfrac{1}{[x]})$</p>
+<p>$\Rightarrow(1 + \dfrac{1}{[x] + 1})^x \le (1 + \dfrac{1}{x})^x \le (1 + \dfrac{1}{[x]})^x$</p>
+<p>$\Rightarrow(1 + \dfrac{1}{[x] + 1})^x \le (1 + \dfrac{1}{x})^x \le (1 + \dfrac{1}{[x]})^x \le (1 + \dfrac{1}{x})^{[x] + 1}$</p>
+<p>$\Rightarrow(1 + \dfrac{1}{[x] + 1})^{[x]} \le (1 + \dfrac{1}{[x] + 1})^x \le (1 + \dfrac{1}{x})^x \le (1 + \dfrac{1}{[x]})^x \le (1 + \dfrac{1}{x})^{[x] + 1}$</p>
+<p>也就是</p>
+<p>$\Rightarrow(1 + \dfrac{1}{[x] + 1})^{[x]} \le (1 + \dfrac{1}{x})^x \le (1 + \dfrac{1}{x})^{[x] + 1}$</p>
+<p>令 $n = [x] \ge 1 \Rightarrow x \to +\infty \iff n \to \infty$。</p>
+<p>$\lim\limits_{n \to \infty}(1 + \dfrac{1}{n + 1})^n = e \le (1 + \dfrac{1}{x})^x \le \lim\limits_{n \to \infty}(1 + \dfrac{1}{n})^{n + 1} = e$</p>
+<p>换句话说 $\lim\limits_{x \to +\infty} (1 + \dfrac{1}{x})^x = e$。</p>
+<p>然后证明 $\lim\limits_{x \to -\infty}(1 + \dfrac{1}{x})^x = e$。</p>
+<p>令 $y = -x \Rightarrow y \to +\infty \text{ and } \lim\limits_{y \to \infty}(1 - \dfrac{1}{y})^{-y}$</p>
+<p>由于 $(1 - \dfrac{1}{y})^{-y} = (\dfrac{y - 1}{y})^{-y} = (\dfrac{y}{y - 1})^y = (1 + \dfrac{1}{y - 1})^y$。</p>
+<p>后者换个元提出一项，其极限就是 $e$ 所以就证完了。</p>
+<p>□</p>
+<p>tips1： $\lim\limits_{x \to 0}(1+x)^{\frac{1}{x}} = e$。</p>
+<p>换元，左右两边极限都证明一下就行。</p>
+<p>tips2：$\lim\limits_{x \to 0}(1 + ax)^{\frac{1}{x}}, a\in \mathbb{R} / \{0\} = \lim\limits_{t \to 0}(1 + t)^{\frac{a}{t}}, (t = ax)$</p>
+<p>$= e^a$。</p>
+<p>这一步需要用到函数 $f(x) = x^a$ 在 $(0, +\infty)$ 上的连续性，才能够把 $a$ 穿过极限拿出来。</p>
+<p>意思就是 $\lim\limits_{x \to x_0}f(x) = f(\lim\limits_{x \to x_0} x)$</p>
+<h4>定理 2.3 函数极限的 Cauchy 收敛原理</h4>
+<blockquote>
+<p>函数极限 $\lim\limits_{x \to x_0} f(x)$ 存在且有限 $(x_0 \in \mathbb{R})$ 的充分必要条件是：</p>
+<p>1) $\forall \epsilon &gt; 0, \exists \delta, \text{ s.t. when }0 &lt; |x_1 - x_0| &lt; \delta, 0 &lt; |x_2 - x_0| &lt; \delta: |f(x_1) - f(x_2)| &lt; \epsilon$。</p>
+<p>函数极限 $\lim\limits_{x \to +\infty} f(x)$ 存在且有限 $(x_0 \in \mathbb{R})$ 的充分必要条件是：</p>
+<p>2) $\forall \epsilon &gt; 0, \exists X &gt; 0 \text{ s.t. } \forall x_1, x_2 &gt; X, |f(x_1) - f(x_2)| &lt; \epsilon$</p>
+</blockquote>
+<p>证明 1)：</p>
+<p>证明 $\Rightarrow$：设 $\lim\limits_{x \to x_0} f(x) = A \not= \infty$。</p>
+<p>有：$\forall \epsilon &gt; 0, \exists \delta &gt; 0, \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta: |f(x) - A| &lt; \dfrac{\epsilon}{2}$</p>
+<p>对于任意的 $x_1,x_2$，满足 $\begin{cases}0 &lt; |x_1 - x_0| &lt; \delta \\ 0 &lt; |x_2 - x_0| &lt; \delta \end{cases}$ 有 $\begin{cases}|f(x_1) - A| &lt; \dfrac{\epsilon}{2} \\ |f(x_2) - A| &lt; \dfrac{\epsilon}{2}\end{cases}$</p>
+<p>插入一项：</p>
+<p>$|f(x_1) - f(x_2)| \le |f(x_1) - A| + |f(x_2) - A| &lt; \epsilon$</p>
+<p>证明 $\Leftarrow$：用 Heine 定理</p>
+<p>任取数列 $\{x_n\} \text{ s.t. } x_n \to x_0 (n \to \infty) \text{ and } x_n \not= x_0 (\forall n)$。</p>
+<p>下证 $f(x_n)$ 是收敛的即可。</p>
+<p>只需要证明 $\{f(x_n)\}$ 是 Cauchy 列：$\forall \epsilon &gt; 0, \exists N \text{ s.t. when } n, m &gt; N, |f(x_m) - f(x_n)| &lt; \epsilon$</p>
+<p>由假设：$\forall \epsilon &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta, 0 &lt; |y - x_0| &lt; \delta : |f(x) - f(y)| &lt; \epsilon$。</p>
+<p>而根据 $x_n \to x_0$ 可以知道对于 $\delta, \exists N, \text{ s.t. } \forall n &gt; N, |x_n - x_0| &lt; \delta$。</p>
+<p>也就是说 $n, m &gt; N$ 时 $x_n, x_m$ 都满足假设条件。</p>
+<p>所以 $\{f(x_n)\}$ 是 Cauchy 列，其收敛，假设其收敛于 $B$（不一定等于 $A$）</p>
+<p>再取 $\{y_n\} \not= \{x_n\}, \text{ s.t. } y_n \to x_0 (n \to \infty)$。</p>
+<p>重复上面的操作，$\{f(y_n)\}$ 收敛，记 $f(y_n) \to C$。</p>
+<p>下证 $B = C$。</p>
+<p>由于 $\{x_n\} \to x_0 \text{ and } \{y_n\} \to x_0 (n \to \infty)$。</p>
+<p>$\exists N, \text{ s.t. when } n &gt; N: 0 &lt; |x_n - x_0| &lt; \delta, 0 &lt; |y_n - x_0| &lt; \delta$。</p>
+<p>$\Rightarrow |f(x_n) - f(y_n)| &lt; \epsilon$</p>
+<p>由于 $\lim\limits_{n \to \infty} |x_n| = |\lim\limits_{n \to \infty} x_n|$（连续性）</p>
+<p>两边取极限所以 $|B - C| \le \epsilon$。</p>
+<p>换句话说 $|B - C|$ 可以做到任意小，$B = C$。</p>
+<p>由于所有收敛于 $x_0$ 的数列都收敛于同一点即 $f(x_n) \to A (n \to \infty)$</p>
+<p>由 Heine 定理，$\lim\limits_{x \to x_0}f(x) = A$。</p>
+<p>□</p>
+<h3>连续函数</h3>
+<h4>定义 连续性</h4>
+<blockquote>
+<p>假设 $f$ 在 $x_0$ 的某个邻域 $O(x_0, \rho)$ 上有定义。</p>
+<p>称 $f$ 在 $x_0$ 点连续，如果 $\lim\limits_{x \to x_0} f(x)$ 存在且等于 $f(x_0)$。</p>
+</blockquote>
+<p>如果用 $\epsilon-\delta$ 定义的话 $|x - x_0| &lt; \delta$ 即可，因为可以等于零。</p>
+<p>左右连续是可以同理定义的。</p>
+<blockquote>
+<p>假设 $f$ 在 $x_0$ 的某个邻域 $(x_0 - \delta, x_0]$ 上有定义。</p>
+<p>称 $f$ 在 $x_0$ 点左连续，如果 $\lim\limits_{x \to x_0^-} f(x)$ 存在且等于 $f(x_0)$。</p>
+<p>假设 $f$ 在 $x_0$ 的某个邻域 $[x_0, x_0 + \delta)$ 上有定义。</p>
+<p>称 $f$ 在 $x_0$ 点右连续，如果 $\lim\limits_{x \to x_0^+} f(x)$ 存在且等于 $f(x_0)$。</p>
+</blockquote>
+<p>注记：如果 $f(x)$ 在 $x_0$ 点连续，<strong>当且仅当</strong> $f(x)$ 在 $x_0$ 点既是左连续的又是右连续的。</p>
+<p>注记：称 $f(x)$ 在 $I$ 上连续，如果 $\forall x_0 \in I, f$ 在 $x_0$ 点连续。</p>
         </article>
         
         <footer>
