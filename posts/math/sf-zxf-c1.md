@@ -408,7 +408,16 @@ $|x_ny_n - ab| = |x_ny_n - ay_n + ay_n - ab| \le |y_n||x_n - a| + |a||x_n - b|$�
 
 于是现在继续用定义证明 $\dfrac{1}{y} \to \dfrac{1}{b}$
 
-下面比较简单，直接做就行。
+就是要证明：$\forall \epsilon > 0, \exists N \text{ s.t. } \forall n > N, |\dfrac{1}{y_n} - \dfrac{1}{b}| = \dfrac{|y_n - b|}{|y_n||b|}$。
+
+分子根据 $\lim\limits_{n\to \infty} y_n = b$ 可以知道其小于 $\epsilon$。
+
+所以只需要 $\dfrac{1}{|y_n||b|}$ 小于一个常数 $M$ 就行。
+
+由保序性推论：$|y_n| > |\dfrac{b}{2}|$ 成立，所以 $\dfrac{1}{|y_n||b|} < \dfrac{2}{b^2} \equiv M$。
+
+所以可以证明。
+
 
 > 例题 1.4 推广：当 $a \in \mathbb{R_+}$，证明 $\lim\limits_{n\to \infty}\sqrt[n]{a} = 1$。
 

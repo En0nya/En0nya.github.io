@@ -352,7 +352,76 @@
 <p>称 $f$ 在 $x_0$ 点右连续，如果 $\lim\limits_{x \to x_0^+} f(x)$ 存在且等于 $f(x_0)$。</p>
 </blockquote>
 <p>注记：如果 $f(x)$ 在 $x_0$ 点连续，<strong>当且仅当</strong> $f(x)$ 在 $x_0$ 点既是左连续的又是右连续的。</p>
-<p>注记：称 $f(x)$ 在 $I$ 上连续，如果 $\forall x_0 \in I, f$ 在 $x_0$ 点连续。</p>
+<p>注记：称 $f(x)$ 在 $I$ 上连续，如果 $\forall x_0 \in I, f$ 在 $x_0$ 点连续（如果是闭区间左右的话就只需要满足单侧极限）。</p>
+<h4>例题 几个例子</h4>
+<blockquote>
+<p>$f(x) = x$ 在 $(-\infty, +\infty)$ 上连续。</p>
+</blockquote>
+<p>证明：要证明 $f(x) = x$ 在 $(-\infty, +\infty)$ 上连续，只需要证明，$f(x)$ 在任意一点 $x_0 \in \mathbb{R}$ 处是连续的。</p>
+<p>也就是证明 $\forall \epsilon &gt; 0, \exists \delta=\delta(\epsilon, x_0), \text{ s.t. when } |x - x_0| &lt; \delta : |f(x) - f(x_0)| = |x - x_0| &lt; \epsilon$</p>
+<p>取 $\delta = \epsilon$ 即可。</p>
+<blockquote>
+<p>$g(x) = x^2$ 在 $(-\infty, +\infty)$ 上连续。</p>
+</blockquote>
+<p>即证明 $\forall \epsilon &gt; 0, \exists \delta = \delta(\epsilon, x_0) \text{ s.t. when } |x - x_0| &lt; \delta: |g(x) - g(x_0)| = |x^2 - x_0^2| = |x - x_0||x + x_0| &lt; \epsilon$</p>
+<p>不妨只考虑 $x_0$ 的邻域 $(x_0 - 1, x_0 + 1)(\rho = 1)$。</p>
+<p>所以 $|x + x_0| &lt; 2x_0 + 1$，令 $\delta = \min\{\dfrac{\epsilon}{2x_0 + 1}, 1\}$ 即可。</p>
+<blockquote>
+<p>$f(x) = \dfrac{1}{x}$ 在 $(0, +\infty)$ 上连续。</p>
+</blockquote>
+<p>只需要证明：$\forall \epsilon &gt; 0, \exists \delta = \delta(\epsilon, x_0), \text{ s.t. when } |x - x_0| &lt; \delta : |f(x) - f(x_0)| = |\dfrac{1}{x} - \dfrac{1}{x_0}| &lt; \epsilon$</p>
+<p>由于 $|\dfrac{1}{x} - \dfrac{1}{x_0}| = |\dfrac{x_0 - x}{xx_0}| = |\dfrac{x - x_0}{xx_0}|$。</p>
+<p>然后 $|\dfrac{1}{xx_0}|$ 怎么弄成常数 $\le M$？用刚才那个 $\rho = 1$ 可能会让 $x &lt; 0$，再取小一点还是不行。</p>
+<p>取 $\rho = \epsilon$？$\Rightarrow x \in (x_0 - \epsilon, x_0 + \epsilon)$。</p>
+<p>所以 $\dfrac{1}{xx_0} \le \dfrac{1}{x_0^2 - \epsilon x_0}$。</p>
+<p>令 $\delta = \epsilon(x_0^2 - \epsilon x_0) = \epsilon x_0^2 - \epsilon^2x_0$ 吗？还是不行，这么做是想表示任意小，但问题是 $\epsilon$ 任意，也可能让 $x_0 - \epsilon &lt; 0$。</p>
+<p>换个思路，考虑满足 $|x - x_0| &lt; \dfrac{x_0}{2}$ 的 $x$。</p>
+<p>此时有：$\dfrac{x_0}{2} &lt; x &lt; \dfrac{3x_0}{2}$。</p>
+<p>所以 $\dfrac{1}{xx_0} \le \dfrac{2}{x_0^2}$，于是取 $\delta = \dfrac{\epsilon x_0^2}{2}$ 即可。</p>
+<blockquote>
+<p>$f(x) = \sqrt x$ 在 $(0, +\infty)$ 上成立。</p>
+</blockquote>
+<p>Method1：</p>
+<p>要证 $\forall \epsilon &gt; 0, \exists \delta = \delta(\epsilon, x_0), \text{ s.t. when } |x - x_0| &lt; \delta : |f(x) - f(x_0)| = |\sqrt x - \sqrt{x_0}| &lt; \epsilon$。</p>
+<p>$|\sqrt x - \sqrt{x_0}| = |\dfrac{x - x_0}{\sqrt x + \sqrt {x_0}}|$。</p>
+<p>换句话说希望 $|\dfrac{1}{\sqrt x + \sqrt{x_0}}|$ 为一个常数。</p>
+<p>这里分开的且 $\sqrt x \ge 0$，那不直接扔掉就行了：$|\dfrac{1}{\sqrt x + \sqrt{x_0}}| &lt; |\dfrac{1}{\sqrt{x_0}}|$。</p>
+<p>取 $\delta = \epsilon \sqrt{x_0} &gt; 0$ 即可。</p>
+<p>Method2：</p>
+<p>由 $a \ge b \ge 0 \Rightarrow \sqrt[n] a - \sqrt[n] b \le \sqrt[n]{a - b}$</p>
+<p>有不等式：$|\sqrt x - \sqrt{x_0}| \le \sqrt{|x - x_0|}$。</p>
+<p>取 $\delta = \epsilon^2$。</p>
+<p>那么 $|\sqrt x - \sqrt{x_0}| \le \sqrt{|x - x_0|} \le \sqrt{\delta} &lt; \sqrt{\epsilon^2} = \epsilon$。</p>
+<blockquote>
+<p>$f(x) = \sqrt x$ 在 $[0, 1]$ 上连续</p>
+</blockquote>
+<p>由于已经证明了 $(0, +\infty) \Rightarrow (0, 1]$ 上连续。</p>
+<p>只需要证明 $f(x)$ 在 $0$ 点右连续。</p>
+<p>即 $\forall \epsilon &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; x - 0 &lt; \delta : |f(x) - f(0)| &lt; \epsilon$。</p>
+<p>也就是 $|\sqrt x| &lt; \epsilon$。取 $\delta = \epsilon^2$ 即可。</p>
+<blockquote>
+<p>$f(x) = \sin x, g(x) = \cos x$ 在 $\mathbb{R}$ 上连续。</p>
+</blockquote>
+<p>证明对于 $\forall x_0 \in \mathbb{R}$ 有：</p>
+<p>$\forall \epsilon &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta : |f(x) - f(x_0)| = |\sin x - \sin x_0|&lt; \epsilon$。</p>
+<p>$|\sin x - \sin x_0| = |2\sin\dfrac{x - x_0}{2}\cos\dfrac{x + x_0}{2}|$</p>
+<p>$\le 2|\sin \dfrac{x - x_0}{2}| \le 2 |\dfrac{x - x_0}{2}| = |x - x_0|$ 于是取 $\delta = \epsilon$。</p>
+<p>（$|\sin t| \le |t|, t \in \mathbb{R}$）。</p>
+<p><strong>注记</strong>：以上几个例子都是从连续性定义出发，实质也就是证明某一个点的极限，思路自然也是通过找常数上界（利用 $\delta = \delta(\epsilon, x_0)$ 的性质）放缩来证明不等式成立。</p>
+<p>之后会有关于连续函数四则运算还有反函数连续性的东西。</p>
+<p>于是初等函数就只差指数函数和对数函数。</p>
+<p>然而，有一个问题，$a^x$ 怎么定义？</p>
+<p>先定义指数函数 $f(x) = a^x, a &gt; 0 \land a \not= 1$，其中 $x \in \mathbb{R}$。</p>
+<p>已经知道：</p>
+<p>1) $a \ge 0, m, n \in \mathbb{N}+, a^{\frac{m}{n}} \equiv (a^{(\frac{1}{n})^m}), \text{ where } \sqrt[n] a$ 是 $a$ 的 $n$ 次算术平方根。</p>
+<p>2) $a &gt; 0, a^{-1} \equiv \dfrac{1}{a}, a^{-\frac{m}{n}} = \dfrac{1}{a^{\frac{m}{n}}}$。</p>
+<p>3) $a \not= 0, a^0 = 1$.</p>
+<p>于是：$a &gt; 0$ 时，$a$ 的任意有理次方幂 $a^q, (q \in \mathbb{Q})$ 都有定义。</p>
+<blockquote>
+<p>命题：$\forall a &gt; 0, p, q \in \mathbb{Q} \Rightarrow$</p>
+<p>1) $a &gt; 1, p &gt; q \Rightarrow a^p &gt; a^q$。</p>
+<p>2) $0 &lt; a &lt; 1, p &gt; q \Rightarrow a^p &lt; a^q$。</p>
+</blockquote>
         </article>
         
         <footer>

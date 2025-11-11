@@ -460,4 +460,116 @@ $\Rightarrow |f(x_n) - f(y_n)| < \epsilon$
 
 注记：如果 $f(x)$ 在 $x_0$ 点连续，**当且仅当** $f(x)$ 在 $x_0$ 点既是左连续的又是右连续的。
 
-注记：称 $f(x)$ 在 $I$ 上连续，如果 $\forall x_0 \in I, f$ 在 $x_0$ 点连续。
+注记：称 $f(x)$ 在 $I$ 上连续，如果 $\forall x_0 \in I, f$ 在 $x_0$ 点连续（如果是闭区间左右的话就只需要满足单侧极限）。
+
+#### 例题 几个例子
+
+> $f(x) = x$ 在 $(-\infty, +\infty)$ 上连续。
+
+证明：要证明 $f(x) = x$ 在 $(-\infty, +\infty)$ 上连续，只需要证明，$f(x)$ 在任意一点 $x_0 \in \mathbb{R}$ 处是连续的。
+
+也就是证明 $\forall \epsilon > 0, \exists \delta=\delta(\epsilon, x_0), \text{ s.t. when } |x - x_0| < \delta : |f(x) - f(x_0)| = |x - x_0| < \epsilon$
+
+取 $\delta = \epsilon$ 即可。
+
+> $g(x) = x^2$ 在 $(-\infty, +\infty)$ 上连续。
+
+即证明 $\forall \epsilon > 0, \exists \delta = \delta(\epsilon, x_0) \text{ s.t. when } |x - x_0| < \delta: |g(x) - g(x_0)| = |x^2 - x_0^2| = |x - x_0||x + x_0| < \epsilon$
+
+不妨只考虑 $x_0$ 的邻域 $(x_0 - 1, x_0 + 1)(\rho = 1)$。
+
+所以 $|x + x_0| < 2x_0 + 1$，令 $\delta = \min\{\dfrac{\epsilon}{2x_0 + 1}, 1\}$ 即可。
+
+> $f(x) = \dfrac{1}{x}$ 在 $(0, +\infty)$ 上连续。
+
+只需要证明：$\forall \epsilon > 0, \exists \delta = \delta(\epsilon, x_0), \text{ s.t. when } |x - x_0| < \delta : |f(x) - f(x_0)| = |\dfrac{1}{x} - \dfrac{1}{x_0}| < \epsilon$
+
+由于 $|\dfrac{1}{x} - \dfrac{1}{x_0}| = |\dfrac{x_0 - x}{xx_0}| = |\dfrac{x - x_0}{xx_0}|$。
+
+然后 $|\dfrac{1}{xx_0}|$ 怎么弄成常数 $\le M$？用刚才那个 $\rho = 1$ 可能会让 $x < 0$，再取小一点还是不行。
+
+取 $\rho = \epsilon$？$\Rightarrow x \in (x_0 - \epsilon, x_0 + \epsilon)$。
+
+所以 $\dfrac{1}{xx_0} \le \dfrac{1}{x_0^2 - \epsilon x_0}$。
+
+令 $\delta = \epsilon(x_0^2 - \epsilon x_0) = \epsilon x_0^2 - \epsilon^2x_0$ 吗？还是不行，这么做是想表示任意小，但问题是 $\epsilon$ 任意，也可能让 $x_0 - \epsilon < 0$。
+
+换个思路，考虑满足 $|x - x_0| < \dfrac{x_0}{2}$ 的 $x$。
+
+此时有：$\dfrac{x_0}{2} < x < \dfrac{3x_0}{2}$。
+
+所以 $\dfrac{1}{xx_0} \le \dfrac{2}{x_0^2}$，于是取 $\delta = \dfrac{\epsilon x_0^2}{2}$ 即可。
+
+> $f(x) = \sqrt x$ 在 $(0, +\infty)$ 上成立。
+
+Method1：
+
+要证 $\forall \epsilon > 0, \exists \delta = \delta(\epsilon, x_0), \text{ s.t. when } |x - x_0| < \delta : |f(x) - f(x_0)| = |\sqrt x - \sqrt{x_0}| < \epsilon$。
+
+$|\sqrt x - \sqrt{x_0}| = |\dfrac{x - x_0}{\sqrt x + \sqrt {x_0}}|$。
+
+换句话说希望 $|\dfrac{1}{\sqrt x + \sqrt{x_0}}|$ 为一个常数。
+
+这里分开的且 $\sqrt x \ge 0$，那不直接扔掉就行了：$|\dfrac{1}{\sqrt x + \sqrt{x_0}}| < |\dfrac{1}{\sqrt{x_0}}|$。
+
+取 $\delta = \epsilon \sqrt{x_0} > 0$ 即可。
+
+Method2：
+
+由 $a \ge b \ge 0 \Rightarrow \sqrt[n] a - \sqrt[n] b \le \sqrt[n]{a - b}$
+
+有不等式：$|\sqrt x - \sqrt{x_0}| \le \sqrt{|x - x_0|}$。
+
+取 $\delta = \epsilon^2$。
+
+那么 $|\sqrt x - \sqrt{x_0}| \le \sqrt{|x - x_0|} \le \sqrt{\delta} < \sqrt{\epsilon^2} = \epsilon$。
+
+> $f(x) = \sqrt x$ 在 $[0, 1]$ 上连续
+
+由于已经证明了 $(0, +\infty) \Rightarrow (0, 1]$ 上连续。
+
+只需要证明 $f(x)$ 在 $0$ 点右连续。
+
+即 $\forall \epsilon > 0, \exists \delta \text{ s.t. when } 0 < x - 0 < \delta : |f(x) - f(0)| < \epsilon$。
+
+也就是 $|\sqrt x| < \epsilon$。取 $\delta = \epsilon^2$ 即可。
+
+> $f(x) = \sin x, g(x) = \cos x$ 在 $\mathbb{R}$ 上连续。
+
+证明对于 $\forall x_0 \in \mathbb{R}$ 有：
+
+$\forall \epsilon > 0, \exists \delta \text{ s.t. when } 0 < |x - x_0| < \delta : |f(x) - f(x_0)| = |\sin x - \sin x_0|< \epsilon$。
+
+$|\sin x - \sin x_0| = |2\sin\dfrac{x - x_0}{2}\cos\dfrac{x + x_0}{2}|$
+
+$\le 2|\sin \dfrac{x - x_0}{2}| \le 2 |\dfrac{x - x_0}{2}| = |x - x_0|$ 于是取 $\delta = \epsilon$。
+
+（$|\sin t| \le |t|, t \in \mathbb{R}$）。
+
+**注记**：以上几个例子都是从连续性定义出发，实质也就是证明某一个点的极限，思路自然也是通过找常数上界（利用 $\delta = \delta(\epsilon, x_0)$ 的性质）放缩来证明不等式成立。
+
+之后会有关于连续函数四则运算还有反函数连续性的东西。
+
+于是初等函数就只差指数函数和对数函数。
+
+然而，有一个问题，$a^x$ 怎么定义？
+
+先定义指数函数 $f(x) = a^x, a > 0 \land a \not= 1$，其中 $x \in \mathbb{R}$。
+
+已经知道：
+
+1) $a \ge 0, m, n \in \mathbb{N}+, a^{\frac{m}{n}} \equiv (a^{(\frac{1}{n})^m}), \text{ where } \sqrt[n] a$ 是 $a$ 的 $n$ 次算术平方根。
+
+2) $a > 0, a^{-1} \equiv \dfrac{1}{a}, a^{-\frac{m}{n}} = \dfrac{1}{a^{\frac{m}{n}}}$。
+
+3) $a \not= 0, a^0 = 1$.
+
+于是：$a > 0$ 时，$a$ 的任意有理次方幂 $a^q, (q \in \mathbb{Q})$ 都有定义。
+
+> 命题：$\forall a > 0, p, q \in \mathbb{Q} \Rightarrow$
+> 
+> 1) $a > 1, p > q \Rightarrow a^p > a^q$。
+>
+> 2) $0 < a < 1, p > q \Rightarrow a^p < a^q$。
+
+

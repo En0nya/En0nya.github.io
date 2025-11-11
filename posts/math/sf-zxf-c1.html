@@ -330,7 +330,11 @@ $$</p>
 <p>由于 $b \neq 0$，不妨假设 $b &gt; 0$ ，$b &lt; 0$ 同理即可。</p>
 <p>然后用推论， $y_n \to b &gt; 0 \Rightarrow \exists N^\prime, \forall n &gt; N^\prime, y_n &gt; \dfrac{b}{2} &gt; 0$，然后就没事了</p>
 <p>于是现在继续用定义证明 $\dfrac{1}{y} \to \dfrac{1}{b}$</p>
-<p>下面比较简单，直接做就行。</p>
+<p>就是要证明：$\forall \epsilon &gt; 0, \exists N \text{ s.t. } \forall n &gt; N, |\dfrac{1}{y_n} - \dfrac{1}{b}| = \dfrac{|y_n - b|}{|y_n||b|}$。</p>
+<p>分子根据 $\lim\limits_{n\to \infty} y_n = b$ 可以知道其小于 $\epsilon$。</p>
+<p>所以只需要 $\dfrac{1}{|y_n||b|}$ 小于一个常数 $M$ 就行。</p>
+<p>由保序性推论：$|y_n| &gt; |\dfrac{b}{2}|$ 成立，所以 $\dfrac{1}{|y_n||b|} &lt; \dfrac{2}{b^2} \equiv M$。</p>
+<p>所以可以证明。</p>
 <blockquote>
 <p>例题 1.4 推广：当 $a \in \mathbb{R_+}$，证明 $\lim\limits_{n\to \infty}\sqrt[n]{a} = 1$。</p>
 </blockquote>
