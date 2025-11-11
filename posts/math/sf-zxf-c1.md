@@ -1426,7 +1426,9 @@ a-1   a    a+1    b
 
 显然，$\xi \in [a, b]$，换句话说 $\exists (\alpha, \beta) \in E \text{ s.t. } \xi \in (\alpha, \beta)$。
 
-由于 $x_n \to \xi (n \to \infty) \Rightarrow \exists N \text{ s.t. } [x_N - \dfrac{1}{N}, x_N + \dfrac{1}{N}] \subset (\alpha, \beta)$（$N$ 要去足够大，这里就是闭区间套定理的形式）。
+由于 $x_n \to \xi (n \to \infty) \Rightarrow \exists N \text{ s.t. } [x_N - \dfrac{1}{N}, x_N + \dfrac{1}{N}] \subset (\alpha, \beta)$。
+
+（因为 $\xi \in (\alpha, \beta) \Rightarrow \exists \delta \text{ s.t. } (\xi - \delta, \xi + \delta) \subset (\alpha, \beta)$，当 $N$ 足够大，可以做到 $|x_n - \xi| < \dfrac{\delta}{2} \text{ and } \dfrac{1}{N} < \dfrac{\delta}{2}$，就能满足条件）
 
 换句话说 $[a_N, b_N] = [x_N - \dfrac{1}{N}, x_N - \dfrac{1}{N}] \cap [a_{N - 1}, b_{N - 1}] \subset [\alpha, \beta]$。
 
@@ -1452,9 +1454,9 @@ a-1   a    a+1    b
 
 任取 $x_0 \in S \Rightarrow x_0 \le M$。
 
-若 $x_0 = M$ 则 $\sup S = M$。
+若 $x_0 = M$ 则 $\sup S = M$，就不用证了。
 
-反之：定义闭区间 $[x_0, M] = I$，设 $S$ 无最小上界。
+若 $x_0 < M$：定义闭区间 $[x_0, M] = I$，**假设** $S$ **无最小上界。**
 
 那么 $\forall x \in I$，只有两种情况：
 
@@ -1462,19 +1464,25 @@ Case1：若 $x$ 为 $S$ 的一个上界，由于 $x$ 不是最小上界。
 
 因此，存在更小上界 $x_1$，从而 $\exists x$ 的某个小邻域 $(x - \delta_x, x + \delta_x) \text{ s.t. } \forall y \in (x - \delta_x, x + \delta_x); \forall t \in S, t < y$。
 
+也就是 $x$ 的某个小邻域内所有点都是 $S$ 上界，为什么呢？
+
+如果 $x \in [x_0, M]$ 是 $S$ 的一个上界，由于假设了 $S$ 不存在最小上界，所以肯定存在更小的上界，也就是存在 $x_0$ 的一个左邻域里一定都是 $S$ 的上界，而右边因为 $x$ 已经是上界了所以肯定都是上界，由此可以得到 $x$ 的一个邻域内所有点都是 $x$ 的上界。
+
 Case2：若 $x$ 不是 $S$ 的一个上界，自然存在 $x_2 \in S \text{ s.t. } x_2 > x$。
 
 所以存在某个小邻域 $(x - \delta_x, x + \delta_x)$，其中所有元素都不是 $S$ 的上界。
 
 令 $x_0$ 取遍 $[x_0, M]$ 中所有点，产生一个开区间族 $O = \{(x_n - \delta_{x_n}), x_n + \delta_{x_n}\}$。
 
-$O$ 要么是 Case1 要么是 Case2，换句话说某个邻域内的点应该为同一类。
+$O_i$ 要么是 Case1 要么是 Case2，换句话说某个邻域内的点应该为同一类。
 
 且 $[x_0, M]$ 被 $O$ 覆盖，由有限开覆盖定理。
 
 可以找到有限个开区间 $O_1, O_2, \cdots O_n$ 使得其覆盖 $[x_0, M]$。
 
 显然 $M$ 所在的开区间是 Case1，（且可以假设这个开区间被选中，没选中加进去也无所谓）
+
+当两个开区间相交的时候，说明它们的性质应该相同。
 
 经过有限步的推导，可以说明 $x_0$ 那个邻域属于 Case1，所以它是 $S$ 的上界。 
 
