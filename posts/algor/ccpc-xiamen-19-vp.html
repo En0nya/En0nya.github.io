@@ -63,26 +63,39 @@
         </header>
         
         <article>
-            <h2>Categories</h2>
-<p><em>文章总数: 9</em></p>
-<p><em>Last update: 2025 年 11 月 12 日 00:12</em></p>
-<ul>
-<li><a href="posts\algor\ccpc-xiamen-19-vp.html">⌈CCPC Xiamen 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 12 日</code></em></li>
-<li><a href="posts\algor\ccpc-final-19-vp.html">⌈CCPC Final 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-<li><a href="posts\algor\icpc-25-xian-vp.html">⌈ICPC Asia Reginal Xi'an 2025 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 04 日</code></em></li>
-<li><a href="posts\algor\cf-training-1.html">⌈CF 杂题训练 1⌋</a>  最后更新时间：<em><code>25 年 10 月 24 日</code></em></li>
-<li>
-<p><a href="posts\algor\comp-geo.html">⌈计算几何⌋</a>  最后更新时间：<em><code>25 年 10 月 10 日</code></em></p>
-</li>
-<li>
-<p><a href="posts\logs\2025-10-04.html">⌈缙云山⌋</a>  最后更新时间：<em><code>25 年 10 月 04 日</code></em></p>
-</li>
-<li>
-<p><a href="posts\math\sf-assignments-1.html">⌈数学分析习题记录⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></p>
-</li>
-<li><a href="posts\math\sf-zxf-c1.html">⌈数学分析笔记 - zxf - Chapter 1⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-<li><a href="posts\math\sf-zxf-c2.html">⌈数学分析笔记 - zxf - Chapter 2⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-</ul>
+            <h2>CCPC Xiamen 2019 VP</h2>
+<p>打不过隔壁重邮的 CQU 上一次拿金牌的传奇之战。</p>
+<p>居然都已经六年了吗。。。</p>
+<h3>A - Zayin and Bus</h3>
+<p>签到题，依旧是手速比 yhn 写的。</p>
+<p>不管了。</p>
+<h3>D - Zayin and Forest</h3>
+<p>题中的函数就是 $\text{lowbit}(x)$</p>
+<p>需要知道树状数组是怎么建树的。</p>
+<p>往上加的操作只需要一个计数器统计一下下面的贡献就行。</p>
+<p>求和操作完全和正常树状数组相同。</p>
+<p>但是这个 $x$ 比较大，又要卡 $O(n \log n)$ 的时间。</p>
+<p>所以用一个手写的哈希表优化就行。还好我带了哈希表板子.jpg</p>
+<h3>G - Zayin and Count</h3>
+<p>lxy 和 yhn 写的，大概可以数位 dp，我不是很会。</p>
+<h3>H - Zayin and Obstacles</h3>
+<p>开始的时候都看漏了 Obstacle <strong>s</strong></p>
+<p>有点唐。</p>
+<p>总之就直接高维差分 + 高位前缀和维护一下每一个点是不是能过。</p>
+<p>然后 bfs 一下就行了。</p>
+<p>真不知道这种送的题为什么我们三个小时才过。</p>
+<h3>I - Zayin and Coin Game</h3>
+<p>似乎是一个由很多套路集合在一起的题。</p>
+<p>首先转化题意就是，令 $\{C_n\} = \{A_n\} \text{ xor } \{B_n\}$。</p>
+<p>然后目的就是通过每次对一个长度为 $k$ 的环上段异或 $1$，将 $\{C_n\}$ 变为全零。</p>
+<p>异或是可以差分的，所以问题转化为每次可以选取距离固定的两个点异或，最后让 $\{C_n\}$ 变成全零（异或前缀和为零的充分条件就是全部为零）。</p>
+<p>还有另一个经典结论：</p>
+<p>将环分为 $g = \gcd(n, k)$ 个模 $g$ 的同余类，那 $t, t + k$ 必属于同一个类，换句话说每次操作只影响一个类。</p>
+<p>于是只需要 check 一下每个类是不是都有偶数个 $1$ 即可。</p>
+<p>环上的差分只需要记 $c_0 = c_n$ 即可（下标从 $1$ 开始）</p>
+<h3>J - Zayin and Tree</h3>
+<p>lxy 的做法是树上 dp。</p>
+<p>我感觉可以点分治。</p>
         </article>
         
         <footer>

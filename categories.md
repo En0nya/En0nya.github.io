@@ -1,9 +1,11 @@
 ## Categories
 
-*文章总数: 7*
+*文章总数: 9*
 
-*Last update: 2025 年 11 月 11 日 22:52*
+*Last update: 2025 年 11 月 12 日 00:12*
 
+- [⌈CCPC Xiamen 2019 VP⌋](posts\algor\ccpc-xiamen-19-vp.html)  最后更新时间：*`25 年 11 月 12 日`*
+- [⌈CCPC Final 2019 VP⌋](posts\algor\ccpc-final-19-vp.html)  最后更新时间：*`25 年 11 月 11 日`*
 - [⌈ICPC Asia Reginal Xi'an 2025 VP⌋](posts\algor\icpc-25-xian-vp.html)  最后更新时间：*`25 年 11 月 04 日`*
 - [⌈CF 杂题训练 1⌋](posts\algor\cf-training-1.html)  最后更新时间：*`25 年 10 月 24 日`*
 - [⌈计算几何⌋](posts\algor\comp-geo.html)  最后更新时间：*`25 年 10 月 10 日`*

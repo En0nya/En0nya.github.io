@@ -63,26 +63,39 @@
         </header>
         
         <article>
-            <h2>Categories</h2>
-<p><em>文章总数: 9</em></p>
-<p><em>Last update: 2025 年 11 月 12 日 00:12</em></p>
-<ul>
-<li><a href="posts\algor\ccpc-xiamen-19-vp.html">⌈CCPC Xiamen 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 12 日</code></em></li>
-<li><a href="posts\algor\ccpc-final-19-vp.html">⌈CCPC Final 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-<li><a href="posts\algor\icpc-25-xian-vp.html">⌈ICPC Asia Reginal Xi'an 2025 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 04 日</code></em></li>
-<li><a href="posts\algor\cf-training-1.html">⌈CF 杂题训练 1⌋</a>  最后更新时间：<em><code>25 年 10 月 24 日</code></em></li>
-<li>
-<p><a href="posts\algor\comp-geo.html">⌈计算几何⌋</a>  最后更新时间：<em><code>25 年 10 月 10 日</code></em></p>
-</li>
-<li>
-<p><a href="posts\logs\2025-10-04.html">⌈缙云山⌋</a>  最后更新时间：<em><code>25 年 10 月 04 日</code></em></p>
-</li>
-<li>
-<p><a href="posts\math\sf-assignments-1.html">⌈数学分析习题记录⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></p>
-</li>
-<li><a href="posts\math\sf-zxf-c1.html">⌈数学分析笔记 - zxf - Chapter 1⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-<li><a href="posts\math\sf-zxf-c2.html">⌈数学分析笔记 - zxf - Chapter 2⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-</ul>
+            <h2>CCPC Final 2019 VP</h2>
+<p>省流：手速很快的三小时之内干完四个题然后下班了。</p>
+<p>开始的时候觉得 F 非常可做然后发现三小时了没有一个人过有点搞笑。</p>
+<p>结果发现最开始的结论就搞错了，还在那里想了半天网络流建边优化。</p>
+<h3>A - Kick Start</h3>
+<p>yhn 做的，签到题，懒得管了。</p>
+<h3>I - Mr.Panda and SAD</h3>
+<p>神秘构造，听说当年现场区分度非常奇异</p>
+<p>我也不懂怎么想到的。</p>
+<h3>K - Russian Dolls on the Christmas Tree</h3>
+<p>有点板子。</p>
+<p>考虑对于每个节点从子树里面合并答案</p>
+<p>无非就是两种情况，一种是节点合并了某两个子树的答案。</p>
+<p>另一种就是子树之间相互合并。</p>
+<p>每次合并相当于找到两个连续段拼起来，维护只需要看一个点的左右两边是否都存在，这个东西可以树上启发式合并来优化。</p>
+<p>于是就能过了，我不太会 DSU on Tree 所以是 lxy 写的。</p>
+<h3>L - Spiral Matrix</h3>
+<p>奇异找规律题。</p>
+<p>首先注意到答案可能很小。</p>
+<p>因为这个移动方式让可能的合法路径变得非常少。</p>
+<p>比如这样子：</p>
+<div class="codehilite"><pre><span></span><code>A B C
+D E F
+G H I
+</code></pre></div>
+
+<p>如果我按照 G -&gt; D -&gt; A 的顺序走，那么这个 E 的可达性就非常有限。</p>
+<p>要不然是 G -&gt; D -&gt; A -&gt; B -&gt; E，要不然是 G -&gt; D -&gt; A -&gt; B -&gt; C -&gt; F -&gt; I -&gt; E。</p>
+<p>所以这个行走路径一定是一层一层像个瑞士卷，更通俗一点它只能有这两种形状：</p>
+<p><img alt="img" src="../../medias/ccpcf19-1.png" /></p>
+<p>赛时通过打表盯真发现如果 $n + m$ 相同答案相同，所以 $ans = 2(n + m) - 4$，交上去一发过了。</p>
+<p>赛后想了想，其实就是这样的路径只能是对角线或者是最中间的一个小连通块可以做到，不然没办法全部卷干净，稍微推一下就是 $2(n + m) - 4$。</p>
+<p>因为四个顶点的位置答案只有一种。</p>
         </article>
         
         <footer>
