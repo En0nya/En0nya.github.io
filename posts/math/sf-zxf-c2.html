@@ -421,7 +421,240 @@
 <p>命题：$\forall a &gt; 0, p, q \in \mathbb{Q} \Rightarrow$</p>
 <p>1) $a &gt; 1, p &gt; q \Rightarrow a^p &gt; a^q$。</p>
 <p>2) $0 &lt; a &lt; 1, p &gt; q \Rightarrow a^p &lt; a^q$。</p>
+<p>3) 引理：$a &gt; 1, p, q \in \mathbb{Q}, |p - q| &lt; 1 \Rightarrow |a^p - a^q| \le a^q(a - 1)|p - q|$。</p>
+<p>4) 引理：$a &gt; 1, \{q_n\} \subset \mathbb{Q}$ 为 Cauchy 列；即 $\forall \epsilon &gt; 0, \exists N \text{ s.t. when } n, m &gt; N : |q_n - q_m| &lt; \epsilon$，则 $\{a^{q_n}\}$ 也是 Cauchy 列。（由引理 3 + 收敛数列有界即可证明，不过在取常数那一步需要注意一下取的一个 $a^t$ 的 $t$ 需要是实数。）</p>
 </blockquote>
+<p>定义：</p>
+<blockquote>
+<p>设 $a &gt; 0, x\in \mathbb{R}$，定义 $a^x \equiv \lim\limits_{n\to\infty}a^{q_n}, \text{ where } \lim\limits_{n\to \infty}\{q_n\} = x, q_n \in \mathbb{R}$。</p>
+<p>设 $a \in (0, 1)，a^x \equiv \dfrac{1}{(\dfrac{1}{a})^x}$</p>
+<p>注：上述定义中，$\{q_n\}$ 的选择是任意的（因为 $|a^{q_n} - a^{p_n}| \le C|p_n - q_n|$（引理三的不等式），同时取极限可以知道 $0 \le \lim\limits_{n\to \infty}|a^{q_n} - a^{p_n}| \le 0$，由于这两个<strong>极限都存在</strong>所以应当是相等的。）</p>
+</blockquote>
+<p>命题：</p>
+<blockquote>
+<p>假设 $a &gt; 0, x, y \in \mathbb{R}$</p>
+<p>1) $a^x \cdot a^y = a^{x + y}$。</p>
+<p>2) $a &gt; 1, x &gt; y \Rightarrow a^x &gt; a^y$。</p>
+<p>3) $a \in (0, 1), x &gt; y, \Rightarrow a^x &lt; a^y$。</p>
+</blockquote>
+<p>证明：1)</p>
+<p>取 $\{p_n\} \subset \mathbb{Q}, \{q_n\} \subset \mathbb{Q}, \text{ s.t. } p_n \to x, q_n \to y$。</p>
+<p>那么 $a^x = \lim\limits_{n \to \infty} a^{p_n}; a^y = \lim\limits_{n \to \infty}a^{q_n}$</p>
+<p>由此：$a^x \cdot a^y = \lim\limits_{n \to \infty}(a^{p_n} \cdot a^{q_n}) = \lim\limits_{n \to \infty}(a^{p_n + q_n})$（这步是因为只定义了有理数的幂运算）</p>
+<p>又因为 $(p_n + q_n) \to (x + y)$。</p>
+<p>取 $r_n = p_n + q_n \Rightarrow a^x\cdot a^y =  \lim\limits_{n\to \infty} a^{r_n} = a^{x + y}$。</p>
+<p>证明：2)</p>
+<p>取 $\{p_n\} \subset \mathbb{Q}, \{q_n\} \subset \mathbb{Q}, \text{ s.t. } p_n \to x, q_n \to y$。</p>
+<p>那么 $a^x = \lim\limits_{n \to \infty} a^{p_n}; a^y = \lim\limits_{n \to \infty}a^{q_n}$</p>
+<p>由于 $x &gt; y \Rightarrow \exists N \text{ s.t. when } n &gt; N, p_n &gt; q_n \Rightarrow a^{p_n} &gt; a^{p_n}$（保号性）</p>
+<p>两边取极限，注意这个时候可能等。</p>
+<p>$\lim\limits_{n \to \infty} a^{p_n} \ge \lim\limits_{n \to \infty} a^{q_n}$。</p>
+<p>现在来排除相等的情况，反证。</p>
+<p>在 $x, y$ 之间取两个有理数 $r, s$ 其中 $y &lt; s &lt; r &lt; x$。（稠密性）</p>
+<p>所以 $a_x \ge a_r \ge a_s \ge a_y$。</p>
+<p>由于 $r, s$ 是有理数所以 $a_r &gt; a_s$，于是就排除了相等的情况。</p>
+<p>命题：</p>
+<blockquote>
+<p>指数函数 $f(x) = a^x$ 是连续的。</p>
+</blockquote>
+<p>证明：（只考虑 $a &gt; 1$）</p>
+<p>即证：$\forall x_0 \in D_f = \mathbb{R}, \forall \epsilon &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta : |f(x) - f(x_0)| = |a^x - a^{x_0}| &lt; \epsilon$</p>
+<p>由于 $|a^x - a^{x_0}| = |a^{x_0}||a^{x - x_0} - 1| \le |a^{x_0}|(a - 1)|x - x_0|$（由于定义了指数函数所以这个不等式对实数也成立了）</p>
+<p>取 $\delta = \dfrac{\epsilon}{|a^{x_0}|(a - 1)}$ 就行（？）</p>
+<p>好像不是这么证明的，想想有什么问题。下面是标准解答：</p>
+<p>就是要证明 $\lim\limits_{x \to x_0} (a^{x - x_0} - 1) = 0$</p>
+<p>令 $t = x - x_0 \iff \text{ prove: } \lim\limits_{t \to 0} a^t = 1$</p>
+<p>先证明 $\lim\limits_{t \to 0^+} a^t= 1$，由于 $1 = a^0 &lt; a^t \le a^{\frac{1}{[t^{-1}]}}$。</p>
+<p>令 $n \equiv \dfrac{1}{[t^{-1}]} \ge 1 \Rightarrow a^{\frac{1}{n}} = \sqrt[n]a$。</p>
+<p>当 $t \to 0^+$ 时，$n \to \infty$，两边同时取极限：$1 \le \lim\limits_{t \to 0^+} a^t \le \lim\limits_{n\to +\infty}\sqrt[n]a$。</p>
+<p>所以 $\lim\limits_{t \to 0^+} a^t = 1$。</p>
+<p>再证 $\lim\limits_{t \to 0^-} a^t = 1$，令 $s \equiv -t \Rightarrow s \to 0^+ \Rightarrow \lim\limits_{s \to 0^+} a^s = 1$，这是证明过了的。</p>
+<p>所以 $\lim\limits_{t \to 0^-} a^t = \lim\limits_{s \to 0^+} a^{-s} = \lim\limits_{s \to 0^+} \left(\dfrac{1}{a^s}\right) = 1$。</p>
+<p>（这里需要承认连续函数极限的四则运算，下面会写）</p>
+<p>综上 $f(x) = a^x (a &gt; 1)$ 是连续的。</p>
+<p>定义：</p>
+<blockquote>
+<p>设由于 $f(x)=a^x,(a &gt; 0, a\not=1)$ 严格单调。</p>
+<p>定义 $f^{-1}(x) = \log_ax$。</p>
+<p>由指数函数的运算法则：有 $\begin{cases}a &gt; 1, \log_a t \text{ up} \\ a \in (0, 1), \log_a t \text{ down} \\ \log_a(st) = \log_as + \log_at\end{cases}$</p>
+</blockquote>
+<h4>命题 连续函数的四则运算</h4>
+<blockquote>
+<p>设 $f, g$ 在区间 $I$ 上连续。</p>
+<p>1) $\forall \alpha, \beta \in \mathbb{R}, \alpha f + \beta g$ 在 $I$ 上连续
+2) $(f\cdot g)(x)\equiv f(x)\cdot g(x)$ 在 $I$ 上连续</p>
+<p>3) $g$ 在 $I$ 上没有零点，$(\dfrac{f}{g})(x) \equiv \dfrac{f(x)}{g(x)}$ 在 $I$ 上连续。</p>
+</blockquote>
+<p>证明还是类似函数极限四则运算。（下来写一下线性变换这个）</p>
+<h4>定理 反函数的连续性</h4>
+<blockquote>
+<p>若 $y = f(x)$ 在 $x \in [a, b]$ 上严格单调，且为连续的。</p>
+<p>记 $f(a) = \alpha, f(b) = \beta$（此处认为递增）</p>
+<p>则 $y \in [\alpha, \beta]$ 上存在反函数 $x = g(y)$ 且也为严格单调且连续。</p>
+</blockquote>
+<p>tips：反函数单调性和原函数一致</p>
+<p>证明：不妨设 $y = f(x)$ 严格递增且连续，下证 $x = g(y)$ 也是连续的。</p>
+<p>即证，任取 $y_0 \in D_g; \forall \epsilon &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; |y - y_0| &lt; \delta: |g(y) - g(y_0)| &lt; \epsilon$。</p>
+<p>记 $x_0 = g(y_0) \iff y_0 = f(x_0)$。</p>
+<p>由假设：$\forall x_0 \in D_f, \forall \delta &gt; 0, \exists \eta \text{ s.t. when } 0 &lt; |x - x_0| &lt; \eta: |f(x) - f(x_0)| &lt; \delta$。</p>
+<p>带入 $f(x_0) = y_0$：</p>
+<p>$\forall y_0 \in D_g, \forall \delta &gt; 0, \exists \eta \text{ s.t. when } 0 &lt; |g(y) - g(y_0)| &lt; \eta: |y - y_0| &lt; \delta$。</p>
+<p>这也不对，好像没法反推回去。</p>
+<p>考虑到：</p>
+<p>$|g(y) - g(y_0)| &lt; \epsilon \iff |x - x_0| &lt; \epsilon \iff x_0 - \epsilon &lt; x &lt; x_0 + \epsilon$</p>
+<p>$\iff f(x_0 - \epsilon) &lt; f(x_0) &lt; f(x_0 + \epsilon)$。</p>
+<p>换句话说只需要 $f$ 单调递增。</p>
+<p>但我们还需要 $0 &lt; |y - y_0| &lt; \delta$ 的条件。</p>
+<p>继续：</p>
+<p>$\iff f(x_0 - \epsilon) - f(x_0) &lt; f(x) - f(x_0) &lt; f(x_0 + \epsilon) + f(x_0)$</p>
+<p>$\iff f(x_0 - \epsilon) - f(x_0) &lt; y - y_0 &lt; f(x_0 + \epsilon) + f(x_0) \cdots (@)$。</p>
+<p>取 $\delta = \min\{f(x_0 + \epsilon) - f(x_0), f(x_0 - \epsilon) - f(x_0)\}$</p>
+<p>这样，当 $|y - y_0| &lt; \delta$ 时，会有 $f(x_0 - \epsilon) - f(x_0) &lt; y - y_0 &lt; f(x_0 + \epsilon) + f(x_0)$。</p>
+<p>换句话说 $|y - y_0| &lt; \delta \Rightarrow (@) \iff |g(y) - g(y_0)|$。</p>
+<p>所以证完了。</p>
+<h4>定理 复合函数的连续性</h4>
+<blockquote>
+<p>设 $u = g(x)$ 在 $x_0$ 是连续的，令 $u_0 = g(x_0)$。</p>
+<p>设 $f(u)$ 在 $g(x_0)$ 点是连续的。 </p>
+<p>则 $f o g \equiv f(g(x))$ 在 $x_0$ 点连续。</p>
+</blockquote>
+<p>证明：</p>
+<p>由题：$\forall \epsilon &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta : |g(x) - g(x_0)| = |u - u_0| &lt; \epsilon$</p>
+<p>又有 $\forall \eta &gt; 0, \exists \sigma \text{ s.t. when } 0 &lt; |u - u_0| &lt; \sigma : |f(u) - f(u_0)| = |f(g(x)) - f(g(x_0))| &lt; \eta$</p>
+<p>证明还是考虑类似上面的把 $f, g$ 拿进去作用一下之后互推：</p>
+<p>那也就是 $0 &lt; |x - x_0| &lt; \delta \Rightarrow |g(x) - g(x_0)| &lt; \epsilon \iff |u - u_0| &lt; \epsilon \Rightarrow 0 &lt; |u - u_0| &lt; \epsilon \Rightarrow |f(u) - f(u_0)| &lt; \eta \iff |f(g(x)) - f(g(x_0))| &lt; \eta$。</p>
+<p>那么，$\forall \eta &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta: |f(g(x)) - f(g(x_0))| &lt; \eta$。</p>
+<h4>定义 幂函数</h4>
+<blockquote>
+<p>$\forall \alpha \in \mathbb{R}, \forall x &gt; 0$</p>
+<p>定义 $x^\alpha$ 为 $x^\alpha \equiv e^{\ln x^\alpha} \equiv e^{\alpha \ln x}$。</p>
+</blockquote>
+<p>由复合函数连续性，其为连续的。</p>
+<p>注意这里 $\equiv$，我们并不假定 $x^\alpha$ 就一定是实数，只是按照这样的形式定义，虽然最后确实是实数。</p>
+<h4>定理 基本初等函数</h4>
+<blockquote>
+<p>基本初等函数：</p>
+<p>1) 常值函数 $f(x) = c$。</p>
+<p>2) 三角函数 $f(x) = \sin x, \cos x, \tan x, \cdots$。</p>
+<p>3) 反三角函数 $f(x) = \arcsin x, \arccos x, \arctan x, \cdots$。</p>
+<p>4) 指数函数 $f(x) = a^x$。</p>
+<p>5) 对数函数 $f(x) = \log_a x$</p>
+<p>6) 幂函数 $f(x) = x^a$。</p>
+<p>在定义域内均为连续的。</p>
+</blockquote>
+<p>这六个都已经在上面证明过。</p>
+<h4>定义 不连续点的分类</h4>
+<p>注意（极限存在默认不为无穷！）</p>
+<blockquote>
+<p>1) 如果 $f$ 在 $x_0 \in \mathbb{R}$ 的左右极限都存在但不相等，那么 $x_0$ 为 $f$ 的第一类不连续点。</p>
+<p>2) 如果 $f$ 在 $x_0 \in \mathbb{R}$ 的左右极限至少有一个不存在，那么 $x_0$ 为 $f$ 的第二类不连续点（无穷间断点）。</p>
+<p>3) 如果 $f$ 在 $x_0 \in \mathbb{R}$ 的左右极限相等但不等于 $f(x_0)$，那么 $x_0$ 为 $f$ 的第三类不连续点（可去间断点）。</p>
+</blockquote>
+<p>给几个例子：</p>
+<p>1) $f(x) = \text{sgn}(x)$，$x = 0$ 处的左右极限存在不相等，所以是第一类。
+2) $f(x) = \dfrac{1}{x}, g(x) = e^{\frac{1}{x}}$，$0$ 显然为 $x$ 的第二类不连续点。但 $g$ 的图像并不好画，直接分析：$\lim\limits_{x \to 0^+} e^{\frac{1}{x}} = +\infty, \lim\limits_{x \to 0^-} e^{\frac{1}{x}} = 0$，$0$ 也是 $g$ 的第二类不连续点。
+3) $f(x) = \begin{cases}\dfrac{\sin x}{x}, &amp;x \not= 0 \\ 0, &amp;x = 0 \end{cases}$，$0$ 处的左右极限都是 $1 \not= f(0) = 0$，所以 $0$ 是 $f$ 的第三类不连续点。</p>
+<h4>定理 Riemann 函数的连续性</h4>
+<blockquote>
+<p>设 Riemann 函数 $\zeta(x) = \begin{cases}\dfrac{1}{p} ,&amp;x=\dfrac{q}{p}\\ 1, &amp;x=0 \\0 , &amp;x\in \mathbb{R / Q}\end{cases}$，</p>
+<p>其中 $p \in \mathbb{N}+, q \in \mathbb{Z}/\{0\}, \gcd(p, q) = 1$</p>
+<p>则 $\zeta(x)$ 在所有无理点连续，有理点间断。</p>
+</blockquote>
+<p>证明：$\forall x_0 \in \mathbb{Q}$，下证 $\zeta$ 在 $x_0$ 处不连续，而 $\zeta(x_0) \not= 0$。</p>
+<p>只需要证明 $\lim\limits_{x \to x_0} \zeta(x) \to 0$，但它的表达式很难写。那只能考虑反证。</p>
+<p>假设 $\zeta(x)$ 在 $x_0$ 是连续的，由于无理数在实数轴上稠密，所以 $\exists \{x_n\} \subset \mathbb{R/Q} \text{ s.t. } x_n \to x_0 (n \to \infty)$。</p>
+<p>两边极限一下：$\lim\limits_{n \to \infty}\zeta(x_n) = 0$。</p>
+<p>由连续性：$\zeta(\lim\limits_{n \to \infty} x_n) = 0 = \zeta(x_0) \not= 0$，这是矛盾的，所以 $\zeta(x)$ 在有理点都是间断的。</p>
+<p>下证 $\zeta$ 在 $\forall x_0 \in \mathbb{R/Q}$ 处是连续的。</p>
+<p>先证明 $\zeta$ 在 $x_0 \in [0, 1] \cap \mathbb{R/Q}$ 处是连续的。</p>
+<p>任取 $\epsilon &gt; 0$，声明：使得 $\zeta (x) \ge \epsilon$ 的 $x \in [0, 1]$ 只有有限个，下面说明：</p>
+<p>也就是：</p>
+<ul>
+<li>$x = 0, \zeta(x) = 1 \ge \epsilon$ 的 $x$ 只有有限个</li>
+<li>$x = \dfrac{q}{p}, \zeta(x) = \dfrac{1}{p} \ge \epsilon \iff 1 \le p \le \epsilon^{-1}$，这样的 $x$ 只有有限个。</li>
+<li>$x \not\in \mathbb{Q}, \zeta(x) = 0$，这样的 $x$ 不存在。</li>
+</ul>
+<p>设 $x = \dfrac{q}{p} \in [0, 1] \text{ s.t. } \zeta(x) \ge \epsilon \Rightarrow \dfrac{1}{p}\ge \epsilon \Rightarrow 0 &lt; q &lt; p \le\dfrac{1}{\epsilon}$</p>
+<p>所以，满足 $\zeta(x) \ge \epsilon$ 的 $x$ 只有有限个（对于给定的 $\epsilon$）。</p>
+<p>所以声明成立，由此，可以选择充分小的 $\delta &gt; 0\text{ s.t. } (x_0 - \delta, x_0 + \delta)$ 中不含有使得 $\zeta(x) \ge \epsilon$ 的那些 $x$（因为这些 $x$ 是有限的）。</p>
+<p>这就等价于 $\forall x: |x - x_0| &lt; \delta \Rightarrow 0 \le \zeta(x) \le \epsilon \iff 0 \le \zeta(x) - \zeta(x_0) \le \epsilon$。</p>
+<p>这就是 $x_0$ 处连续的条件，所以 $[0, 1]$ 上的都成立。</p>
+<p>声明： $\zeta$ 是周期为 $1$ 的函数，下面说明：</p>
+<ul>
+<li>若 $x \in \mathbb{R/Q}, \zeta(x) = 0 \Rightarrow x+1 \in \mathbb{R/Q} \Rightarrow \zeta(x + 1) = 0$。</li>
+<li>若 $x = \dfrac{q}{p}, \zeta(x) = \dfrac{1}{p} \Rightarrow x + 1 = \dfrac{q + p}{p}$，由于 $\gcd(p, q) = 1 \Rightarrow \gcd(q + p, p) = 1$ 所以 $\zeta(x + 1) = \dfrac{1}{p}$。</li>
+<li>若 $x = 0, \zeta(0) = 1 = \zeta(0 + 1)$。</li>
+</ul>
+<p>由此，$\zeta$ 在所有无理点都是连续的。</p>
+<p><strong>Fun question</strong>：能否找到在无理点间断，有理点连续的函数？</p>
+<h4>命题</h4>
+<blockquote>
+<p>开区间 $(a, b)$ 上的单调函数的不连续点一定是第一类不连续点。</p>
+<p>其中 $a \not= -\infty; b \not= +\infty$。</p>
+</blockquote>
+<p>不妨假设单调递增。</p>
+<p>考虑集合：$S = \{f(x): a &lt; x &lt; x_0\}$，其中 $x_0$ 为一任取的 $(a, b)$ 上 $f$ 的一个不连续点。</p>
+<p>$S \not=\emptyset$，且 $\forall y \in S, y &lt; f(x_0)$。</p>
+<p>$S$ 有上界（由于单调），由确界原理，$S$ 一定有上确界 $\alpha$。</p>
+<p>所以 $f(x) \le \alpha, \forall x \in (a, x_0)$。</p>
+<p>$\forall \epsilon &gt; 0, \exists y \in (a, x_0) \text{ s.t. } \alpha - \epsilon &lt; f(y)$。</p>
+<p>令 $\delta = x_0 - y$，当 $-\delta &lt; x - x_0 &lt; 0$ 时，$y &lt; x &lt; x_0$。</p>
+<p>为什么要这样取？是为了利用单调性：</p>
+<p>$f(y) - \alpha &lt; f(x) - \alpha \le 0$，由于 $a - \epsilon &lt; f(y)$。</p>
+<p>$\Rightarrow |f(x) - \alpha| &lt; \epsilon$。</p>
+<p>上面这一些，等价于 $|f(x) - \alpha| &lt; \epsilon, -\delta &lt; x - x_0 &lt; 0 \Rightarrow \lim\limits_{x \to x_0^-} f(x) = \alpha$。</p>
+<p>同理，可以证明右极限也存在。</p>
+<p>这就排除了第二类的可能性。</p>
+<p>现在来排除第三类的可能性，画图可以知道它会违背单调的条件，下面来严谨说明：</p>
+<p>若 $\lim\limits_{x \to x_0^-} f(x)= \lim\limits_{x \to x_0^+}f(x) \not=f(x_0)$。</p>
+<p>若 $f(x_0) \not= \lim\limits_{x\to x_0} f(x)$，那么一定存在逆序对 $(x, y)$，和单调性矛盾。</p>
+<p>综上，只应为第一类不连续点。</p>
+<h3>无穷大量、无穷小量的阶</h3>
+<h4>定义 无穷小量</h4>
+<blockquote>
+<p>如果 $x \to x_0$, $f(x) = 0$，则称当 $x \to x_0$ 时 $f(x)$ 为无穷小量（$x_0$ 可以取 $x_0^+, x_0^-,\infty$）。</p>
+</blockquote>
+<h4>定义 无穷小量的比较</h4>
+<blockquote>
+<p>设 $x \to x_0$ 时，$u(x), v(x)$ 均为无穷小量，为比较其接近 $0$ 的速度：</p>
+<p>1) 如果 $\lim\limits_{x \to x_0} \dfrac{u(x)}{v(x)} = 0$，则称 $u(x)$ 是关于 $v(x)$ 的高阶无穷小量，记为 $u(x) = o(v(x)), x \to x_0$。</p>
+<p>比如 $x^3 = o(x)$。</p>
+<p>2) 若存在常数 $A &gt; 0$ 使得在 $x_0$ 的某个去心邻域内有：$|\dfrac{u(x)}{v(x)}| \le A, 0 &lt; |x - x_0| &lt; \delta$，则称当 $x \to x_0$ 时，$\dfrac{u(x)}{v(x)}$ 有界，记作 $u(x) = O(v(x))$；如果还存在常量 $a &gt; 0$ 使得在 $x_0$ 的某个去心邻域内有：$a \le |\dfrac{u(x)}{v(x)}| \le A, 0 &lt; |x - x_0| &lt; \delta$，则称 $x \to x_0$ 时，$u(x)$ 与 $v(x)$ 是同阶无穷小量；特别的，$\lim\limits_{x \to x_0}\dfrac{u(x)}{v(x)} = C \not=0$，则 $u(x), v(x)$ 为同阶无穷小量。</p>
+<p>3) 若 $\lim\limits_{x \to x_0} \dfrac{u(x)}{v(x)} = 1$，则 $u(x), v(x)$ 为等价无穷小量，记为 $u(x) \approx v(x), x \to x_0$（用 $\sim$ 也可以）</p>
+</blockquote>
+<h4>命题 等价无穷小量代换</h4>
+<blockquote>
+<p>当 $x \to 0$ 时，有</p>
+<p>1) $1 - \cos x \approx \dfrac{1}{2}x^2$</p>
+<p>2) $\sin x \approx x$</p>
+<p>3) $e^x - 1\approx x$</p>
+<p>4) $\alpha \in \mathbb{R}, (1 + x)^{\alpha} - 1\approx \alpha x$。</p>
+</blockquote>
+<p>（其实就是 Taylor 展开的前几项）</p>
+<p>证明 3：</p>
+<p>由 $\lim\limits_{x\to 0} (1 + \dfrac{1}{x})^x = e$。</p>
+<p>由于 $\ln t$ 是连续的（极限和这个函数可以换顺序）</p>
+<p>$\lim\limits_{x \to 0} [x\ln(1 + \dfrac{1}{x})] = 1 \Rightarrow \lim\limits_{x \to 0} \dfrac{\ln(1 + x)}{x} = 1$。</p>
+<p>令 $y = e^x - 1, (y\to 0 \text{ when }x \to 0)$，所以 $\lim\limits_{x \to 0} \dfrac{e^x - 1}{x} = \lim\limits_{y \to 0} \dfrac{y}{\ln(1 + y)}$。</p>
+<p>于是 $\lim\limits_{x \to 0} \dfrac{e^x - 1}{x} = 1$。</p>
+<p>证明 4：用一下幂函数定义方式来做个代换。（还没证）</p>
+<h4>定义 无穷大量</h4>
+<blockquote>
+<p>如果 $x \to x_0$ 时，$f(x) \to \infty$。</p>
+<p>则称 $x \to x_0$ 时，$f(x)$ 为无穷大量。</p>
+</blockquote>
+<h4>定义 无穷大量的比较</h4>
+<p>可以仿照无穷小量的比较来定义。</p>
+<h3>一致连续函数</h3>
+<h4>定义 一致连续</h4>
+<blockquote>
+<p>假设 $f$ 为定义在区间 $I$ 上的函数。</p>
+<p>如果 $\forall \epsilon &gt; 0, \exists \delta=\delta(\epsilon) \text{ s.t. } \forall x,y\in I, |x - y| \le \delta : |f(x) - f(y)| &lt; \epsilon$。</p>
+<p>则称 $f$ 在 $I$ 上一致连续。</p>
+<p>其中 $\delta$ 只和 $\epsilon$ 有关，和 $I$ 中的点无关。</p>
+<p>这个一致指的是 $\delta$ 一致。</p>
+</blockquote>
+<p>例子：$f(x) = x$ 在 $\mathbb{R}$ 上一致连续，$g(x) = \sqrt x$ 在 $(0, +\infty)$ 上一致连续，$h(x) = \sin x$ 在 $\mathbb{R}$ 上一致连续。</p>
         </article>
         
         <footer>

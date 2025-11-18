@@ -1,4 +1,3 @@
-
 import os
 import re
 from datetime import datetime
@@ -77,6 +76,7 @@ def scan_markdown_files(root_dir):
     return md_files
 
 def generate_directory_index(md_files, root_dir):
+    # 严格按照修改时间排序
     md_files.sort(key=lambda x: x['mod_timestamp'], reverse=True)
     
     content = []
@@ -85,24 +85,13 @@ def generate_directory_index(md_files, root_dir):
     content.append(f"*Last update: {datetime.now().strftime('%Y 年 %m 月 %d 日 %H:%M')}*")
     content.append("")
     
-    dir_files = {}
+    # 不再按目录分组，直接按时间顺序列出所有文件
     for file_info in md_files:
-        dir_path = file_info['dirname']
-        if dir_path not in dir_files:
-            dir_files[dir_path] = []
-        dir_files[dir_path].append(file_info)
-    
-    for dir_path in sorted(dir_files.keys()):
-        files_in_dir = dir_files[dir_path]
-        
-        for file_info in files_in_dir:
-            html_path = file_info['path'].replace('.md', '.html').replace('.markdown', '.html')
-            html_path = "posts\\" + html_path
-            content.append(f"- [⌈{file_info['title']}⌋]({html_path})  最后更新时间：*`{file_info['mod_time']}`*")
-        content.append("")
+        html_path = file_info['path'].replace('.md', '.html').replace('.markdown', '.html')
+        html_path = "posts\\" + html_path
+        content.append(f"- [⌈{file_info['title']}⌋]({html_path})  最后更新时间：*`{file_info['mod_time']}`*")
     
     return "\n".join(content)
-
 
 def main():
     target_directory = "posts"
