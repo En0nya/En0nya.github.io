@@ -157,7 +157,7 @@
 <p>$\lim\limits_{x \to x_0}h(x) = \lim\limits_{x \to x_0}g(x) = L \not=\infty \iff \lim\limits_{x \to x_0}f(x) = L$。</p>
 </blockquote>
 <p>证明也是类似数列的。</p>
-<h4>定理 2.1</h4>
+<h4>定理 2.1 重要极限 sinx/x</h4>
 <blockquote>
 <p>$\lim\limits_{x \to 0} \dfrac{\sin x}{x} = 1$。</p>
 </blockquote>
@@ -338,7 +338,7 @@
 <p>由 Heine 定理，$\lim\limits_{x \to x_0}f(x) = A$。</p>
 <p>□</p>
 <h3>连续函数</h3>
-<h4>定义 连续性</h4>
+<h4>定义 2.3 连续性</h4>
 <blockquote>
 <p>假设 $f$ 在 $x_0$ 的某个邻域 $O(x_0, \rho)$ 上有定义。</p>
 <p>称 $f$ 在 $x_0$ 点连续，如果 $\lim\limits_{x \to x_0} f(x)$ 存在且等于 $f(x_0)$。</p>
@@ -353,7 +353,7 @@
 </blockquote>
 <p>注记：如果 $f(x)$ 在 $x_0$ 点连续，<strong>当且仅当</strong> $f(x)$ 在 $x_0$ 点既是左连续的又是右连续的。</p>
 <p>注记：称 $f(x)$ 在 $I$ 上连续，如果 $\forall x_0 \in I, f$ 在 $x_0$ 点连续（如果是闭区间左右的话就只需要满足单侧极限）。</p>
-<h4>例题 几个例子</h4>
+<h4>例题 2.6 初等函数的连续性</h4>
 <blockquote>
 <p>$f(x) = x$ 在 $(-\infty, +\infty)$ 上连续。</p>
 </blockquote>
@@ -411,26 +411,29 @@
 <p>之后会有关于连续函数四则运算还有反函数连续性的东西。</p>
 <p>于是初等函数就只差指数函数和对数函数。</p>
 <p>然而，有一个问题，$a^x$ 怎么定义？</p>
+<h4>定义 2.4 指数函数</h4>
 <p>先定义指数函数 $f(x) = a^x, a &gt; 0 \land a \not= 1$，其中 $x \in \mathbb{R}$。</p>
-<p>已经知道：</p>
+<p><strong>已知</strong>：</p>
 <p>1) $a \ge 0, m, n \in \mathbb{N}+, a^{\frac{m}{n}} \equiv (a^{(\frac{1}{n})^m}), \text{ where } \sqrt[n] a$ 是 $a$ 的 $n$ 次算术平方根。</p>
 <p>2) $a &gt; 0, a^{-1} \equiv \dfrac{1}{a}, a^{-\frac{m}{n}} = \dfrac{1}{a^{\frac{m}{n}}}$。</p>
 <p>3) $a \not= 0, a^0 = 1$.</p>
 <p>于是：$a &gt; 0$ 时，$a$ 的任意有理次方幂 $a^q, (q \in \mathbb{Q})$ 都有定义。</p>
+<p><strong>命题</strong></p>
 <blockquote>
-<p>命题：$\forall a &gt; 0, p, q \in \mathbb{Q} \Rightarrow$</p>
+<p>$\forall a &gt; 0, p, q \in \mathbb{Q} \Rightarrow$</p>
 <p>1) $a &gt; 1, p &gt; q \Rightarrow a^p &gt; a^q$。</p>
 <p>2) $0 &lt; a &lt; 1, p &gt; q \Rightarrow a^p &lt; a^q$。</p>
 <p>3) 引理：$a &gt; 1, p, q \in \mathbb{Q}, |p - q| &lt; 1 \Rightarrow |a^p - a^q| \le a^q(a - 1)|p - q|$。</p>
 <p>4) 引理：$a &gt; 1, \{q_n\} \subset \mathbb{Q}$ 为 Cauchy 列；即 $\forall \epsilon &gt; 0, \exists N \text{ s.t. when } n, m &gt; N : |q_n - q_m| &lt; \epsilon$，则 $\{a^{q_n}\}$ 也是 Cauchy 列。（由引理 3 + 收敛数列有界即可证明，不过在取常数那一步需要注意一下取的一个 $a^t$ 的 $t$ 需要是实数。）</p>
 </blockquote>
-<p>定义：</p>
+<p>所以可以：</p>
+<p><strong>定义：指数函数</strong></p>
 <blockquote>
-<p>设 $a &gt; 0, x\in \mathbb{R}$，定义 $a^x \equiv \lim\limits_{n\to\infty}a^{q_n}, \text{ where } \lim\limits_{n\to \infty}\{q_n\} = x, q_n \in \mathbb{R}$。</p>
+<p>设 $a &gt; 1, x\in \mathbb{R}$，定义 $a^x \equiv \lim\limits_{n\to\infty}a^{q_n}, \text{ where } \lim\limits_{n\to \infty}\{q_n\} = x, q_n \in \mathbb{R}$。</p>
 <p>设 $a \in (0, 1)，a^x \equiv \dfrac{1}{(\dfrac{1}{a})^x}$</p>
 <p>注：上述定义中，$\{q_n\}$ 的选择是任意的（因为 $|a^{q_n} - a^{p_n}| \le C|p_n - q_n|$（引理三的不等式），同时取极限可以知道 $0 \le \lim\limits_{n\to \infty}|a^{q_n} - a^{p_n}| \le 0$，由于这两个<strong>极限都存在</strong>所以应当是相等的。）</p>
 </blockquote>
-<p>命题：</p>
+<h4>命题 2.8 指数函数的运算法则</h4>
 <blockquote>
 <p>假设 $a &gt; 0, x, y \in \mathbb{R}$</p>
 <p>1) $a^x \cdot a^y = a^{x + y}$。</p>
@@ -453,7 +456,7 @@
 <p>在 $x, y$ 之间取两个有理数 $r, s$ 其中 $y &lt; s &lt; r &lt; x$。（稠密性）</p>
 <p>所以 $a_x \ge a_r \ge a_s \ge a_y$。</p>
 <p>由于 $r, s$ 是有理数所以 $a_r &gt; a_s$，于是就排除了相等的情况。</p>
-<p>命题：</p>
+<h4>例题 2.7 指数函数的连续性</h4>
 <blockquote>
 <p>指数函数 $f(x) = a^x$ 是连续的。</p>
 </blockquote>
@@ -472,13 +475,13 @@
 <p>所以 $\lim\limits_{t \to 0^-} a^t = \lim\limits_{s \to 0^+} a^{-s} = \lim\limits_{s \to 0^+} \left(\dfrac{1}{a^s}\right) = 1$。</p>
 <p>（这里需要承认连续函数极限的四则运算，下面会写）</p>
 <p>综上 $f(x) = a^x (a &gt; 1)$ 是连续的。</p>
-<p>定义：</p>
+<h4>定义 2.5 对数函数</h4>
 <blockquote>
 <p>设由于 $f(x)=a^x,(a &gt; 0, a\not=1)$ 严格单调。</p>
 <p>定义 $f^{-1}(x) = \log_ax$。</p>
 <p>由指数函数的运算法则：有 $\begin{cases}a &gt; 1, \log_a t \text{ up} \\ a \in (0, 1), \log_a t \text{ down} \\ \log_a(st) = \log_as + \log_at\end{cases}$</p>
 </blockquote>
-<h4>命题 连续函数的四则运算</h4>
+<h4>命题 2.9 连续函数的四则运算</h4>
 <blockquote>
 <p>设 $f, g$ 在区间 $I$ 上连续。</p>
 <p>1) $\forall \alpha, \beta \in \mathbb{R}, \alpha f + \beta g$ 在 $I$ 上连续
@@ -486,7 +489,7 @@
 <p>3) $g$ 在 $I$ 上没有零点，$(\dfrac{f}{g})(x) \equiv \dfrac{f(x)}{g(x)}$ 在 $I$ 上连续。</p>
 </blockquote>
 <p>证明还是类似函数极限四则运算。（下来写一下线性变换这个）</p>
-<h4>定理 反函数的连续性</h4>
+<h4>定理 2.4 反函数的连续性</h4>
 <blockquote>
 <p>若 $y = f(x)$ 在 $x \in [a, b]$ 上严格单调，且为连续的。</p>
 <p>记 $f(a) = \alpha, f(b) = \beta$（此处认为递增）</p>
@@ -512,7 +515,7 @@
 <p>这样，当 $|y - y_0| &lt; \delta$ 时，会有 $f(x_0 - \epsilon) - f(x_0) &lt; y - y_0 &lt; f(x_0 + \epsilon) + f(x_0)$。</p>
 <p>换句话说 $|y - y_0| &lt; \delta \Rightarrow (@) \iff |g(y) - g(y_0)|$。</p>
 <p>所以证完了。</p>
-<h4>定理 复合函数的连续性</h4>
+<h4>定理 2.5 复合函数的连续性</h4>
 <blockquote>
 <p>设 $u = g(x)$ 在 $x_0$ 是连续的，令 $u_0 = g(x_0)$。</p>
 <p>设 $f(u)$ 在 $g(x_0)$ 点是连续的。 </p>
@@ -524,14 +527,14 @@
 <p>证明还是考虑类似上面的把 $f, g$ 拿进去作用一下之后互推：</p>
 <p>那也就是 $0 &lt; |x - x_0| &lt; \delta \Rightarrow |g(x) - g(x_0)| &lt; \epsilon \iff |u - u_0| &lt; \epsilon \Rightarrow 0 &lt; |u - u_0| &lt; \epsilon \Rightarrow |f(u) - f(u_0)| &lt; \eta \iff |f(g(x)) - f(g(x_0))| &lt; \eta$。</p>
 <p>那么，$\forall \eta &gt; 0, \exists \delta \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta: |f(g(x)) - f(g(x_0))| &lt; \eta$。</p>
-<h4>定义 幂函数</h4>
+<h4>定义 2.6 幂函数</h4>
 <blockquote>
 <p>$\forall \alpha \in \mathbb{R}, \forall x &gt; 0$</p>
 <p>定义 $x^\alpha$ 为 $x^\alpha \equiv e^{\ln x^\alpha} \equiv e^{\alpha \ln x}$。</p>
 </blockquote>
 <p>由复合函数连续性，其为连续的。</p>
 <p>注意这里 $\equiv$，我们并不假定 $x^\alpha$ 就一定是实数，只是按照这样的形式定义，虽然最后确实是实数。</p>
-<h4>定理 基本初等函数</h4>
+<h4>定理 2.6 基本初等函数的连续性</h4>
 <blockquote>
 <p>基本初等函数：</p>
 <p>1) 常值函数 $f(x) = c$。</p>
@@ -543,7 +546,7 @@
 <p>在定义域内均为连续的。</p>
 </blockquote>
 <p>这六个都已经在上面证明过。</p>
-<h4>定义 不连续点的分类</h4>
+<h4>定义 2.7 不连续点的分类</h4>
 <p>注意（极限存在默认不为无穷！）</p>
 <blockquote>
 <p>1) 如果 $f$ 在 $x_0 \in \mathbb{R}$ 的左右极限都存在但不相等，那么 $x_0$ 为 $f$ 的第一类不连续点。</p>
@@ -554,7 +557,7 @@
 <p>1) $f(x) = \text{sgn}(x)$，$x = 0$ 处的左右极限存在不相等，所以是第一类。
 2) $f(x) = \dfrac{1}{x}, g(x) = e^{\frac{1}{x}}$，$0$ 显然为 $x$ 的第二类不连续点。但 $g$ 的图像并不好画，直接分析：$\lim\limits_{x \to 0^+} e^{\frac{1}{x}} = +\infty, \lim\limits_{x \to 0^-} e^{\frac{1}{x}} = 0$，$0$ 也是 $g$ 的第二类不连续点。
 3) $f(x) = \begin{cases}\dfrac{\sin x}{x}, &amp;x \not= 0 \\ 0, &amp;x = 0 \end{cases}$，$0$ 处的左右极限都是 $1 \not= f(0) = 0$，所以 $0$ 是 $f$ 的第三类不连续点。</p>
-<h4>定理 Riemann 函数的连续性</h4>
+<h4>定理 2.7 Riemann 函数的连续性</h4>
 <blockquote>
 <p>设 Riemann 函数 $\zeta(x) = \begin{cases}\dfrac{1}{p} ,&amp;x=\dfrac{q}{p}\\ 1, &amp;x=0 \\0 , &amp;x\in \mathbb{R / Q}\end{cases}$，</p>
 <p>其中 $p \in \mathbb{N}+, q \in \mathbb{Z}/\{0\}, \gcd(p, q) = 1$</p>
@@ -587,7 +590,7 @@
 </ul>
 <p>由此，$\zeta$ 在所有无理点都是连续的。</p>
 <p><strong>Fun question</strong>：能否找到在无理点间断，有理点连续的函数？</p>
-<h4>命题</h4>
+<h4>命题 2.10</h4>
 <blockquote>
 <p>开区间 $(a, b)$ 上的单调函数的不连续点一定是第一类不连续点。</p>
 <p>其中 $a \not= -\infty; b \not= +\infty$。</p>
@@ -610,11 +613,11 @@
 <p>若 $f(x_0) \not= \lim\limits_{x\to x_0} f(x)$，那么一定存在逆序对 $(x, y)$，和单调性矛盾。</p>
 <p>综上，只应为第一类不连续点。</p>
 <h3>无穷大量、无穷小量的阶</h3>
-<h4>定义 无穷小量</h4>
+<h4>定义 2.8 无穷小量</h4>
 <blockquote>
 <p>如果 $x \to x_0$, $f(x) = 0$，则称当 $x \to x_0$ 时 $f(x)$ 为无穷小量（$x_0$ 可以取 $x_0^+, x_0^-,\infty$）。</p>
 </blockquote>
-<h4>定义 无穷小量的比较</h4>
+<h4>定义 2.9 无穷小量的比较</h4>
 <blockquote>
 <p>设 $x \to x_0$ 时，$u(x), v(x)$ 均为无穷小量，为比较其接近 $0$ 的速度：</p>
 <p>1) 如果 $\lim\limits_{x \to x_0} \dfrac{u(x)}{v(x)} = 0$，则称 $u(x)$ 是关于 $v(x)$ 的高阶无穷小量，记为 $u(x) = o(v(x)), x \to x_0$。</p>
@@ -622,13 +625,14 @@
 <p>2) 若存在常数 $A &gt; 0$ 使得在 $x_0$ 的某个去心邻域内有：$|\dfrac{u(x)}{v(x)}| \le A, 0 &lt; |x - x_0| &lt; \delta$，则称当 $x \to x_0$ 时，$\dfrac{u(x)}{v(x)}$ 有界，记作 $u(x) = O(v(x))$；如果还存在常量 $a &gt; 0$ 使得在 $x_0$ 的某个去心邻域内有：$a \le |\dfrac{u(x)}{v(x)}| \le A, 0 &lt; |x - x_0| &lt; \delta$，则称 $x \to x_0$ 时，$u(x)$ 与 $v(x)$ 是同阶无穷小量；特别的，$\lim\limits_{x \to x_0}\dfrac{u(x)}{v(x)} = C \not=0$，则 $u(x), v(x)$ 为同阶无穷小量。</p>
 <p>3) 若 $\lim\limits_{x \to x_0} \dfrac{u(x)}{v(x)} = 1$，则 $u(x), v(x)$ 为等价无穷小量，记为 $u(x) \approx v(x), x \to x_0$（用 $\sim$ 也可以）</p>
 </blockquote>
-<h4>命题 等价无穷小量代换</h4>
+<h4>命题 2.11 等价无穷小量代换</h4>
 <blockquote>
 <p>当 $x \to 0$ 时，有</p>
 <p>1) $1 - \cos x \approx \dfrac{1}{2}x^2$</p>
 <p>2) $\sin x \approx x$</p>
 <p>3) $e^x - 1\approx x$</p>
 <p>4) $\alpha \in \mathbb{R}, (1 + x)^{\alpha} - 1\approx \alpha x$。</p>
+<p>5) $\ln(1 + x) \approx x$</p>
 </blockquote>
 <p>（其实就是 Taylor 展开的前几项）</p>
 <p>证明 3：</p>
@@ -638,15 +642,31 @@
 <p>令 $y = e^x - 1, (y\to 0 \text{ when }x \to 0)$，所以 $\lim\limits_{x \to 0} \dfrac{e^x - 1}{x} = \lim\limits_{y \to 0} \dfrac{y}{\ln(1 + y)}$。</p>
 <p>于是 $\lim\limits_{x \to 0} \dfrac{e^x - 1}{x} = 1$。</p>
 <p>证明 4：用一下幂函数定义方式来做个代换。（还没证）</p>
-<h4>定义 无穷大量</h4>
+<blockquote>
+<p>注记：这个地方的加减不能乱换到 $\apporx$ 左右！！</p>
+</blockquote>
+<h4>定义 2.10 无穷大量</h4>
 <blockquote>
 <p>如果 $x \to x_0$ 时，$f(x) \to \infty$。</p>
 <p>则称 $x \to x_0$ 时，$f(x)$ 为无穷大量。</p>
 </blockquote>
-<h4>定义 无穷大量的比较</h4>
+<h4>定义 2.11 无穷大量的比较</h4>
 <p>可以仿照无穷小量的比较来定义。</p>
+<h4>命题 2.12 如何使用等价无穷小量代换</h4>
+<blockquote>
+<p>假设 $u(x), v(x), w(x)$ 在 $x_0$ 的去心邻域内有定义，并且 $v(x), w(x)$ 是等价无穷小量 $(x \to x_0)$。</p>
+<p>1) $\lim\limits_{x \to x_0} u(x)w(x) = A = \lim\limits_{x \to x_0} u(x) v(x), (A\not= \infty)$</p>
+<p>2) $\lim\limits_{x \to x_0} \dfrac{u(x)}{v(x)} = A = \lim\limits_{x \to x_0} \dfrac{u(x)}{w(x)}, (A\not= \infty)$。</p>
+</blockquote>
+<p>对于 1)：</p>
+<p>$\lim\limits_{x \to x_0} [u(x)w(x) \cdot \dfrac{v(x)}{w(x)}] = A \cdot 1 = A$。</p>
+<blockquote>
+<p>注记(<strong>非常重要！！！！</strong>)：$u(x) + v(x)$ 的话<strong>不一定</strong>是对的。</p>
+<p>$\lim\limits_{x \to 0} \dfrac{x - \sin x}{x^3}$ 如果直接代换 $\sin x$ 会得到 $0$，实际答案用洛必达法则应该是 $\dfrac{1}{6}$。</p>
+<p>本质的原因是这里代换的时候是忽略了 $\sin x$ Taylor 展开式后面的一些项，由于减法的存在，我们忽略了这些后面的项对于 $x$ 的影响。</p>
+</blockquote>
 <h3>一致连续函数</h3>
-<h4>定义 一致连续</h4>
+<h4>定义 2.12 一致连续</h4>
 <blockquote>
 <p>假设 $f$ 为定义在区间 $I$ 上的函数。</p>
 <p>如果 $\forall \epsilon &gt; 0, \exists \delta=\delta(\epsilon) \text{ s.t. } \forall x,y\in I, |x - y| \le \delta : |f(x) - f(y)| &lt; \epsilon$。</p>
@@ -655,6 +675,188 @@
 <p>这个一致指的是 $\delta$ 一致。</p>
 </blockquote>
 <p>例子：$f(x) = x$ 在 $\mathbb{R}$ 上一致连续，$g(x) = \sqrt x$ 在 $(0, +\infty)$ 上一致连续，$h(x) = \sin x$ 在 $\mathbb{R}$ 上一致连续。</p>
+<p>任取 $x_1, x_2 \in (0, +\infty)$。</p>
+<p>那么 $|g(x_1) - g(x_2)| = |\sqrt{x_1} - \sqrt{x_2}| \le \sqrt{|x_1 - x_2|}$。</p>
+<p>取 $\delta = \epsilon^2$，则有 $\forall \epsilon, \text{ s.t. when } 0 &lt; |x_1 - x_2| &lt; \epsilon^2 : |g(x_1) - g(x_2)| \le \sqrt{\epsilon^2} = \epsilon$。</p>
+<p>所以 $\sqrt x$ 在 $(0, +\infty)$ 上一致连续。</p>
+<h4>理解 连续性和一致连续性</h4>
+<ol>
+<li>
+<p>穿过极限：$\lim\limits_{x \to x_0} f(g(x)) = f(\lim\limits_{x \to x_0} g(x))$ 需要满足 $f(x)$ 在 $\lim\limits_{x \to x_0} g(x) = A$ 点连续（当然内层极限需要存在）。这相当于保证了当 $g(x) \to A$ 的时候 $f(g(x))$ 的值不会突变而是等于 $A$ 进而保障等式成立。而一致连续性则更近一步，如果 $g(x)$ 在 $D$ 上的值域为 $D_g$，且 $f(x)$ 在 $D_g$ 上一致连续，那么 $\forall x_n \to x_0, \lim\limits_{n \to \infty}f(g(x_n)) = f(\lim\limits_{n \to \infty} g(x_n))$ 也就是保证了全局的均匀，不论在哪里交换都不会出现突变。</p>
+</li>
+<li>
+<p>一致连续：实际上是在区间上取了一个通用的 $\delta$，不受任何 $x$ 的制约，控制了这个区间上的函数变化率;几何意义就是不存在某一段曲线无限趋近于垂直，这个 $\delta$ 可以很大但只要存在就行。比如 $\dfrac{1}{x}$ 在 $(0, +\infty)$ 上不一致连续，主要问题就出在 $0$ 附近，所以我们其实任取一个 $\epsilon &gt; 0, \dfrac{1}{x}$ 在 $[\epsilon, +\infty)$ 上都可以是一致连续的。</p>
+</li>
+<li>
+<p>误差全局可控：在整个区间上，用邻近点计算某一点的函数值，只要自变量差不超过 $\delta$，那 $\epsilon$ 就是确定的。</p>
+</li>
+</ol>
+<h4>定理 2.8 判别一致连续的法则</h4>
+<blockquote>
+<p>假设 $f$ 在区间 $I$ 上有定义，那么 $f$ 在 $I$ 上一致连续的充分必要条件是：</p>
+<p>$\forall \text{sequence on I } \{x_n\}, \{y_n\}$，只要 $\lim\limits_{n\to \infty}(x_n - y_n) = 0$，就有 $\lim\limits_{n \to \infty}[f(x_n) - f(y_n)] = 0$。</p>
+</blockquote>
+<p>证明 $\Rightarrow$：</p>
+<p>设 $f$ 在 $I$ 上一致连续，也就是 $\forall \epsilon &gt;0, \exists \delta = \delta(\epsilon) \text{ s.t. when } |x - y| &lt; \delta, |f(x) - f(y)| &lt; \epsilon \cdots (@)$。</p>
+<p>对于 $I$ 中的数列 $\{x_n\}, \{y_n\}$，$\lim\limits_{n\to\infty}(x_n - y_n) = 0$，也就是对上述的 $\delta &gt; 0, \exists N, \text{ s.t. when } n &gt; N, |x_n - y_n| &lt; \delta$。</p>
+<p>由 $(@)$ 可以知道：$|f(x_n) - f(y_n)| &lt; \epsilon$。</p>
+<p>也就是 $\forall \epsilon &gt; 0, \exists N \text{ s.t. } \forall n &gt; N, |f(x_n) - f(y_n)| &lt; \epsilon \iff \lim\limits_{n \to \infty}[f(x_n) - f(y_n)]$。 </p>
+<p>反过来，证明 $\Leftarrow$。</p>
+<p>假设 $(x_n - y_n) \to 0$，有 $[f(x_n) - f(y_n)] \to 0$。</p>
+<p>下证 $f$ 在 $I$ 上一致连续，考虑反证法（因为这个是抽象的，不好找）</p>
+<p>假设不一致连续，即假设 $\exists \epsilon_0 &gt; 0, \forall \delta &gt; 0, \exists x, y \in I : \text{even }|x - y| &lt; \delta, \text{ but } |f(x) - f(y)| \ge \epsilon_0$。</p>
+<ul>
+<li>
+<p>对于 $\delta = 1, \exists x_1, y_1 \in I, |x_1 - y_1| &lt; 1, |f(x_1) - f(y_1)| \ge \epsilon_0$。</p>
+</li>
+<li>
+<p>对于 $\delta = 2, \exists x_2, y_2 \in I, |x_2 - y_2| &lt; \dfrac{1}{2}, |f(x_2) - f(y_2)| \ge \epsilon_0$。</p>
+</li>
+<li>$\cdots$</li>
+<li>对于 $\delta = n, \exists x_n, y_n \in I, |x_n - y_n| &lt; \dfrac{1}{n}, |f(x_n) - f(y_n)| \ge \epsilon_0$。</li>
+<li>$\cdots$。</li>
+</ul>
+<p>于是我们构造了两个点列 $\{x_n\}, \{y_n\} \subset I$。</p>
+<p>由于 $\forall n,0 \le |x_n - y_n| &lt; \dfrac{1}{n}$。</p>
+<p>根据两边夹法则，$|x_n - y_n| \to 0$，但根据假设，矛盾，所以 $f$ 在 $I$ 上是一直连续的</p>
+<h4>定义 2.13 不一致连续</h4>
+<blockquote>
+<p>$f(x)$ 在区间 $I$ 上不一致连续，当且仅当存在某个 $\epsilon_0 &gt; 0$，对于任意的 $\delta &gt; 0$ 都可以找到两个点 $x, y\in I$ （一般和 $\delta$ 有关），虽然 $|x - y| &lt; \delta$ 但 $|f(x) - f(y)| \ge \epsilon_0$。</p>
+</blockquote>
+<p>例子：$f(x) = \dfrac{1}{x}, g(x) = \ln x, h(x) = x^2$ 在 $(0, +\infty)$ 上不一致连续</p>
+<p>考虑用上面的判定法则。</p>
+<p>对于 $\dfrac{1}{x}$，只需要找到两个数列相减趋于 $0$ 但是被 $\dfrac{1}{x}$ 作用之后相减就不趋于 $0$ 了。</p>
+<p>考虑取 $\dfrac{1}{n}, \dfrac{2}{n}$。</p>
+<p>可以发现 $|\dfrac{1}{\dfrac{1}{n}} - \dfrac{1}{\dfrac{2}{n}}| \to \infty$</p>
+<p>$\ln x$ 也是取这两个。</p>
+<p>对于 $x^2$ 的话，取 $n, n + \dfrac{1}{n}$ 或者 $\sqrt{n}, \sqrt{n + 1}$。</p>
+<p>一个很有意思的点是不一致连续的点往往出现在函数增速非常大的地方。</p>
+<p>比如 $\dfrac{1}{x}$ 在 $[\delta, +\infty)$ 上一致连续，其中 $\delta$ 为任意大于零的常数。</p>
+<p>证明：$\forall x_1, x_2 \in [\eta, +\infty), |f(x_1) - f(x_2)| = |\dfrac{x_2 - x_1}{x_1x_2}| \le \dfrac{|x_1 - x_2|}{\eta^2}$。</p>
+<p>$\forall \epsilon &gt; 0, \text{let } \delta = \eta^2\epsilon, \text{ s.t. when } |x_1 - x_2| &lt; \delta : |f(x_1) - f(x_2)| \le \dfrac{|x_1 - x_2|}{\eta^2} &lt; \dfrac{\delta}{\eta^2} = \epsilon$</p>
+<p>再来个例子，比如 $e^x$，取 $x_n = \ln(n), y_n = \ln(n + 1)$。</p>
+<h4>定理 2.9 Cantor 定理</h4>
+<blockquote>
+<p>闭区间上的连续函数一定是一致连续的。</p>
+</blockquote>
+<h4>定理 2.10 Cantor 定理的扩展 1</h4>
+<blockquote>
+<p>有限开区间上的连续函数一定是一致连续的。</p>
+</blockquote>
+<h4>定理 2.11 Cantor 定理的扩展 2</h4>
+<blockquote>
+<p>若 $f(x)$ 在 $[a, +\infty)$ 上连续，且 $\lim\limits_{x \to +\infty} f(x)$ 存在，则 $f(x)$ 在 $[a, +\infty)$ 上一致连续 </p>
+<p>拓展：若 $f(x)$ 在 $[a, +\infty)$ 上连续，且 $\lim\limits_{x \to +\infty}[f(x) - g(x)] = 0$，则若 $g(x)$ 在 $[a, +\infty)$ 上一致连续，$f(x)$ 也在 $[a, +\infty)$ 上一致连续。</p>
+</blockquote>
+<h4>例题 2.8</h4>
+<blockquote>
+<p>证明 $f(x) = \dfrac{x^2 + 1}{x^2 + 4} \sin(\dfrac{1}{x})$ 在 $(0, 1)$ 上不一致连续，在 $[1, +\infty)$ 上一致连续。</p>
+</blockquote>
+<h4>定理 2.12</h4>
+<blockquote>
+<p>若 $f(x)$ 在 $\mathbb{R}$ 上一致连续，则 $\exists a, b \in \mathbb{R+} \text{ s.t. }$</p>
+<p>$|f(x)| \le a|x| + b$。</p>
+<p>注：$\ln x(x &gt; 0), e^x, x^k (k &gt; 1)$ 都不可能一致连续。</p>
+</blockquote>
+<p>证明：</p>
+<p>存在 $\delta &gt; 0 \text{ s.t. when } |x - y| &lt; \delta : |f(x) - f(y)| &lt; 1$。</p>
+<p>设 $M &gt; 0 \text{ s.t. } |f(x)| \le M, \forall x \in [-\delta, +\delta], x\in \mathbb{R} \Rightarrow \exists n \in \mathbb{Z} \text{ and } t \in [-\delta, +\delta] \text{ s.t. } x = n \delta + t$。 </p>
+<p>$f(x)$ 总是可以写成 $f(n \delta + t) - f[(n - 1)\delta + t] + f[(n - 1)\delta + t] - f[(n - 2)\delta + t] + f[(n - 2)\delta + t], \cdots - f(\delta + t) + f(\delta + t) - f(t) + f(t)$。</p>
+<p>加绝对值：</p>
+<p>$|f(x)| \le |f(n \delta + t) - f[(n - 1)\delta + t]| + |f[(n - 1)\delta + t] - f[(n - 2)\delta + t]| + |f[(n - 2)\delta + t], \cdots - f(\delta + t)| + |f(\delta + t) - f(t)| + |f(t)| \le |n| \cdot 1 + M$。</p>
+<p>也就是 $|f(x)| \le |n| + M = |\dfrac{x - t}{\delta}| + M \le \dfrac{|x|}{\delta} + \dfrac{|t|}{\delta} + M \le \dfrac{1}{\delta}|x| + \dfrac{\delta}{\delta} + M = \dfrac{|x|}{\delta} + (M + 1), \forall x \in \mathbb{R}$。</p>
+<p>取 $a = \dfrac{1}{\delta}, b = M + 1$ 即可。</p>
+<h4>定理 2.13</h4>
+<blockquote>
+<p>设 $f$ 在有限区间 $I$ 上有定义，则 $f$ 在 $I$ 上一致连续的充分必要条件是：</p>
+<p>$f$ 将 Cauchy 列映射为了另一个 Cauchy 列。</p>
+<p>即：$\{x_n\} \subset I$ 为 Cauchy 列 $\Rightarrow \{f(x_n)\}$ 也是 Cauchy 列。</p>
+</blockquote>
+<p>证明 $\Leftarrow$：设：$\{x_n\} \subset I$ 为 Cauchy 列，收敛。并且 $\{f(x_n)\}$ 也是 Cauchy 列；下证 $f$ 在 $I$ 上一致连续。</p>
+<p>反证法。</p>
+<p>假设 $f$ 在 $I$ 上不一致连续。</p>
+<p>根据条件，$\exists \epsilon_0 &gt; 0, \forall \delta &gt; 0, \exists x, y \text{ s.t. when} |x - y| &lt; \delta \text{ but } |f(x) - f(y)| \ge \epsilon$</p>
+<p>依次取 $\delta = \dfrac{1}{n}$，那么 $\exists \{x_n\}, \{y_n\} \subset I \text{ s.t. } \begin{cases}|x_n - y_n| &lt; \dfrac{1}{n} \\ |f(x_n) - f(y_n)| \ge \epsilon_0 \end{cases}$。</p>
+<p>由于 $I$ 是有限区间，所以 $\{x_n\}, \{y_n\}$ 均为有界数列，根据 Weierstrass 定理，其分别存在收敛子列 $\{x_{n_k}\}, \{y_{m_l}\}$。</p>
+<p>不妨假设分别收敛于 $A, B$。</p>
+<p>代上面的两个条件：$|x_n - y_n| &lt; \dfrac{1}{n}$。</p>
+<p>两边分别取极限，由于绝对值连续：$|A - B| \le 0$。</p>
+<p>所以 $A = B$。</p>
+<p>设数列：$\{z_n\} = x_{n_1}, y_{n_1}, x_{n_2}, y_{n_2}, \dots$。</p>
+<p>所以 $\{z_n\} \to A$。也就是 $\{z_n\}$ 为 Cauchy 列。</p>
+<p>这与 $|f(x_n) - f(y_n)| \ge \epsilon_0$ 的条件矛盾。</p>
+<p>因为 $|f(z_n) - f(z_m)|$ 在选取 $m, n$ 后，总是可以写成 $|f(x_{n_k}) - f(y_{n_k})| \ge \epsilon_0$，而 Cauchy 列需要满足 $|f(z_n) - f(z_m)| \le \epsilon_0$。</p>
+<p>$\Rightarrow$ <code>TODO</code></p>
+<h3>闭区间上连续函数的性质</h3>
+<h4>定理 2.14 有界性</h4>
+<blockquote>
+<p>闭区间上的连续函数必有界</p>
+</blockquote>
+<p>证明：设 $f(x)$ 在闭区间 $[a, b]$ 上连续，下证 $\exists M &gt; 0, \text{ s.t. } |f(x)| \le M$。</p>
+<p>反证，假设 $f$ 是无界的。</p>
+<ul>
+<li>将 $[a, b]$ 二等分，则至少存在一个子区间使得 $f$ 无界，记为 $[a_1, b_1]$。</li>
+<li>将 $[a_1, b_1]$ 二等分，则至少存在一个子区间使得 $f$ 无界，记为 $[a_2, b_2]$。</li>
+<li>$\cdots$</li>
+<li>将 $[a_{n - 1}, b_{n - 1}]$ 二等分，则至少存在一个子区间使得 $f$ 无界，记为 $[a_n, b_n]$。</li>
+</ul>
+<p>由此，可以得到一列闭区间 $\{a_n, b_n\}, n  = 1, 2,3,4, \dots$ 满足：</p>
+<ol>
+<li>$[a_n, b_n] \subset [a_{n - 1}, b_{n - 1}] \subset \cdots [a_2, b_2] \subset [a_1, b_1] \subset [a, b]$。</li>
+<li>$b_n - a_n = \dfrac{b_{n - 1} -a_{n - 1}}{2}$。</li>
+<li>$f(x)$ 在 $\{[a_n, b_n]\}$ 上无界且连续。</li>
+</ol>
+<p>由此，其构成一个闭区间套，由闭区间套定理，$\exists! \xi \in \{[[a_n, b_n]\}, n = 1,2,3,4,\dots \text{ s.t. } a_n \to \xi \land b_n \to \xi$。</p>
+<p>由 3，$f(x)$ 在 $\xi$ 连续 $\Rightarrow \exists \delta &gt; 0, \text{ s.t. when } |x - \xi| &lt; \delta : |f(x) - f(\xi)| &lt; 1$（取 $\epsilon = 1$）。</p>
+<p>由绝对值不等式 $|f(x)| - |f(\xi)| \le |f(x) - f(\xi)| &lt; 1$。</p>
+<p>所以 $|f(x)| &lt; 1 + |f(\xi)| \equiv M$。</p>
+<p>当 $n$ 足够大时，$\forall [a_n, b_n] \subset [\xi - \delta, \xi + \delta]$，这是因为 $a_n, b_n$ 均收敛于 $\xi$（<strong>这个非常重要</strong>）。</p>
+<p>由于 $|f(x)| \le M, \forall x \in (\xi - \delta, \xi + \delta)$。</p>
+<p>换句话说 $n$ 充分大之后 $|f(x)| \le M, \forall x \in [a_n, b_n]$。</p>
+<p>根据构造，$[a_n, b_n]$ 上 $f(x)$ 无界，这是矛盾的，所以 $f(x)$ 有界。</p>
+<h4>定理 2.15 最值性</h4>
+<blockquote>
+<p>闭区间上的连续函数一定存在最大值和最小值。</p>
+</blockquote>
+<p>证明：假设 $f$ 在区间 $[a, b]$ 上连续，从而是一致连续的并且有界的。</p>
+<p>由确界原理，$f$ 在 $[a, b]$ 上有上下确界。</p>
+<p><code>TODO</code></p>
+<p>证明2：用 Weierstrass 定理</p>
+<p>考虑 $S = \{f(x): x \in [a, b]\}$，$S$ 是有界的。</p>
+<p>由确界原理，$S$ 必定存在上下确界 $\beta, \alpha$。</p>
+<p>下证 $\exists \xi \in [a, b] \text{ s.t. } f(\xi) = \beta = \max\{f(x)\}$。</p>
+<p>由上确界定义，$\forall \epsilon &gt; 0, \exists x \in [a, b] \text{ s.t. } \beta - \epsilon &lt; f(x) \le \beta$。</p>
+<p>依次取 $\epsilon = \dfrac{1}{n}, n = 1,2,3,4, \dots$。</p>
+<p>存在一列 $\{x_n\} \subset [a, b]$ 使得 $\beta - \dfrac{1}{n} &lt; f(x_n) \le \beta$</p>
+<p>由于 $x_n \in [a, b]$ 所以 $\{x_n\}$ 有界，根据 Weierstrass 定理，存在子列 $\{x_{n_k}\} \subset \{x_n\}$ 收敛，设收敛于 $\xi \in [a, b]$（两边夹说明 $\xi$ 的范围即可）。</p>
+<p>对于上式两边取极限：$\lim\limits_{n \to \infty}(\beta - \dfrac{1}{n}) &lt; \lim\limits_{n \to \infty}f(x_n) \le \lim\limits_{n \to \infty} \beta$。</p>
+<p>根据 $f$ 的连续性，也就是：$\beta &lt; f(\lim\limits_{x \to n} x_n) = f(\xi) \le \beta$。</p>
+<p>换句话说，存在 $\xi \in [a, b] \text{ s.t. } f(\xi) = \beta$。</p>
+<p>证毕。</p>
+<p>这个地方的思考大概就是，上确界定义可以给出一个范围，希望把这个范围变成定值那就是两边夹逼取极限，又因为是闭区间，所以可以构造出一个有界数列进而构造出收敛数列，利用连续性可以拿进去进而得到想要的式子（这段之后放在整理里面）</p>
+<h4>定理 2.16 零点存在定理</h4>
+<blockquote>
+<p>若 $f(x)$ 在 $[a, b]$ 上连续，且 $f(a)f(b) \le 0$，则 $\exists x_0 \in [a,b] \text{ s.t. } f(x_0) = 0$。</p>
+</blockquote>
+<p>证明：使用二分法，即使用闭区间套定理</p>
+<p>如果 $=0$ 就取 $a \text{ or }b$ 即可。</p>
+<p>不妨假设 $a &lt; 0; b &gt; 0$。</p>
+<p>将 $[a, b]$ 二等分，若 $\dfrac{a + b}{2} = 0$ 则证明结束。</p>
+<p>否则，一定存在至少一个子区间使得端点值乘积小于零，称为 $[a_1, b_1]$。</p>
+<p>一直这样构造下去，可以得到闭区间列 $\{[a_n, b_n]\}$，显然构成闭区间套。</p>
+<p>且 $f(a_n) &lt; 0, f(b_n) &gt; 0$。</p>
+<p>由闭区间套定理，$\exists! \xi \in [a_n, b_n],n = 1,2,3,4,\dots \text{ s.t. } a_n \to \xi \land b_n \to \xi$。</p>
+<p>由于 $f$ 连续，$f(\lim\limits_{n \to \infty} a_n) = f(\xi) &lt; 0$。</p>
+<p>对 $b$ 同理，根据两边夹法则 $f(\xi) = 0$。</p>
+<h4>定理 2.17 介值性</h4>
+<blockquote>
+<p>如果 $f(x)$ 在 $[a, b]$ 上连续，设 $f(x)$ 的最大值最小值分别为 $M, m$，</p>
+<p>则 $\forall c \in [m, M], \exists x_0 \in [a,b] \text{ s.t. } f(x_0) = c$。</p>
+</blockquote>
+<p>证明：不妨假设 $c \in (m, M)$，由最值性，相等的时候和零点存在定理等价。</p>
+<p>设 $f(x_1) = m, f(x_2) = M; x_1, x_2 \in [a, b]$，进一步的不妨假设 $x_1 &lt; x_2$。</p>
+<p>构造 $F(x) = f(x) - c$，显然 $F$ 在 $[a, b]$ 上连续。</p>
+<p>$F(x_1) = m - c &lt; 0; F(x_2) = M - c &gt; 0$，根据零点存在定理可以知道 $\exists x_0 \in [a, b] \text{ s.t. } F(x_0) = 0 \Rightarrow f(x_0) = c$。</p>
         </article>
         
         <footer>

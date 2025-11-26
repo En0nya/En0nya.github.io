@@ -2,12 +2,12 @@
 
 *文章总数: 11*
 
-*Last update: 2025 年 11 月 19 日 01:20*
+*Last update: 2025 年 11 月 26 日 17:18*
 
+- [⌈数学分析笔记 - zxf - Chapter 2⌋](posts\math\sf-zxf-c2.html)  最后更新时间：*`25 年 11 月 25 日`*
 - [⌈ICPC Asia Regional Shenyang 2025⌋](posts\algor\icpc-25-shenyang.html)  最后更新时间：*`25 年 11 月 19 日`*
 - [⌈ICPC 2025 沈阳站 游记⌋](posts\logs\icpc-25-shenyang-log.html)  最后更新时间：*`25 年 11 月 19 日`*
 - [⌈杂题训练⌋](posts\algor\problem-training.html)  最后更新时间：*`25 年 11 月 18 日`*
-- [⌈数学分析笔记 - zxf - Chapter 2⌋](posts\math\sf-zxf-c2.html)  最后更新时间：*`25 年 11 月 18 日`*
 - [⌈数学分析习题记录⌋](posts\math\sf-assignments-1.html)  最后更新时间：*`25 年 11 月 12 日`*
 - [⌈CCPC Xiamen 2019 VP⌋](posts\algor\ccpc-xiamen-19-vp.html)  最后更新时间：*`25 年 11 月 12 日`*
 - [⌈CCPC Final 2019 VP⌋](posts\algor\ccpc-final-19-vp.html)  最后更新时间：*`25 年 11 月 11 日`*
