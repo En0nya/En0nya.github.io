@@ -739,9 +739,26 @@
 <blockquote>
 <p>闭区间上的连续函数一定是一致连续的。</p>
 </blockquote>
+<p>考虑利用上面不一致连续的判定条件来反证：</p>
+<p>证明：</p>
+<p>假设 $f(x)$ 在 $[a, b]$ 连续但不一致连续：</p>
+<p>即：$\exists \epsilon_0 &gt; 0, \forall \delta &gt; 0, \exists x, y \in[a, b] \text{ s.t. when } |x - y| &lt; \delta : |f(x) - f(y)| \ge \epsilon_0$。</p>
+<p>不妨取 $\delta = 1 \Rightarrow \exists \epsilon_0 &gt; 0, \exists x_1, y_1 \in [a, b], \text{ s.t. when } |x_1 - y_1| \le 1 : |f(x_1) - f(y_1)| \ge \epsilon_0$。</p>
+<p>再取 $\delta = \dfrac{1}{2} \Rightarrow \exists \epsilon_0 &gt; 0, \exists x_2, y_2 \in [a, b], \text{ s.t. when } |x_2 - y_2| \le \dfrac{1}{2} : |f(x_2) - f(y_2)| \ge \epsilon_0$。</p>
+<p>……</p>
+<p>取 $\delta = \dfrac{1}{n} \Rightarrow \exists \epsilon_0 &gt; 0, \exists x_n, y_n \in [a, b], \text{ s.t. when } |x_n - y_n| \le \dfrac{1}{n} : |f(x_n) - f(y_n)| \ge \epsilon_0$。</p>
+<p>且保证 $x_1 \le x_2 \le x_3 \le \dots; y_1 \le y_2 \le y_3 \le \dots$</p>
+<p>于是我们构造了两个有界数列 $\{x_n\}, \{y_n\}$。</p>
+<p>由 Weierstrass 定理：存在收敛子列：$\{x_{n_k}\} \subset \{x_n\}; \{y_{n_k}\} \subset \{y_n\}$。</p>
+<p>分别记为 $\{p_n\}, \{q_n\}$，极限分别记作 $P, Q \in [a, b]$。</p>
+<p>显然 $\lim\limits_{n \to \infty} (p_n - q_n) = 0$。</p>
+<p>$\lim\limits_{n \to \infty} p_n = \lim\limits_{n \to \infty}(q_n - (q_n - p_n)) = \lim\limits_{n \to \infty} q_n - 0$</p>
+<p>所以 $P = Q \equiv \xi$</p>
+<p>那么根据连续性 $f(p_n) - f(q_n) = f(\xi) - f(\xi) = 0$。</p>
+<p>换句话说不存在 $\epsilon_0$。矛盾，证毕。</p>
 <h4>定理 2.10 Cantor 定理的扩展 1</h4>
 <blockquote>
-<p>有限开区间上的连续函数一定是一致连续的。</p>
+<p>有限开区间上的连续函数是一致连续的 $\iff$ 该连续函数在开区间左右端点的右左极限均存在。</p>
 </blockquote>
 <h4>定理 2.11 Cantor 定理的扩展 2</h4>
 <blockquote>
@@ -786,7 +803,32 @@
 <p>所以 $\{z_n\} \to A$。也就是 $\{z_n\}$ 为 Cauchy 列。</p>
 <p>这与 $|f(x_n) - f(y_n)| \ge \epsilon_0$ 的条件矛盾。</p>
 <p>因为 $|f(z_n) - f(z_m)|$ 在选取 $m, n$ 后，总是可以写成 $|f(x_{n_k}) - f(y_{n_k})| \ge \epsilon_0$，而 Cauchy 列需要满足 $|f(z_n) - f(z_m)| \le \epsilon_0$。</p>
-<p>$\Rightarrow$ <code>TODO</code></p>
+<p>$\Rightarrow$ :</p>
+<p>设 $\{x_n\} \subset I$ 为 Cauchy 列，$f$ 一致连续。</p>
+<p>需要证明 $\{f(x_n)\}$ 为 Cauchy 列。</p>
+<p>由于 $f$ 一致连续：$\forall \epsilon &gt; 0, \exists \delta = \delta(\epsilon) \text{ s.t. when } x, y \in I, |x - y|&lt; \delta : |f(x) - f(y)| &lt; \epsilon$。</p>
+<p>由于 $\{x_n\}$ 为 Cauchy 列，对于上面的 $\delta$，$\exists N \text{ s.t. } \forall m, n &gt; N, |x_m - x_n| &lt; \delta$</p>
+<p>这两个条件可以得到：$|f(x_m) - f(x_n)| &lt; \epsilon$。</p>
+<p>说明 $f(x_n)$ 是 Cauchy 列。</p>
+<p>□</p>
+<blockquote>
+<p><strong>例子</strong>：假设 $f(x)$ 在 $[1, +\infty)$ 上连续且满足：</p>
+<p>$\lim\limits_{x \to +\infty}[f(x) - (ax + b)] = 0; a,b\in\mathbb{R}$。</p>
+<p>说明 $f(x)$ 在 $[1, +\infty)$ 上连续。</p>
+</blockquote>
+<p>证明：</p>
+<p>$\lim\limits_{x \to +\infty}[f(x) - (ax + b)] \iff \forall \epsilon &gt; 0, \exists M &gt; 0, \text{ s.t. when } x \ge M : |f(x) - (ax + b)| &lt; \epsilon$</p>
+<p>任取 $x_1, x_2 \in [1, +\infty)$。</p>
+<p>$f(x_1) - f(x_2) = [f(x_1) - (ax_1 + b)] - [f(x_2) - (ax_2 + b)] + [(ax_1 + b) - (ax_2 + b)]$</p>
+<p>$= [f(x_1) - (ax_1 + b)] - [f(x_2) - (ax_2 + b)] + a(x_1 - x_2)$</p>
+<p>记 $F(x) = f(x) - (ax + b)$。</p>
+<p>$= F(x_1) - F(x_2) + a(x_1 - x_2) \le |F(x_1) - F(x_2)| + |a||x_1 + x_2| \le |F(x_1)| + |F(x_2)| + |a||x_1 - x_2|$。</p>
+<p>我们希望它小于 $\epsilon$，然后说明 $\delta$ 只和 $\epsilon$ 有关。</p>
+<p>Step1：先证明 $f$ 在 $[M, +\infty)$ 上一致连续，对上述的 $\epsilon &gt; 0$，取 $\delta = \dfrac{\epsilon}{a}$。</p>
+<p>那么当 $x_1, x_2 \in [M, +\infty) \land |x_1 - x_2| &lt; \delta$ 时，$|f(x_1) - f(x_2)| \le |F(x_1)| + |F(x_2)| + |a||x_1 - x_2| \le |F(x_1)| + |F(x_2)| + \epsilon \le \epsilon + \epsilon + \epsilon = 3\epsilon$</p>
+<p>所以 $f$ 在 $[M, +\infty)$ 上一致连续。</p>
+<p>根据 Cantor 定理，$f(x)$ 在 $[1, M + 1]$ 上一致连续（在下面）。</p>
+<p>所以 $f$ 在 $[1, +\infty)$ 上一致连续。</p>
 <h3>闭区间上连续函数的性质</h3>
 <h4>定理 2.14 有界性</h4>
 <blockquote>

@@ -184,4 +184,58 @@ $\dfrac{1\times 3 \times 5 \times \cdots \times (2n - 1)}{\sqrt{1 \times 3} \sqr
 
 于是就能说明其有界性。
 
+### 第六次作业
 
+> T3：求 $a,b \text{ s.t. } \lim\limits_{x \to +\infty}\left[\dfrac{x^2+1}{x+1}-ax-b\right] = 0$
+
+括号内：$\dfrac{(x^2 + 1) - (x + 1)(ax + b)}{x + 1} = \dfrac{(1-  a)x^2 - (a + b)x + (1 - b)}{x+1}$。
+
+由于极限为 $0$。二次项系数显然为 $0 \Rightarrow a = 1$，否则
+
+所以括号内：$\dfrac{-(b + 1)x + (1 - b)}{x+1}$
+
+分子分母同时除 $x:\dfrac{-(b + 1) + \dfrac{1 - b}{x}}{1 + \dfrac{1}{x}}$
+
+由于极限都存在分子分母分别求极限：$0 = \dfrac{-(b + 1)}{1} \Rightarrow b = -1$
+
+> T4：讨论 Dirichlet 函数 $D(x) = \begin{cases}1, &x \in \mathbb{Q} \\ 0, &x \not\in \mathbb{Q} \end{cases}$ 的连续性
+
+`TODO`
+
+任取 $x_0 \in \mathbb{Q}$。
+
+左右看起来没什么区别，直接算：
+
+假设  $\lim\limits_{x \to x_0} D(x)$ 存在，根据 Heine 定理，$\forall \{x_n\} \to x_0, \lim\limits_{n \to \infty}D(x_n) = \lim\limits_{x \to x_0} D(x)= A$ 
+
+分别取两列有理数无理数 $\{p_n\} \subset \mathbb{Q}, \{q_n\} \text{ s.t. } \{q_n\} \to x_0, \{p_n\} \to x_0$。
+
+所以 $D(p_n) = 0, D(q_n) = 1$。
+
+$0 \not= 1$ 所以 $\lim\limits_{x \to x_0} D(x)$ 不存在。
+
+所以在有理点不连续。
+
+这就是经典的，利用有理数和无理数都是稠密的来从两边切入的技巧。
+
+任取 $x_0 \in \mathbb{R/Q}$。
+
+还是可以各取有理数无理数趋近于它。
+
+> T9：$f(x) = [x]\sin x(\dfrac{1}{x}), g(x) = 2[x] - [2x]$ 不连续点的类型
+
+对于 $f(x), x = 0$：
+
+右极限：$\lim\limits_{x \to 0^+} [x]\sin(\dfrac{1}{x}) = 0$
+
+原因是：$0 \le |[x] \sin(\dfrac{1}{x})| \le |[x]|$。
+
+并且 $x \to 0^+$ 的时候 $|[x]| \to 0$。
+
+考虑左极限，由于 $\sin(\dfrac{1}{x})$ 的左极限不存在但是 $[x]$ 的左极限存在，所以左极限不存在。
+
+所以 $0$ 是 $f(x)$ 的第二类不连续点。
+
+对于 $[x]$ 来说，所有整数点都是不连续的，这就导致 $f(x)$ 不连续。
+
+且不连续点类型是第一类（左右倒是都可以算出来不过不相等`TODO`）

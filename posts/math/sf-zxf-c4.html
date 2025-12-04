@@ -63,27 +63,46 @@
         </header>
         
         <article>
-            <h2>Categories</h2>
-<p><em>文章总数: 16</em></p>
-<p><em>Last update: 2025 年 12 月 04 日 21:15</em></p>
-<ul>
-<li><a href="posts\math\sf-assignments-1.html">⌈数学分析习题记录⌋</a>  最后更新时间：<em><code>25 年 12 月 03 日</code></em></li>
-<li><a href="posts\math\sf-zxf-c4.html">⌈微分中值定理及其应用⌋</a>  最后更新时间：<em><code>25 年 12 月 03 日</code></em></li>
-<li><a href="posts\math\sf-zxf-c3.html">⌈一元函数的微分学⌋</a>  最后更新时间：<em><code>25 年 12 月 03 日</code></em></li>
-<li><a href="posts\math\sf-zxf-c2.html">⌈数学分析笔记 - zxf - Chapter 2⌋</a>  最后更新时间：<em><code>25 年 12 月 03 日</code></em></li>
-<li><a href="posts\logs\ccpc-zhengzhou-25-log.html">⌈CCPC Zhengzhou 2025 游记⌋</a>  最后更新时间：<em><code>25 年 11 月 26 日</code></em></li>
-<li><a href="posts\algor\ccpc-zhengzhou-25.html">⌈CCPC Zhengzhou 2025⌋</a>  最后更新时间：<em><code>25 年 11 月 26 日</code></em></li>
-<li><a href="posts\algor\ccpc-harbin-19-vp.html">⌈CCPC Harbin 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 26 日</code></em></li>
-<li><a href="posts\algor\icpc-25-shenyang.html">⌈ICPC Asia Regional Shenyang 2025⌋</a>  最后更新时间：<em><code>25 年 11 月 19 日</code></em></li>
-<li><a href="posts\logs\icpc-25-shenyang-log.html">⌈ICPC 2025 沈阳站 游记⌋</a>  最后更新时间：<em><code>25 年 11 月 19 日</code></em></li>
-<li><a href="posts\algor\problem-training.html">⌈杂题训练⌋</a>  最后更新时间：<em><code>25 年 11 月 18 日</code></em></li>
-<li><a href="posts\algor\ccpc-xiamen-19-vp.html">⌈CCPC Xiamen 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 12 日</code></em></li>
-<li><a href="posts\algor\ccpc-final-19-vp.html">⌈CCPC Final 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-<li><a href="posts\math\sf-zxf-c1.html">⌈数学分析笔记 - zxf - Chapter 1⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-<li><a href="posts\algor\icpc-25-xian-vp.html">⌈ICPC Asia Reginal Xi'an 2025 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 04 日</code></em></li>
-<li><a href="posts\algor\comp-geo.html">⌈计算几何⌋</a>  最后更新时间：<em><code>25 年 10 月 10 日</code></em></li>
-<li><a href="posts\logs\2025-10-04.html">⌈缙云山⌋</a>  最后更新时间：<em><code>25 年 10 月 04 日</code></em></li>
-</ul>
+            <h2>微分中值定理及其应用</h2>
+<h3>定义 4.1 极值</h3>
+<blockquote>
+<p>假设 $f$ 在开区间 $(a, b)$ 上有定义，$x_0 \in (a, b)$。</p>
+<p>如果存在 $x_0$ 的某个邻域 $o(x_0, \delta)$ 内，使得 $f(x) \le f(x_0), x\in o(x_0, \delta)$</p>
+<p>则称 $x_0$ 为 $f(x)$ 的一个极大值点，此时 $f(x_0)$ 称为 $f(x)$ 的极大值。</p>
+<p>类似的，可以定义极小值。</p>
+</blockquote>
+<h3>定理 4.1 Fermat 定理</h3>
+<blockquote>
+<p>如果 $x_0$ 为 $f$ 的一个极值点，并且 $f$ 在 $x_0$ 这一点是可导的。</p>
+<p>则：这一点的导数一定是零</p>
+</blockquote>
+<p>证明：</p>
+<p>不妨认为其为极大值点，所以 $\exists \delta &gt; 0 \text{ s.t. when } 0 &lt; |x - x_0| &lt; \delta : f(x) \le f(x_0)$（保证在定义域内）</p>
+<p>所以 $x \in o(x_0, \delta)$ 时：</p>
+<p>当 $x &gt; x_0$ 时，$\dfrac{f(x) - f(x_0)}{x - x_0} \ge 0$。</p>
+<p>当 $x &lt; x_0$ 时，$\dfrac{f(x) - f(x_0)}{x - x_0} \le 0$。</p>
+<p>利用极限的保序性，这两个都取极限可以知道：</p>
+<p>$\lim\limits_{x \to x_0^+} \dfrac{f(x) - f(x_0)}{x - x_0} \ge 0; \lim\limits_{x \to x_0^-} \dfrac{f(x) - f(x_0)}{x - x_0} \le 0$。</p>
+<p>换句话说 $f(x)$ 在 $x_0$ 处的右导数大于等于零，左导数小于等于零</p>
+<p>因为 $f(x)$ 在 $x_0$ 处可导所以左右导数一定相等，等于 $0$。</p>
+<p>证毕。</p>
+<h3>定理 4.2 Roll 中值定理</h3>
+<blockquote>
+<p>假设 $f$ 在闭区间 $[a, b]$ 上连续，从而一致连续。</p>
+<p>在开区间 $(a, b)$ 上是可导的且 $f(a) = f(b)$。</p>
+<p>则存在一点 $\xi \in (a, b)$ 使得 $f^\prime(\xi) = 0$</p>
+</blockquote>
+<p>证明：</p>
+<p>假设 $f$ 在 $[a, b]$ 上的最大最小值分别为 $M, m$（根据命题 3.x 一定可以取到）</p>
+<ol>
+<li>$M = m$，$f \equiv f(a) = f(b)$，这样的 $\xi$ 一定存在</li>
+<li>
+<p>$M \not= m \Rightarrow m &lt; M$，则 $m, M$ 中至少有一个 $\not= f(a)$。不妨认为是 $M \not= f(a)$。</p>
+<p>所以 $M &gt; f(a) = f(b)$</p>
+<p>设 $\xi$ 为 $f$ 的最大值点，那么 $\xi \not=a, \xi \not=b \Rightarrow \xi \in (a, b)$。</p>
+<p>因为开区间上，最大值点一定是极大值点，由 Fermat 定理可以说明：$f^\prime(\xi) = 0$</p>
+</li>
+</ol>
         </article>
         
         <footer>
