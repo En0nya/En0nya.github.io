@@ -2,7 +2,7 @@
 
 *文章总数: 16*
 
-*Last update: 2025 年 12 月 05 日 08:40*
+*Last update: 2025 年 12 月 05 日 08:45*
 
 - [⌈ICPC Asia Regional 沈阳 2025 游记⌋](posts\logs\icpc-shenyang-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈CCPC 郑州 2025 游记⌋](posts\logs\ccpc-zhengzhou-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*
