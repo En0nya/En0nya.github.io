@@ -1,4 +1,4 @@
-## ICPC Asia Reginal Xi'an 2025 VP
+## ICPC Asia Reginal 西安 2025 VP
 
 好像要上 Ucup 所以这个先暂时不发。
 

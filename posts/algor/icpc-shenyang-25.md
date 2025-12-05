@@ -1,4 +1,4 @@
-## ICPC Asia Regional Shenyang 2025
+## ICPC Asia Regional 沈阳 2025
 
 由于要上 Ucup 所以暂时先不写。
 
