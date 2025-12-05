@@ -1026,9 +1026,9 @@ $\lim\limits_{x \to x_0} [u(x)w(x) \cdot \dfrac{v(x)}{w(x)}] = A \cdot 1 = A$。
 
 + 对于 $\delta = 1, \exists x_1, y_1 \in I, |x_1 - y_1| < 1, |f(x_1) - f(y_1)| \ge \epsilon_0$。
 
-+ 对于 $\delta = 2, \exists x_2, y_2 \in I, |x_2 - y_2| < \dfrac{1}{2}, |f(x_2) - f(y_2)| \ge \epsilon_0$。
++ 对于 $\delta = \dfrac{1}{2}, \exists x_2, y_2 \in I, |x_2 - y_2| < \dfrac{1}{2}, |f(x_2) - f(y_2)| \ge \epsilon_0$。
 + $\cdots$
-+ 对于 $\delta = n, \exists x_n, y_n \in I, |x_n - y_n| < \dfrac{1}{n}, |f(x_n) - f(y_n)| \ge \epsilon_0$。
++ 对于 $\delta = \dfrac{1}{n}, \exists x_n, y_n \in I, |x_n - y_n| < \dfrac{1}{n}, |f(x_n) - f(y_n)| \ge \epsilon_0$。
 + $\cdots$。
 
 于是我们构造了两个点列 $\{x_n\}, \{y_n\} \subset I$。
@@ -1108,17 +1108,125 @@ $\lim\limits_{n \to \infty} p_n = \lim\limits_{n \to \infty}(q_n - (q_n - p_n)) 
 
 > 有限开区间上的连续函数是一致连续的 $\iff$ 该连续函数在开区间左右端点的右左极限均存在。
 
+先证明 $\Leftarrow$：
+
+不妨假设 $F(x) = \begin{cases}\lim\limits_{x \to a^+} f(x), &x = a \\ \lim\limits_{x \to b^-} f(x), &x = b \\ f(x), &x \in (a, b)\end{cases}$
+
+显然 $F(x)$ 在 $a$ 点右连续，$b$ 点左连续。
+
+所以 $F(x)$ 在 $[a, b]$ 上连续，由 Cantor 定理，$F(x)$ 在 $[a, b]$ 上一致连续，从而在 $(a, b)$ 上一致连续，这等价于 $f(x)$ 在 $(a, b)$ 上一致连续。
+
+再证明：$\Rightarrow$。
+
+根据定理 2.3 函数极限的 Cauchy 收敛原理：
+
+$a$ 处右极限存在即：$\forall \epsilon > 0, \exists \delta \text{ s.t. when } x, y \in (a, a + \delta) : |f(x) - f(y)| < \epsilon$。
+
+而根据 $f(x)$ 的一致连续性可以得知：
+
+$\forall \epsilon > 0, \exists\delta = \delta(\epsilon) \text{ s.t. when } x,y \in (a, b), |x - y| < \delta : |f(x) - f(y)| < \epsilon$。
+
+这显然是上面条件的充分条件。对于 $b$ 的情况同理。
+
 #### 定理 2.11 Cantor 定理的扩展 2
 
 > 若 $f(x)$ 在 $[a, +\infty)$ 上连续，且 $\lim\limits_{x \to +\infty} f(x)$ 存在，则 $f(x)$ 在 $[a, +\infty)$ 上一致连续 
->
-> 拓展：若 $f(x)$ 在 $[a, +\infty)$ 上连续，且 $\lim\limits_{x \to +\infty}[f(x) - g(x)] = 0$，则若 $g(x)$ 在 $[a, +\infty)$ 上一致连续，$f(x)$ 也在 $[a, +\infty)$ 上一致连续。
+
+证明第一个：
+
+比较自然的想法是考虑有限区间和无限区间拆开考虑。
+
+取一个比较大的数 $X$，对于有限区间 $[a, X]$，根据 Cantor 定理可以知道其一致连续性。
+
+对于靠近无限的区间怎么处理？
+
+仍旧利用函数的 Cauchy 收敛准则：
+
+$\lim\limits_{x\to +\infty} f(x) = A$ 存在的充分必要条件是：
+
+$\forall \epsilon > 0, \exists X > a \text{ s.t. } x, y > X : |f(x) - f(y)| < \epsilon$。
+
+这告诉我们，甚至不需要限定 $x, y$ 的距离都能保证其小于一个 $\epsilon$。
+
+所以我们取有限区间里的那个 $\delta$ 就可以。
+
+这还不是全部，我们还需要考虑 $x, y$ 跨越了这两部分的情况。
+
+现有条件条件只能在两边各自连续，不是很好用，我们考虑利用这个 $X$ 来建立关系。
+
+对于 $x$ 这边：$\forall \epsilon > 0, \exists \delta_x = \delta_x(\epsilon) \text{ s.t. when } |x - X| < \delta_x : |f(x) - f(X)| < \epsilon$ 
+
+我们不妨取 $\delta_x = 1$。
+
+对于 $y$ 这边也用 $\delta_y = 1 \Rightarrow |y - X| < 1 : |f(y) - f(X)| < \epsilon$ 
+
+所以就有两个条件：
+
+$X - 1 < x < X + 1 \Rightarrow x < X$
+
+$X - 1 < y < X + 1 \Rightarrow y < X + 1$。
+
+所以 $y - x < 1 \Rightarrow |y - x| < 1$
+
+对于那么在 $|y - x| < 1$ 时两个条件都可以使用。
+
+很容易用三角不等式得到：$|f(x) - f(y)| < \epsilon$，只需要取 $\delta^\prime = \min\{1, \delta\}$ 即可。
+
+**注记**：这个命题的逆命题不成立（$f(x)$ 在 $[a, +\infty)$ 上一致连续不能推出无限处极限存在），例如 $\sin x$。
+
+#### 定理 2.12 Cantor 定理的扩展 3
+
+> 若 $f(x)$ 在 $[a, +\infty)$ 上连续，且 $\lim\limits_{x \to +\infty}[f(x) - g(x)] = 0$，则若 $g(x)$ 在 $[a, +\infty)$ 上一致连续，$f(x)$ 也在 $[a, +\infty)$ 上一致连续。
+
+证明：
+
+想法和 2.11 差不多，都要把区间拆开考虑。
+
+不过既然已经有了 2.11 的铺垫，我们想要做的事情就是证明 $\lim\limits_{x \to +\infty} f(x)$ 存在。
+
+对于这个 $\lim\limits_{x \to +\infty} [f(x) - g(x)] = 0$ 的条件显然是不能拆开的，因为 $f,g$ 的极限都不一定存在。
+
+那怎么办呢？
+
+那还是只能沿用上面的思路重新写一遍。
+
+有限区间比较简单不说了。
+
+对于 $[X, +\infty)$。
+
+我们利用三角不等式：$|f(x) - f(y)| \le |(f(x) - g(x)) - (f(y) - g(y)) + (g(x) - g(y))|$ 来放缩。
+
+这样就能够凑出 $|g(x) - g(y)|$ 还有 $|F(x) - F(y)|; (F = f - g)$
+
+对于 $\epsilon$ 取 $g$ 的 $\delta$，很容易说明一致连续性。
+
+跨过 $X$ 的情况也是只需要让上面两种情况的 $\delta$ 和一个常数取个 $\min$ 再处理一下就好。
 
 #### 例题 2.8 
 
 > 证明 $f(x) = \dfrac{x^2 + 1}{x^2 + 4} \sin(\dfrac{1}{x})$ 在 $(0, 1)$ 上不一致连续，在 $[1, +\infty)$ 上一致连续。
 
-#### 定理 2.12
+证明：
+
+对于 $x \in (0, 1)$：
+
+即证明：$\exists \epsilon_0 > 0, \forall \delta, \exists x, y \text{ s.t. when } |x - y| < \delta : |f(x) - f(y)| \ge \epsilon_0$
+
+直接按照这个来感觉不好做，因为难以找到实例。所以考虑利用 Cantor 定理扩展来反证。
+
+我们不妨假设它是一致连续的，那么根据定理 2.11，$\lim\limits_{x \to 0^+} f(x)$ 必然存在，但 $\lim\limits_{x \to 0} \sin(\dfrac{1}{x})$ 不存在（不是有限）所以矛盾。
+
+对于 $x \in [1, +\infty)$，仍旧考虑使用上面的几个定理
+
+由于 $\lim\limits_{x \to +\infty} f(x) = 0$ 存在。
+
+只需要证明 $f(x)$ 在 $[1, +\infty)$ 上连续。
+
+根据连续函数的运算法则，前面是连续的，后面也是连续的所以 $f$ 是连续的。
+
+证毕。
+
+#### 定理 2.13
 
 > 若 $f(x)$ 在 $\mathbb{R}$ 上一致连续，则 $\exists a, b \in \mathbb{R+} \text{ s.t. }$
 >
@@ -1128,7 +1236,7 @@ $\lim\limits_{n \to \infty} p_n = \lim\limits_{n \to \infty}(q_n - (q_n - p_n)) 
 
 证明：
 
-存在 $\delta > 0 \text{ s.t. when } |x - y| < \delta : |f(x) - f(y)| < 1$。
+取 $\epsilon = 1$，$f$ 一致连续也就是：存在 $\delta > 0 \text{ s.t. when } |x - y| < \delta : |f(x) - f(y)| < 1$。
 
 设 $M > 0 \text{ s.t. } |f(x)| \le M, \forall x \in [-\delta, +\delta], x\in \mathbb{R} \Rightarrow \exists n \in \mathbb{Z} \text{ and } t \in [-\delta, +\delta] \text{ s.t. } x = n \delta + t$。 
 
@@ -1142,7 +1250,7 @@ $|f(x)| \le |f(n \delta + t) - f[(n - 1)\delta + t]| + |f[(n - 1)\delta + t] - f
 
 取 $a = \dfrac{1}{\delta}, b = M + 1$ 即可。
 
-#### 定理 2.13
+#### 定理 2.14
 
 > 设 $f$ 在有限区间 $I$ 上有定义，则 $f$ 在 $I$ 上一致连续的充分必要条件是：
 >
@@ -1228,7 +1336,7 @@ Step1：先证明 $f$ 在 $[M, +\infty)$ 上一致连续，对上述的 $\epsilo
 
 ### 闭区间上连续函数的性质
 
-#### 定理 2.14 有界性
+#### 定理 2.15 有界性
 
 > 闭区间上的连续函数必有界
 
@@ -1263,7 +1371,7 @@ Step1：先证明 $f$ 在 $[M, +\infty)$ 上一致连续，对上述的 $\epsilo
 
 根据构造，$[a_n, b_n]$ 上 $f(x)$ 无界，这是矛盾的，所以 $f(x)$ 有界。
 
-#### 定理 2.15 最值性
+#### 定理 2.16 最值性
 
 > 闭区间上的连续函数一定存在最大值和最小值。
 
@@ -1299,7 +1407,7 @@ Step1：先证明 $f$ 在 $[M, +\infty)$ 上一致连续，对上述的 $\epsilo
 
 这个地方的思考大概就是，上确界定义可以给出一个范围，希望把这个范围变成定值那就是两边夹逼取极限，又因为是闭区间，所以可以构造出一个有界数列进而构造出收敛数列，利用连续性可以拿进去进而得到想要的式子（这段之后放在整理里面）
 
-#### 定理 2.16 零点存在定理
+#### 定理 2.17 零点存在定理
 
 > 若 $f(x)$ 在 $[a, b]$ 上连续，且 $f(a)f(b) \le 0$，则 $\exists x_0 \in [a,b] \text{ s.t. } f(x_0) = 0$。
 
@@ -1324,7 +1432,7 @@ Step1：先证明 $f$ 在 $[M, +\infty)$ 上一致连续，对上述的 $\epsilo
 
 对 $b$ 同理，根据两边夹法则 $f(\xi) = 0$。
 
-#### 定理 2.17 介值性
+#### 定理 2.18 介值性
 
 > 如果 $f(x)$ 在 $[a, b]$ 上连续，设 $f(x)$ 的最大值最小值分别为 $M, m$，
 >
