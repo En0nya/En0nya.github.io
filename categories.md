@@ -2,8 +2,10 @@
 
 *文章总数: 16*
 
-*Last update: 2025 年 12 月 05 日 16:55*
+*Last update: 2025 年 12 月 15 日 15:36*
 
+- [⌈数学分析笔记 Chapter 4 微分中值定理及其应用⌋](posts\math\sf-zxf-c4.html)  最后更新时间：*`25 年 12 月 15 日`*
+- [⌈数学分析习题记录 - 极限部分⌋](posts\math\sf-assignments-1.html)  最后更新时间：*`25 年 12 月 06 日`*
 - [⌈数学分析笔记 Chapter 2 函数极限 & 连续函数⌋](posts\math\sf-zxf-c2.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈ICPC Asia Regional 沈阳 2025 游记⌋](posts\logs\icpc-shenyang-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈CCPC 郑州 2025 游记⌋](posts\logs\ccpc-zhengzhou-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*
@@ -13,8 +15,6 @@
 - [⌈CCPC 郑州 2025⌋](posts\algor\ccpc-zhengzhou-25.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈CCPC 厦门 2019 VP⌋](posts\algor\ccpc-xiamen-19-vp.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈CCPC 哈尔滨 2019 VP⌋](posts\algor\ccpc-harbin-19-vp.html)  最后更新时间：*`25 年 12 月 05 日`*
-- [⌈数学分析习题记录 - 极限⌋](posts\math\sf-assignments-1.html)  最后更新时间：*`25 年 12 月 05 日`*
-- [⌈数学分析笔记 Chapter 4 微分中值定理及其应用⌋](posts\math\sf-zxf-c4.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈数学分析笔记 Chapter 1 数列极限⌋](posts\math\sf-zxf-c1.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈数学分析笔记 Chapter 3 一元函数的微分学⌋](posts\math\sf-zxf-c3.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈CCPC Final 2019 VP⌋](posts\algor\ccpc-final-19-vp.html)  最后更新时间：*`25 年 11 月 11 日`*

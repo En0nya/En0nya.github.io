@@ -104,6 +104,328 @@
 <p>因为开区间上，最大值点一定是极大值点，由 Fermat 定理可以说明：$f^\prime(\xi) = 0$</p>
 </li>
 </ol>
+<h4>定理 4.3 Lagrange 中值定理</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, b]$ 上连续，在 $(a, b)$ 上可导，则 $\exists \xi \in (a, b) \text{ s.t. } f^\prime(\xi) = \dfrac{f(b) - f(a)}{b - a}$。</p>
+</blockquote>
+<p><img alt="lagrange.png" src="../../medias/lagrange.png" /></p>
+<p>证明：</p>
+<p>只需要证明：$\exists \xi \in (a, b) \text{ s.t. } f(b) - f(a) = (b - a) f^\prime(\xi)$</p>
+<p>构造函数 $F(x) = f(b) - f(a) - (b - a)f(x)$。</p>
+<p>想用 Roll 证明（把这个图转一下转平就是 Roll 的形式）：</p>
+<p>$F(b)= f(b) - f(a) - (b-a)f(b)$</p>
+<p>$F(a) = f(b) - f(a) - (b - a)f(a)$</p>
+<p>它们不等，没法使用 Roll 中值定理</p>
+<p>为什么要用 Roll，其实就是想要 $F^\prime$ 能构造出所需的项，这里 $f^\prime(x)$ 其实已经能造出来了，但前面还不行。</p>
+<p>于是我们在 $f(b) - f(a)$ 上再乘一个 $x$。</p>
+<p>所以</p>
+<p>$F(b)= [f(b) - f(a)]x - (b-a)f(b)$</p>
+<p>$F(a)= [f(b) - f(a)]x - (b-a)f(a)$</p>
+<p>$F(a) = F(b)$ 且 $F$ 在 $(a, b)$ 上可导，$[a, b]$ 上连续。</p>
+<p>由 Roll 中值定理，$\exists \xi \in (a, b) \text{ s.t. } F^\prime(\xi) = 0 = f(b) - f(a) - (b - a)f^\prime(\xi)$。</p>
+<p>所以就证明了 Lagrange 中值定理。</p>
+<h4>定理 4.4 Cauchy 中值定理</h4>
+<blockquote>
+<p>假设 $f, g$ 在 $[a, b]$ 连续，在 $(a, b)$ 上可导。</p>
+<p>$g^\prime(x) \not=0;\forall x \in (a, b)$。</p>
+<p>则：$\exists \xi \in (a, b) \text{ s.t. } \dfrac{f(b) - f(a)}{g(b) - g(a)} = \dfrac{f^\prime(\xi)}{g^\prime(\xi)}$</p>
+</blockquote>
+<p>证明：</p>
+<p>用两次 Lagrange 中值定理就行吗？注意到这两个的 $\xi$ 可能不等。</p>
+<p>继续构造函数。</p>
+<p>即证：$\exists \xi \in (a, b) \text{ s.t. } [f(b) - f(a)]g^\prime(\xi) = [g(b) - g(a)]f^\prime(\xi)$。</p>
+<p>构造函数：$F(x) = [f(b) - f(a)]g(x) - [g(b) - g(a)]f(x), x\in (a, b)$。</p>
+<p>$F$ 在闭区间上连续，在开区间上可导。</p>
+<p>还是想用 Roll，考虑 $F(a), F(b)$。</p>
+<p>$F(a) = f(b)g(a) - f(a)g(a) - g(b)f(a) + g(a)f(a)$</p>
+<p>$F(b) = f(b)g(b) - f(a)g(b) - g(b)f(b) + g(a)f(b)$</p>
+<p>$F(b) - F(a) = [f(b) - f(a)]\cdot[g(b) - g(a)] - [g(b) - g(a)] \cdot [f(b) - f(a)] = 0$</p>
+<p>（<strong>这个轮换式看起来不等但实际上是等的，感觉还比较重要</strong>）</p>
+<p>$F(a) = F(b)$，由 Roll 中值定理，$\exists \xi \in (a, b) \text{ s.t. } F^\prime(\xi) = 0$ 即所证式。</p>
+<h4>命题 4.1</h4>
+<blockquote>
+<p>如果 $f$ 在 $[a, b]$ 上连续，在 $(a, b)$ 上可导且 $f^\prime(x)= 0, \forall x\in (a, b)$ 则 $f$ 为常数。</p>
+</blockquote>
+<p>证明：</p>
+<p>$\forall x \in [a, b]$，考虑 $[a, x] \subset [a, b]$</p>
+<p>由 Lagrange 中值定理：$f(x) - f(a) = f^\prime(\xi)(x - a)$。</p>
+<p>由于每一点都是 $f^\prime = 0$，所以 $f(x) = f(a)$。</p>
+<p>恒等。</p>
+<h4>例题 4.1</h4>
+<blockquote>
+<p>证明 $|\sin x - \sin y| \le |x - y|, \forall x, y\in\mathbb{R}$</p>
+</blockquote>
+<p>证明：</p>
+<p>考虑函数：$f(t) = \in t, t \in [x, y]$</p>
+<p>由 Lagrange 中值定理：$\exists \xi \in [x, y] \text{ s.t. } f(x) - f(y) = f^\prime(\xi)(x - y)$ </p>
+<p>所以就是 $|\cos \xi| \cdot |x - y| \le |x - y|$。</p>
+<h4>例题 4.2 又一个判定一致连续的方法</h4>
+<blockquote>
+<p>假设 $f$ 在开区间上可导，且导数有界，且 $\exists M &gt; 0 \text{ s.t. } |f^\prime(x)| \le M. x \in (a, b)$。</p>
+<p>则 $f$ 在开区间上是一致连续的，其中 $a, b$ 可以为无穷。</p>
+</blockquote>
+<p>证明：</p>
+<p>任取 $x&lt; y \in (a, b)$，所以 $f(x)$ 在 $[x, y]$ 上连续，在 $(a, b)$ 上可导。</p>
+<p>由 Lagrange 中值定理，存在 $\xi \in [x, y] \text{ s.t. } f(x) - f(y) = f^\prime(\xi)(x - y)$。</p>
+<p>两边同时取绝对值：$|f(x) - f(y)| = |f^\prime(\xi)||x - y|$</p>
+<p>所以：$|f(x) - f(y)| \le M |x - y|$。</p>
+<p>所以 $\forall \epsilon &gt; 0, \text{ let }\delta = \dfrac{\epsilon}{M}, \text{ s.t. when } |x - y| &lt; \delta : |f(x) - f(y)| \le M|x- y| &lt; \epsilon$</p>
+<p>所以 $f$ 是一致连续的。</p>
+<h3>函数的单调性和凸性</h3>
+<h4>命题 4.2 单调性</h4>
+<blockquote>
+<p>设 $f$ 在 $I$ 上是可导的，则 $f$ 在 $I$ 上单调递增（减）的充分必要条件是其导数 $f^\prime(x) \ge 0 (\le 0)$</p>
+</blockquote>
+<p>证明，先推必要性 $\Rightarrow$：</p>
+<p>$f$ 在 $I$ 上是单调递增的，即 $\dfrac{f(x) - f(y)}{x - y} \ge 0, y \not= x \Rightarrow \dfrac{f(y) - f(x)}{y - x} \ge 0$。</p>
+<p>固定 $x, \text{ let }y \to x$，所以 $f^\prime(x) &gt; 0$。</p>
+<p>证明充分性 $\Leftarrow$：</p>
+<p>下证，$f$ 是单调递增的。</p>
+<p>任取 $x, y\in I, x &gt; y$。</p>
+<p>下证：$f(x) &gt; f(y)$。</p>
+<p>由于 $f$ 在 $[y, x]$ 上连续且在 $(y, x)$ 上可导，根据 Lagrange 中值定理：$\exists \xi \in (y, x) \text{ s.t. } f(x) - f(y) = f^\prime(\xi)(x - y) \ge 0$。</p>
+<p>证毕。</p>
+<h4>定义 4.2 凸性</h4>
+<blockquote>
+<p>假设 $f$ 在区间 $I$ 上有定义，对于 $\forall x, y \in I, \forall \lambda \in [0, 1], f[\lambda x + (1 - \lambda y)] \le \lambda f(x) + (1 - \lambda)f(y)$，则称 $f(x)$ 在 $I$ 上是下凸的。</p>
+<p>类似，可以定义上凸函数。</p>
+</blockquote>
+<p>（称 $\lambda t + (1 - \lambda) s$ 为 $s, t$ 的凸组合）</p>
+<p><img alt="convex.png" src="../../medias/convex.png" /></p>
+<p>这里用一下相似很容易画出图。</p>
+<h4>定理 4.5</h4>
+<blockquote>
+<p>假设 $f$ 在区间 $I$ 上二阶可导。</p>
+<p>则 $f$ 在 $I$ 上是下凸的 $\iff$ $f^{\prime\prime} \ge 0, \forall x \in I$</p>
+</blockquote>
+<p>证明：$\Rightarrow$</p>
+<p>假设 $f$ 是下凸的，$\forall x \in I, \forall \Delta x &gt; 0$，只要 $x +- \Delta x \in I$，那么：</p>
+<p>$\dfrac{f(x + \Delta x) + f(x - \Delta x)}{2} \ge f(\dfrac{x + \Delta x + x - \Delta x}{2}) = f(x)$（$\lambda = \dfrac{1}{2}$）</p>
+<p>所以 $f(x + \Delta x) + f(x - \Delta x) \ge 2f(x)$</p>
+<p>所以 $f(x + \Delta x) - f(x) \ge f(x) - f(x - \Delta x) \cdots (@)$</p>
+<p>为什么要这么做，因为二阶导大于零就是一阶导单调递增。</p>
+<p>任取 $x, y \in I$，不妨设 $x &lt; y$。</p>
+<p>令 $\Delta x_n = \dfrac{y - x}{n}$ 则 $n \to \infty, \Delta x_n \to 0$</p>
+<p>有 $f(y) - f(y - \Delta x_n) \ge f(y - \Delta x_n) - f(y - 2\Delta x_n)$</p>
+<p>（用了 $@$ 这个式子）</p>
+<p>重复这样的操作可以得到： </p>
+<p>$f(y) - f(y - \Delta x_n) \ge f[y - (n - 1)\Delta x_n] - f(y - \Delta x)$</p>
+<p>所以 $\ge f(x + \Delta x_n) - f(x)$</p>
+<p>两边同除 $\Delta x_n$：</p>
+<p>$\dfrac{f(y) - f(y - \Delta x_n)}{\Delta x_n} \ge \dfrac{f(x + \Delta x_n) - f(x)}{\Delta x_n}$</p>
+<p>同时让 $n\to \infty$。</p>
+<p>由于 $f$ 可导，所以 $f^\prime(y) \ge f^\prime(x)$。</p>
+<p>所以 $f^{\prime\prime} \ge 0$</p>
+<p>证明 $\Leftarrow$：假设 $f^{\prime\prime} \ge 0$。</p>
+<p>所以 $f^\prime$ 在 $I$ 上递增。</p>
+<p>$\forall x, y \in I, x &lt; y$，再取 $\lambda \in [0, 1]$。</p>
+<p>令 $t = \lambda x + (1- \lambda) y$</p>
+<p>根据凸组合的性质，$t \in [x, y]$。</p>
+<p>边界情况其实不用证所以就是 $x &lt; t &lt; y$。</p>
+<p>所以 $x - t = (1 - \lambda)(x - y); y - t = \lambda (y - x)$。</p>
+<p>由 Lagrange 中值定理：</p>
+<p>因为 $f$ 在 $[x, y]$ 上连续，且 $(x, y)$ 上可导。</p>
+<p>所以 </p>
+<p>$\begin{cases}f(x) - f(t) = f^\prime(\xi)(x - t) = f^\prime(\xi)(1 - \lambda)(x - y), &amp;\xi \in (x, t) \\ f(y) - f(t) = f^\prime(\eta) \lambda(y - x), &amp;\eta \in (t, y)\end{cases}$</p>
+<p>所以 $f(x) = f(t) + f^\prime(\xi)(1 - \lambda)(x - y)$。</p>
+<p>由于 $f^\prime$ 单调递增，所以 $f(x) \ge f^\prime(t)(1 - \lambda)(x - y) + f(t) \cdots (1)$</p>
+<p>对于 $y$ 同理：</p>
+<p>$f(y) \ge f(t) + f^\prime(t) \lambda (y - x) \cdots(2)$</p>
+<p>两个式子做凸组合：</p>
+<p>$\lambda f(x) + (1 - \lambda)f(y) \ge f(t) + f^\prime(t)\lambda(1-\lambda)(x - y) + f^\prime(t)\lambda(1-\lambda)(y - x)$</p>
+<h4>定义 4.3 拐点</h4>
+<blockquote>
+<p>称 $f$ 图像上，曲线上凸与下凸的分界点为 $f$ 图像的拐点。</p>
+</blockquote>
+<h4>定理 4.6</h4>
+<blockquote>
+<p>设 $f$ 在区间 $I$ 上连续，$(x_0 + \delta, x_0 + \delta) \subset I$，其中 $\delta &gt; 0$。</p>
+<p>1) 设 $f$ 在 $(x_0 - \delta, x_0), (x_0, x_0 + \delta)$ 上二阶可导，若 $f^{\prime\prime}(x)$ 在 $(x_0 - \delta, x_0), (x_0, x_0 + \delta)$ 上符号相反，则 $(x_0, f(x_0))$ 是曲线 $y = f(x)$ 的拐点。</p>
+<p>2) 若 $f$ 在 $(x_0 - \delta, x_0 + \delta)$ 二阶可导，且 $(x_0, f(x_0))$ 是 $y = f(x)$ 的拐点，则 $f^{\prime\prime}(x) = 0$</p>
+</blockquote>
+<p>证明：</p>
+<p>例子：</p>
+<blockquote>
+<p>(0, 0) 是 $f(x) = x^3$ 的拐点，不是 $g(x) = x^4$ 的拐点。</p>
+</blockquote>
+<h4>定理 4.7 Jenson 不等式</h4>
+<blockquote>
+<p>若 $f$ 在区间 $I$ 上是下凸的（或上凸）</p>
+<p>则 $\forall x_k \in I$ 和满足 $\lambda_1 + \lambda_2 + \cdots + \lambda_n = 1$ 的 $\lambda_k &gt; 0, k = 1,2,3,4,\dots n$。</p>
+<p>都有 $f(\sum\limits_{k = 1}^{n} \lambda_k x_k) \le \sum\limits_{k = 1}^{n}\lambda_k f(x_k)$。</p>
+<p>上凸则改为 $\ge$</p>
+</blockquote>
+<p>证明：</p>
+<p>只考虑 $f$ 是下凸的：</p>
+<p>$n = 2$ 的时候显然成立。</p>
+<p>假设 $n = m &gt; 2$ 时不等式成立：</p>
+<p>$f(\lambda_1 x_1 + \lambda_2 x_2 + \dots + \lambda_n x_n) \le \lambda_1f(x_1) + \lambda_2f(x_2) + \dots + \lambda_nf(x_n)$</p>
+<p>其中 $\lambda k &gt; 0$ 且 $\sum\limits_{}^{}\lambda_k = 1$。</p>
+<p>当 $n = m + 1$ 时</p>
+<p>要证：$\sum\limits_{k = 1}^{m + 1} \lambda_k = 1$ 且 $\lambda_k &gt; 0$ 时：</p>
+<p>$f(\sum\limits_{k = 1}^{m + 1}\lambda_k x_k) \le \sum\limits_{k = 1}^{m + 1}\lambda_k f(x_k)$。</p>
+<p>由于：$\sum\limits_{k = 1}^{m+1}\lambda_k x_k = \sum\limits_{k - 1}^{m}\lambda_k \cdot \sum\limits_{k = 1}^{m}\dfrac{\lambda_k x_k}{\sum\limits_{k = 1}^{m}\lambda_k} + \lambda_{m + 1}x_{m + 1}$</p>
+<p>记 $\mu = \sum\limits_{k = 1}^{m}\lambda_k, x = \sum\limits_{k = 1}^{m} \dfrac{\lambda_k x_k}{\mu}$。</p>
+<p>由于 $\mu + \lambda_{m + 1} = 1, \mu &gt; 0, \lambda_{m + 1} &gt; 0$，由 $f$ 下凸的定义：</p>
+<p>$f(\sum\limits_{k = 1}^{m + 1}\lambda_k x_k) = f(\mu x + \lambda_{m + 1}k_{m + 1}) \le \mu f(x) + \lambda_{m + 1}f(x_{m + 1})$</p>
+<p>由 $m$ 个数的归纳假设：</p>
+<p>$f(x) = f(\sum\limits_{k = 1}^{m}\dfrac{\lambda_k x_k}{\mu})$。</p>
+<p>记 $\mu_k = \dfrac{\lambda_k}{\mu}$。</p>
+<p>那么$f(x) = f(\sum\limits_{k = 1}^{m + 1}\mu_k x_k) \le \sum\limits_{k = 1}^{m}\mu_k f(x_k)$</p>
+<p>所以 $\mu f(x) \le \sum\limits_{k = 1}^{m}\lambda_k f(x_k) \Rightarrow \sum\limits_{k = 1}^{m + 1}f(\lambda_k x_k) \le \sum\limits_{k = 1}^{m + 1}\lambda_k f(x_k)$</p>
+<h4>定理 4.8</h4>
+<blockquote>
+<p>设 $f$ 在区间 $I$ 上连续，则下列等价（T.F.A.E）</p>
+<p>1) $f$ 在 $I$ 上是下凸的。</p>
+<p>2) $\forall x, y \in I$，有 $f(\dfrac{x + y}{2}) \le \dfrac{f(x) + f(y)}{2}$</p>
+<p>3) $\forall x_1, x_2, \dots, x_n, x_n \in I$，$f(\dfrac{x_1 + x_2 + \dots x_n}{n}) \le \dfrac{f(x_1) + f(x_2) + f(x_3) + \dots + f(x_n)}{n}$</p>
+</blockquote>
+<p>证明：1 推 2：</p>
+<p>只需要在下凸函数的定义中取 $\lambda = \dfrac{1}{2}$。</p>
+<p>2 推 3：</p>
+<p>设 $x_1, x_2, x_3, x_4 \in I$ 有：</p>
+<p>$f(\dfrac{x_1 + x_2 + x_3 + x_4}{4}) = f(\dfrac{\dfrac{x_1 + x_2}{2} + \dfrac{x_3 + x_4}{2}}{2}) \le \dfrac{f(\dfrac{x_1 + x_2}{2}) + f(\dfrac{x_3 + x_4}{2})}{2}$</p>
+<p>继续用 (2)：</p>
+<p>$\dfrac{\dfrac{1}{2}[f(x_1) + f(x_2)] + \dfrac{1}{2}[f(x_3) + f(x_4)]}{2} = \dfrac{f(x_1) + f(x_2) + f(x_3) + f(x_4)}{2^2}$</p>
+<p>一般的，可以知道 $n = 2^k$ 都成立。</p>
+<p>即:</p>
+<p>$f(\dfrac{x_1 + x_2 + \dots + x_{2^k}}{2^k}) \le \dfrac{f(x_1) + f(x_2) + \dots + f(x_{2^k})}{2^k}$</p>
+<p>由于 $\forall n \in \mathbb{N_+}, \exists k \in \mathbb{N_+} \text{ s.t. } 2^k \ge n$</p>
+<p>令 $a_n = \dfrac{x_1 + x_2 + \dots x_n}{n}$</p>
+<p>令 $x_{n + 1} = x_{n + 2} = \dots = x_{2^k} = a_n$，</p>
+<p>所以 $f(\dfrac{x_1 + x_2 + \dots + x_n}{n}) = f(a_n) = f[\dfrac{n a_n + (2^k - n)a_n}{2^k}]$</p>
+<p>$= f(\dfrac{x_1 + x_2 + x_3 + \dots x_n + x_{n + 1} + \dots + x_{2^k}}{2^k}) \le \dfrac{1}{2^k} [f(x_1) + f(x_2) + \dots f(x_n) + f(x_n + 1) + \dots + f(x_{2^k})]$</p>
+<p>$= \dfrac{1}{2^k} [f(x_1) + f(x_2) + \dots + f(x_n) + (2^k - n)f(a_n)]$</p>
+<p>两边同乘 $2^k$</p>
+<p>$\Rightarrow 2^k f(a_n) \le \sum\limits_{k = 1}^{n} f(x_k) + (2^k - n)f(a_n)$</p>
+<p>$\Rightarrow n f(a_n) \le \sum\limits_{k = 1}^{n}f(x_k) \Rightarrow f(\dfrac{x_1 + x_2 + x_3 + \dots x_n}{n} \le \dfrac{f(x_1) + f(x_2) + \dots + f(x_n)}{n})$</p>
+<p>证明 3 推 1</p>
+<p>要整：$\forall \lambda \in (0, 1); x, y \in I$ 有 $f(\lambda x + (1 - \lambda) y) \le \lambda f(x) + (1 - \lambda) f(y)$</p>
+<p>先证明 $\lambda \in \mathbb{Q}$ 时是正确的：</p>
+<p>设 $\lambda = \dfrac{n}{m}$，其中 $m &gt; n, m,n \in \mathbb{N_+}$。</p>
+<p>那么 $f(\lambda x + (1 - \lambda)y) = f(\dfrac{n}{m} x + \dfrac{m - n}{m}y) = f(\dfrac{x + \dots + x + y + \dots y}{m})$</p>
+<p>$\le \dfrac{1}{m}[nf(x) + (m - n)f(y)] = \lambda f(x) + (1 - \lambda) f(y)\cdots(@)$。</p>
+<p>对于一般的 $\lambda$，则存在一列有理数 $\{\lambda_k\} \to \lambda (k \to \infty)$。</p>
+<p>由于 $f$ 连续：$f(\lambda_k) \to f(\lambda)$</p>
+<p>由 $@$ 式：$f(\lambda_k x + (1 - \lambda_k)y) \le \lambda_k f(x) + (1 - \lambda_k)f(y)$。</p>
+<p>两边 $k \to \infty$ 可以得到原式。</p>
+<h4>定理 4.9</h4>
+<blockquote>
+<p>假设 $f$ 在区间 $I$ 上有定义。</p>
+<p>$\forall x_1, x_2, x_3 \in I$ 且 $x_1 &lt; x_2 &lt; x_3$。</p>
+<p>那么下列说法等价：</p>
+<p>1) $f$ 在 $I$ 上是下凸的。</p>
+<p>2) $\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} \le \dfrac{f(x_3) - f(x_1)}{x_3 - x_1}$</p>
+<p>3) $\dfrac{f(x_3) - f(x_1)}{x_3 - x_1} \le \dfrac{f(x_3) - f(x_2)}{x_3 - x_2}$</p>
+<p>4) $\dfrac{f(x_2) - f(x_1)}{x_2 - x_1} \le \dfrac{f(x_3) - f(x_2)}{x_3 - x_2}$。</p>
+</blockquote>
+<p><img alt="3line.png" src="../../medias/3line.png" /></p>
+<h4>定理 4.10</h4>
+<blockquote>
+<p>假设 $f$ 在区间 $I$ 上可导，则 $f$ 在区间 $I$ 上是下凸的，当且仅当</p>
+<p>$y = f(x)$ 的函数图像的切线总是位于 $y = f(x)$ 的下方</p>
+</blockquote>
+<p>证明 $\Rightarrow$：</p>
+<p>要证明：$\forall x_0 \in I: f(x) &gt; f(x_0) + f^\prime(x_0)(x- x_0)$</p>
+<p>任取 $x \in I; x &lt; x_0$。</p>
+<p>取割线 $AB: A(x_0, f(x_0)), B(x, f(x))$。</p>
+<p>$k_{AB} = \dfrac{f(x_0) - f(x)}{x_0 - x} &lt; f^\prime(x_0)$（切线是割线的极限）</p>
+<p>所以 $f(x) - f(x_0) &lt; f^\prime(x_0)(x - x_0)$，就证完了。</p>
+<p>在另外一边 $(x &gt; x_0)$ 也是一样的。</p>
+<p>$\Leftarrow$：</p>
+<p>已知 $\forall f(x) &gt; f(x_0) + f^\prime(x_0)(x - x_0)$。</p>
+<p>假设 $\exists \lambda \in (0, 1), x_1, x_2 \in I \text{ s.t. } \lambda x_1 + (1 - \lambda) x_2 = x_0$。</p>
+<p>令 $x = x_1$，带入已知条件：</p>
+<p>$f(x_1) &gt; f(x_0) + f^\prime(x_0)(x_1 - x_0) \iff f(x_1) &gt; f(x_0) + f^\prime(x_0)(1 - \lambda)(x_1 - x_2)$。</p>
+<p>同理令 $x = x_2$：</p>
+<p>$f(x_2) &gt; f(x_0) + f^\prime(x_0)(x_2 - x_0) \iff f(x_2) &gt; f(x_0) + f^\prime(x_0)\lambda(x_2 - x_1)$</p>
+<p>对一式二式做凸组合：</p>
+<p>$\lambda f(x_1) + (1 - \lambda)f(x_2) &gt; f(x_0) = f[\lambda x_1 + (1 - \lambda)x_2]$</p>
+<p>证毕。</p>
+<h4>定理 4.11 导函数不存在第一类不连续点</h4>
+<blockquote>
+<p>设 $f$ 在区间 $(a, b)$ 上可导，那么，对于 $(a, b)$ 中的每个点，定要么是 $f^\prime$ 的连续点，要么是 $f^\prime$ 的第二类不连续点。</p>
+</blockquote>
+<p>证明：</p>
+<p>任取 $x_0 \in (a, b)$，由导数的定义：$f^\prime(x_0) = f^\prime_{+}(x_0) = \lim\limits_{x \to x_0^+} \dfrac{f(x) - f(x_0)}{x - x_0}$。</p>
+<p>由于 $f(x)$ 在 $[x_0, x]$ 上连续可导：由 Lagrange 中值定理：$= \lim\limits_{x \to x_0^+}\dfrac{f^\prime(\xi)(x - x_0)}{x - x_0}, \xi \in (x_0, x)$。</p>
+<p>然后上式 $= \lim\limits_{x \to x_0^+}f^\prime(\xi) = \lim\limits_{\xi \to x_0^+} f^\prime(\xi)$</p>
+<p>如果极限 $\lim\limits_{t \to x_0^+}f^\prime(t)$ 存在，那么 $\lim\limits_{x \to x_0^+} f^\prime(x) = \lim\limits_{\xi \to x_0^+}f^\prime(\xi) = f^\prime(x_0)$</p>
+<p>同理，如果 $\lim\limits_{t \to x_0^-}f^\prime(t)$ 存在也可以推出 $\lim\limits_{t \to x_0^-} f^\prime(t) = f^\prime(x_0)$</p>
+<p>所以只要左右极限存在那它们一定相等且都等于函数值。</p>
+<p>若至少有一个不存在那就是第二类不连续点。</p>
+<h4>定理 4.12 Darboux 定理（导函数介值性）</h4>
+<blockquote>
+<p>设 $f$ 在闭区间 $[a, b]$ 上可导，端点考虑单侧导数。</p>
+<p>$\forall c \in (f^\prime(a), f^\prime(b))$（不妨假设 $f^\prime(a) &lt; f^\prime(b)$），$\exists \xi \in [a, b] \text{ s.t. } f^\prime(\xi) = c$ </p>
+</blockquote>
+<p>证明：$F(x) \equiv f(x) - cx, x \in [a, b]$。</p>
+<p>显然 $F(x)$ 在 $a, b$ 上也可导。</p>
+<p>那么 $F^\prime_+(a) = \lim\limits_{x \to a^+} \dfrac{F(x) - F(a)}{x-a} = \lim\limits_{x \to a^+} [\dfrac{f(x) - f(a)}{x - a} - c] = f^\prime_+(a) - c = f^\prime(a) - c &lt; 0$</p>
+<p>同样可以知道 $F^\prime_-(b) = f^\prime_-(b) - c = f^\prime(b) - c &gt; 0$。</p>
+<p>所以：当 $x$ 与 $a$ 靠的足够近时，$F(x) &lt; F(a)$；$x$ 与 $b$ 靠的足够近时，$F(x) &lt; F(b)$。</p>
+<p>所以 $F$ 不在 $a, b$ 两点取最小值。</p>
+<p>注意到 $f$ 在闭区间上可导 -&gt; 连续 -&gt; $F$ 在 $[a, b]$ 上连续。</p>
+<p>所以 $F$ 的最小值 $F(\xi)$ 必然在 $(a, b)$ 内取到。</p>
+<p>且 $F$ 在 $[a, b]$ 上可导，由 Fermat 定理，$F^\prime(\xi) = 0 \iff f^\prime(\xi) = c$ </p>
+<h3>应用</h3>
+<h4>例 1</h4>
+<blockquote>
+<p>设 $a &gt; 0$，函数 $f$ 在 $[a, b]$ 上是连续的，在 $(a, b)$ 上可导。 </p>
+<p>证明：$\exists \xi \in (a, b) \text{ s.t. } \dfrac{af(b) - bf(a)}{a - b} = f(\xi) - \xi f^\prime(\xi)$</p>
+</blockquote>
+<p>证明：</p>
+<p>其实就是要证明：$\dfrac{\dfrac{f(b)}{b} - \dfrac{f(a)}{a}}{\dfrac{1}{b} - \dfrac{1}{a}} = f(\xi) - \xi f^\prime(\xi)$</p>
+<p>取 $F(x) = \dfrac{f(x)}{x}, G(x) = \dfrac{1}{x}$，显然他们在 $[a, b]$ 上连续，$(a, b)$ 上可导。</p>
+<p>由 Cauchy 中值定理：</p>
+<p>$\exists \xi \in(a, b)\text{ s.t. } \dfrac{F(b) - F(a)}{G(b) - G(a)} = \dfrac{F^\prime(\xi)}{G^\prime(\xi)}$</p>
+<p>$\dfrac{F^\prime(\xi)}{G^\prime(\xi)} = \dfrac{\dfrac{\xi f^\prime(\xi) - f(\xi)}{\xi^2}}{-\dfrac{1}{\xi^2}} =f(\xi) - \xi f^\prime(\xi)$。</p>
+<p>这就是我们想要的。</p>
+<h4>例 2</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, b]$ 上连续，$(a, b)$ 上可导。</p>
+<p>其中 $0 &lt; a &lt; b, f(a) \not= f(b)$。</p>
+<p>证明：$\exists \xi, \eta \in (a, b), f^\prime(\xi) = \dfrac{a + b}{2\eta}f^\prime(\eta)$。</p>
+</blockquote>
+<p>证明：（观察到 $2\eta = (\eta^2)^\prime$，但是想用中值定理需要类似 $b^2 - a^2$ 的形式，所以构造）</p>
+<p>即证：$(b - a)f^\prime(\xi) = \dfrac{b^2 - a^2}{2\eta} f^\prime(\eta)$</p>
+<p>即：</p>
+<p>$2\eta f^\prime(\xi) = \dfrac{b^2 - a^2}{b - a} f^\prime(\eta)$</p>
+<p>令 $g(x) = x^2, x\in [a, b]$，先用 Cauchy 中值定理：</p>
+<p>$\exists \eta \in (a, b) \text{ s.t. } \dfrac{g(b) - g(a)}{f(b) - f(a)} = \dfrac{g^\prime(\eta)}{f^\prime(\eta)} = \dfrac{2\eta}{f^\prime(\eta)} = \dfrac{b^2 - a^2}{f(b) - f(a)}$</p>
+<p>对比一下式子，现在就只需要要证明：$\dfrac{b^2 - a^2}{f(b) - f(a)} = \dfrac{b+a}{f^\prime(\xi)}$</p>
+<p>消掉 $b + a: \dfrac{b - a}{f(b) - f(a)} = \dfrac{1}{f^\prime(\xi)}$。</p>
+<p>再用一次 Lagrange 中值定理：$\exists \xi \in (a,b) \text{ s.t. } f^\prime(\xi) = \dfrac{f(b) - f(a)}{b - a}$。</p>
+<h4>例 3</h4>
+<blockquote>
+<p>比较大小：$e^\pi, \pi^e$。</p>
+</blockquote>
+<p>取对数：$\pi\ln e, e\ln \pi$</p>
+<p>比较 $\pi, e \ln \pi$ 就行，然后除过去比较 $\dfrac{\pi}{\ln \pi}, e \iff \dfrac{\ln \pi}{\pi}, \dfrac{1}{e}$ 就行。</p>
+<p>可以构造函数 $f(x) = \dfrac{\ln x}{x}$。</p>
+<p>$f^\prime(x) = \dfrac{1 - \ln x}{x^2}$。</p>
+<p>当 $x \ge e$ 时，单调递减，所以 $f(e) &gt; f(\pi)$</p>
+<p>进而 $\pi^e &gt; e^\pi$</p>
+<h4>例 4</h4>
+<blockquote>
+<p>证明：$x \ge \sin x \ge x - \dfrac{1}{6}x^3$</p>
+</blockquote>
+<p>其实 Taylor 展开就行。</p>
+<p>当然也可以构造函数 $f(x) = x - \sin x, g(x) = \sin x - x + \dfrac{x^3}{6}$。</p>
+<p>第一个求一次导就行。</p>
+<p>第二个：求两次导就行。</p>
+<h4>例 5</h4>
+<blockquote>
+<p>证明 Young 不等式：</p>
+<p>设 $a, b \ge 0$，正数 $p, q \text{ s.t. } \dfrac{1}{p} + \dfrac{1}{q} = 1$</p>
+<p>$ab &lt; \dfrac{a^p}{p} + \dfrac{b^q}{q}$</p>
+</blockquote>
+<p>其实只需要证明 $a, b \not=0$。</p>
+<p>由于 $q = \dfrac{p}{p - 1} = 1 + \dfrac{1}{p - 1}$。</p>
+<p>所以等价于 $ab \le \dfrac{a^p}{p} + \dfrac{b \cdot b^{\frac{1}{p - 1}}}{q} \iff 1 \le \dfrac{a^{p - 1}b^{-1}}{p} + \dfrac{a^{-1}b^{b^{\frac{1}{p - 1}}}}{q}$</p>
+<p>令 $x = \dfrac{1}{a} b ^{\frac{1}{p - 1}} \Rightarrow (\dfrac{1}{x})^{p - 1} = a^{p - 1}b^{-1}$。</p>
+<p>要证的就是 $1 \le \dfrac{1}{q}x + \dfrac{1}{p} x^{1 - p}; x &gt; 0$</p>
+<p>构造函数：$f(x) = \dfrac{x}{q} + \dfrac{x^{1 - p}}{p}$</p>
         </article>
         
         <footer>
