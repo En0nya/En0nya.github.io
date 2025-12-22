@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/code.css">
+	<link rel="stylesheet" href="/css/toc.css">
+	<link rel="stylesheet" href="/css/to-top.css">
+
+	<script src="/js/highlight.min.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((el) => {
+		  hljs.highlightElement(el);
+		});
+	  });
+	</script>
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+
+    <script src="/js/Mathjax.js" async></script>
+	<script src="/js/toc.js"></script>
+	<script src="/js/to-top.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>日麻何切 &amp; 牌效率记录</h2>
+<h3>孤张 1 9 和役牌何切</h3>
+<p>主要标准就是看要不要留役牌对子。</p>
+<p>如果期望走立直或者是平和提高打点那直接丢掉就行。</p>
+<p>如果想要考虑副露权可以留一下役牌。</p>
+<h3>孤张 2 8 和役牌何切</h3>
+<p>留 2 8 的话主要是看手牌是不是能直接走立直路线。</p>
+<p>牌比较烂就留役牌。</p>
+<p>具体来说：有两个以上的愚型搭子且没有面子。</p>
+<p>如果牌烂到完全靠不上那随便打了</p>
+<h3>1334 / 6779 型</h3>
+<p>摸 5 8 都是比较理想的进张 主要考虑的是什么时候切 9</p>
+<p>一般来说：</p>
+<p>2 8 浮牌 &lt; 6779 ≤ 3 7 孤张。</p>
+<p>主要 2 8 浮牌可能会靠成边张 理想进成两面的进张只有 4 枚。</p>
+<p>但是 6779 摸 5 8 的话是 8 枚。</p>
+<p>不过 Naga 给出来其实不考虑巡目 3 7 是和 6779 五五开的 这个时候就结合做牌方向考虑就行。</p>
+<h3>125 型</h3>
+<p><strong>这个 12 和 5 不同色判断方法也是一样的</strong></p>
+<p>主要就是看 12 和 5 什么时候打</p>
+<p>其实和尖张 3 7 的例子有点像，主要和巡目有关系。</p>
+<p>我们想要留 5 等靠张一般是六巡及以前，很容易靠上或者摸新的浮牌。</p>
+<p>如果确定要拆 12 的话越早越好。</p>
+<p>如果想要留 12，抛掉全带的可能性，一般来说只要有役牌对子/暗刻，我们留 5 其实也不会增加打点，而 12 有吃 3，摸3，摸对子等碰的可能性，都可以很果断地打掉 5</p>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

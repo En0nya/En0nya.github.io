@@ -1,10 +1,11 @@
 ## Categories
 
-*文章总数: 16*
+*文章总数: 17*
 
-*Last update: 2025 年 12 月 15 日 15:36*
+*Last update: 2025 年 12 月 22 日 22:54*
 
-- [⌈数学分析笔记 Chapter 4 微分中值定理及其应用⌋](posts\math\sf-zxf-c4.html)  最后更新时间：*`25 年 12 月 15 日`*
+- [⌈数学分析笔记 Chapter 4 微分中值定理及其应用⌋](posts\math\sf-zxf-c4.html)  最后更新时间：*`25 年 12 月 22 日`*
+- [⌈日麻何切 & 牌效率记录⌋](posts\misc\majhong.html)  最后更新时间：*`25 年 12 月 19 日`*
 - [⌈数学分析习题记录 - 极限部分⌋](posts\math\sf-assignments-1.html)  最后更新时间：*`25 年 12 月 06 日`*
 - [⌈数学分析笔记 Chapter 2 函数极限 & 连续函数⌋](posts\math\sf-zxf-c2.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈ICPC Asia Regional 沈阳 2025 游记⌋](posts\logs\icpc-shenyang-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*

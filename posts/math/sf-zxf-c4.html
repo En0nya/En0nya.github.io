@@ -94,7 +94,7 @@
 <p>则存在一点 $\xi \in (a, b)$ 使得 $f^\prime(\xi) = 0$</p>
 </blockquote>
 <p>证明：</p>
-<p>假设 $f$ 在 $[a, b]$ 上的最大最小值分别为 $M, m$（根据命题 3.x 一定可以取到）</p>
+<p>假设 $f$ 在 $[a, b]$ 上的最大最小值分别为 $M, m$（根据命题 2.16  闭区间上连续函数的最值性，一定可以取到）</p>
 <ol>
 <li>$M = m$，$f \equiv f(a) = f(b)$，这样的 $\xi$ 一定存在</li>
 <li>
@@ -156,9 +156,10 @@
 <p>证明 $|\sin x - \sin y| \le |x - y|, \forall x, y\in\mathbb{R}$</p>
 </blockquote>
 <p>证明：</p>
-<p>考虑函数：$f(t) = \in t, t \in [x, y]$</p>
+<p>考虑函数：$f(t) = \sin t, t \in [x, y]$</p>
 <p>由 Lagrange 中值定理：$\exists \xi \in [x, y] \text{ s.t. } f(x) - f(y) = f^\prime(\xi)(x - y)$ </p>
 <p>所以就是 $|\cos \xi| \cdot |x - y| \le |x - y|$。</p>
+<p>这是恒等式，证毕。</p>
 <h4>例题 4.2 又一个判定一致连续的方法</h4>
 <blockquote>
 <p>假设 $f$ 在开区间上可导，且导数有界，且 $\exists M &gt; 0 \text{ s.t. } |f^\prime(x)| \le M. x \in (a, b)$。</p>
@@ -426,6 +427,493 @@
 <p>令 $x = \dfrac{1}{a} b ^{\frac{1}{p - 1}} \Rightarrow (\dfrac{1}{x})^{p - 1} = a^{p - 1}b^{-1}$。</p>
 <p>要证的就是 $1 \le \dfrac{1}{q}x + \dfrac{1}{p} x^{1 - p}; x &gt; 0$</p>
 <p>构造函数：$f(x) = \dfrac{x}{q} + \dfrac{x^{1 - p}}{p}$</p>
+<p>求导：$f^\prime(x) = \dfrac{1}{q} + \dfrac{(1 - p)}{p}x^{-p} =\dfrac{(1 - x^{-p})}{q}$</p>
+<p>极值点是 $x = 1$。</p>
+<p>所以 $f(x) &gt; f(1) = 1$，证毕。</p>
+<h4>例 6 Jordan 不等式</h4>
+<blockquote>
+<p>设 $x \in [0, \dfrac{\pi}{2}]$，则：</p>
+<p>$\dfrac{2}{\pi}x \le \sin x \le x$</p>
+</blockquote>
+<p>考虑函数 $f(x) = \dfrac{\sin x}{x}, x\in (0, \dfrac{\pi}{2}]$</p>
+<p>然后就转化成导函数的问题，比较简单这里省去不做说明。</p>
+<h3>L'Hospital 法则</h3>
+<h4>定理 4.13 L'Hospital 法则</h4>
+<blockquote>
+<p>假设函数 $f, g$ 在 $(a, a + \delta]$ 上可导，自然是连续的。</p>
+<p>其中 $\delta &gt; 0, g^\prime(x) \not=0, x \in (a, a + \delta]$。</p>
+<p>如果 $\lim\limits_{x \to a^+}f(x) = \lim\limits_{x \to a^+} g(x) = 0$</p>
+<p>或者 $\lim\limits_{x \to a^+}f(x) = \lim\limits_{x \to a^+} g(x) = \infty$。</p>
+<p>且 $\lim\limits_{x \to a^+} \dfrac{f^\prime(x)}{g^\prime(x)}$ 存在。</p>
+<p>则 $\lim\limits_{x \to a^+} \dfrac{f(x)}{g(x)} = \lim\limits_{x \to a^+} \dfrac{f^\prime(x)}{g^\prime(x)}$。</p>
+</blockquote>
+<p>证明：</p>
+<ol>
+<li>先考虑 $\dfrac{0}{0}$ 型的情况，设 $\lim\limits_{x \to a^+} \dfrac{f(x)}{g(x)} = A \in \mathbb{R}$。</li>
+</ol>
+<p>注意这个形式，想要使用 Cauchy 中值定理。</p>
+<p>补充定义：$f(a) = 0, g(a) = 0$，故 $f, g$ 在 $[a, a + \delta]$ 上连续，在 $(a, a + \delta)$ 上可导。</p>
+<p>现在对 $f, g$ 在 $[a, a + \delta]$ 上用 Cauchy 中值定理：</p>
+<p>即 $\forall x \in [a, a + \delta], \exists\xi \in (a, x) \text{ s.t. }, \dfrac{f(x) - f(a)}{g(x) - g(a)} = \dfrac{f^\prime(\xi)}{g^\prime(\xi)}$</p>
+<p>那么：</p>
+<p>$\dfrac{f(x)}{g(x)} = \dfrac{f^\prime(\xi)}{g^\prime(\xi)} \Rightarrow \lim\limits_{x \to a^+} \dfrac{f(x)}{g(x)} = \lim\limits_{x \to a^+} \dfrac{f^\prime(\xi)}{g^\prime(\xi)} = A$</p>
+<ol>
+<li>再考虑 $\dfrac{\infty}{\infty}$ 的情况。</li>
+</ol>
+<p>现在的问题是 $a$ 这个点没有定义不能类似上面的这种做法，但大体方向还是使用 Cauchy。</p>
+<p>取一点 $x_0 \in (a, a + \delta)$。</p>
+<p>$\dfrac{f(x) - f(x_0)}{g(x) - g(x_0)}$.</p>
+<p>我们想把这个式子写作 $\dfrac{f}{g}$ 的形式：</p>
+<p>那么：$\dfrac{f(x) - f(x_0)}{g(x) - g(x_0)} = \dfrac{f(x)}{g(x) - g(x_0)} - \dfrac{f(x_0)}{g(x) - g(x_0)}$。</p>
+<p>由于 $\lim\limits_{x \to a^+} g(x) = \infty$。</p>
+<p>所以当 $x \to a^+$ 时，$\dfrac{f(x) - f(x_0)}{g(x) - g(x_0)} = \dfrac{f(x)}{g(x) - g(x_0)}$。</p>
+<p>再做一个神奇小变换：</p>
+<p>$\dfrac{f(x)}{g(x) - g(x_0)} = \dfrac{f(x)}{g(x)} \cdot \dfrac{g(x)}{g(x) - g(x_0)}$。</p>
+<p>$x \to a^+$ 时 $\dfrac{g(x)}{g(x) - g(x_0)} = 1$。</p>
+<p>所以 $\lim\limits_{x \to a^+} \dfrac{f(x) - f(x_0)}{g(x) - g(x_0)} = \lim\limits_{x \to a^+} \dfrac{f(x)}{g(x)}$。</p>
+<p>根据 Cauchy 中值定理：$\forall x \in [a, x_0] \exists \xi \in [a, x] \text{ s.t. } \dfrac{f(x) - f(x_0)}{g(x) - g(x_0)} = \dfrac{f^\prime(\xi)}{g^\prime(\xi)}$</p>
+<p>然后就和上面一样了</p>
+<hr />
+<p>这里用 $\epsilon-\delta$ 语言来写一下：</p>
+<p>$\dfrac{f(x)}{g(x)} = \dfrac{f(x) - f(x_0)}{g(x) - g(x_0)}[1 - \dfrac{g(x_0)}{g(x)}] + \dfrac{f(x_0)}{g(x)}$</p>
+<p>$\Rightarrow |\dfrac{f(x)}{g(x)} - A | = \left|\dfrac{f(x) - f(x_0)}{g(x) - g(x_0)}[1 - \dfrac{g(x_0)}{g(x)}] + \dfrac{f(x_0)}{g(x)} - A\right|$</p>
+<p>$\le |1 - \dfrac{g(x_0)}{g(x)}| \cdot |\dfrac{f(x) - f(x_0)}{g(x) - g(x_0)} - A| + |\dfrac{f(x_0) - Ag(x_0)}{g(x)}|$</p>
+<p>由于 $\lim\limits_{x \to a^+} \dfrac{f^\prime(x)}{g^\prime(x)}= A$。</p>
+<p>故，$\forall \epsilon &gt; 0, \exists \rho &lt; \delta \text{ s.t. when } 0 &lt; x - a &lt; \rho : |\dfrac{f^\prime(x)}{g^\prime(x)} - A| &lt; \epsilon$</p>
+<p>取 $x_0 = a + \rho$：</p>
+<p>那么 $\forall x \in [a, x_0]$，在 $[a, x_0]$ 上，使用 Cauchy 中值定理：</p>
+<p>$\exists \xi \in [x, x_0] \text{ s.t. } \dfrac{f(x) - f(x_0)}{g(x) - g(x_0)} = \dfrac{f^\prime(\xi)}{g^\prime(\xi)}$</p>
+<p>所以 $|\dfrac{f^\prime(\xi)}{g^\prime(\xi)}| &lt; \epsilon$</p>
+<p>由于 $\lim\limits_{x \to a^+} g(x) = \infty$。</p>
+<p>所以对上面的 $\epsilon &gt; 0, \exists\r \text{ s.t. when } 0 &lt; x - a &lt; r: |\dfrac{f(x_0) - Ag(x_0)}{g(x)}| &lt; \epsilon$</p>
+<p>同时也存在 $s &gt; 0 \text{ s.t. when } 0 &lt; x - a &lt; s$ 时，有 $|\dfrac{g(x_0)}{g(x)}| &lt; 1$（任取 $\epsilon$）</p>
+<p>综上：</p>
+<p>$\text{when } 0 &lt; x - a &lt; \min\{\rho, r, s\}$</p>
+<p>有：</p>
+<p>$|\dfrac{f(x)}{g(x)} - A| &lt; 2\epsilon + \epsilon = 3\epsilon$。</p>
+<p>所以 $\lim\limits_{x \to a^+} \dfrac{f(x)}{g(x)} = A$。</p>
+<p><strong>注记</strong>：将 $x \to a^+$ 换成 $x \to a, x\to a^-$ 仍旧成立。</p>
+<p><strong>注记</strong>：如果要计算 $\lim\limits_{x \to \infty} \dfrac{f(x)}{g(x)}$，只需要令 $t = \dfrac{1}{x}$，$\lim\limits_{t \to 0} \dfrac{f(\frac{1}{t})}{g(\frac{1}{t})}$ 再用洛必达法则。</p>
+<p><strong>注记</strong>：L'Hospital 只适用于 $\dfrac{0}{0}, \dfrac{\infty}{\infty}$</p>
+<h4>例题 4.3</h4>
+<blockquote>
+<p>计算：$\lim\limits_{x \to 0} \dfrac{x - \sin x}{x^3}$</p>
+</blockquote>
+<p>$= \lim\limits_{x \to 0} \dfrac{1 - \cos x}{3x^2} = \lim\limits_{x \to 0} \dfrac{\sin x}{6x} = \dfrac{1}{6}$</p>
+<p>当然第一步导完之后直接用等价无穷小量代换也行。</p>
+<h4>例题 4.4</h4>
+<blockquote>
+<p>求 $\lim\limits_{x \to 0} \left(\dfrac{a^x + b^x}{2}\right)^{\dfrac{1}{x}}$</p>
+</blockquote>
+<p>设其 $=A$。</p>
+<p>那么 $\ln A = \lim\limits_{x \to 0} \dfrac{\ln[(a^x + b^x) / 2]}{x}$</p>
+<p>洛就行了。</p>
+<h4>例题 4.5</h4>
+<blockquote>
+<p>求 $\lim\limits_{x \to 0^+} x^x$</p>
+</blockquote>
+<p>一样的根据 $\ln$ 的连续性先求一下对数然后拿出来：</p>
+<p>设极限为 $A$：</p>
+<p>则 $\ln A = \lim\limits_{x\to 0^+} (x \ln x)$</p>
+<p>然后发现这个地方不知道怎么算了，单纯用极限运算法则的话会因为 $\ln x \to -\infty$ 而无法使用。</p>
+<p>所以考虑洛必达法则，问题在于没有形式，所以构造一个：</p>
+<p>$x \ln x = \dfrac{\ln x}{\dfrac{1}{x}}$</p>
+<p>求导之后：$\dfrac{1}{-\dfrac{1}{x^2} \cdot x} = -x$。</p>
+<p>所以 $A = 1$</p>
+<h4>例题 4.6</h4>
+<blockquote>
+<p>求 $\lim\limits_{x \to 0} (\dfrac{1}{x} - \dfrac{1}{e^x - 1})$</p>
+</blockquote>
+<p>直接通分：</p>
+<p>$\dfrac{e^x - 1 - x}{x(e^x - 1)}$</p>
+<p>上下都是 $\to 0$ 所以直接洛必达。</p>
+<h4>例题 4.7</h4>
+<blockquote>
+<p>求 $\lim\limits_{x \to 1^-} (1 - x)^2\ln(1 - x)$ 的极限。</p>
+</blockquote>
+<p>令 $t = 1 - x, t \to 0^+$ 就和 4.5 差不多了。</p>
+<h3>Taylor 定理</h3>
+<h4>定理 4.14 带有 Peano 余项的 Taylor 展开式</h4>
+<blockquote>
+<p>假设函数 $f$ 在 $x_0$ 点具有 $n$ 阶连续导数，则：</p>
+<p>$\exists x_0$ 的某个邻域 $O(x, \delta)$，使得，$\forall x \in O(x_0, \delta)$，都有：</p>
+<p>$f(x) = f(x_0) + f^\prime(x_0)(x - x_0) + \dfrac{f^{\prime\prime}(x_0)}{2!}(x - x_0)^2 + \cdots + \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n + r_n(x)$</p>
+<p>其中 $r_n(x) = o((x - x_n)^n)$</p>
+</blockquote>
+<p>证明：</p>
+<p>令 $r_n(x) \equiv f(x) - [f(x_0) + f^\prime(x_0)(x - x_0) + c\dots + \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n]$</p>
+<p>（减掉的这一部分称为 $f$ 的 Taylor 多项式）</p>
+<p>$\lim\limits_{x \to x_0} \dfrac{r_n(x)}{(x - x_0)^n} = \lim\limits_{x \to x_0} \dfrac{r_n^\prime(x)}{n(x - x_0)^{n - 1}}$</p>
+<p>一直用 $\dfrac{0}{0}$ 的洛必达法则。</p>
+<p>$= \lim\limits_{x \to x_0} \dfrac{r_n^{(n)}(x)}{n!} = \lim\limits_{x\to x_0}\dfrac{f^{(n)}(x) - f^{(n)}(x_0)}{n!}$</p>
+<p>由于 $\lim\limits_{x \to x_0} r_n^{(n)}(x) = \lim\limits_{x\to x_0} f^{(n)}(x) - f^{(n)}(x_0) = 0$。</p>
+<p>且 $f^{(n)}$ 在 $x_0$ 处连续，所以 $f^{(n)}(x) \to f^{(n)}(x_0), (x \to x_0)$。 </p>
+<p>于是 $\lim\limits_{x\to x_0} \dfrac{r_n(x)}{(x - x_0)^n} = \dfrac{1}{n!} \cdot 0 = 0$。</p>
+<p>注：定理中对 $f^{(n)}$ 在 $x_0$ 点连续的要求可以去掉，减弱为在 $x_0$ 点存在 $n$ 阶导数。</p>
+<p><strong>第 n 次使用 L'Hospital 法则的时候其实要求 f 在 x0 这点连续</strong></p>
+<p>所以现在我们只能求到第 $n - 1$ 次，形如：</p>
+<p>$\lim\limits_{x \to x_0} \dfrac{r_n^{(n - 1)}(x)}{(n - 1)!(x - x_0)}$。</p>
+<p>根据定义：</p>
+<p>$r_n^{(n - 1)}(x) = f^{(n - 1)}(x) - f^{(n - 1)}(x_0) - f^{(n)}(x_0)(x - x_0)$。</p>
+<p>带入上式得到：</p>
+<p>$\lim\limits_{x\to x_0}\left[\dfrac{f^{(n - 1)}(x) - f^{(n - 1)}(x_0)}{(n - 1)!(x - x_0)} - \dfrac{f^{(n)}(x_0)}{(n - 1)!}\right]$。</p>
+<p>根据导数的定义：$f^{(n)}(x_0) = \lim\limits_{x\to x_0} \dfrac{f^{(n - 1)}(x) - f^{(n - 1)}(x_0)}{(x - x_0)}$。</p>
+<p>我们发现带回去原式就等于 $0$，证毕。</p>
+<h4>定理 4.15 带有 Lagrange 余项的 Taylor 展开式</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, b]$ 上具有 $n$ 阶连续导数。</p>
+<p>且在 $(a, b)$ 上具有 $n + 1$ 阶导数。</p>
+<p>假设 $x_0 \in [a,b]$ 为一定点，则：</p>
+<p>$\forall x \in [a, b], f(x) = f(x_0) + f^\prime(x_0)(x - x_0) + \dfrac{1}{2!}f^{(2)}(x_0)(x - x_0)^2 + \cdots + \dfrac{1}{n!}f^{(n)}(x_0)(x - x_0)^n + r_n(x)$</p>
+<p>其中 $r_n(x) = \dfrac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}, \xi$ 介于 $x, x_0$ 之间。</p>
+</blockquote>
+<p>证明：</p>
+<p>令 $F(t) = f(x) - [f(t)+f^\prime(t)(x - t)+\cdots+\dfrac{f^{(n)}(t)}{n!}(x - t)^n], G(t) = (x - t)^{n + 1}; t \in [a, b]$</p>
+<p>作为 $t$ 的函数，$F,G$ 在 $[a, b]$ 上具有 $n$ 阶连续导数（因为 $f$ 有，$F,G$ 是 $f$ 的多项式）</p>
+<p>要证明：$F(x_0) = \dfrac{f^{(n)}(\xi)}{(n + 1)!}G(x_0) \iff \dfrac{F(x_0)}{G(x_0)} = \dfrac{f^{(n + 1)(\xi)}}{(n + 1)!}$。</p>
+<p>不妨假设 $x_0 &lt; x$</p>
+<p>在 $[x_0, x]$ 上对 $F, G$ 用 Cauchy 中值定理：</p>
+<p>$\exists \xi \in (x_0, x) \text{ s.t. } \dfrac{F(x) - F(x_0)}{G(x) - G(x_0)} = \dfrac{F^\prime(\xi)}{G^\prime(\xi)}$，显然 $\xi \not= x$ 所以不会存在 $G^\prime(\xi) = 0$</p>
+<p>展开：$\dfrac{F(x) - F(x_0)}{G(x) - G(x_0)} = \dfrac{-F(x_0)}{-G(x_0)} = \dfrac{F^\prime(\xi)}{G^\prime(\xi)}$</p>
+<p>$G^\prime(t) = -(n + 1)(x - t)^n, F^\prime(t) = - [f^\prime(t) + f^{(2)}(t)(x-t)-f^\prime(t) + \dfrac{1}{2!}f^{(3)}(t)(x - t)^2 - f^{(2)}(t)(x - t) + \cdots + \dfrac{1}{n!}f^{(n + 1)}(t)(x - t)^{n}]$</p>
+<p>这里注意到 $F^\prime$ 展开后中间可以消掉，所以 $F^\prime(t) = -\dfrac{1}{n!}f^{(n + 1)}(t)(x - t)^n$。</p>
+<p>那么 $\dfrac{F^\prime(\xi)}{G^\prime(\xi)} = \dfrac{-f^{(n + 1)}(\xi)(x - \xi)^n}{-(n + 1)!(x - \xi)^n}$。</p>
+<p>证毕。</p>
+<h4>命题 4.3 ex 在 x = 0 处的 Taylor 展开式：</h4>
+<blockquote>
+<p>$(x_0= 0): e^x = 1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3 + \cdots \dfrac{1}{n!}x^n + r_n(x)$
+其中 $r_n(x) = o(x^n) (x \to 0) \text{ or } r_n(x) =\dfrac{e^{\xi}}{(n + 1)!}x^{n + 1}, \xi$ 介于 $0, x$ 之间。</p>
+</blockquote>
+<h4>命题 4.4 sinx 在 x = 0 处的 Taylor 展开式：</h4>
+<blockquote>
+<p>$(x_0 = 0): \sin x = x - \dfrac{1}{3!}x^3 + \dfrac{1}{5!}x^5 - \cdots + \dfrac{(-1)^{n}}{(2n + 1)!}x^{2n + 1} + r_{2n + 1}(x)$</p>
+<p>其中 $r_{2n + 1}(x) = o(x^{2n + 2}) \text{ or } r_{2n + 1}(x) = \dfrac{\sin(\xi + \dfrac{2n + 3}{2}\pi)}{(2n + 3)!}x^{2n + 3}$</p>
+</blockquote>
+<p>注意一下这个 Peano 余项的样子！</p>
+<p>证明：</p>
+<p>令 $f(x) = \sin x, x\in \mathbb R$。</p>
+<p>利用归纳法：$f^{(n)}(x) = \sin(x + \dfrac{k\pi}{2}), k = 0,1,2,\cdots$。</p>
+<p>$f^{(k)}(0) = \sin(\dfrac{k\pi}{2}) = \begin{cases}0, &amp;k \equiv 0 (\mod 2) \\ (-1)^{\frac{k-1}{2}}, &amp;k \equiv 1 (\mod 2)\end{cases}$</p>
+<p>于是就很容易写出来了。</p>
+<p>求 Lagrange 余项：</p>
+<p>$\dfrac{f^{(2n + 3)}(\xi)}{(2n + 3)!}(x - 0)^{2n + 3} = \dfrac{\sin(\xi + \dfrac{(2n + 3)\pi}{2})}{(2n + 3)!}x^{2n + 3}$</p>
+<h4>命题 4.5 cosx 在 x = 0 处的 Taylor 展开式</h4>
+<blockquote>
+<p>$(x_0 = 0): \cos x = 1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4 + \cdots + \dfrac{(-1)^{n}}{(2n)!}x^{2n} + o(x^{2n + 1})$</p>
+</blockquote>
+<p>从理解上直接对 $\sin x$ 求个导</p>
+<h4>命题 4.6 ln(1 + x) 在 x = 0 处的 Taylor 展开式</h4>
+<blockquote>
+<p>$(x_0 = 0): \ln(1 + x) = x - \dfrac{1}{2}x^2 + \dfrac{1}{3}x^3 + \cdots + \dfrac{(-1)^{n - 1}}{n}x^{n} + r_n(x)$</p>
+<p>其中 $r_n(x) = o(x^n), (x \to 0)$</p>
+</blockquote>
+<h4>命题 4.7 幂函数在 x = 0 处的 Taylor 展开式</h4>
+<blockquote>
+<p>若 $\alpha \in \mathbb R$</p>
+<p>$(x_0 = 0): (1 + x)^{\alpha} = 1 + \alpha x + \dfrac{\alpha(\alpha - 1)}{2!} x^2 + \dfrac{\alpha(\alpha - 1)(\alpha - 2)}{x^3} + \cdots + \dfrac{\alpha^{\underline{n}}}{n!}x^n + r_n(x)$</p>
+<p>其中 $r_n(x) = o(x^n), (x \to 0)$</p>
+</blockquote>
+<h4>命题 4.8 arctan x 在 x = 0 处的 Taylor 展开式</h4>
+<blockquote>
+<p>$(x_0 = 0): \arctan x = x - \dfrac{x^3}{3} + \dfrac{x^5}{5} + \cdots + \dfrac{(-1)^n x^{2n + 1}}{(2n + 1)} + r_{2n + 1}(x)$</p>
+<p>其中 $r_{2n + 1}(x) = o(x^{2n + 2}), (x \to 0)$</p>
+</blockquote>
+<h4>命题 4.9 tan x 在 x = 0 处的 Taylor 展开式</h4>
+<blockquote>
+<p>$(x_0 = 0): \tan x = x + \dfrac{1}{3}x^3 + \dfrac{2}{15} x^5 + r_5(x)$。</p>
+<p>其中 $r_5 = o(x^6) (x \to 0)$</p>
+</blockquote>
+<h4>例题 4.8 证明 e 是无理数</h4>
+<p>证明：反证：</p>
+<p>假设 $e$ 是有理数，故存在充分大的 $m\in \mathbb N_+$ 使得 $(m!)e$ 是正整数。</p>
+<p>利用 $e^x$ 的 Taylor 展开式：</p>
+<p>$e^x = 1 + x + \dfrac{1}{2!}x^2 + \cdots + \dfrac{1}{m!}x^m + \dfrac{e^{\xi}}{(m + 1)!}x^{m + 1}$。</p>
+<p>取 $x = 1 \Rightarrow e^x = 1 + 1 + \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots + \dfrac{1}{m!} + \dfrac{e^{\xi}}{(m + 1)!}, \xi \in (0, 1)$</p>
+<p>那么 $(m!)e = m! + m^{\underline{m - 1}} + m^{\underline{m - 2}} + \cdots + 1 + \dfrac{e^{\xi}}{m + 1}$。</p>
+<p>前面均为整数。</p>
+<p>所以 $\dfrac{e^{\xi}}{m + 1}$ 应该为正整数。</p>
+<p>但是 $1 &lt; e^{\xi} &lt; e &lt; 3$。所以 $\dfrac{e^{\xi}}{m + 1} \in (\dfrac{1}{m + 1}, \dfrac{3}{m + 1}) \cap \mathbb Z$</p>
+<p>当 $m \ge 3$ 时后面为空集。</p>
+<p>故矛盾。</p>
+<h4>例题 4.9</h4>
+<blockquote>
+<p>$\lim\limits_{x\to 0}\dfrac{\cos x - e^{\frac{-1}{2}x^2}}{x^4} = ?$</p>
+</blockquote>
+<p>洛必达的话运算量会有一点大。</p>
+<p>考虑用 Taylor 展开式来做这个题。</p>
+<p>利用 $e^x, \cos x$ 在 $0$ 点的 Taylor 展开式：</p>
+<p>令 $t = \dfrac{-1}{2}x^2$，</p>
+<p>$e^x = 1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3 + \dfrac{1}{4!}x^4 + o(x^4), (x \to 0)$。</p>
+<p>$e^{\frac{-1}{2}x^2} = 1 - \dfrac{1}{2}x^2 + \dfrac{1}{2!}\dfrac{1}{4}x^4 + o_1(x^4) (x\to 0)$</p>
+<p>$\cos x = 1 - \dfrac{1}{2}x^2 + \dfrac{1}{4!}x^4 + o_2(x_4) (x\to 0)$。</p>
+<p>$\cos x - e^x = (\dfrac{1}{24} - \dfrac{1}{8})x^4 + o_2(x^4) - o_1(x^4)$。</p>
+<p>所以原极限 $= -\dfrac{1}{12}$</p>
+<h4>例题 4.10</h4>
+<blockquote>
+<p>$\lim\limits_{x \to 0} \dfrac{\ln(1 + \sin^2 x) - 6(\sqrt[3]{2 - \cos x} - 1)}{x^4} = ?$</p>
+</blockquote>
+<p>$\sin x = x - \dfrac{1}{3!}x^3 + \dfrac{1}{5!}x^5 + o(x^5); (x\to 0)$</p>
+<p>$\ln (1 + t) = x-  \dfrac{1}{2}t^2 + \dfrac{1}{3}t^3 + o(t^3); (x \to 0)$</p>
+<p>$\cos x = 1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4 + o(x^4); (x\to 0)$</p>
+<p>$(1 + t)^{\frac{1}{3}} = 1 + \dfrac{t}{3} + \dfrac{1}{2!}\dfrac{1}{3}(\dfrac{1}{3} - 1)t + \dfrac{1}{3!}\dfrac{1}{3}(\dfrac{1}{3} - 1)(\dfrac{1}{3} - 2)t^3 + o(t^3) (t \to 0)$</p>
+<p>由于 $\sin^2 x \to 0, (x \to 0)$ 用第二个：</p>
+<p>$\ln(1 + \sin^2 x) = \sin^2x - \dfrac{1}{2}\sin^4x + \dfrac{1}{3}\sin^6x + o(\sin^6 x);(x\to 0)$</p>
+<p>再用第一个式子：</p>
+<p>$\ln(1 + \sin^2x) = (x - \dfrac{1}{3!}x^3 + \dfrac{1}{5!}x^5 + o(x^6))^2 - \dfrac{1}{2}(x - \dfrac{1}{3!}x^3 + \dfrac{1}{5!}x^5 + o(x^6))^4 + \dfrac{1}{3}(x - \dfrac{1}{3!}x^3 + \dfrac{1}{5!}x^5 + o(x^6))^6 + o(x^6), (x \to 0)$</p>
+<p>每一部分只拿出不是 $o(x^4)$ 的（因为分母有这个所以只需要考虑这些就行）</p>
+<p>$= x^2 - \dfrac{1}{3}x^4 - \dfrac{1}{2}x^4 + o(x^4); (x\to 0)$</p>
+<p>（每个次方项做组合找不高于四阶的）</p>
+<p>然后 $\sqrt[3]{2 - \cos x} = \sqrt[3]{1 - (1 - \cos x)} = 1 + \dfrac{1}{3}(1 - \cos x) + \dfrac{1}{2!} \dfrac{1}{3}(\dfrac{1}{3} - 1)(1 - \cos x)^2 + o(1 - \cos x)^3 = \dfrac{11}{9} - \dfrac{1}{3}\cos x - \dfrac{2}{9}\cos x - \dfrac{1}{9}\cos^2 x + o((1 - \cos x)^2)$</p>
+<p>当然由于 $1 - \cos x \approx \dfrac{1}{2}x^2; (x\to 0)$，上面就是 $o(x^4)$</p>
+<p>$= \dfrac{11}{9} - \dfrac{1}{9}(1 - \dfrac{1}{2}x^2 + \dfrac{1}{4!}x^4 + o(x^4)) + \dfrac{1}{9}(1 - \dfrac{1}{2}x^2 + \dfrac{1}{4!}x^4 + o(x^4))^2$</p>
+<p>$=1 + (\dfrac{1}{18}x^2 + \dfrac{1}{9}x^2) - \dfrac{1}{9 \times 24} x^4 - \dfrac{2}{9 \times 24}x^4 - \dfrac{1}{36}x^6 + o(x^4)$</p>
+<p>$\Rightarrow 6(\sqrt[3]{2 - \cos x} - 1) = x^2 - \dfrac{1}{4}x^4 + o(x^4); (x\to 0)$</p>
+<p>所以原式等价于：</p>
+<p>$\lim\limits_{x\to 0} \dfrac{-\dfrac{5}{6}x^4 + \dfrac{1}{4}x^4 + o(x^4)}{x^4} = -\dfrac{7}{12}$</p>
+<h4>例题 4.11</h4>
+<blockquote>
+<p>假设 $f$ 在 $(-\infty, +\infty)$ 上有二阶导数。</p>
+<p>1) 如果 $|f(x)| &lt; A, |f^{\prime\prime}(x)| \le B, x\in [0, 1]$，证明 $|f^\prime(x)| &lt; 2A + \dfrac{B}{2}, x \in [0, 1]$</p>
+<p>2) 若 $M_k = \sup\limits_{x \in \mathbb R} |f^{(k)}(x)|, k = 0,1,2,\cdots$。证明：如果 $M_0 &lt; \infty, M_2 &lt; \infty$，则 $M_1 &lt; \infty$ 且 $M_1 \le 2\sqrt{M_0M_2}$。</p>
+</blockquote>
+<p>证明导数之间不等式，中间值之类的一般用有 Lagrange 余项的 Taylor 展开。</p>
+<p>Peano 主要是计算。</p>
+<p>证明第一个：</p>
+<p>利用 Taylor 定理：</p>
+<p>$\forall x_0 \in \mathbb R$</p>
+<p>$f(x) = f(x_0) + f^\prime(x_0)(x - x_0) + \dfrac{1}{2!}f^{\prime\prime}(\xi)(x - x_0)^2, \forall x$</p>
+<p>其中 $\xi$ 介于 $x, x_0$ 之间。</p>
+<p>考虑凑出来 $f^\prime$，不然没法做。</p>
+<p>分别取 $x_0 = 0, 1$，只考虑 $x \in [0, 1]$。</p>
+<p>则 $f(x) = f(0) + f^\prime(0)x + \dfrac{1}{2!}f^{\prime\prime}(\xi_1)x^2$，$\xi_1 \in (0, x)$</p>
+<p>$f(x) = f(1) + f^\prime(1)(x - 1) + \dfrac{1}{2!}f^{\prime\prime}(\xi_2)(x - 1)^2$，$\xi_2 \in (x, 1)$</p>
+<p>凑 $f^\prime$，求导吗，我们发现这不行，因为 $\xi$ 也会变。</p>
+<p>我们换个办法：</p>
+<p>取 $x = 0, 1$：</p>
+<p>$f(0) = f(x_0) + f^\prime(x_0)(-x_0) + \dfrac{1}{2!}f^{\prime\prime}(\xi_1) x_0^2, \xi_1 \in (0, x_0)$</p>
+<p>$f(1) = f(x_0) + f^\prime(x_0)(1-x_0) + \dfrac{1}{2!}f^{\prime\prime}(\xi_2) x_0^2, \xi_2 \in (x_0, 1)$</p>
+<p>两式相减：</p>
+<p>$f(1) - f(0) =f^\prime(x_0) + \dfrac{1}{2}f^{\prime\prime}(\xi_2)(1 - x_0)^2 - \dfrac{1}{2}f^{\prime\prime}(\xi_1)x_0^2$</p>
+<p>所以 $|f^\prime(x_0)| \le |f(1)| + |f(0)| + \dfrac{1}{2}|f^{\prime\prime}(\xi_2)(1 - x_0)^2| + |\dfrac{1}{2}f^{\prime\prime}(\xi_1)x_0^2|$</p>
+<p>根据条件：</p>
+<p>$|f^\prime(x_0)| \le 2A + \dfrac{B}{2}[(1 - x_0)^2 + x_0^2], x_0 \in [0, 1]$</p>
+<p>所以 $|f^\prime(x_0)| \le 2A + \dfrac{B}{2}$</p>
+<p>□</p>
+<p>证明第二个：</p>
+<p>在 $f(x)$ 展开式中令 $h = x - x_0 \in \mathbb R$，那么：</p>
+<p>$f(x_0 + h) = f(x_0) + f^\prime(x_0) h + \dfrac{1}{2} f^{\prime\prime}(\xi) h^2$</p>
+<p>更一般的：
+$f(x + h) = f(x) + f^\prime(x) h + \dfrac{1}{2} f^{\prime\prime}(\xi) h^2$</p>
+<p>（$\xi$ 介于 $x, x + h$ 之间）</p>
+<p>设 $h &gt; 0$。</p>
+<p>$f^\prime(x) = \dfrac{f(x + h) - f(x)}{h} - \dfrac{1}{2}f^{\prime\prime}(\xi)h \Rightarrow$</p>
+<p>$|f^\prime(x)| \le \dfrac{|f(x + h) - f(x)|}{h} + \dfrac{1}{2} |f^{\prime\prime}(x)|h \le \dfrac{2M_0}{h} + \dfrac{M_2}{2}h$</p>
+<p>注意这里是 $\forall x$</p>
+<p>所以其实就是 $|f^\prime(x)| \le \min(\dfrac{2M_0}{h} + \dfrac{M_2}{2}h) = 2\sqrt{M_0M_2}$</p>
+<p>所以 $|f^\prime(x)| \le 2\sqrt{M_0M_2}$，两边都取上确界就证完了。</p>
+<p>□</p>
+<p>注：$f(x + h) = f(x) + f^\prime(x)h + \dfrac{1}{2!} f^{\prime\prime}(x)h^2 + \cdots + \dfrac{f^{(n)}(x)}{n!}h^n + \dfrac{f^{(n + 1)}(\xi)}{(n + 1)!}h^{n + 1}$ 也是一种常用的展开形式（和 x 无关）。</p>
+<p>注2：如果把命题改成 $|f^\prime(x)| \le \sqrt{2M_0M_2}$ 也是可以做的。</p>
+<p>做法是展开 $f(x - h) = f(x) - f^\prime(x)h + \dfrac{1}{2}f^{\prime\prime}(\eta) h^2$，解出 $f^{\prime}(x)$ 之后再分析函数最值就行了。</p>
+<p>$f^{\prime}(x) = \dfrac{f(x + h) - f(x - h)}{2h} - \dfrac{h}{4}[f^{\prime\prime}(\xi) - f^{\prime\prime}(\eta)]$</p>
+<p>$|f^{\prime}(x)| \le \dfrac{M_0}{h} + \dfrac{h}{4} \cdot 2M_2 = \dfrac{M_0}{h} + \dfrac{h}{2}M_2$</p>
+<p>由于 $\dfrac{M_0}{h} + \dfrac{h}{2}M_2 \ge 2\sqrt{\dfrac{M_0M_2}{2}} = \sqrt{2M_0 M_2}$</p>
+<p>所以 $\sup |f^{\prime}(x)|  = M_1 \le \sqrt{2M_0M_2}$</p>
+<p>注意取等条件。</p>
+<p><code>TODO</code> 还能不能更紧</p>
+<h4>例题 4.12</h4>
+<blockquote>
+<p>若 $f$ 在 $[0, 1]$ 上二次可微，$f(0) = f(1) = 0, \max\limits_{x \in [0, 1]} f(x) = 2$。</p>
+<p>求证：$\min\limits_{x\in [0, 1]}f^{\prime\prime}(x) \le -16$</p>
+</blockquote>
+<p>证明：</p>
+<p>考虑利用 Taylor 定理。</p>
+<p>现在问题是不知道在哪里展开，所以随便找个 $x_0 \in [0, 1]$ 展开一下：</p>
+<p>$f(x) = f(x_0) + f^\prime(x_0)(x - x_0) + \dfrac{1}{2!}f^{\prime\prime}(x_0)(x - x_0)^2$</p>
+<p>注意到 $\max f = 2$，且连续，且最大值不在端点取到，则 $\exists x_0 \in (0, 1) \text{ s.t. } f(x_0) = 2, f^\prime(x_0) = 0$ </p>
+<p>我们在这一点展开：</p>
+<p>$f(x) = 2 + \dfrac{1}{2}f^{\prime\prime}(x_0)(x - x_0)^2$</p>
+<p>令 $x = 0, 1$：</p>
+<p>$0 = 2 + \dfrac{1}{2} f^{\prime\prime}(\xi_1) x_0^2$</p>
+<p>$0 = 2 + \dfrac{1}{2} f^{\prime\prime}(\xi_2) (1 - x_0)^2$。</p>
+<p>$x_0 \not= 0$</p>
+<p>所以 $f^{\prime\prime}(\xi_1) = \dfrac{-4}{x_0^2}, f^{\prime\prime}(\xi_2) = \dfrac{-4}{(1 - x_0)^2}$。</p>
+<p>所以 $\min f^{\prime\prime}&lt; \min\{\dfrac{-4}{x_0^2}, \dfrac{-4}{(1 - x_0)^2}\}$</p>
+<p>取 $x_0 = \dfrac{1}{2}$ 即可得到原式（其他情况都不会比 $x_0 = \dfrac{1}{2}$ 小）</p>
+<h4>例题 4.13</h4>
+<blockquote>
+<p>若 $f$ 在 $[a, b]$ 上二次可微，$f^\prime(a) = f^\prime(b) = 0$。</p>
+<p>证明：$\exists \xi \in (a ,b) \text{ s.t. } |f^{\prime\prime}(\xi)| \ge \dfrac{4}{(b - a)^2} |f(b) - f(a)|$。</p>
+</blockquote>
+<p>继续直接照抄 Taylor 展开式：</p>
+<p>$f(x) = f(x_0) + f^\prime(x_0)(x - x_0) + \dfrac{1}{2!}f^{\prime\prime}(\eta)(x - x_0)^2$</p>
+<p>令 $x_0 = a, b$ 然后代进去：</p>
+<p>$f(x) = f(a) + \dfrac{1}{2}f^{\prime\prime}(\eta_1)(x - a)^2, \eta_1 \in (a, x)$</p>
+<p>$f(x) = f(b) + \dfrac{1}{2}f^{\prime\prime}(\eta_2)(x - b)^2, \eta_1 \in (x, b)$</p>
+<p>直接一减：</p>
+<p>$f(b) - f(a) = \dfrac{1}{2}[f^{\prime\prime}(\eta_1)(x - a)^2 - f^{\prime\prime}(\eta_2)(x - b)^2]$</p>
+<p>由于 $x$ 任意，取 $x = \dfrac{a + b}{2}$。</p>
+<p>于是 $f(b) - f(a) = \dfrac{1}{8}(a + b)^2 (f^{\prime\prime}(\eta_1) - f^{\prime\prime}(\eta_2))$</p>
+<p>取绝对值：</p>
+<p>$|f(b) - f(a)| = |\dfrac{1}{8}(a + b)^2 (f^{\prime\prime}(\eta_1) - f^{\prime\prime}(\eta_2))| \le \dfrac{(b - a)^2}{8}[|f^{\prime\prime}(\eta_1)| + |f^{\prime\prime}(\eta_2)|]$</p>
+<p>随便认为一个是更大的，然后多一个 $2$ 出来就变成要证明的式子了。</p>
+<p>取 $\eta = \max\{\eta_1, \eta_2\}$，后面那坨 $\le 2 |f^{\prime\prime}(\eta)|$ 就行。</p>
+<p>注：如果改为二阶连续导数做法更简单 （用介值定理）</p>
+<p>去掉连续用 Darboux</p>
+<h3>综合应用</h3>
+<h4>例 1</h4>
+<blockquote>
+<p>设 $f$ 在 $[a,b]$ 上三阶导数存在，求证：</p>
+<p>$\exists c \in (a, b) \text{ s.t. } f(b) = f(a) + f^{\prime}(\dfrac{a + b}{2})(b - a) + \dfrac{1}{24}f^{(3)}(c)(b - a)^3$</p>
+</blockquote>
+<p>证明：</p>
+<p>基本的思路大概是用 Taylor 定理（因为有高阶导数），中值定理（因为有这样“存在”的形式）</p>
+<p>利用待定系数：</p>
+<p>令 $k \in \mathbb R \text{ s.t. }$</p>
+<p>$f(b) = f(a) + f^{\prime}(\dfrac{a + b}{2})(b - a) + k(b - a)^3$</p>
+<p>考虑函数 $F(x) = f(x) - f(a) - f^{\prime}(\dfrac{x + a}{2})(x - a) + k(x - a)^3, x\in [a, b]$</p>
+<p>为什么这么换？这样可以使得 $F(b) = 0$。</p>
+<p>而且发现 $F(a) = 0$。</p>
+<p>显然 $F$ 是在闭区间上连续开区间上可导，利用 Roll 中值定理：</p>
+<p>$\exists \xi \in (a, b) \text{ s.t. } F^{\prime}(\xi) = 0$</p>
+<p>也就是：$f^{\prime}(\xi) - f^{\prime\prime}(\dfrac{\xi + a}{2})\cdot \dfrac{\xi - a}{2} - f^{\prime}(\dfrac{\xi + a}{2}) - 3k(\xi - a)^2 = 0$。</p>
+<p>所以 $f^{\prime}(\xi) = f^{\prime}(\dfrac{\xi + a}{2}) + f^{\prime\prime}(\dfrac{\xi + a}{2})(\dfrac{\xi - a}{2}) + 3k(\xi - a)^2$</p>
+<p>这就有一点 Taylor 展开式的味道了</p>
+<p>我们在 $\dfrac{\xi + a}{2}$ 处展开 $f^{\prime}(\xi)$。</p>
+<p>那么就是 $\exists \eta \text{ s.t. } f^{\prime}(\xi) = f^{\prime}(\dfrac{\xi + a}{2}) + f^{\prime\prime}(\dfrac{\xi + a}{2})(\xi - \dfrac{\xi + a}{2}) + \dfrac{1}{2!} f^{(3)} (\eta) (\xi - \dfrac{\xi + a}{2})^2$</p>
+<p>对比之后可以发现 $3k = \dfrac{1}{2!} \dfrac{1}{4} f^{(3)}(\eta) \iff k = \dfrac{1}{24}f^{(n)}(\eta), \eta \in (a, b)$</p>
+<p>$\eta$ 即为所需的 $c$，证毕。</p>
+<p>待定系数的核心其实和高中求直线方程差不多。</p>
+<p>如果把原函数当成“零阶”的导数，那这类问题一般都形如证明一堆关于区间端点 $a,b$ 的低阶导数的和等于一个 $K \cdot f^{(n)}(c)$ （$n$ 是最高阶），其中 $K$ 是一个关于区间长度 $(b - a)$ 的变量，实际操作一般会写成待定系数：$k \cdot (b - a)^n$。</p>
+<p>这个形式上长得就比较像 Lagrange 余项。所以会想到用 Taylor 展开某个点的某阶导数 $f^{(m)}(\eta)$。</p>
+<p>但光展开也还说明不了存在性，所以就想通过使用中值定理（或许需要多次使用）来得到另外的关于 $f^{(m)}(\eta)$ 的关系式从而解出待定系数 $k$ 进而说明原命题正确。</p>
+<h4>例 2</h4>
+<blockquote>
+<p>假设 $f$ 在 $[a, b]$ 上二阶可导，证明：</p>
+<p>$\exists \xi \in (a, b) \text{ s.t. } f(b) - 2f(\dfrac{a + b}{2}) + f(a) = \dfrac{(b - a)^2}{4}f^{\prime\prime}(\xi)$</p>
+</blockquote>
+<p>法一：待定系数</p>
+<p>还是延续之前的思路：</p>
+<p>设 $k \in \mathbb R \text{ s.t. } f(b) = 2f(\dfrac{a + b}{2}) - f(a) - k(b - a)^2$。</p>
+<p>令 $F(x) = f(x) - 2f(\dfrac{x + a}{2}) + f(a) - k(x - a)^2$</p>
+<p>显然 $F(a) = F(b) = 0$。</p>
+<p>由 Roll：</p>
+<p>$\exists \eta \in (a, b) \text{ s.t. } F^{\prime}(\eta) = 0$：</p>
+<p>$f^{\prime}(\eta) = f^{\prime}(\dfrac{\eta + a}{2}) + 2k(\eta - a)$</p>
+<p>在 $\dfrac{\eta + a}{2}$ 处展开 $f^{\prime}(\eta)$。</p>
+<p>$f^{\prime}(\eta) = f^{\prime}(\dfrac{\eta + a}{2}) + f^{\prime\prime}(\xi)(\eta - \dfrac{\eta + a}{2})$</p>
+<p>对比系数可以得到 $k = \dfrac{1}{4}f^{\prime\prime}(\xi)$，此处的 $\xi$ 即为所求。</p>
+<p>法二：</p>
+<p>直接使用 Taylor 定理：</p>
+<p>$f(x) = f(x_0) + f^{\prime}(x_0)(x - x_0) + \dfrac{1}{2}f^{\prime\prime}(x_0) (x- x_0)^2$</p>
+<p>令 $x_0 = \dfrac{a + b}{2}, x = a, b$</p>
+<p>得到：</p>
+<p>$f(a) = f(\dfrac{a + b}{2}) + f^{\prime}(\dfrac{a + b}{2})(a - \dfrac{a + b}{2}) + \dfrac{1}{2}f^{\prime\prime}(\dfrac{a + b}{2})(a - \dfrac{a + b}{2})^2$</p>
+<p>$\Rightarrow f(a) = f(\dfrac{a + b}{2}) + f^{\prime}(\dfrac{a + b}{2})(\dfrac{a - b}{2}) + \dfrac{1}{2}f^{\prime\prime}(\xi_1)\dfrac{(b - a)^2}{4}$</p>
+<p>同理：</p>
+<p>$\Rightarrow f(b) = f(\dfrac{a + b}{2}) + f^{\prime}(\dfrac{a + b}{2})(\dfrac{b - a}{2}) + \dfrac{1}{2}f^{\prime\prime}(\xi_2)\dfrac{(b - a)^2}{4}$</p>
+<p>两个式子相加：</p>
+<p>$f(a) + f(b) = 2f(\dfrac{a + b}{2}) + \dfrac{(b - a)^2}{8}(f^{\prime\prime}(\xi_1) + f^{\prime\prime}(\xi_2))$</p>
+<p>还是差点意思。</p>
+<p>但是可以写成：</p>
+<p>$f(a) + f(b) = 2f(\dfrac{a + b}{2}) + \dfrac{(b - a)^2}{4}(\dfrac{f^{\prime\prime}(\xi_1) + f^{\prime\prime}(\xi_2)}{2})$</p>
+<p>根据 Darboux 定理，导函数具有介值性：</p>
+<p>$\exists \xi \in (\xi_1, \xi_2) \subset (a, b) \text{ s.t. } f^{\prime\prime}(\xi) = \dfrac{f^{\prime\prime}(\xi_1) + f^{\prime\prime}(\xi_2)}{2}$</p>
+<p>那么就得到了想要的 $\xi$</p>
+<p>证毕。</p>
+<p>（高阶导数很多时候都要用 Taylor 和 Darboux）</p>
+<h4>例 3</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, b]$ 上连续，$(a, b)$ 上可导，$f(0) = 0, f(1) =1$</p>
+<p>1) 证明：$\exists x_0 \in (0, 1) \text{ s.t. } f(x_0) = 2 - 3x_0$</p>
+<p>2) 证明：$\exists \xi\not= \eta \in (0, 1) \text{ s.t. } [1 + f^{\prime}(\xi)] \cdot[1 + f^{\prime}(\eta)] = 4$ </p>
+</blockquote>
+<p>证明第一个：直接移过去，$F(x) = f(x) - 2 + 3x$，用零点存在定理就行。</p>
+<p>证明第二个：</p>
+<p>对 $f$ 在 $[0, x_0], [x_0, 1]$ 上分别应用 Lagrange 中值定理：</p>
+<p>（这个不等给了个提示）</p>
+<p>$f(x_0) - f(0) = f^{\prime}(\xi) (x_0 - 0), \xi \in (0, x_0)$</p>
+<p>$f(1) - f(x_0) = f^{\prime}(\eta) (1 - x_0), \eta \in (x_0, 1)$</p>
+<p>那么就是 $f(x_0) = f^{\prime}(\xi) x_0 = 1 - f^{\prime}(\eta)(1 - x_0)$</p>
+<p>所以 $f^{\prime}(\xi) + 1 = \dfrac{f(x_0) + x_0}{x_0} = \dfrac{2(1 - x_0)}{x_0}$（根据第一问来的）</p>
+<p>同理 $f^{\prime}(\eta) + 1 = \dfrac{1 - f(x_0)}{1 - x_0} + 1 = \dfrac{2x_0}{1 - x_0}$</p>
+<p>于是相乘就是 $4$，证毕。</p>
+<h4>例 4</h4>
+<blockquote>
+<p>设 $f$ 在 $x = 0$ 的某个邻域内二阶导数存在。</p>
+<p>且 $\lim\limits_{x \to 0} (1 + x + \dfrac{f(x)}{x})^{\frac{1}{x}} = e^3$。</p>
+<p>求 $f(0), f^{\prime}(0), f^{\prime\prime}(0), \lim\limits_{x \to 0} (1 + \dfrac{f(x)}{x})^{\frac{1}{x}}$</p>
+</blockquote>
+<p>看到二阶导数，直接展开。</p>
+<p>$f(x) = f(0) + f^{\prime}(0)x + \dfrac{1}{2!}f^{\prime\prime}(0)x^2 + o(x^2), x \to 0$</p>
+<p>计算一般使用 Peano</p>
+<p>所以 $1 + x + \dfrac{f(x)}{x} = 1 + x + \dfrac{f(0)}{x} + f^{\prime}(0) + \dfrac{x}{2}f^{\prime\prime}(0) + o(x), (x\to 0)$</p>
+<p>两边同时取对数：</p>
+<p>$3 = \lim\limits_{x \to 0}\dfrac{\ln\{[1 + f^{\prime}(0)] + [1 + \dfrac{1}{2}f^{\prime\prime}(0)]x + \dfrac{f(0)}{x} + o(x)\}}{x}$</p>
+<p>显然上面的极限应该等于 $0$。</p>
+<p>也就是 $\ln$ 里面的极限是 $1$。</p>
+<p>换句话说：$\lim\limits_{x\to 0}\{[1 + f^{\prime}(0)] + [1 + \dfrac{1}{2}f^{\prime\prime}(0)]x + \dfrac{f(0)}{x} + o(x)\} = 1$</p>
+<p>$1 = 1 + f^{\prime}(0) + 0 + 0 + \lim\limits_{x \to 0} \dfrac{f(0)}{x}$。</p>
+<p>由此 $f(0) = 0, f^{\prime}(0) = 0$。</p>
+<p>这两个东西代回去:</p>
+<p>$1 + x + \dfrac{f(x)}{x} = 1 + \dfrac{1}{2}f^{\prime\prime}(0)x+ o(x), (x\to 0)$。</p>
+<p>那么取极限之后可以知道 $\lim\limits_{x\to 0} \dfrac{\ln(1 + \dfrac{1}{2}f^{\prime\prime}(0)x + o(x))}{x} = 3$。</p>
+<p>利用 $\ln(1 + t) \approx t$</p>
+<p>$\lim\limits_{x\to 0} \dfrac{\dfrac{1}{2}f^{\prime\prime}(0)x + o(x)}{x} = 3$。</p>
+<p>所以 $f^{\prime\prime}(0) = 6$</p>
+<p>最后， $\lim\limits_{x \to 0} (1 + \dfrac{f(x)}{x}) = \lim\limits_{x\to 0} (1 + \dfrac{3x^2}{x}) = e^3$。</p>
+<p>（$\ln(1 + at) = e^a$）</p>
+<h4>例 5</h4>
+<blockquote>
+<p>假设 $f$ 在 $[0, +\infty)$ 上可导，$f(0) = 0$。</p>
+<p>且 $f^{\prime}(x) = A|f(x)|, x &gt; 0$</p>
+<p>证明：$f(x) = 0$</p>
+</blockquote>
+<p>任取 $x &gt; 0, f(x) - f(0) = f^{\prime}(\xi) x, 0 &lt; \xi &lt; x$。</p>
+<p>$\Rightarrow |f(x)| = |f^{\prime}(\xi)|\cdot x \le A|f(\xi)| \cdot x$</p>
+<p>先考虑 $x\in [0, \dfrac{1}{2A}]$。</p>
+<p>于是 $|f(x)| \le A |f(\xi)| x \le \dfrac{1}{2}|f(\xi)|$</p>
+<p>令 $M = \max\limits_{0 \le x \le \frac{1}{2A}}|f(x)|$。</p>
+<p>所以 $|f(x)| \le \dfrac{M}{2}$</p>
+<p>再对 $x \in [0, \dfrac{1}{2A}]$ 取 $|f|$ 的最大值</p>
+<p>所以 $0\le M \le \dfrac{M}{2} \Rightarrow M = 0$。</p>
+<p>同理：$f(x) = 0, x \in [\dfrac{1}{2A}, \dfrac{2}{2A}], \cdots$</p>
+<p>于是 $f(x) = 0$</p>
+<h4>例 6</h4>
+<blockquote>
+<p>假设 $f$ 在 $[0, +\infty)$ 上可导。</p>
+<p>$\lim\limits_{x\to +\infty} f^{\prime}(x) =1$。</p>
+<p>证明：$\lim\limits_{x\to +\infty} \dfrac{f(x)}{x} = 0$</p>
+</blockquote>
+<ol>
+<li>直接用洛必达法则</li>
+</ol>
+<p>其实显然是不行的，因为 L'Hospital 法则只能适用于 $\dfrac{0}{0}, \dfrac{\infty}{\infty}$。</p>
+<p>如果不是也得想办法转化过去，这地方条件都不给够显然是做不了的。</p>
+<ol>
+<li>用 Lagrange 中值定理</li>
+</ol>
+<p>$\lim\limits_{x \to +\infty}f^{\prime}(x) = 0$ 的意思</p>
+<p>$\forall \epsilon &gt; 0, \exists M &gt; 0, \text{ s.t. when } x \ge M, |f^{\prime}(x)| &lt; \epsilon$</p>
+<p>在 $[M, x]$ 上使用 Lagrange 中值定理</p>
+<p>$f(x) - f(M) = f^{\prime}(\xi) (x - M), \xi \in (M, x)$</p>
+<p>那么 $\dfrac{f(x)}{x} = \dfrac{f(M)}{x} + f^{\prime}(\xi)(1 - \dfrac{M}{x})$</p>
+<p>取绝对值：</p>
+<p>$|\dfrac{f(x)}{x}| \le \dfrac{|f(M)|}{x} + |f^{\prime}(\xi)||1 - \dfrac{M}{x}| \le \dfrac{|f(M)|}{x} + \epsilon$</p>
+<p>由于 $x \to +\infty, \dfrac{1}{x} \to 0$，所以 $\exists M^{\prime} \text{ s.t. when } x \ge M^{\prime}, \dfrac{|f(M^{\prime})|}{x} &lt; \epsilon$</p>
+<p>所以 $x \ge \max\{M, M^{\prime}\},|\dfrac{f(x)}{x}| &lt; 2\epsilon$</p>
+<p>所以 $\dfrac{f(x)}{x} \to 0$</p>
+<h4>例 7</h4>
+<blockquote>
+<p>$f$ 在 $(0, a]$ 上有连续的导函数。</p>
+<p>$\lim\limits_{x \to 0^+} \sqrt{x}f^{\prime}(x) = 0$。</p>
+<p>证明 $f$ 在 $(0, a]$ 上一致连续。</p>
+</blockquote>
+<p>其实就是证明 $\lim\limits_{x \to 0^+} f(x)$ 存在</p>
+<p>$\lim\limits_{x \to 0^+} \dfrac{[f(x)]^{\prime}}{2(x^{\frac{1}{2}})^{\prime}} = 0$。</p>
+<p>倒着用一次洛必达法则：</p>
+<p>$\lim\limits_{x \to 0^+}\dfrac{f(x)}{\sqrt{x}} = 0$</p>
+<p>但真的可以用吗？<code>TODO</code></p>
         </article>
         
         <footer>
