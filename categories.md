@@ -1,12 +1,15 @@
 ## Categories
 
-*文章总数: 17*
+*文章总数: 20*
 
-*Last update: 2025 年 12 月 22 日 22:54*
+*Last update: 2026 年 01 月 11 日 20:38*
 
-- [⌈数学分析笔记 Chapter 4 微分中值定理及其应用⌋](posts\math\sf-zxf-c4.html)  最后更新时间：*`25 年 12 月 22 日`*
+- [⌈数学分析(I)定理理解⌋](posts\math\sf1-theory.html)  最后更新时间：*`26 年 01 月 11 日`*
+- [⌈数学分析(I) 杂题⌋](posts\math\sf1-problem.html)  最后更新时间：*`26 年 01 月 11 日`*
+- [⌈神秘菜谱收集⌋](posts\misc\cuisine.html)  最后更新时间：*`26 年 01 月 11 日`*
+- [⌈数学分析笔记 - Chapter 5 - 不定积分⌋](posts\math\sf-zxf-c5.html)  最后更新时间：*`25 年 12 月 24 日`*
+- [⌈数学分析笔记 Chapter 4 微分中值定理及其应用⌋](posts\math\sf-zxf-c4.html)  最后更新时间：*`25 年 12 月 24 日`*
 - [⌈日麻何切 & 牌效率记录⌋](posts\misc\majhong.html)  最后更新时间：*`25 年 12 月 19 日`*
-- [⌈数学分析习题记录 - 极限部分⌋](posts\math\sf-assignments-1.html)  最后更新时间：*`25 年 12 月 06 日`*
 - [⌈数学分析笔记 Chapter 2 函数极限 & 连续函数⌋](posts\math\sf-zxf-c2.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈ICPC Asia Regional 沈阳 2025 游记⌋](posts\logs\icpc-shenyang-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈CCPC 郑州 2025 游记⌋](posts\logs\ccpc-zhengzhou-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*

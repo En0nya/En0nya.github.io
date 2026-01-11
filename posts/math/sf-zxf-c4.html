@@ -906,14 +906,110 @@ $f(x + h) = f(x) + f^\prime(x) h + \dfrac{1}{2} f^{\prime\prime}(\xi) h^2$</p>
 <h4>例 7</h4>
 <blockquote>
 <p>$f$ 在 $(0, a]$ 上有连续的导函数。</p>
-<p>$\lim\limits_{x \to 0^+} \sqrt{x}f^{\prime}(x) = 0$。</p>
+<p>$\lim\limits_{x \to 0^+} \sqrt{x}f^{\prime}(x) = 1$。</p>
 <p>证明 $f$ 在 $(0, a]$ 上一致连续。</p>
 </blockquote>
 <p>其实就是证明 $\lim\limits_{x \to 0^+} f(x)$ 存在</p>
-<p>$\lim\limits_{x \to 0^+} \dfrac{[f(x)]^{\prime}}{2(x^{\frac{1}{2}})^{\prime}} = 0$。</p>
+<p>$\lim\limits_{x \to 0^+} \dfrac{[f(x)]^{\prime}}{2(x^{\frac{1}{2}})^{\prime}} = 1$。</p>
 <p>倒着用一次洛必达法则：</p>
-<p>$\lim\limits_{x \to 0^+}\dfrac{f(x)}{\sqrt{x}} = 0$</p>
-<p>但真的可以用吗？<code>TODO</code></p>
+<p>$\lim\limits_{x \to 0^+}\dfrac{f(x)}{\sqrt{x}} = 1$</p>
+<p>但真的可以用吗？显然不行，条件都不满足。</p>
+<p>换个想法：</p>
+<p>$\forall x &lt; y \in (0, a], |\dfrac{f(x) - f(y)}{\sqrt x - \sqrt y}|$</p>
+<p>在 $[x, y]$ 上用 Cauchy 中值定理。（因为这种分子分母还有求导的除了 L'Hospital 就只有这个了） </p>
+<p>那么 $\dfrac{f(x) - f(y)}{\sqrt x - \sqrt y} = \dfrac{f^{\prime}(\xi)}{\dfrac{1}{2}\xi^{-\frac{1}{2}}} = 2\sqrt \xi f^{\prime}(\xi)$</p>
+<p>两边取绝对值 $2|\sqrt \xi f^{\prime}(\xi)|$</p>
+<p>现在只需要证明这个小于一个常数 $C$</p>
+<p>考虑 $F(x) = \begin{cases} \sqrt x f^{\prime}(x), &amp;0 &lt; x &lt; a \\1, &amp;x = 0\end{cases}$</p>
+<p>那么 $F(x)$ 就在 $x = 0$ 连续，进而在 $[0, a]$ 上连续，进而是有界的。</p>
+<p>那么 $\exists M &gt; 0 \text{ s.t. } |F(x)| \le M, x \in [0, a]$</p>
+<p>所以 $|\dfrac{f(x) - f(y)}{\sqrt x - \sqrt y}| \le M, \forall x, y \in (0, a] \Rightarrow |f(x) - f(y)| \le M |\sqrt x - \sqrt y| \le M \sqrt{|x - y|}$</p>
+<p>$\forall \epsilon &gt; 0, \text{let } \delta = \dfrac{\epsilon^2}{M^2}, |x - y| &lt; \delta \Rightarrow |f(x) - f(y)| &lt; M\sqrt{\delta} = \epsilon$</p>
+<p>证毕。</p>
+<h4>例 8</h4>
+<blockquote>
+<p>假设 $f$ 在 $[a, b]$ 上具有二阶导数。</p>
+<p>且 $f(a) = g(a); f(b) = g(b); f(x), g(x)$ 在区间 $(a, b)$ 内取得相同的最大值</p>
+<p>证明：$\exists \xi \in (a, b) \text{ s.t. } f^{\prime\prime}(\xi) = g^{\prime\prime}(\xi)$</p>
+</blockquote>
+<p>证明：</p>
+<p>看到条件直接上 Roll：令 $F(x) = f(x) - g(x), x\in [a, b]\Rightarrow F(a) = 0, F(b) = 0$</p>
+<p>那么 $\exists c \in (a, b) \text{ s.t. } F^{\prime}(c) = 0$</p>
+<p>所以 $f^{\prime}(\xi) = g^{\prime}(\xi)$</p>
+<p>然后，由于 $f, g$ 在 $[a,b]$ 上连续且最大值不在端点取到：最大值一定是极大值点。</p>
+<p>由 Fermat：$f^{\prime}(x_1) = g^{\prime}(x_2) = 0$</p>
+<ol>
+<li>如果 $x_1 \not= x_2$，不妨假设 $x_1 &lt; x_2$。</li>
+</ol>
+<p>其实想证明 $F^{\prime\prime}(\xi) = 0$，但我们只有 $F^{\prime}(c) = 0$，一种可能是找另一个 $F^{\prime}(d) = 0$ 再用一次 Roll。</p>
+<p>$F(x_1) = f(x_1) - g(x_1) = g(x_2) - g(x_1) \ge 0$</p>
+<p>$F(x_2) = f(x_2) - g(x_2) = g(x_1) - g(x_2) \le 0$</p>
+<p>然后由于 $F$ 连续，根据零点存在定理，$\exists x_0 \in [x_1, x_2] \text{ s.t. } F(x_0) = 0$</p>
+<p>我们发现 $F(a), F(b), F(x_0) = 0$，并且 $a &lt; x_0 &lt; b$。</p>
+<p>那我们就用两次 Roll 定理，可以得到两个 $\xi_1, \xi_2 \text{ s.t. } F^{\prime}(\xi_1) = F^{\prime}(\xi_2) = 0$</p>
+<p>再用一次 Roll 可以得到 $\exists \xi \in (\xi_1, \xi_2) \text{ s.t. } F^{\prime\prime}(\xi) = 0$</p>
+<p>那么 $\exists \xi \in (\xi_1, \xi_2) \subset (a, b) \text{ s.t. } f^{\prime\prime}(\xi) = g^{\prime\prime}(\xi)$</p>
+<p>其实这里就发现开始的 $c$ 没啥用。</p>
+<ol>
+<li>如果 $x_1 = x_2$，这个比较简单 <code>TODO</code></li>
+</ol>
+<h3>函数作图</h3>
+<h4>定义 渐近线</h4>
+<blockquote>
+<p>如果曲线 $y = f(x)$ 与直线 $y = kx + b$ 的距离在 $x \to \infty$ 时趋近于 $0$。</p>
+<p>即 $\lim\limits_{x \to +\infty} |f(x) - (kx + b)| = 0$ 或 $\lim\limits_{x \to -\infty} |f(x) - (kx + b)| = 0$ 有至少一个成立。</p>
+<p>那么 $y = kx + b$ 是曲线 $y = f(x)$ 的渐近线。</p>
+<p>若 $k = 0$ 则称之为水平渐近线。</p>
+<p>否则称为斜渐近线。</p>
+<p>若在某点 $a$ 处满足 $\lim\limits_{x \to a} f(x) = +\infty$ 或 $\lim\limits_{x\to a} f(x) = -\infty$，则称 $x = a$ 为 $y = f(x)$ 的垂直渐近线。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>求 $y = \dfrac{(x - 1)^2}{3(x + 1)}$ 的渐近线</p>
+</blockquote>
+<p>当 $x \to -1, y \to \infty \Rightarrow x = -1$ 是一条垂直渐近线</p>
+<p>如果有 $y = kx + b$ 的渐近线。</p>
+<p>那么 $\lim\limits_{x\to \infty} |f(x) - kx - b| = 0$。</p>
+<p>$f(x) - kx - b = \dfrac{(x - 1)^2 - 3kx(x + 1) - 3b(x + 1)}{3(x + 1)} = \dfrac{x^2 - 3kx^2 - 2x - 3kx - 3bx +1 - 3b}{3(x + 1)}$   </p>
+<p>$= \dfrac{(1 - 3k)x^2 - (3k + 3b + 2)x + (1 - 3b)}{3(x + 1)} \to 0$</p>
+<p>这说明不会有平方项，$k = \dfrac{1}{3}$。</p>
+<p>显然一次项也不应该有，$b = -1$。</p>
+<p>于是 $y = \dfrac{1}{3}x - 1$ 是它的一条斜渐近线。 </p>
+<h4>例题</h4>
+<blockquote>
+<p>求 $y = \sqrt[3]{x^3 - x^2 -x + 1}$ 的渐近线。</p>
+</blockquote>
+<p>其实垂直渐近线很大概率是没有定义的地方，这个函数在实数域上有定义。</p>
+<p>而且是基本初等函数的组合，所以连续，进而不存在垂直渐近线</p>
+<p>所以只能找其它的渐近线。</p>
+<p>设其有渐近线 $y = kx + b$。</p>
+<p>那么 $\lim\limits_{x\to \infty} |\sqrt[3]{x^3 - x^2 - x + 1} - (kx + b)| = 0$</p>
+<p>化简：</p>
+<p>$\sqrt[3]{x^3 - x^2 - x + 1} = \sqrt[3]{x^3(1 - \dfrac{1}{x} - \dfrac{1}{x^2} + \dfrac{1}{x^3})} = x [1 + [\dfrac{-1}{x} + \dfrac{-1}{x^2} + \dfrac{1}{x^3}]]^{\frac{1}{3}}$</p>
+<p>于是我们利用 Taylor 定理展开：</p>
+<p>$(1 + t)^{\frac{1}{3}} = 1 + \dfrac{1}{3}t + \dfrac{1}{2!}\dfrac{1}{3}(1 - \dfrac{1}{3})t^2 + o(t^2)$</p>
+<p>原式就是 $x[1 - \dfrac{1}{3} - \dfrac{1}{3}\cdot\dfrac{1}{x} + o(\dfrac{1}{x})]$</p>
+<p>然后极限里面就是 $|(1 - k)x - \dfrac{1}{3}- b - \dfrac{1}{3}\cdot \dfrac{1}{x} + o(\dfrac{1}{x})| \to 0$。</p>
+<p>显然 $k = 1, b = -\dfrac{1}{3}$</p>
+<p>于是，渐近线是 $y = x - \dfrac{1}{3}$</p>
+<h4>作函数图象的一般步骤</h4>
+<ol>
+<li>确定函数定义域，奇偶性，周期性</li>
+<li>确定函数的连续性（需要分析），间断点和类型</li>
+<li>如果函数可导，利用导数判断单调性，极值，最值。</li>
+<li>如果函数二阶可导，利用二阶导判断函数的凸性，拐点</li>
+<li>利用 Taylor 定理 / L'Hospital 法则确定渐近线。</li>
+<li>取特殊点，描绘出大致图象</li>
+</ol>
+<p>画一下 $y = \dfrac{(x - 1)^2}{3(x + 1)}$ 的图象：</p>
+<p>1：定义域：$x\not= -1$，非奇偶函数，非周期函数，零点为 $1$</p>
+<p>2：在 $x\not=-1$ 上连续。且 $-1$ 是第二类间断点。</p>
+<p>3：增区间是 $(1, +\infty),(-\infty, -3)$，减区间 $(-3, -1), (-1, 1)$</p>
+<p>4：$y^{\prime\prime} = \dfrac{8}{3(x + 1)^3}$ 无拐点（注意拐点是一个二维的点不是像零点那样）</p>
+<p>5：$y = \dfrac{1}{3}x-1$</p>
+<p>6：$(1, 0), (-3, \dfrac{-8}{3})$</p>
+<p>如图：</p>
+<p><img alt="func1.png" src="../../medias/func1.png" /></p>
         </article>
         
         <footer>
