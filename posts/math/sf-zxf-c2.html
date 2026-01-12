@@ -484,11 +484,11 @@
 <h4>命题 2.9 连续函数的四则运算</h4>
 <blockquote>
 <p>设 $f, g$ 在区间 $I$ 上连续。</p>
-<p>1) $\forall \alpha, \beta \in \mathbb{R}, \alpha f + \beta g$ 在 $I$ 上连续
-2) $(f\cdot g)(x)\equiv f(x)\cdot g(x)$ 在 $I$ 上连续</p>
+<p>1) $\forall \alpha, \beta \in \mathbb{R}, \alpha f + \beta g$ 在 $I$ 上连续</p>
+<p>2) $(f\cdot g)(x)\equiv f(x)\cdot g(x)$ 在 $I$ 上连续</p>
 <p>3) $g$ 在 $I$ 上没有零点，$(\dfrac{f}{g})(x) \equiv \dfrac{f(x)}{g(x)}$ 在 $I$ 上连续。</p>
 </blockquote>
-<p>证明还是类似函数极限四则运算。（下来写一下线性变换这个）</p>
+<p>证明还是类似函数极限四则运算，直接写定义凑一下就行了。</p>
 <h4>定理 2.4 反函数的连续性</h4>
 <blockquote>
 <p>若 $y = f(x)$ 在 $x \in [a, b]$ 上严格单调，且为连续的。</p>
@@ -643,7 +643,7 @@
 <p>于是 $\lim\limits_{x \to 0} \dfrac{e^x - 1}{x} = 1$。</p>
 <p>证明 4：用一下幂函数定义方式来做个代换。（还没证）</p>
 <blockquote>
-<p>注记：这个地方的加减不能乱换到 $\apporx$ 左右！！</p>
+<p>注记：这个地方的加减不能乱换到 $\approx$ 左右！！</p>
 </blockquote>
 <h4>定义 2.10 无穷大量</h4>
 <blockquote>
@@ -917,8 +917,10 @@
 <p>闭区间上的连续函数一定存在最大值和最小值。</p>
 </blockquote>
 <p>证明：假设 $f$ 在区间 $[a, b]$ 上连续，从而是一致连续的并且有界的。</p>
-<p>由确界原理，$f$ 在 $[a, b]$ 上有上下确界。</p>
-<p><code>TODO</code></p>
+<p>由确界原理，$f$ 在 $[a, b]$ 上有上下确界 $\sup S, \inf S$。</p>
+<p>设 $S=\{y:f(x) = y, x \in [a, b]\}$。</p>
+<p>那么 $\forall y \in S, y \le \sup S$，设 $\sup S \not\in S$。</p>
+<p>那么 $\forall y \in S, y &lt; \sup S$，说明存在一个 $y \text{ s.t. } y \ge z \in S, y &lt; \sup S$，那么 $\sup S \not= \sup S$，矛盾。</p>
 <p>证明2：用 Weierstrass 定理</p>
 <p>考虑 $S = \{f(x): x \in [a, b]\}$，$S$ 是有界的。</p>
 <p>由确界原理，$S$ 必定存在上下确界 $\beta, \alpha$。</p>

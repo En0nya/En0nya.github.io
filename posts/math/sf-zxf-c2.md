@@ -679,11 +679,12 @@ $\lim\limits_{n \to \infty} a^{p_n} \ge \lim\limits_{n \to \infty} a^{q_n}$。
 > 设 $f, g$ 在区间 $I$ 上连续。
 >
 > 1) $\forall \alpha, \beta \in \mathbb{R}, \alpha f + \beta g$ 在 $I$ 上连续
+>
 > 2) $(f\cdot g)(x)\equiv f(x)\cdot g(x)$ 在 $I$ 上连续
 >
 > 3) $g$ 在 $I$ 上没有零点，$(\dfrac{f}{g})(x) \equiv \dfrac{f(x)}{g(x)}$ 在 $I$ 上连续。
 
-证明还是类似函数极限四则运算。（下来写一下线性变换这个）
+证明还是类似函数极限四则运算，直接写定义凑一下就行了。
 
 #### 定理 2.4 反函数的连续性
 
@@ -938,7 +939,7 @@ $\lim\limits_{x \to 0} [x\ln(1 + \dfrac{1}{x})] = 1 \Rightarrow \lim\limits_{x \
 
 证明 4：用一下幂函数定义方式来做个代换。（还没证）
 
-> 注记：这个地方的加减不能乱换到 $\apporx$ 左右！！
+> 注记：这个地方的加减不能乱换到 $\approx$ 左右！！
 
 #### 定义 2.10 无穷大量
 
@@ -1377,9 +1378,13 @@ Step1：先证明 $f$ 在 $[M, +\infty)$ 上一致连续，对上述的 $\epsilo
 
 证明：假设 $f$ 在区间 $[a, b]$ 上连续，从而是一致连续的并且有界的。
 
-由确界原理，$f$ 在 $[a, b]$ 上有上下确界。
+由确界原理，$f$ 在 $[a, b]$ 上有上下确界 $\sup S, \inf S$。
 
-`TODO`
+设 $S=\{y:f(x) = y, x \in [a, b]\}$。
+
+那么 $\forall y \in S, y \le \sup S$，设 $\sup S \not\in S$。
+
+那么 $\forall y \in S, y < \sup S$，说明存在一个 $y \text{ s.t. } y \ge z \in S, y < \sup S$，那么 $\sup S \not= \sup S$，矛盾。
 
 证明2：用 Weierstrass 定理
 

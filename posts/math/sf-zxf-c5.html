@@ -71,87 +71,87 @@
 <p>或者等价地： $\text{d} F(x) = f(x) \text{d} x$。</p>
 <p>则称 $F$ 为 $f$ 在 $I$ 上的一个原函数。</p>
 <p>函数 $f$ 的全体原函数称为 $f$ 的不定积分</p>
-<p>记作 $\int f(x)\text{d}x$，由此：$F(x) = \int f(x) \text{d}x + C$，其中 $C$ 为任意常数。</p>
+<p>记作 $\displaystyle\int f(x)\text{d}x$，由此：$F(x) = \displaystyle\int f(x) \text{d}x + C$，其中 $C$ 为任意常数。</p>
 </blockquote>
-<p>例：$\int x \text{d} x = \dfrac{1}{2}x^2 + C$</p>
+<p>例：$\displaystyle\int x \text{d} x = \dfrac{1}{2}x^2 + C$</p>
 <p>原函数求导得到导函数</p>
 <p>导函数求不定积分得到原函数</p>
 <p>所以求导和不定积分一定程度上是逆运算（由于 $C$ 所以不完全是）</p>
 <h4>命题 5.1</h4>
 <blockquote>
 <p>若 $f(x), g(x)$ 的原函数都存在，则 $\forall \alpha,\beta \in \mathbb R; \; \alpha f(x) + \beta g(x)$ 的原函数也存在。</p>
-<p>且满足：$\int [\alpha f(x) + \beta g(x)] \text{d} x= \alpha \int f(x)\text{d}x + \beta \int g(x)\text{d}x$</p>
+<p>且满足：$\displaystyle\int [\alpha f(x) + \beta g(x)] \text{d} x= \alpha \displaystyle\int f(x)\text{d}x + \beta \displaystyle\int g(x)\text{d}x$</p>
 </blockquote>
-<p>证明：假设 $\int f(x)\text{d}x + C_1 = F(x), \int g(x)\text{d}x + C_2 = G(x)$</p>
+<p>证明：假设 $\displaystyle\int f(x)\text{d}x + C_1 = F(x), \displaystyle\int g(x)\text{d}x + C_2 = G(x)$</p>
 <p>所以 $[\alpha F(x) + \beta G(x)]^{\prime} = \alpha f(x) + \beta g(x)$</p>
 <p>那么 $\alpha F(x) + \beta G(x)$ 是 $\alpha f(x) + \beta g(x)$ 的一个原函数</p>
-<p>也就是 $\int[\alpha f(x) + \beta g(x)]\text{d}x + C = \alpha F(x) + \beta G(x)$</p>
-<p>所以 $\int[\alpha f(x) + \beta g(x)]\text{d}x + C = \alpha \int f(x)\text{d}x + \alpha C_1 + \beta \int g(x)\text{d}x + \beta C_2$</p>
-<p>$= \alpha \int f(x)\text{d}x + \beta \int g(x)\text{d}x$</p>
+<p>也就是 $\displaystyle\int[\alpha f(x) + \beta g(x)]\text{d}x + C = \alpha F(x) + \beta G(x)$</p>
+<p>所以 $\displaystyle\int[\alpha f(x) + \beta g(x)]\text{d}x + C = \alpha \displaystyle\int f(x)\text{d}x + \alpha C_1 + \beta \displaystyle\int g(x)\text{d}x + \beta C_2$</p>
+<p>$= \alpha \displaystyle\int f(x)\text{d}x + \beta \displaystyle\int g(x)\text{d}x$</p>
 <p>这里不是在消掉 $C$ 而是因为本身就带常数给扔到里面去了。</p>
 <h4>命题 5.2 常用积分公式</h4>
 <blockquote>
-<p>1) $\int x^\alpha \text{d}x = \begin{cases}\dfrac{1}{\alpha + 1}x^{\alpha + 1} + C,&amp;\alpha\not=-1\\\ln |x| + C, &amp;\alpha= -1\end{cases}$</p>
-<p>2) $\int e^x \text{d}x = e^x + C$</p>
-<p>3) $\int a^x \text{d}x = \dfrac{a^x}{\ln a} + C,(a &gt; 0, a\not= 1)$</p>
-<p>4) $\int \sin x\text{d}x = -\cos x + C$</p>
-<p>5) $\int \cos x\text{d}x = \sin x + C$</p>
-<p>6) $\int \sec^2 x\text{d}x = \tan x + C$</p>
-<p>7) $\int \csc^2 x\text{d}x = -\cot x + C$</p>
-<p>8) $\int \tan x \sec x \text{d}x =\sec x + C$</p>
-<p>9) $\int \cot x \csc x \text{d}x = -\csc x + C$</p>
-<p>10) $\int \dfrac{1}{1 + x^2}\text{d}x = \arctan x + C$</p>
-<p>11) $\int \dfrac{1}{\sqrt{1-x^2}} \text{d}x = \arcsin x + C$</p>
-<p>12) $\int \dfrac{-1}{\sqrt{1-x^2}} \text{d}x = \arccos x + C$</p>
+<p>1) $\displaystyle\int x^\alpha \text{d}x = \begin{cases}\dfrac{1}{\alpha + 1}x^{\alpha + 1} + C,&amp;\alpha\not=-1\\\ln |x| + C, &amp;\alpha= -1\end{cases}$</p>
+<p>2) $\displaystyle\int e^x \text{d}x = e^x + C$</p>
+<p>3) $\displaystyle\int a^x \text{d}x = \dfrac{a^x}{\ln a} + C,(a &gt; 0, a\not= 1)$</p>
+<p>4) $\displaystyle\int \sin x\text{d}x = -\cos x + C$</p>
+<p>5) $\displaystyle\int \cos x\text{d}x = \sin x + C$</p>
+<p>6) $\displaystyle\int \sec^2 x\text{d}x = \tan x + C$</p>
+<p>7) $\displaystyle\int \csc^2 x\text{d}x = -\cot x + C$</p>
+<p>8) $\displaystyle\int \tan x \sec x \text{d}x =\sec x + C$</p>
+<p>9) $\displaystyle\int \cot x \csc x \text{d}x = -\csc x + C$</p>
+<p>10) $\displaystyle\int \dfrac{1}{1 + x^2}\text{d}x = \arctan x + C$</p>
+<p>11) $\displaystyle\int \dfrac{1}{\sqrt{1-x^2}} \text{d}x = \arcsin x + C$</p>
+<p>12) $\displaystyle\int \dfrac{-1}{\sqrt{1-x^2}} \text{d}x = \arccos x + C$</p>
 <p>其中 $C$ 为任意常数</p>
 </blockquote>
 <p><code>TODO</code> 全算一遍</p>
 <h4>例题 5.1</h4>
 <blockquote>
-<p>求 $\int \tan^2 x\text{d}x = ?$</p>
+<p>求 $\displaystyle\int \tan^2 x\text{d}x = ?$</p>
 </blockquote>
 <p>解：</p>
 <p>$\tan^2 x = \sec^2 x - 1$</p>
-<p>$\int (\sec^2 x - 1)\text{d}x = \int \sec^2x \text{d} x - \int 1 \text{d}x = \tan x - x + C$</p>
+<p>$\displaystyle\int (\sec^2 x - 1)\text{d}x = \displaystyle\int \sec^2x \text{d} x - \displaystyle\int 1 \text{d}x = \tan x - x + C$</p>
 <h4>例题 5.2</h4>
 <blockquote>
-<p>求 $\int \sin^2 (\dfrac{x}{2})\text{d}x = ?$</p>
+<p>求 $\displaystyle\int \sin^2 (\dfrac{x}{2})\text{d}x = ?$</p>
 </blockquote>
 <p>解：</p>
 <p>$\sin^2 (\dfrac{x}{2}) = \dfrac{1 - \cos x}{2}$</p>
-<p>于是原式 $=\int \dfrac{1}{2}\text{d}x - \int \dfrac{\cos x}{2} \text{d}x = \dfrac{1}{2}\left(x - \sin x\right) + C$</p>
+<p>于是原式 $=\displaystyle\int \dfrac{1}{2}\text{d}x - \displaystyle\int \dfrac{\cos x}{2} \text{d}x = \dfrac{1}{2}\left(x - \sin x\right) + C$</p>
 <h3>不定积分的计算方法</h3>
 <h4>换元法 / 变量替换法</h4>
 <p>原理：</p>
-<p>$\int f(g(x))\text{d}x$</p>
-<p>令 $g(x) = u, x = h(u) \Rightarrow = \int f(u) \text{d}[h(u)]$</p>
-<p>$= \int f(u) h^{\prime}(u) \text{d}u$</p>
+<p>$\displaystyle\int f(g(x))\text{d}x$</p>
+<p>令 $g(x) = u, x = h(u) \Rightarrow = \displaystyle\int f(u) \text{d}[h(u)]$</p>
+<p>$= \displaystyle\int f(u) h^{\prime}(u) \text{d}u$</p>
 <h5>例题 5.3</h5>
 <blockquote>
 <p>设 $n \ge 1, n \in \mathbb Z$。</p>
-<p>求 $\int \dfrac{\text{d}x}{(x - a)^n}$</p>
+<p>求 $\displaystyle\int \dfrac{\text{d}x}{(x - a)^n}$</p>
 </blockquote>
 <p>解：令 $x - a = t \Rightarrow \text{d}x = \text{d}(t - a) = \text{d}t$</p>
-<p>所以原式：$\int t^{-n}\text{d}t$</p>
+<p>所以原式：$\displaystyle\int t^{-n}\text{d}t$</p>
 <p>若 $n = 1, \text{ans} = \ln|t| + C = \ln |x - a| + C$</p>
 <p>若 $n \not= 1, \text{ans} = \dfrac{1}{1 - n}t^{1 - n} + C = \dfrac{1}{1 - n}(x - a)^{1 - n} + C$</p>
 <h5>例题 5.4</h5>
 <blockquote>
-<p>求 $\int \dfrac{\text{d}x}{x^2 + a^2}, a\in \mathbb{R}, a\not= 0$。</p>
+<p>求 $\displaystyle\int \dfrac{\text{d}x}{x^2 + a^2}, a\in \mathbb{R}, a\not= 0$。</p>
 </blockquote>
-<p>有点像 $\arctan$，所以原式 $= \dfrac{1}{a^2} \int \dfrac{\text{d}x}{1 + (\dfrac{x}{a})^2}$。</p>
+<p>有点像 $\arctan$，所以原式 $= \dfrac{1}{a^2} \displaystyle\int \dfrac{\text{d}x}{1 + (\dfrac{x}{a})^2}$。</p>
 <p>令 $t = \dfrac{x}{a} \Rightarrow \text{d}x = a\text{d}t$</p>
-<p>所以原式$= \dfrac{1}{a^2}\int \dfrac{\text{d}x}{1 + t^2} a \text{d} t = \dfrac{\arctan t}{a} + C = \dfrac{\arctan(\dfrac{x}{a})}{a} + C$</p>
+<p>所以原式$= \dfrac{1}{a^2}\displaystyle\int \dfrac{\text{d}x}{1 + t^2} a \text{d} t = \dfrac{\arctan t}{a} + C = \dfrac{\arctan(\dfrac{x}{a})}{a} + C$</p>
 <h5>例题 5.5</h5>
 <blockquote>
-<p>求 $\int \sqrt{a^2 - x^2}\text{d}x, a\not= 0$</p>
+<p>求 $\displaystyle\int \sqrt{a^2 - x^2}\text{d}x, a\not= 0$</p>
 </blockquote>
 <p>令 $x = a\sin t \Rightarrow \sqrt{a^2 - x^2} = |a|\cdot|\cos t|$</p>
 <p>$\text{d}x = a\cos t\text{d}t$</p>
 <p>应该分讨（但其实直接做答案都一样）</p>
 <p>1) $t \in [-\dfrac{\pi}{2}, \dfrac{\pi}{2}]$，所以是：</p>
-<p>$\int |a|\cos t\cdot  a\cos t\text{d} t = a \cdot |a| \int \cos^2 t \text{d}t = a\cdot |a| = a|a| \int \dfrac{1 + \cos (2t)}{t}\text{d}t$</p>
-<p>$= \dfrac{a|a|}{2}\int (1 + \cos(2t))\text{d}t = \dfrac{a|a|}{2}[t + \dfrac{1}{2}\sin (2t)] + C$</p>
+<p>$\displaystyle\int |a|\cos t\cdot  a\cos t\text{d} t = a \cdot |a| \displaystyle\int \cos^2 t \text{d}t = a\cdot |a| = a|a| \displaystyle\int \dfrac{1 + \cos (2t)}{t}\text{d}t$</p>
+<p>$= \dfrac{a|a|}{2}\displaystyle\int (1 + \cos(2t))\text{d}t = \dfrac{a|a|}{2}[t + \dfrac{1}{2}\sin (2t)] + C$</p>
 <p>$= \dfrac{a|a|}{2}t + \dfrac{a|a|}{2}\sin t\cos t + C =\dfrac{a|a|}{2}t + \dfrac{|a|}{2}x\cos t + C$</p>
 <p>$=\dfrac{a|a|}{2}t + \dfrac{1}{2}x \sqrt{a^2 - x^2} + C$</p>
 <p>注意到要想使用 $\arcsin$，要满足 $t \in [-\dfrac{\pi}{2}, \dfrac{\pi}{2}]$，刚好满足</p>

@@ -131,23 +131,23 @@ $0 \not= 1$ 所以根据 Heine 定理，$\lim\limits_{x \to x_0} D(x)$ 不存在
 
 ### 1
 
-> 求 $\int \dfrac{xe^x}{(1 + x)^2}\text{d}x$
+> 求 $\displaystyle\int \dfrac{xe^x}{(1 + x)^2}\text{d}x$
 
-原积分 $=-\int x e^x \text{d}(\dfrac{1}{1 + x}) = - \dfrac{x e^x}{1 + x} + \int \dfrac{e^x + xe^x}{1 + x} \text{d}x$
+原积分 $=-\displaystyle\int x e^x \text{d}(\dfrac{1}{1 + x}) = - \dfrac{x e^x}{1 + x} + \displaystyle\int \dfrac{e^x + xe^x}{1 + x} \text{d}x$
 
-$=-\dfrac{xe^x}{1 + x} + \int e^x \text{d}x = e^x - \dfrac{xe^x}{1 + x} + C$
+$=-\dfrac{xe^x}{1 + x} + \displaystyle\int e^x \text{d}x = e^x - \dfrac{xe^x}{1 + x} + C$
 
 ### 2
 
-> 求 $\int x\ln(1 + x^2)\arctan x \text{d}x$
+> 求 $\displaystyle\int x\ln(1 + x^2)\arctan x \text{d}x$
 
 这三个东西各去掉一个，发现不能让 $\ln(1 + x^2), \arctan x$ 在一起。
 
-所以先尝试考虑 $\int x \ln(1 + x^2) \text{d}x = I$
+所以先尝试考虑 $\displaystyle\int x \ln(1 + x^2) \text{d}x = I$
 
-$I = \dfrac{1}{2}\int \ln (1 + x^2)\text{d}(x^2) = \dfrac{1}{2} \int \ln(1 + x^2)\text{d}(1 + x^2)$
+$I = \dfrac{1}{2}\displaystyle\int \ln (1 + x^2)\text{d}(x^2) = \dfrac{1}{2} \displaystyle\int \ln(1 + x^2)\text{d}(1 + x^2)$
 
-令 $t = 1 + x^2, I = \dfrac{1}{2} \int \ln t \text{d}t =\dfrac{1}{2}(t \ln t - t) + C = \dfrac{1}{2}[(1 + x^2)\ln(1 + x^2) - (1 + x^2)] + C$
+令 $t = 1 + x^2, I = \dfrac{1}{2} \displaystyle\int \ln t \text{d}t =\dfrac{1}{2}(t \ln t - t) + C = \dfrac{1}{2}[(1 + x^2)\ln(1 + x^2) - (1 + x^2)] + C$
 
 令 $F(x) + C = I \Rightarrow [F(x) + C]^{\prime} = x \ln(1 + x^2)$
 
@@ -155,11 +155,11 @@ $I = \dfrac{1}{2}\int \ln (1 + x^2)\text{d}(x^2) = \dfrac{1}{2} \int \ln(1 + x^2
 
 那么原来的积分：
 
-$= \int \arctan x \text{d}[F(x)] = f(x)\arctan x - \int f(x) \dfrac{1}{1 + x^2}\text{d}x$
+$= \displaystyle\int \arctan x \text{d}[F(x)] = f(x)\arctan x - \displaystyle\int f(x) \dfrac{1}{1 + x^2}\text{d}x$
 
 设后面这部分积分为 $II$
 
-$II = \dfrac{1}{2}\int \ln(1 + x^2) \text{d}x - \dfrac{1}{2}\int \text{d}x$
+$II = \dfrac{1}{2}\displaystyle\int \ln(1 + x^2) \text{d}x - \dfrac{1}{2}\displaystyle\int \text{d}x$
 
 ### 3
 
@@ -453,23 +453,23 @@ $F^{\prime}(x) = 2f^{\prime}(x)\left[ f(x) + f^{\prime\prime}(x)\right]$
 
 > 11.16(4)
 
-$\int \dfrac{\text{d}x}{e^x - e^{-x}}$
+$\displaystyle\int \dfrac{\text{d}x}{e^x - e^{-x}}$
 
 直接变量替换有点难受。
 
-一个变换：$= \int \dfrac{e^x}{e^{2x}-1} \text{d}x$
+一个变换：$= \displaystyle\int \dfrac{e^x}{e^{2x}-1} \text{d}x$
 
 就行了。
 
 > 11.16(7)
 
-$\int \dfrac{\text{d}x}{\sqrt{1 + e^{2x}}} = \int \dfrac{1}{e^x\sqrt{e^{-2x} + 1}}\text{d}x = \int -\dfrac{\text{d}(e^{-x})}{\sqrt{1 + (e^{-x})^2}}$
+$\displaystyle\int \dfrac{\text{d}x}{\sqrt{1 + e^{2x}}} = \displaystyle\int \dfrac{1}{e^x\sqrt{e^{-2x} + 1}}\text{d}x = \displaystyle\int -\dfrac{\text{d}(e^{-x})}{\sqrt{1 + (e^{-x})^2}}$
 
 去掉根号可以用三角换元。
 
 或者分步积分。
 
-$= -\int \dfrac{\sec^2\theta}{\sec \theta} \text{d} \theta = -\int \sec \theta \text{d} \theta = -\int \dfrac{\text{d}\theta}{\cos \theta} = -\int \dfrac{\cos \theta \text{d}\theta}{\cos^2\theta} = -\int \dfrac{d(\sin \theta)}{1 - \sin^2 \theta}$
+$= -\displaystyle\int \dfrac{\sec^2\theta}{\sec \theta} \text{d} \theta = -\displaystyle\int \sec \theta \text{d} \theta = -\displaystyle\int \dfrac{\text{d}\theta}{\cos \theta} = -\displaystyle\int \dfrac{\cos \theta \text{d}\theta}{\cos^2\theta} = -\displaystyle\int \dfrac{d(\sin \theta)}{1 - \sin^2 \theta}$
 
 ### 12
 
@@ -483,43 +483,43 @@ $= -\int \dfrac{\sec^2\theta}{\sec \theta} \text{d} \theta = -\int \sec \theta \
 
 > 11.17(9)
 
-$\int \dfrac{x^2 - 1}{x^4 + 1}\text{d}x$
+$\displaystyle\int \dfrac{x^2 - 1}{x^4 + 1}\text{d}x$
 
-$= \int \dfrac{1 - \dfrac{1}{x^2}}{x^2 + \dfrac{1}{x^2}} \text{d}x$
+$= \displaystyle\int \dfrac{1 - \dfrac{1}{x^2}}{x^2 + \dfrac{1}{x^2}} \text{d}x$
 
-$= \int \dfrac{d(x + \dfrac{1}{x})}{(x + \dfrac{1}{x})^2 - 2}$。
+$= \displaystyle\int \dfrac{d(x + \dfrac{1}{x})}{(x + \dfrac{1}{x})^2 - 2}$。
 
 换元，用有理函数（分式）来做。
 
 > 11.17(12)
 
-$\int \dfrac{x\text{d}x}{\sqrt{5 + x- x^2}}$。
+$\displaystyle\int \dfrac{x\text{d}x}{\sqrt{5 + x- x^2}}$。
 
 还是要尝试消掉根号
 
-$= \int \dfrac{x \text{d}x}{\sqrt{-(x ^2 - x + \dfrac{1}{4}) + \dfrac{21}{4}}}$
+$= \displaystyle\int \dfrac{x \text{d}x}{\sqrt{-(x ^2 - x + \dfrac{1}{4}) + \dfrac{21}{4}}}$
 
-$= \int \dfrac{x \text{d}x}{\sqrt{-(x - \dfrac{1}{2})^2 + \dfrac{21}{4}}}$
+$= \displaystyle\int \dfrac{x \text{d}x}{\sqrt{-(x - \dfrac{1}{2})^2 + \dfrac{21}{4}}}$
 
 $t = x - \dfrac{1}{2}$
 
-$=\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{\dfrac{21}{4} - t^2}}$
+$=\displaystyle\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{\dfrac{21}{4} - t^2}}$
 
 三角换元
 
-$= \int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\dfrac{\sqrt{21}}{2} \sqrt{1 - \dfrac{4}{21}t^2}} = \dfrac{2}{\sqrt{21}} \int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{1 - (\dfrac{2}{\sqrt{21}}t)}^2}$
+$= \displaystyle\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\dfrac{\sqrt{21}}{2} \sqrt{1 - \dfrac{4}{21}t^2}} = \dfrac{2}{\sqrt{21}} \displaystyle\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{1 - (\dfrac{2}{\sqrt{21}}t)}^2}$
 
-$= \dfrac{2}{\sqrt{21}}\int \dfrac{(\dfrac{\sqrt{21}}{2}\sin \theta + \dfrac{1}{2}) \dfrac{\sqrt{21}}{2}\cos \theta \text{d}\theta}{\cos \theta}$
+$= \dfrac{2}{\sqrt{21}}\displaystyle\int \dfrac{(\dfrac{\sqrt{21}}{2}\sin \theta + \dfrac{1}{2}) \dfrac{\sqrt{21}}{2}\cos \theta \text{d}\theta}{\cos \theta}$
 
 ### 13
 
 > 11.19(9)
 
-$\int \dfrac{\text{d}x}{(1 + e^x)^2}$
+$\displaystyle\int \dfrac{\text{d}x}{(1 + e^x)^2}$
 
 令 $e^x = t$
 
-$=\int \dfrac{\dfrac{1}{t}\text{d}t}{(1 + t)^2}$
+$=\displaystyle\int \dfrac{\dfrac{1}{t}\text{d}t}{(1 + t)^2}$
 
 然后化有理函数
 

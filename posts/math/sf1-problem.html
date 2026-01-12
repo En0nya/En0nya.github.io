@@ -149,24 +149,24 @@
 <p>且不连续点类型是第一类（左右倒是都可以算出来不过不相等<code>TODO</code>）</p>
 <h3>1</h3>
 <blockquote>
-<p>求 $\int \dfrac{xe^x}{(1 + x)^2}\text{d}x$</p>
+<p>求 $\displaystyle\int \dfrac{xe^x}{(1 + x)^2}\text{d}x$</p>
 </blockquote>
-<p>原积分 $=-\int x e^x \text{d}(\dfrac{1}{1 + x}) = - \dfrac{x e^x}{1 + x} + \int \dfrac{e^x + xe^x}{1 + x} \text{d}x$</p>
-<p>$=-\dfrac{xe^x}{1 + x} + \int e^x \text{d}x = e^x - \dfrac{xe^x}{1 + x} + C$</p>
+<p>原积分 $=-\displaystyle\int x e^x \text{d}(\dfrac{1}{1 + x}) = - \dfrac{x e^x}{1 + x} + \displaystyle\int \dfrac{e^x + xe^x}{1 + x} \text{d}x$</p>
+<p>$=-\dfrac{xe^x}{1 + x} + \displaystyle\int e^x \text{d}x = e^x - \dfrac{xe^x}{1 + x} + C$</p>
 <h3>2</h3>
 <blockquote>
-<p>求 $\int x\ln(1 + x^2)\arctan x \text{d}x$</p>
+<p>求 $\displaystyle\int x\ln(1 + x^2)\arctan x \text{d}x$</p>
 </blockquote>
 <p>这三个东西各去掉一个，发现不能让 $\ln(1 + x^2), \arctan x$ 在一起。</p>
-<p>所以先尝试考虑 $\int x \ln(1 + x^2) \text{d}x = I$</p>
-<p>$I = \dfrac{1}{2}\int \ln (1 + x^2)\text{d}(x^2) = \dfrac{1}{2} \int \ln(1 + x^2)\text{d}(1 + x^2)$</p>
-<p>令 $t = 1 + x^2, I = \dfrac{1}{2} \int \ln t \text{d}t =\dfrac{1}{2}(t \ln t - t) + C = \dfrac{1}{2}[(1 + x^2)\ln(1 + x^2) - (1 + x^2)] + C$</p>
+<p>所以先尝试考虑 $\displaystyle\int x \ln(1 + x^2) \text{d}x = I$</p>
+<p>$I = \dfrac{1}{2}\displaystyle\int \ln (1 + x^2)\text{d}(x^2) = \dfrac{1}{2} \displaystyle\int \ln(1 + x^2)\text{d}(1 + x^2)$</p>
+<p>令 $t = 1 + x^2, I = \dfrac{1}{2} \displaystyle\int \ln t \text{d}t =\dfrac{1}{2}(t \ln t - t) + C = \dfrac{1}{2}[(1 + x^2)\ln(1 + x^2) - (1 + x^2)] + C$</p>
 <p>令 $F(x) + C = I \Rightarrow [F(x) + C]^{\prime} = x \ln(1 + x^2)$</p>
 <p>也就是 $\text{d}[F(x) + C] = x\ln(1 + x^2) \text{d}x$</p>
 <p>那么原来的积分：</p>
-<p>$= \int \arctan x \text{d}[F(x)] = f(x)\arctan x - \int f(x) \dfrac{1}{1 + x^2}\text{d}x$</p>
+<p>$= \displaystyle\int \arctan x \text{d}[F(x)] = f(x)\arctan x - \displaystyle\int f(x) \dfrac{1}{1 + x^2}\text{d}x$</p>
 <p>设后面这部分积分为 $II$</p>
-<p>$II = \dfrac{1}{2}\int \ln(1 + x^2) \text{d}x - \dfrac{1}{2}\int \text{d}x$</p>
+<p>$II = \dfrac{1}{2}\displaystyle\int \ln(1 + x^2) \text{d}x - \dfrac{1}{2}\displaystyle\int \text{d}x$</p>
 <h3>3</h3>
 <blockquote>
 <p>求 $\lim\limits_{x\to 0} \dfrac{x[(1 + x)^{\frac{1}{x}} - e]}{1 - \cos x}$</p>
@@ -335,17 +335,17 @@
 <blockquote>
 <p>11.16(4)</p>
 </blockquote>
-<p>$\int \dfrac{\text{d}x}{e^x - e^{-x}}$</p>
+<p>$\displaystyle\int \dfrac{\text{d}x}{e^x - e^{-x}}$</p>
 <p>直接变量替换有点难受。</p>
-<p>一个变换：$= \int \dfrac{e^x}{e^{2x}-1} \text{d}x$</p>
+<p>一个变换：$= \displaystyle\int \dfrac{e^x}{e^{2x}-1} \text{d}x$</p>
 <p>就行了。</p>
 <blockquote>
 <p>11.16(7)</p>
 </blockquote>
-<p>$\int \dfrac{\text{d}x}{\sqrt{1 + e^{2x}}} = \int \dfrac{1}{e^x\sqrt{e^{-2x} + 1}}\text{d}x = \int -\dfrac{\text{d}(e^{-x})}{\sqrt{1 + (e^{-x})^2}}$</p>
+<p>$\displaystyle\int \dfrac{\text{d}x}{\sqrt{1 + e^{2x}}} = \displaystyle\int \dfrac{1}{e^x\sqrt{e^{-2x} + 1}}\text{d}x = \displaystyle\int -\dfrac{\text{d}(e^{-x})}{\sqrt{1 + (e^{-x})^2}}$</p>
 <p>去掉根号可以用三角换元。</p>
 <p>或者分步积分。</p>
-<p>$= -\int \dfrac{\sec^2\theta}{\sec \theta} \text{d} \theta = -\int \sec \theta \text{d} \theta = -\int \dfrac{\text{d}\theta}{\cos \theta} = -\int \dfrac{\cos \theta \text{d}\theta}{\cos^2\theta} = -\int \dfrac{d(\sin \theta)}{1 - \sin^2 \theta}$</p>
+<p>$= -\displaystyle\int \dfrac{\sec^2\theta}{\sec \theta} \text{d} \theta = -\displaystyle\int \sec \theta \text{d} \theta = -\displaystyle\int \dfrac{\text{d}\theta}{\cos \theta} = -\displaystyle\int \dfrac{\cos \theta \text{d}\theta}{\cos^2\theta} = -\displaystyle\int \dfrac{d(\sin \theta)}{1 - \sin^2 \theta}$</p>
 <h3>12</h3>
 <blockquote>
 <p>11.17(1) 令 $x^{\dfrac{4}{3}} = t$</p>
@@ -354,29 +354,29 @@
 <p>11.17(4) 万能公式</p>
 <p>11.17(9)</p>
 </blockquote>
-<p>$\int \dfrac{x^2 - 1}{x^4 + 1}\text{d}x$</p>
-<p>$= \int \dfrac{1 - \dfrac{1}{x^2}}{x^2 + \dfrac{1}{x^2}} \text{d}x$</p>
-<p>$= \int \dfrac{d(x + \dfrac{1}{x})}{(x + \dfrac{1}{x})^2 - 2}$。</p>
+<p>$\displaystyle\int \dfrac{x^2 - 1}{x^4 + 1}\text{d}x$</p>
+<p>$= \displaystyle\int \dfrac{1 - \dfrac{1}{x^2}}{x^2 + \dfrac{1}{x^2}} \text{d}x$</p>
+<p>$= \displaystyle\int \dfrac{d(x + \dfrac{1}{x})}{(x + \dfrac{1}{x})^2 - 2}$。</p>
 <p>换元，用有理函数（分式）来做。</p>
 <blockquote>
 <p>11.17(12)</p>
 </blockquote>
-<p>$\int \dfrac{x\text{d}x}{\sqrt{5 + x- x^2}}$。</p>
+<p>$\displaystyle\int \dfrac{x\text{d}x}{\sqrt{5 + x- x^2}}$。</p>
 <p>还是要尝试消掉根号</p>
-<p>$= \int \dfrac{x \text{d}x}{\sqrt{-(x ^2 - x + \dfrac{1}{4}) + \dfrac{21}{4}}}$</p>
-<p>$= \int \dfrac{x \text{d}x}{\sqrt{-(x - \dfrac{1}{2})^2 + \dfrac{21}{4}}}$</p>
+<p>$= \displaystyle\int \dfrac{x \text{d}x}{\sqrt{-(x ^2 - x + \dfrac{1}{4}) + \dfrac{21}{4}}}$</p>
+<p>$= \displaystyle\int \dfrac{x \text{d}x}{\sqrt{-(x - \dfrac{1}{2})^2 + \dfrac{21}{4}}}$</p>
 <p>$t = x - \dfrac{1}{2}$</p>
-<p>$=\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{\dfrac{21}{4} - t^2}}$</p>
+<p>$=\displaystyle\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{\dfrac{21}{4} - t^2}}$</p>
 <p>三角换元</p>
-<p>$= \int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\dfrac{\sqrt{21}}{2} \sqrt{1 - \dfrac{4}{21}t^2}} = \dfrac{2}{\sqrt{21}} \int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{1 - (\dfrac{2}{\sqrt{21}}t)}^2}$</p>
-<p>$= \dfrac{2}{\sqrt{21}}\int \dfrac{(\dfrac{\sqrt{21}}{2}\sin \theta + \dfrac{1}{2}) \dfrac{\sqrt{21}}{2}\cos \theta \text{d}\theta}{\cos \theta}$</p>
+<p>$= \displaystyle\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\dfrac{\sqrt{21}}{2} \sqrt{1 - \dfrac{4}{21}t^2}} = \dfrac{2}{\sqrt{21}} \displaystyle\int \dfrac{(t + \dfrac{1}{2})\text{d}t}{\sqrt{1 - (\dfrac{2}{\sqrt{21}}t)}^2}$</p>
+<p>$= \dfrac{2}{\sqrt{21}}\displaystyle\int \dfrac{(\dfrac{\sqrt{21}}{2}\sin \theta + \dfrac{1}{2}) \dfrac{\sqrt{21}}{2}\cos \theta \text{d}\theta}{\cos \theta}$</p>
 <h3>13</h3>
 <blockquote>
 <p>11.19(9)</p>
 </blockquote>
-<p>$\int \dfrac{\text{d}x}{(1 + e^x)^2}$</p>
+<p>$\displaystyle\int \dfrac{\text{d}x}{(1 + e^x)^2}$</p>
 <p>令 $e^x = t$</p>
-<p>$=\int \dfrac{\dfrac{1}{t}\text{d}t}{(1 + t)^2}$</p>
+<p>$=\displaystyle\int \dfrac{\dfrac{1}{t}\text{d}t}{(1 + t)^2}$</p>
 <p>然后化有理函数</p>
 <p>$\dfrac{1}{t(1 + t^2)} = \dfrac{A}{t} + \dfrac{Bt + C}{1 + t^2}$。</p>
 <p>对比系数解出 $A,B,C$ 即可。</p>
