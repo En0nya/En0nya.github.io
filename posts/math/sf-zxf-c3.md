@@ -95,6 +95,8 @@ $\lim\limits_{\Delta x \to 0} \dfrac{\sin(x + \Delta x) - \sin x}{\Delta x} = \l
 
 原式 $= \cos x$。
 
+**注**：$\tan x$ 的导数是 $\sec^2x$，其中 $\sec x = \dfrac{1}{\cos x}$；$\cot x$ 的导数是 $-\csc^2x$，其中 $\csc x = \dfrac{1}{\sin x}$
+
 #### 命题 3.3 对数函数的导数
 
 > $f(x) = \ln x$ 的导数为 $x^{-1}, (x > 0)$（此处不是说导函数而是导数）
@@ -284,7 +286,9 @@ $y = \tan x$ 在 $(-\dfrac{\pi}{2}, \dfrac{\pi}{2})$ 上单调可导。
 
 $(\arcsin y)^\prime = \dfrac{1}{\sin^\prime x} = \dfrac{1}{\cos x} = \dfrac{1}{\sqrt{1 - \sin^2 x}} = \dfrac{1}{\sqrt{1 - y^2}}$
 
-余弦加个负号就行，正切除一下就好。
+余弦差不多。
+
+$\arctan x$ 也差不多，只是多了一两步，为了方便记住就好了。
 
 ### 复合函数求导和隐函数求导
 
