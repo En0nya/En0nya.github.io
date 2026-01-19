@@ -76,8 +76,15 @@ def scan_markdown_files(root_dir):
     return md_files
 
 def generate_directory_index(md_files, root_dir):
-    # 严格按照修改时间排序
-    md_files.sort(key=lambda x: x['mod_timestamp'], reverse=True)
+    def sort_key(file_info):
+        rel_path_parts = file_info['path'].split(os.sep)
+        if len(rel_path_parts) == 1 or rel_path_parts[0] == '':
+            first_dir = 'uncategorized'
+        else:
+            first_dir = rel_path_parts[0]
+        return (first_dir, file_info['filename'], file_info['mod_timestamp'])
+    
+    md_files.sort(key=sort_key)
     
     content = []
     content.append("## Categories\n")
@@ -85,8 +92,19 @@ def generate_directory_index(md_files, root_dir):
     content.append(f"*Last update: {datetime.now().strftime('%Y 年 %m 月 %d 日 %H:%M')}*")
     content.append("")
     
-    # 不再按目录分组，直接按时间顺序列出所有文件
+    current_category = None
     for file_info in md_files:
+        rel_path_parts = file_info['path'].split(os.sep)
+        if len(rel_path_parts) == 1 or rel_path_parts[0] == '':
+            category = 'uncategorized'
+        else:
+            category = rel_path_parts[0]
+        
+        if category != current_category:
+            current_category = category
+            content.append(f"### {category}")
+            content.append("")
+        
         html_path = file_info['path'].replace('.md', '.html').replace('.markdown', '.html')
         html_path = "posts\\" + html_path
         content.append(f"- [⌈{file_info['title']}⌋]({html_path})  最后更新时间：*`{file_info['mod_time']}`*")
