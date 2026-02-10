@@ -1,8 +1,8 @@
 ## Categories
 
-*文章总数: 20*
+*文章总数: 21*
 
-*Last update: 2026 年 02 月 04 日 01:33*
+*Last update: 2026 年 02 月 10 日 18:39*
 
 ### algor
 
@@ -14,6 +14,9 @@
 - [⌈ICPC Asia Regional 沈阳 2025⌋](posts\algor\icpc-shenyang-25.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈ICPC Asia Reginal 西安 2025 VP⌋](posts\algor\icpc-xian-25-vp.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈ACM 杂题训练⌋](posts\algor\problem-training.html)  最后更新时间：*`25 年 12 月 05 日`*
+### cs
+
+- [⌈DOMjudge 搭建记录⌋](posts\cs\domjudge-guide.html)  最后更新时间：*`26 年 02 月 10 日`*
 ### logs
 
 - [⌈缙云山⌋](posts\logs\2025-10-04.html)  最后更新时间：*`25 年 10 月 04 日`*
@@ -30,5 +33,5 @@
 - [⌈数学分析(I) 定理理解⌋](posts\math\sf1-theory.html)  最后更新时间：*`26 年 01 月 19 日`*
 ### misc
 
-- [⌈神秘菜谱收集⌋](posts\misc\cuisine.html)  最后更新时间：*`26 年 01 月 11 日`*
+- [⌈神秘菜谱收集⌋](posts\misc\cuisine.html)  最后更新时间：*`26 年 02 月 09 日`*
 - [⌈日麻何切 & 牌效率记录⌋](posts\misc\majhong.html)  最后更新时间：*`25 年 12 月 19 日`*
