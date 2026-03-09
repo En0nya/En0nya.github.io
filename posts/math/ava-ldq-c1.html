@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/code.css">
+	<link rel="stylesheet" href="/css/toc.css">
+	<link rel="stylesheet" href="/css/to-top.css">
+
+	<script src="/js/highlight.min.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((el) => {
+		  hljs.highlightElement(el);
+		});
+	  });
+	</script>
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+
+    <script src="/js/Mathjax.js" async></script>
+	<script src="/js/toc.js"></script>
+	<script src="/js/to-top.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>高等代数(I) Chapter 1 行列式</h2>
+<h3>行列式定义</h3>
+<p>行列式的引入一开始是为了给出 $n$ 元线性方程的公式解。</p>
+<p>对于二元和三元的情况较为简洁。</p>
+<p>例如 $\begin{cases}a_{11}x_1 + a_{12}x_2 = b_1 \\ a_{21}x_1 + a_{22}x_2 = b_2\end{cases}$</p>
+<p>当 $a_{11}a_{22} - a_{12}a_{21} \not=0$ 时其解为 $x_1 = \dfrac{b_1a_{22} - b_2a_{12}}{a_{11}a_{22}-a_{12}a_{21}}, x_2 = \dfrac{a_{11}b_2 - a_{12}b_1}{a_{11}a_{22}-a_{12}a_{21}}$</p>
+<p>定义 $\begin{vmatrix}a_{11} &amp; a_{12} \\a_{21} &amp; a_{22}\end{vmatrix}$ 为二阶行列式。</p>
+<p>一般的：定义 $n$ 阶行列式为：</p>
+<blockquote>
+<p>$D_n = \begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix} = \sum\limits_{j_1,j_2,j_3,\cdots,j_n}^{}(-1)^{\tau(j_1,j_2,j_3,\cdots,j_n)} a_{1j_1} a_{2j_2}a_{3j_3}\cdots a_{nj_n}$</p>
+</blockquote>
+<p>也就是行列式中所有处在不同行不同列的 $n!$ 组元素之积的和。</p>
+<p>其中 $\tau$ 表示逆序数。</p>
+<h3>特殊行列式</h3>
+<ol>
+<li>（主）对角行列式：除了主对角线的元素均为 $0$，其值等于主对角线上的元素之积。</li>
+</ol>
+<p>$\begin{vmatrix}a_{11} &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; a_{22} &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; a_{nn}\end{vmatrix}$</p>
+<ol>
+<li>反对角行列式：反对角线的元素不为 $0$ 其余均为 $0$。值的负号取决于 $(-1)^{\dfrac{n(n-1)}{2}}$。</li>
+</ol>
+<p>可以发现这就是冒泡排序的最坏情况。</p>
+<ol>
+<li>上三角行列式：主对角线下方均为 $0$，其值等于主对角线的元素乘积。</li>
+</ol>
+<p>$\begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ 0 &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; a_{nn}\end{vmatrix}$</p>
+<ol>
+<li>
+<p>下三角行列式：同理。</p>
+</li>
+<li>
+<p>反上三角行列式：类比反对角行列式。</p>
+</li>
+<li>
+<p>反下三角行列式：同理。</p>
+</li>
+<li>
+<p>转置：$D=\begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix}$，称 $D^T = \begin{vmatrix}a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1} \\ a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{nn}\end{vmatrix}$ 为 $D$ 的转置行列式，可以发现值不变。</p>
+</li>
+</ol>
+<h3>行列式的特殊性质</h3>
+<ol>
+<li>
+<p>$D = D^T$（这也说明行列式的行与列的地位对等）</p>
+</li>
+<li>
+<p>$D\;\underrightarrow{kr_i} D_1, D_1 = kD$（这里意思是给某一行乘上 $k$，相应的也可以提出来）</p>
+</li>
+<li>
+<p>$D\;\underrightarrow{r_i \Leftrightarrow r_j} D_1, D_1 = -D$，这里是交换两行。</p>
+</li>
+<li>
+<p>若 $r_i = r_j, D = 0$。</p>
+</li>
+<li>
+<p>若 $r_i = kr_j, D = 0$。</p>
+</li>
+<li>
+<p>若 $r_i = 0, D = 0$（显然的，因为每一项都会至少取到一个 $0$）</p>
+</li>
+<li>
+<p>若 $r_i = r_x + r_y$，则 $D = D_x + D_y$，其中 $D_x$ 为 $r_i$ 变为 $r_x$ 之后的 $D$（行列式可以拆分）</p>
+</li>
+<li>
+<p>$D\;\underrightarrow{r_i + kr_j} D_1, D_1 = D$（某一行 $k$ 倍加到另外一行行列式不变）</p>
+</li>
+</ol>
+<h3>例 1</h3>
+<blockquote>
+<p>多项式 $f(x) = \begin{vmatrix}x&amp;x&amp;1&amp;2x\\1&amp;x&amp;2&amp;-1\\2&amp;1&amp;x&amp;1\\2&amp;-1&amp;1&amp;x\end{vmatrix}$ 中 $x^3$ 的系数</p>
+</blockquote>
+<p>直接用定义非常麻烦。</p>
+<p>所以尝试先干掉一些元素，想要简单那么就把 $x$ 尽量减少。</p>
+<p>$r_1 - 2r_4$ 然后 $r_1 - r_2$。</p>
+<p>这样主对角线只有一个 $x-5$ 和三个 $x$，所以系数只能是 $-5$。</p>
+<h3>例 2</h3>
+<blockquote>
+<p>设 $D_n = \det(a_{i,j}), \text{ s.t. } a_{i,j} = -a_{j,i}$。</p>
+<p>称其为反对称行列式，求证奇数阶反对称行列式 $=0$</p>
+</blockquote>
+<p>显然主对角线元素 $a_{i,i} = 0$。</p>
+<p>设出行列式：</p>
+<p>一个想法就是想办法弄一个负号出来，并且后面还是他本身。</p>
+<p>那就尝试提出公因子。</p>
+<p>可以发现：$D_n = (-1)^{n} D_n^T$。（每一行提出一个 $-1$ 就得到了转置，而 $D = D^T$）。</p>
+<p>可知 $n$ 为奇数的时候反对称行列式 $=0$</p>
+<h3>例 3 （行列式的第一类通用算法）</h3>
+<blockquote>
+<p>计算行列式 $\begin{vmatrix}-2 &amp;5 &amp;-1 &amp;3 \\ 1 &amp;-4 &amp;2 &amp;-3 \\ 2 &amp;1 &amp;5 &amp;-1 \\ 3 &amp;3 &amp;2 &amp;4\end{vmatrix}$</p>
+</blockquote>
+<p>先把第二行换到第一行（记得带上负号）（这步主要是为了避免分数），然后通过加减一列一列的化为上三角行列式。</p>
+<p>$=-\begin{vmatrix}1 &amp;-4 &amp;2 &amp;-3 \\ 0 &amp;-3 &amp;3 &amp;-3 \\ 0 &amp;0 &amp;10 &amp;-4 \\ 0 &amp;0 &amp;0 &amp;\frac{12}{5}\end{vmatrix}$</p>
+<h3>例 4（拆分）</h3>
+<blockquote>
+<p>求证：$\begin{vmatrix}ax + by &amp;ay + bz &amp;az+bx \\ ay + bz &amp;az + bx &amp;ax+by \\ az+bx &amp;ax+by &amp;ay+bz\end{vmatrix} =$</p>
+</blockquote>
+<p>注意拆的时候是只拆一列</p>
+<p>拆掉之后形如 $a\begin{vmatrix}x &amp;ay + bz &amp;az+bx \\ y &amp;az + bx &amp;ax+by \\ z &amp;ax+by &amp;ay+bz\end{vmatrix} + b\begin{vmatrix}y &amp;ay + bz &amp;az+bx \\ z &amp;az + bx &amp;ax+by \\ x &amp;ax+by &amp;ay+bz\end{vmatrix}$</p>
+<p>然后用第一列的 $-b$ 倍干掉后面的部分就可以了。</p>
+<h3>例 5</h3>
+<blockquote>
+<p>计算 $\begin{vmatrix}a^2 &amp;(a+1)^2 &amp;(a+2)^2 &amp;(a+3)^2 \\ b^2 &amp;(b + 1)^2 &amp;(b + 2)^2 &amp;(b+3)^2\\ c^2 &amp;(c+1)^2 &amp;(c+2)^2 &amp;(c+3)^2 \\ d^2 &amp;(d+1)^2 &amp;(d+2)^2 &amp;(d+3)^2\end{vmatrix}$</p>
+</blockquote>
+<p>一看就是第一列 $-1$ 倍加到后面三列</p>
+<p>然后一看第二列又能把后面第三列干掉。</p>
+<p>然后发现两列成比例，为零行列式。</p>
+<h3>例 6</h3>
+<blockquote>
+<p>$计算 \begin{vmatrix}a_1 - b_1 &amp;a_1-b_2 &amp;\cdots &amp;a_1-b_n \\ a_2 - b_1 &amp;a_2-b_2 &amp;\cdots &amp;a_2-b_n \\ \cdots &amp;\cdots &amp;\cdots &amp;\cdots \\ a_n - b_1 &amp;a_n-b_2 &amp;\cdots &amp;a_n-b_n\end{vmatrix}$</p>
+</blockquote>
+<p>操作一下可以发现其为零行列式。</p>
+<h3>矩阵的定义</h3>
+<blockquote>
+<p>$s\times n$ 个元素排成的 $s$ 行 $n$ 列的数表。</p>
+<p>矩阵的元均为数域 $P$ 中的元素，则称为 $P$ 上的矩阵。</p>
+<p>$a_{i,i}$ 称为对角元。</p>
+<p>$s = n$ 的矩阵称为 $n$ 阶方阵（$A_n$）。</p>
+<p>n阶单位矩阵（$E_n/I_n$）：对角元为 $1$ 其它均为 $0$。</p>
+<p>$n$ 阶行列式称为方阵 $A$ 的行列式，记作 $|A| / \det A$</p>
+<p>若两个矩阵 $s = s, n = n$ 则称为同型矩阵。</p>
+<p>更进一步，对应位置相等则称为相等矩阵。</p>
+<p>$n$ 阶 零矩阵也可以记作 $0$（所以在这种意义上 $0\not=0$）。</p>
+</blockquote>
+<h3>矩阵的初等变换</h3>
+<p>初等行变换：</p>
+<ol>
+<li>$kr_i, (k\not=0, k \in P)$</li>
+<li>$r_i + kr_j (k \in P)$ （$k$ 倍的第 $j$ 行加到 $i$ 行）</li>
+<li>$swap(r_i, r_j)$。</li>
+</ol>
+<p>注意，每一种初等变换应当是可逆的，所以 1 中 $k\not=0$。</p>
+<p>并且它的逆变换也应该为初等变换。</p>
+<p>初等列变换（同理）</p>
+<h3>（行）阶梯型矩阵</h3>
+<blockquote>
+<ol>
+<li>全为 $0$ 的行在矩阵下方</li>
+<li>非零行首个非零元素（主元）的左下方的元素全为零</li>
+</ol>
+</blockquote>
+<p>可以证明，任何矩阵经过初等行变换可以将其化成阶梯型矩阵。</p>
+<p>证明：</p>
+<p>设 $A = (a_{i,j})_{m\times n}$</p>
+<p>若 $c_1$ 存在一个非零元，交换至 $(1, 1)$ 即可。</p>
+<p>$r_2, \cdots r_n$ 加上适当倍数 $r_1$ 可以将 $c_1$ 化为 $\begin{bmatrix}a^\prime_{1,1}\\0\\0\\\cdots\\0\end{bmatrix}$</p>
+<p>然后递归处理子矩阵 $(2, 2) \sim (m, n)$。</p>
+<p>若 $c_1$ 全为 $0$，则对第一个不全为 $0$ 的列操作即可。</p>
+<p>阶梯形矩阵显然不唯一。</p>
+<p>例如：</p>
+<p>$\begin{bmatrix}0&amp;1&amp;2&amp;3&amp;5\\0&amp;0&amp;4&amp;7&amp;9\\0&amp;0&amp;0&amp;0&amp;0\end{bmatrix}$</p>
+<h3>（行）最简形</h3>
+<blockquote>
+<ol>
+<li>是阶梯型矩阵。</li>
+<li>主元为 $1$ 且主元所在列的其他元素全都为 $0$</li>
+</ol>
+</blockquote>
+<p>$\begin{bmatrix}0&amp;1&amp;0&amp;3&amp;5\\0&amp;0&amp;1&amp;7&amp;9\\0&amp;0&amp;0&amp;0&amp;0\end{bmatrix}$</p>
+<h3>行列式计算</h3>
+<p>原理就是任意方阵 $A$ 经过初等行变换为阶梯型矩阵 $J$，且 $\det A =k\det J, (k\not=0)$</p>
+<h3>例</h3>
+<blockquote>
+<p>$\begin{vmatrix}1&amp;2&amp;2&amp;\cdots&amp;2\\2&amp;2&amp;2&amp;\cdots&amp;2 \\ 2&amp;2&amp;3&amp;\cdots&amp;2\\\cdots&amp;\cdots&amp;\cdots&amp;\cdots&amp;\cdots\\2&amp;2&amp;2&amp;\cdots&amp;n\end{vmatrix}$</p>
+</blockquote>
+<p>全部减去第二行就完了。</p>
+<h3>行列式按一行（列）展开</h3>
+<p>把行列式整个展开，我们想要降阶，于是提出公因子：</p>
+<p>$\begin{bmatrix}a_{11}&amp;a_{12}&amp;a_{13}\\a_{21}&amp;a_{22}&amp;a_{23}\\a_{31}&amp;a_{32}&amp;a_{33}\end{bmatrix} = a_{11}\begin{bmatrix}a_{22}&amp;a_{23}\\a_{32}&amp;a_{33}\end{bmatrix} - a_{12}\begin{bmatrix}a_{21}&amp;a_{23}\\a_{31}&amp;a_{33}\end{bmatrix} + a_{13}\begin{bmatrix}a_{21}&amp;a_{22}\\a_{31}&amp;a_{32}\end{bmatrix}$</p>
+<p>现在的问题就是要把符号也写明白，很容易发现和 $i + j$ 奇偶性相关。</p>
+<h3>余子式</h3>
+<blockquote>
+<p>在 $D_{n} = \det(a_{ij})$ 中，把 $a_{ij}$所在的行列划去，剩下的元素按原有位置形成的 $n-1$ 阶行列式称为元素 $a_{ij}$ 的余子式，记为 $M_{ij}$。</p>
+<p>称 $A_{ij} = (-1)^{i + j}M_{ij}$ 为 $a_{ij}$ 的代数余子式。</p>
+</blockquote>
+<p>注意：余子式和元素大小无关，只和元素位置有关。</p>
+<h3>展开法则</h3>
+<blockquote>
+<p>$D_n = \det(a_{ij})$ 中，若 $i$ 行中除了 $a_{i,j}$ 都为 $0$。</p>
+<p>那么 $D_n = a_{i,j}A_{i,j}$。</p>
+</blockquote>
+<p>先证明 $m = n$ 的情况</p>
+<p>因为是字母，用直接计算的办法无法确定分母是否为 $0$，所以直接用定义做。</p>
+<p>然后再证明一般情况</p>
+<h3>例</h3>
+<p>$D=\begin{vmatrix}1+x&amp;1&amp;1&amp;1\\1&amp;1-x&amp;1&amp;1\\1&amp;1&amp;1+y&amp;1\\1&amp;1&amp;1&amp;1-y\end{vmatrix}$</p>
+<p>看到加号还是考虑拆分。</p>
+<p>法二：</p>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

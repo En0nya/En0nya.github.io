@@ -159,6 +159,56 @@
 <p>那要不在这个范围怎么办？</p>
 <p>2)</p>
 <p><code>TODO</code> 手算一次，再导回去</p>
+<h4>凑微分</h4>
+<h4>有理函数裂项</h4>
+<p>有理函数形如一个多项式除以一个多项式。</p>
+<h5>例子</h5>
+<blockquote>
+<p>$\displaystyle\int \dfrac{4x^3 - 13x^2 + 3x + 8}{(x + 1)(x - 2)(x - 1)^2}\text{d}x =$？</p>
+</blockquote>
+<p>设 $\dfrac{4x^3 - 13x^2 + 3x + 8}{(x + 1)(x - 2)(x - 1)^2} = \dfrac{a}{x + 1} + \dfrac{b}{x - 2} + \dfrac{cx + d}{(x - 1)^2}$</p>
+<p>待定的分子设成什么样完全根据多项式的阶数差决定。</p>
+<p>$4x^3 - 13x^2 + 3x + 8 = a(x - 2)(x - 1)^2 + b(x + 1)(x - 1)^2 + (cx + d)(x + 1)(x - 2)$</p>
+<p>这样子写不需要考虑分母为 $0$ 的问题，甚至可以把这些 $x$ 带进去快速得到结果。</p>
+<p>$x = 1, x = 2, x = -1$ 全部带入：</p>
+<p>可以得到：</p>
+<p>$\begin{cases}a = 1\\ b = -2\\ c + d = -1\end{cases}$</p>
+<p>再取 $x = 0$ 可以知道 $c = 5,d = -6$</p>
+<p>这个方法的正确性需要用一些多项式理论证明，这里略去。</p>
+<h5>例子</h5>
+<blockquote>
+<p>$\displaystyle\int\dfrac{1}{x^3 + 1}\text{d}x$</p>
+</blockquote>
+<p>可以用立方和公式 $x^3 + 1 = (x + 1)(x^2 - x + 1)$</p>
+<p>于是可以有理函数裂项。</p>
+<h5>例子</h5>
+<blockquote>
+<p>$\displaystyle\int\dfrac{x^4 + x^3 + 3x^2 + 1}{(x + 1)^2(x + 1)\text{d}x}$</p>
+</blockquote>
+<p>仍旧使用待定系数法</p>
+<p>设 $\dfrac{x^4 + x^3 + 3x^2 + 1}{(x + 1)^2(x + 1)} = ax + b + \dfrac{cx^3 + dx^2 + ex + f}{(x + 1)^2}$</p>
+<p>但是不需要这样假设，前面的高次可以扔到 $ax + b$ 这里。</p>
+<p>所以设成 $ax + b + \dfrac{cx + d}{(x + 1)^2} +  \dfrac{e}{x - 1}$</p>
+<p>于是 $x^4 + x^3 + 3x^2 + 1 = (ax + b)(x+1)^2(x-1) + (cx + d)(x - 1) + e(x+1)^2$</p>
+<p>继续代值。不过其实这是个线性方程组，可以用高斯消元法做。</p>
+<p>当然甚至可以求导做，毕竟两边求导也还是相等的。</p>
+<p>于是可以得到：</p>
+<p>$\begin{cases}a = 1\\ b = 0\\ c = 3\\ d = 2\\ e = 1\end{cases}$</p>
+<h5>例子</h5>
+<blockquote>
+<p>求 $\displaystyle\int\dfrac{1}{\sqrt[3]{(x - 1)^2(x + 1)^4}}\text{d}x$</p>
+</blockquote>
+<p>这里下面是无理式，所以想要把它变成有理式</p>
+<p>开一个出来：</p>
+<p>$= \dfrac{1}{x + 1}\dfrac{1}{\sqrt[3]{(x - 1)^2(x + 1)}}$</p>
+<p>再开一个：$= \dfrac{1}{(x + 1)(x - 1)} \sqrt[3]{\dfrac{x - 1}{x + 1}}$</p>
+<p>令 $t = \sqrt[3]{\dfrac{x - 1}{x + 1}}$。</p>
+<p>然后尝试把前面写成 $t$ 的一个多项式。</p>
+<p>由于 $t^3 = \dfrac{x - 1}{x + 1}$</p>
+<p>原式 $= \dfrac{(1 - t^3)^2}{4t^2}$</p>
+<p>当然 $\text{d}x$ 也需要改写：</p>
+<p>$\text{d}x = \dfrac{6t^2}{1 - t^3}\text{d}t$</p>
+<p>然后就直接做完了，甚至没有用到有理函数裂项。</p>
         </article>
         
         <footer>
