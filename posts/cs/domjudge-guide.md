@@ -318,11 +318,108 @@ sudo chown www-data:www-data -R webapp/public/*
 
 此时就可以在 `127.0.0.1/domjudge` 看到 index 界面
 
-这里顺手改一下时空限制：
+然后安装 judgehost：
+
+先改一下 cgroups 配置：
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="quiet cgroup_enable=memory swapaccount=1"
+```
+
+然后命令行里 `sudo update-grub` 再重启
+
+获取一下 server password：
+
+```bash
+cat /home/<username>/domjudge/domserver/etc/restapi.secret
+```
+
+```bash
+docker run -d -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name judgehost-0 --hostname judgedaemon-0 -e DAEMON_ID=0 -e CONTAINER_TIMEZONE=Asia/Shanghai -e JUDGEDAEMON_PASSWORD=<domserver password> -e DOMSERVER_BASEURL=<domjudge url> domjudge/judgehost:8.1.3
+```
+
+url 这里直接填 domjudge 对应 url 。
 
 ### 比赛配置
 
+这个 part 不是我负责的，暂时搁置
+
 ### 打印机/小票配置
 
-sudo docker run -d -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup --name judgehost-new0 --hostname localhost --network="host" -e DAEMON_ID=0 -e CONTAINER_TIMEZONE=Asia/Hong_Kong -e JUDGEDAEMON_PASSWORD=iBOyOXQnT995ZKKQQAFJUzlx5Yjp7rnp -e DOMSERVER_BASEURL=http://localhost/domjudge/ domjudge/judgehost:8.3.1
+这里使用 hydro 的 xcpc-tools，原理大概是就是通过 Server 端监听 domjudge 的打印和气球队列来处理这些任务，并分发给 Client 端执行打印任务（可以有多个 Client，同一个 Client 可以连接多个打印机，这个工具支持自动分配）。
 
+这一步可以不用在服务器上搞，只要有一台能够连接 Server 的电脑就行，windows 也可以
+
+Install：<https://github.com/hydro-dev/xcpc-tools/releases/tag/1.1.0-d2bef8e>
+
+脚本已经集成了 Server 和 Client 端
+
+Server 端部署：首先需要安装 typst 和 SumatraPDF 以及 Nodejs
+
+当然如果直接下载可执行包就不用 Nodejs 了。
+
+```bash
+sudo apt update
+sudo apt install nodejs
+```
+
+typst 需要在官网下载，sumatra 只在 windows 系统下需要下载。
+
+然后在目录下执行 `node ./xcpc-tools-bundle.js`
+
+打开 config.yaml，填写 `username` 和 `password` （Domjudge admin 的）
+
+`type` 改成 domjudge，如果需要指定比赛需要加入 `contestId` 并指定 domjudge 中的 cid。
+
+`server` 填 domjudge 的 url。
+
+保存后再次执行该脚本。
+
+此时服务端可以在 `http://127.0.0.1:5283` 看到，初次登录需要密码，这里就是 `admin` 和 `viewPass`。
+
+如果使用 Edge 浏览器需要替换成本机 IP 并开无痕模式否则不会弹出登录窗口。
+
+此时就能看到管理界面。
+
+还需要将打印脚本 <https://github.com/hydro-dev/xcpc-tools/blob/main/scripts/print> 下载到 **Domserver** 上并添加为 Path。
+
+```bash
+sudo chmod +x /path/to/print
+sudo ln -s /path/to/print /usr/local/bin/domprint
+```
+
+将除了第一个 `-F` 外的 `-F` 改为 `--format-string`（似乎新的 PR 已经修复）
+
+将脚本中的 `PRINT_SERVER` 参数改成 xcpc-tools 的打印服务地址，形如 `http://url/print/secretRoute`，该脚本的作用是将打印请求转发到 Server 端，`secretRoute` 参数可以在 config.server.yaml 中找到。
+
+然后 Client 端启动时加上参数：`node ./xcpc-tools-bundle.js --cilent`。
+
+此时会自动寻找已经连接的打印机。
+
+如果是 Ubuntu 系统找不到打印机，很可能是 `/dev/usb` 并不是存放打印机（USB连接）的位置，创建连接到 `/dev/bus/usb` 就好了。
+
+```bash
+sudo ln -s /dev/bus/usb /dev/usb
+```
+
+仍旧配置 yaml 文件。
+
+`ballon` 只能指定一台打印机作为小票机（注意直接复制命令行中提示信息的名字）。
+
+`printer` 可以指定多台
+
+`server` 指定 xcpc tools 的服务端地址。
+
+`token` 需要在 Server 端的管理界面生成（add client），用于通信。
+
+这里不要用虚拟机来当 Server 端，因为没有办法被公网访问到。
+
+注意小票机和打印机应当分用两个不同的 Client（最好不要在一个电脑上搞）
+
+确认连接没有问题之后在 Domjudge admin 的 Configuration 里找到 External。
+
+然后加入打印命令：`domprint [file] [original] [language] [username] [teamname] [teamid]`
+
+### 滚榜
+
+Finalize 比赛之后导出 header 然后丢给 resolver 就行。

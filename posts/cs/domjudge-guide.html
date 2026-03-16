@@ -351,10 +351,66 @@ sudo<span class="w"> </span>chown<span class="w"> </span>www-data:www-data<span 
 <p><strong>这里删除 default 非常重要！不删掉的话默认配置占用了 domjudge 的位置就无法显示。</strong></p>
 <p>做完这些之后记得 <code>system reboot</code></p>
 <p>此时就可以在 <code>127.0.0.1/domjudge</code> 看到 index 界面</p>
-<p>这里顺手改一下时空限制：</p>
+<p>然后安装 judgehost：</p>
+<p>先改一下 cgroups 配置：</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;quiet cgroup_enable=memory swapaccount=1&quot;</span>
+</code></pre></div>
+
+<p>然后命令行里 <code>sudo update-grub</code> 再重启</p>
+<p>获取一下 server password：</p>
+<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>/home/&lt;username&gt;/domjudge/domserver/etc/restapi.secret
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--privileged<span class="w"> </span>-v<span class="w"> </span>/sys/fs/cgroup:/sys/fs/cgroup:ro<span class="w"> </span>--name<span class="w"> </span>judgehost-0<span class="w"> </span>--hostname<span class="w"> </span>judgedaemon-0<span class="w"> </span>-e<span class="w"> </span><span class="nv">DAEMON_ID</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>-e<span class="w"> </span><span class="nv">CONTAINER_TIMEZONE</span><span class="o">=</span>Asia/Shanghai<span class="w"> </span>-e<span class="w"> </span><span class="nv">JUDGEDAEMON_PASSWORD</span><span class="o">=</span>&lt;domserver<span class="w"> </span>password&gt;<span class="w"> </span>-e<span class="w"> </span><span class="nv">DOMSERVER_BASEURL</span><span class="o">=</span>&lt;domjudge<span class="w"> </span>url&gt;<span class="w"> </span>domjudge/judgehost:8.1.3
+</code></pre></div>
+
+<p>url 这里直接填 domjudge 对应 url 。</p>
 <h3>比赛配置</h3>
+<p>这个 part 不是我负责的，暂时搁置</p>
 <h3>打印机/小票配置</h3>
-<p>sudo docker run -d -it --privileged -v /sys/fs/cgroup:/sys/fs/cgroup --name judgehost-new0 --hostname localhost --network="host" -e DAEMON_ID=0 -e CONTAINER_TIMEZONE=Asia/Hong_Kong -e JUDGEDAEMON_PASSWORD=iBOyOXQnT995ZKKQQAFJUzlx5Yjp7rnp -e DOMSERVER_BASEURL=http://localhost/domjudge/ domjudge/judgehost:8.3.1</p>
+<p>这里使用 hydro 的 xcpc-tools，原理大概是就是通过 Server 端监听 domjudge 的打印和气球队列来处理这些任务，并分发给 Client 端执行打印任务（可以有多个 Client，同一个 Client 可以连接多个打印机，这个工具支持自动分配）。</p>
+<p>这一步可以不用在服务器上搞，只要有一台能够连接 Server 的电脑就行，windows 也可以</p>
+<p>Install：<a href="https://github.com/hydro-dev/xcpc-tools/releases/tag/1.1.0-d2bef8e">https://github.com/hydro-dev/xcpc-tools/releases/tag/1.1.0-d2bef8e</a></p>
+<p>脚本已经集成了 Server 和 Client 端</p>
+<p>Server 端部署：首先需要安装 typst 和 SumatraPDF 以及 Nodejs</p>
+<p>当然如果直接下载可执行包就不用 Nodejs 了。</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nodejs
+</code></pre></div>
+
+<p>typst 需要在官网下载，sumatra 只在 windows 系统下需要下载。</p>
+<p>然后在目录下执行 <code>node ./xcpc-tools-bundle.js</code></p>
+<p>打开 config.yaml，填写 <code>username</code> 和 <code>password</code> （Domjudge admin 的）</p>
+<p><code>type</code> 改成 domjudge，如果需要指定比赛需要加入 <code>contestId</code> 并指定 domjudge 中的 cid。</p>
+<p><code>server</code> 填 domjudge 的 url。</p>
+<p>保存后再次执行该脚本。</p>
+<p>此时服务端可以在 <code>http://127.0.0.1:5283</code> 看到，初次登录需要密码，这里就是 <code>admin</code> 和 <code>viewPass</code>。</p>
+<p>如果使用 Edge 浏览器需要替换成本机 IP 并开无痕模式否则不会弹出登录窗口。</p>
+<p>此时就能看到管理界面。</p>
+<p>还需要将打印脚本 <a href="https://github.com/hydro-dev/xcpc-tools/blob/main/scripts/print">https://github.com/hydro-dev/xcpc-tools/blob/main/scripts/print</a> 下载到 <strong>Domserver</strong> 上并添加为 Path。</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/path/to/print
+sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/path/to/print<span class="w"> </span>/usr/local/bin/domprint
+</code></pre></div>
+
+<p>将除了第一个 <code>-F</code> 外的 <code>-F</code> 改为 <code>--format-string</code>（似乎新的 PR 已经修复）</p>
+<p>将脚本中的 <code>PRINT_SERVER</code> 参数改成 xcpc-tools 的打印服务地址，形如 <code>http://url/print/secretRoute</code>，该脚本的作用是将打印请求转发到 Server 端，<code>secretRoute</code> 参数可以在 config.server.yaml 中找到。</p>
+<p>然后 Client 端启动时加上参数：<code>node ./xcpc-tools-bundle.js --cilent</code>。</p>
+<p>此时会自动寻找已经连接的打印机。</p>
+<p>如果是 Ubuntu 系统找不到打印机，很可能是 <code>/dev/usb</code> 并不是存放打印机（USB连接）的位置，创建连接到 <code>/dev/bus/usb</code> 就好了。</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/dev/bus/usb<span class="w"> </span>/dev/usb
+</code></pre></div>
+
+<p>仍旧配置 yaml 文件。</p>
+<p><code>ballon</code> 只能指定一台打印机作为小票机（注意直接复制命令行中提示信息的名字）。</p>
+<p><code>printer</code> 可以指定多台</p>
+<p><code>server</code> 指定 xcpc tools 的服务端地址。</p>
+<p><code>token</code> 需要在 Server 端的管理界面生成（add client），用于通信。</p>
+<p>这里不要用虚拟机来当 Server 端，因为没有办法被公网访问到。</p>
+<p>注意小票机和打印机应当分用两个不同的 Client（最好不要在一个电脑上搞）</p>
+<p>确认连接没有问题之后在 Domjudge admin 的 Configuration 里找到 External。</p>
+<p>然后加入打印命令：<code>domprint [file] [original] [language] [username] [teamname] [teamid]</code></p>
+<h3>滚榜</h3>
+<p>Finalize 比赛之后导出 header 然后丢给 resolver 就行。</p>
         </article>
         
         <footer>
