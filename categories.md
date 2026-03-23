@@ -2,7 +2,7 @@
 
 *文章总数: 23*
 
-*Last update: 2026 年 03 月 23 日 16:55*
+*Last update: 2026 年 03 月 23 日 23:47*
 
 ### algor
 
@@ -20,6 +20,7 @@
 ### logs
 
 - [⌈缙云山⌋](posts\logs\2025-10-04.html)  最后更新时间：*`25 年 10 月 04 日`*
+- [⌈豆花肉片⌋](posts\logs\2026-03-23.html)  最后更新时间：*`26 年 03 月 23 日`*
 - [⌈CCPC 郑州 2025 游记⌋](posts\logs\ccpc-zhengzhou-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*
 - [⌈ICPC Asia Regional 沈阳 2025 游记⌋](posts\logs\icpc-shenyang-25-log.html)  最后更新时间：*`25 年 12 月 05 日`*
 ### math
@@ -30,10 +31,9 @@
 - [⌈数学分析(I) Chapter 3 一元函数的微分学⌋](posts\math\sf-zxf-c3.html)  最后更新时间：*`26 年 01 月 19 日`*
 - [⌈数学分析(I) Chapter 4 微分中值定理及其应用⌋](posts\math\sf-zxf-c4.html)  最后更新时间：*`26 年 01 月 19 日`*
 - [⌈数学分析(I) Chapter 5 不定积分⌋](posts\math\sf-zxf-c5.html)  最后更新时间：*`26 年 03 月 16 日`*
-- [⌈数学分析(I) Chapter 6 - 定积分⌋](posts\math\sf-zxf-c6.html)  最后更新时间：*`26 年 03 月 23 日`*
+- [⌈数学分析(I) Chapter 6 定积分⌋](posts\math\sf-zxf-c6.html)  最后更新时间：*`26 年 03 月 23 日`*
 - [⌈数学分析(I) 杂题⌋](posts\math\sf1-problem.html)  最后更新时间：*`26 年 01 月 19 日`*
 - [⌈数学分析(I) 定理理解⌋](posts\math\sf1-theory.html)  最后更新时间：*`26 年 01 月 19 日`*
 ### misc
 
-- [⌈神秘菜谱收集⌋](posts\misc\cuisine.html)  最后更新时间：*`26 年 03 月 14 日`*
-- [⌈日麻何切 & 牌效率记录⌋](posts\misc\majhong.html)  最后更新时间：*`25 年 12 月 19 日`*
+- [⌈神秘菜谱收集⌋](posts\misc\cuisine.html)  最后更新时间：*`26 年 03 月 23 日`*

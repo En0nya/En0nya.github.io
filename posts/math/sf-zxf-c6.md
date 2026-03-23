@@ -1,4 +1,4 @@
-## 数学分析(I) Chapter 6 - 定积分
+## 数学分析(I) Chapter 6 定积分
 
 ### 定义 定积分
 
@@ -1034,3 +1034,159 @@ $=\lim\limits_{p \to +\infty}\sum\limits_{k = 1}^{n}m_k\displaystyle\int_{x_{k -
 代回去用一次三角不等式就行了。
 
 $\psi$ 同理。证毕。
+
+### 积分不等式
+
+#### 定理 Hölder 不等式
+
+> 假设函数 $f, g \in C([a, b])$。
+>
+> 设 $1 < p < \infty, \dfrac{1}{p} + \dfrac{1}{q} = 1$，则：
+>
+> $\displaystyle\int_{a}^{b}|f(x)g(x)|\text{d}x \le (\displaystyle\int_{a}^{b}|f(x)|^p \text{d}x)^{\frac{1}{p}} + (\displaystyle\int_{a}^{b}|g(x)|^q\text{d}x)^{\frac{1}{q}}$
+>
+> 特别的，当 $p = q = 2$ 时，该不等式为 Cauchy-Schwarz 不等式
+
+证明：
+
+这个形式有点像：Young 不等式：$\forall a, b > 0, \dfrac{1}{p} + \dfrac{1}{q} = 1, p \in [1, +\infty) \Rightarrow a^{\frac{1}{p}}b^{\frac{1}{q}} \le \dfrac{a}{p} + \dfrac{b}{q}$
+
+记 $||f||_{p} = (\displaystyle\int_{a}^{b}|f(x)|^p\text{d}x)^{\frac{1}{p}}$
+
+令 $a^{\frac{1}{p}}= \dfrac{|f(x)|}{||f||_p}$，如果 $||f||_p = 0$，那么不等式是显然成立的，故不考虑 p,q-范数为零的情况。
+
+然后 $b^{\frac{1}{q}} = \dfrac{|g(x)|}{||g||_q}$
+
+（因为本身 Riemann 积分在 $f, g$ 确定的情况下也就是一个数）
+
+于是代回去就行了。
+
+进一步考虑：何时取等？
+
+对于 Cauchy-Schwarz 不等式，从向量的角度来看其实就是两向量线性相关 $\Rightarrow$ 两向量内积小于等于两向量模长成绩的不等式取等
+
+所以其实取等条件扩展过来就是 $f, g$ 两函数线性相关
+
+#### 定理 Young 不等式（积分形式）
+
+> 设 $f \in C([0, +\infty))$ 且严格单调递增，且 $f(0) = 0$
+>
+> 记 $f^{-1} = g$，显然 $g$ 存在
+>
+> 则对任意常数 $a, b > 0$，有：
+>
+> $\displaystyle\int_{0}^{a}f(x)\text{d}x + \displaystyle\int_{0}^{b}g(y)\text{d}y \ge a \cdot b$
+>
+> 该不等式取等当且仅当 $b = f(a)$
+
+先考虑特殊情况，从几何意义考虑
+
+![img]()
+
+于是可以先证明取等的情况是正确的，之后剩下的情况全部是显然的
+
+类比几何的这个样式就能证明
+
+假设已经证明了 $\displaystyle\int_{a}^{b}f(x)\text{d}x + \displaystyle\int_{a}^{f(a)}g(y)\text{d}y = af(a)$
+
+那么当 $b < f(a)$ 时，$\exists x_0 \in (0, a) \text{ s.t. } b = f(x_0)$ 
+
+所以 $\displaystyle\int_{0}^{a}f(x)\text{d}x + \displaystyle\int_{0}^{b}g(y)\text{d}y = \displaystyle\int_{0}^{a}f(x)\text{d}x + \displaystyle\int_{0}^{f(x_0)}g(y)\text{d}y$
+
+左边第一项拆成 $\displaystyle\int_{0}^{x_0}f(x)\text{d}x + \displaystyle\int_{x_0}^{a}f(x)\text{d}x$
+
+所以左边 $=x_0f(x_0) + \displaystyle\int_{x_0}^{a}f(x)\text{d}x$
+
+由于 $f$ 严格单增，放缩一下 $f(x) \ge f(x_0), x \in [x_0, a]$
+
+$\ge bx_0 + \displaystyle\int_{x_0}^{a}f(x_0)\text{d}x = bx_0 +b(a - x_0) = ab$
+
+$b > f(a)$：
+
+$\displaystyle\int_{0}^{a}f(x)\text{d}x + \displaystyle\int_{0}^{b}g(y)\text{d}y$。
+
+还是根据几何的来，拆后面的一项：$\displaystyle\int_{0}^{f(a)}g(y)\text{d}y + \displaystyle\int_{f(a)}^{b}g(y)\text{d}y$
+
+然后合并放缩上式 $\ge af(a) + \displaystyle\int_{f(a)}^{b}g(f(a))\text{d}y = af(a) + a(b - f(a)) = ab$
+
+那么现在只需要证明 $b = f(a)$ 的情况成立即可。
+
+我们是从几何的方式来说明的，所以就用定义来书写。
+
+现在已经知道 $f$ 是 Riemann 可积的，划分可以任意取
+
+所以 $n$ 等分
+
+设 $P : 0 = x_0 < x_1 < x_2 < \cdots < x_n = a$
+
+与之对应的划分 $Q : 0 = y_0 < y_1 < y_2 < \cdots < y_n = f(a)$（这个不一定是等分）
+
+当 $n \to \infty, ||P|| = \max\limits\{x_k - x_{k - 1}\} = \dfrac{a}{n} \to 0$
+
+由于 $f$ 是一致连续的，所以 $||Q|| = \max\{f(x_{k}) - f(x_{k - 1})\} \to 0$
+
+用了一致连续的一个充要条件：任意两个数列对应项之差趋于 $0$ 等价于其分别被 $f$ 作用之后趋于 $0$
+
+所以其实原式变成：
+
+$\lim\limits_{n \to 0} \sum\limits_{k = 1}^{n}f(x_{k})\Delta x_k +\lim\limits_{n \to 0}\sum\limits_{k = 1}^{n}g(y_{k - 1})\Delta y_k$
+
+注意这里的两个 $\xi$ 错开了一位
+
+$y_{k - 1} = f(x_{k - 1})$
+
+那么：
+
+$=\displaystyle\lim\limits_{n \to 0}\{\sum\limits_{k = 1}^{n} f(x_k)(x_k - x_{k - 1}) + \sum\limits_{k = 1}^{n}g(f(x_{k - 1}))(f(x_{k}) - f(x_{k - 1}))\}$
+
+$=\displaystyle\lim\limits_{n \to 0}\{\sum\limits_{k = 1}^{n}[y_k(x_k - x_{k - 1}) + x_{k - 1}(y_k - y_{k - 1})]\}$
+
+$=\displaystyle\lim\limits_{n \to 0}\{-x_0 y_0 + x_n y_n\} = af(a)$
+
+#### 例题
+
+> 设 $f$ 在 $[0, a]$ 上连续可微（导数连续）
+>
+> $|f(0)| \le \dfrac{1}{a}\displaystyle\int_{0}^{a}|f(x)|\text{d}x + \displaystyle\int_{0}^{a}|f^{\prime}(x)|\text{d}x$
+
+$|f^{\prime}(x)|$ 这个玩意儿一看就没法算的，所以用不等式拿到外面然后用 N-L 发现就拆出 $f(0)$ 了。
+
+证明：
+
+利用积分第一中值定理中 $g(x) = 1$ 的情况，$\exists \xi\in[0, a] \text{ s.t. } \dfrac{1}{a}\displaystyle\int_{0}^{a}f(x)\text{d}x = f(\xi)$
+
+那么 $\displaystyle\int_{0}^{a}|f^{\prime}(x)|\text{d}x \ge |\displaystyle\int_{0}^{a}f^{\prime}(x)\text{d}x|\ge |\displaystyle\int_{0}^{\xi}f^{\prime}(x)\text{d}x| = |f(\xi) - f(0)|$
+
+$\ge |f(0)| - |f(\xi)|$
+
+那么 $|f(0)| \le \displaystyle\int_{0}^{a}|f^{\prime}(x)|\text{d}x + |f(\xi)|$，然后用积分第一中值定理的条件就能写出原式。
+
+#### 例题
+
+> 假设 $f$ 在 $[a, b]$ 上连续可微
+>
+> 1) 证明：$\forall x \in [a, b] \Rightarrow |f(x)| \le \dfrac{1}{1 - a}\displaystyle\int_{a}^{b}|f(t)|\text{d}t + \displaystyle\int_{a}^{b}|f^{\prime}(t)|\text{d}t$
+>
+> 2) 证明：$|f(\dfrac{a + b}{2})| \le \dfrac{1}{b - a}\displaystyle\int_{a}^{b}|f(t)|\text{d}t + \dfrac{1}{2}\displaystyle\int_{a}^{b}|f^{\prime}(t)|\text{d}t$
+
+(1) 证明同上一个例题
+
+(2) 就是想办法把 $\dfrac{a + b}{2}$ 换进去
+
+在 $[a, \dfrac{a + b}{2}]$ 上用积分第一中值定理
+
+$\displaystyle\int_{a}^{\frac{a + b}{2}}f(t)\text{d} = f(\xi_1)\dfrac{b - a}{2} \iff f(\xi_1) = \dfrac{2}{b - a}\displaystyle\int_{a}^{\frac{a + b}{2}}f(t)\text{d}t$
+
+又因为 $\displaystyle\int_{a}^{\frac{a + b}{2}}|f^{\prime}(t)|\text{d}t \ge \displaystyle\int^{\frac{a + b}{2}}_{\xi_1}|f^{\prime}(t)|\text{d}t \ge |\displaystyle\int_{\xi_1}^{\frac{a + b}{2}}f^{\prime}(t)\text{d}t|$
+
+根据 N-L 可以得到 $= -|f(\xi_1)| + |f(\dfrac{a + b}{2})|$。
+
+所以 $|f(\dfrac{a + b}{2})| \le |f(\xi_1)| + \displaystyle\int_{a}^{\frac{a + b}{2}}|f^{\prime}(t)|\text{d}t \le \dfrac{2}{b - a}\displaystyle\int_{a}^{\frac{a + b}{2}}|f(t)|\text{d}t + \displaystyle\int_{a}^{\frac{a + b}{2}}|f^{\prime}(t)|\text{d}t$
+
+再在 $[\dfrac{a + b}{2}, b]$ 上也用一次
+
+同理：
+
+$|f(\dfrac{a + b}{2})| \le \dfrac{2}{b - a}\displaystyle\int_{\frac{a +b}{2}}^{b}|f(t)|\text{d}t + \displaystyle\int_{\frac{a + b}{2}}^{b}|f^{\prime}(t)|\text{d}t$
+
+两个合并就可以得到原式。
