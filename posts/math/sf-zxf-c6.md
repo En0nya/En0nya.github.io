@@ -595,3 +595,442 @@ $\overline{S}(P)\to \displaystyle\int_{a}^{b} f$，$\overline{S}(P_1)\to \displa
 而 $\overline{S}(P) = \overline{S}(P_1) + \overline{S}(P_2)$，所以
 
 $\displaystyle\int_{a}^{b} f = \displaystyle\int_{a}^{c} f + \displaystyle\int_{c}^{b} f$。
+
+#### 命题
+
+> 设 $f\in R([a, b])$ 且非负，则 $\displaystyle\int_{a}^{b} f(x)\text{d}x$ 也非负。
+>
+> 推论：如果 $[a, b]$ 上，$f(x)$ 总是 $\ge g(x)$，则一定会有 $\displaystyle\int_{a}^{b}f(x)\text{d}x \ge \displaystyle\int_{a}^{b}g(x)\text{d}x$
+
+利用 Riemann 积分的定义：
+
+$\displaystyle\int_{a}^{b}f(x)\text{d}x = \lim\limits_{||P|| \to 0}\sum\limits_{k = 1}^{n}f(\xi_k)\Delta x_k$
+
+由于 $f(\xi_k) \ge 0$ 所以 $\displaystyle\int_{a}^{b}f(x)\text{d}x \ge 0$
+
+推论只要写成 $f(x) - g(x)$ 就是命题。
+
+#### 命题
+
+> 如果 $f \in R([a,b])$，那么一定会有：
+>
+> $\left|\displaystyle\int_{a}^{b}f(x)\text{d}x\right| \le \displaystyle\int_{a}^{b}|f(x)|\text{d}x$
+
+这就是三角不等式，因为积分本质上是求和。
+
+证明：
+
+不论什么函数，总有：$-|f(x)| \le f(x) \le |f(x)|$
+
+那么 $\displaystyle\int_{a}^{b}-|f(x)| \text{d}x \le \displaystyle\int_{a}^{b}f(x)\text{d}x \le \displaystyle\int_{a}^{b}|f(x)|$
+
+这就是上式。
+
+#### 命题
+
+> 如果 $f$ 在 $[a,b]$ 上是连续的且非负，$x \in [a,b]$。
+>
+> 如果 $\displaystyle\int_{a}^{b}f(x)\text{d}x = 0$ 那么 $f(x)\equiv 0$
+
+如果去掉连续的条件显然是不正确的。
+
+比如任意一个点不是 $0$ 其它是 $0$，它的 Riemann 积分一定是 $0$。
+
+反正：若 $f$ 不恒等于 $0$。
+
+即 $\exists x_0 \in [a, b] \text{ s.t. } f(x_0)\not=0$
+
+根据连续函数的局部保号性，其在 $x_0$ 的一个邻域 $(x_0 - \delta, x_0 + \delta)$内都不等于 $0$。
+
+那么 $\displaystyle\int_{x_0 - \delta}^{x + \delta}f(x)\text{d}x \not = 0$ 进而矛盾。
+
+(为什么不能直接说明？)
+
+更精确一点的写：
+
+$\displaystyle\int_{a}^{b}f(x)\text{d}x = \displaystyle\int_{a}^{x_0 - \delta}f(x)\text{d}x + \displaystyle\int_{x_0 - \delta}^{x_0 + \delta}f(x)\text{d}x + \displaystyle\int_{x_0 + \delta}^{b}f(x)\text{d}x \ge \displaystyle\int_{x_0 - \delta}^{x_0 + \delta}f(x)\text{d}x \ge \displaystyle\int_{x_0 - d}^{x_0 + d}\dfrac{f(x_0)}{2}\text{d}x = \dfrac{f(x_0)}{2}\displaystyle\int_{x_0 \ delta}^{x_0 + \delta} 1 \text{d}x = \dfrac{f(x_0)}{2}2\delta = \delta f(x_0) > 0$
+
+#### 定理 积分第一中值定理
+
+C 是连续的意思
+
+> 设函数 $f(x) \in C([a, b]), g(x) \in R([a, b])$ 并且 $g$ 在 $[a, b]$ 上不变号，则一定存在 $\xi \in [a, b] \text{ s.t. } \displaystyle\int_{a}^{b}f(x)g(x)\text{d}x = f(\xi)\displaystyle\int_{a}^{b}g(x)\text{d}x$
+>
+> 特别的，当 $g(x) = 1$ 时有等式：$\displaystyle\int_{a}^{b}f(x)\text{d}x = f(\xi)(b - a) \iff \dfrac{1}{b - a}\displaystyle\int_{a}^{b}f(x)\text{d}x = f(\xi)$
+>
+> 几何意义就是，$f$ 在 $[a ,b]$ 上的平均值一定能在区间内某一点取到
+
+证明：根据闭区间上连续函数的性质，可以知道 $f$ 在 $[a,b]$ 上最大最小值 $M, m$ 都可以取到。
+
+不妨假设 $g(x)$ 非负，于是 $mg(x) \le f(x)g(x) \le Mg(x)$。
+
+也就是 $m\displaystyle\int_{a}^{b}g(x)\text{d}x \le \displaystyle\int_{a}^{b}f(x)g(x)\text{d}x \le M\displaystyle\int_{a}^{b}g(x)\text{d}x$
+
+1. 若 $\displaystyle\int_{a}^{b}g(x)\text{d}x = 0$，结论永远成立。
+
+2. 若 $\displaystyle\int_{a}^{b}g(x) > 0$
+
+$\dfrac{\displaystyle\int_{a}^{b}f(x)g(x)\text{d}x}{\displaystyle\int_{a}^{b}g(x)\text{d}x} \in [m, M]$
+
+利用连续函数 $f$ 的介值定理，一定存在 $\xi \in [a, b] \text{ s.t. } f(\xi)= \dfrac{\displaystyle\int_{a}^{b}f(x)g(x)\text{d}x}{\displaystyle\int_{a}^{b}g(x)\text{d}x}$
+
+### 微积分基本定理
+
+#### 定理 微积分基本定理
+
+> 设 $f\in R([a, b])$，定义函数 $F(x) = \displaystyle\int_{a}^{x}f(t)\text{d}t, x\in [a, b]$
+>
+> 1. $F(x)$ 总是一个连续函数，$F \in C([a, b])$。
+>
+> 2. 如果 $f$ 在 $[a, b]$ 上连续，则 $F$ 在 $[a, b]$ 可导且 $F^{\prime}(x) = f(x), x \in [a, b]$。
+
+证明(1)：任取 $x_0 \in [a,b]$，取充分小的 $\Delta x$ 使得 $x_0 + \Delta x \in [a,b]$
+
+那么 $F(x_0 + \Delta x) - F(x_0) = \displaystyle\int_{a}^{x + \Delta x}f(t)\text{d}t - \displaystyle\int_{a}^{x_0} f(t)\text{d}t = \displaystyle\int_{x_0}^{x_0 + \Delta x}f(t)\text{d}t$
+
+要证明的就是 $\Delta x \to 0$ 时上式趋近于 $0$。
+
+那么 $|F(x_0 + \Delta x) - F(x_0)| = |\displaystyle\int_{x_0}^{x_0 + \Delta x}f(t)\text{d}t| \le \left|\displaystyle\int_{x_0}^{x_0 + \Delta x_0} |f(t)|\text{d}t\right|$
+
+最后这个加绝对值是为了避免 $\Delta x$ 为负数时带来的影响。
+
+由于 $f \in R([a, b])$，故其有界，$\exists M > 0, |f(t)| \le M, \forall x \in [a, b]$。
+
+那么$|F(x_0 + \Delta x) - F(x_0)| \le M|\Delta x_0|$
+
+正负本质同理，不妨就假设 $\Delta x_0 > 0$ 那么取 $\delta = \dfrac{\epsilon}{M}$ 就有：
+
+$\forall \epsilon > 0, \exists\delta \text{ s.t. } \Delta x_0 < \delta : |F(x_0 + \Delta x) - F(x_0)| < \epsilon$
+
+于是就证明了 $F$ 在 $x_0$ 点连续.
+
+(2) 证明过程和上面差不多，只需要接着写：
+
+由于 $\displaystyle\int_{x_0}^{x_0 + \Delta x}f(t)\text{d}t = \displaystyle\int_{x_0}^{x_0 + \Delta x} f(t)\cdot 1 \text{d}t$
+
+根据积分第一中值定理：
+
+$\exists \xi \in [x_0, x_0 + \Delta] \text{ s.t. } F(x_0 + \Delta x) - F(x_0) = f(\xi)\displaystyle\int_{x_0}^{x_0 + \Delta x}1\text{d}t = f(\xi)\Delta x$
+
+那么 $\dfrac{F(x_0 + \Delta x) - F(x_0)}{\Delta x} = f(\xi)$
+
+那么 $\lim\limits_{\Delta x \to 0} \dfrac{F(x_0 + \Delta x) - F(x_0)}{\Delta x} = \lim\limits_{\Delta x \to 0}f(\xi) = f(x_0)$。
+
+也就是 $F^{\prime}(x) = f$
+
+#### 推论 Newton-Leibniz 公式
+
+> 设 $f \in C([a, b]), F(x)= \displaystyle\int f(x)\text{d}x + C$。
+>
+> 那么 $\displaystyle\int_{a}^{b}f(x) = F(b) - F(a) = F(x)\large|_{x = a}^{x = b}$
+
+直接根据微积分基本定理就可以得出
+
+由于 $F_1(x)$ 是 $f$ 的一个原函数所以存在 $c \in \mathbb R$ 使得：
+
+$F(x) = F_1(x) + c$，那么 $F(x) = \displaystyle\int_{a}^{x}f(t)\text{d}t + c$。
+
+取 $x = a$，可以知道 $F(a) = c$，那么 $F(x) = \displaystyle\int_{a}^{x}f(t)\text{d}t + F(a)$
+
+再取 $x = b$ 可以得到：
+
+$F(b) - F(a) = \displaystyle\int_{a}^{b}f(t)\text{d}t$
+
+#### 定理 积分第二中值定理
+
+> 设 $f \in R([a, b])$。
+>
+> 1. 若 $g(x)$ 在 $[a, b]$ 上单调递减且非负，则 $\exists \xi \in [a, b] \text{ s.t. } \displaystyle\int_{a}^{b}f(x)g(x)\text{d}x = g(a)\displaystyle\int_{a}^{\xi}f(x)\text{d}x$
+>
+> 2. 如果 $g(x)$ 在 $[a, b]$ 上单调递增且非负，则 $\exists \xi \in [a, b] \text{ s.t. } \displaystyle\int_{a}^{b}f(x)g(x)\text{d}x = g(b)\displaystyle\int_{\xi}^{b}f(x)\text{d}x$
+>
+> 3. 如果 $g(x)$ 在 $[a, b]$ 上单调，则 $\exists \xi \in [a, b] \text{ s.t. } \displaystyle\int_{a}^{b}f(x)g(x)\text{d}x = g(a)\displaystyle\int_{a}^{\xi}f(x)\text{d}x + g(b)\displaystyle\int_{\xi}^{b}f(x)\text{d}x$
+
+其作用是将两个乘积积分变成一个
+
+证明 (1)：
+
+令 $F(x) = \displaystyle\int_{a}^{x}f(t)\text{d}t, x \in [a,b]$。
+
+由微积分基本定理知道 $F\in C([a, b])$，那么它在 $[a, b]$ 上具有最大最小值 $M, m$ 且都可以取到。
+
+实际上只需要考虑 $g(a) > 0$ 的情况，$g(a) = 0$ 肯定成立。
+
+所以现在要证明的就是：$F(\xi) = \displaystyle\int_{a}^{\xi}f(x)\text{d}x = \dfrac{1}{g(a)}\displaystyle\int_{a}^{b}f(x)g(x)\text{d}x$
+
+由于 $F$ 是连续函数，所以只需要证明后者 $\in [m, M]$
+
+也就是证明 $m \le \dfrac{1}{g(a)}\displaystyle\int_{a}^{b}f(x)g(x)\text{d}x \le M$
+
+考虑用 Riemann 积分的定义来看这个不等式
+
+由于 $f, g$ 都是 Riemann 可积的。
+
+$f$ 有上界：$|f(x)| \le L, x \in [a,b]$。
+
+$g$ 满足：$\forall \epsilon > 0, \exists P: a =x_0 < x_1 < x_2 < \cdots < x_n =b \text{ s.t. } \sum\limits_{k = 1}^{n}w^g_k\Delta x_k < \epsilon$
+
+将积分分成多个小区间：$\displaystyle\int_{a}^{b}f(x)g(x)\text{d}x = \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}f(x)g(x)\text{d}x$
+
+用积分的线性性插一项：$=\sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}f(x)[g(x) - g(x_{k - 1})]\text{d}x + \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}f(x)g(x_{k - 1})\text{d}x$
+
+$\equiv I + II$
+
+对于 $I$：$|I| \le \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}|f(x)|\cdot|g(x) - g(x_{k - 1})|\text{d}x \le \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}|f(x)|\cdot|w^g_k|\text{d}x \le \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}L\cdot w^g_k\text{d}x = L\sum\limits_{k = 1}^{n}w^g_k\Delta x_k < L\epsilon$
+
+所以用 Riemann 积分的定义的想法就是说明 $I$ 其实是很小的可以忽略的一部分
+
+对于 $II$：
+
+由于 $\displaystyle\int_{x_{k - 1}}^{x_k}f(x)\text{d}x = \displaystyle\int_{a}^{x_k}f(x)\text{d}x - \displaystyle\int_{a}^{x_{k - 1}}f(x)\text{d}x = F(x_k) - F(x_{k - 1})$
+
+那么 $\sum\limits_{k = 1}^{n}g(x_{k - 1})\displaystyle\int_{x_{k - 1}}^{x_k}f(x)\text{d}x = \sum\limits_{k = 1}^{n}g(x_{k - 1})[F(x_k) - F(x_{k - 1})]$
+
+$= g(x_0)[F(x_1) - F(x_0)] + g(x_1)[F(x_2) - F(x_1)] + g(x_2)[F(x_3) - F(x_2)] + \cdots + g(x_{n - 1})[F(x_n) - F(x_{n - 1})]$
+
+重新组合，想要提出 $g$ 用单调条件，不然不好做。
+
+注意 $F(x_0) = 0$
+
+$=F(x_1)[g(x_0) - g(x_1)] + F(x_2)[g(x_1) - g(x_2)] + \cdots + F(x_{n - 1})[g(x_{n - 2}) - g(x_{n - 1})] + g(x_{n - 1})F(x_n)$
+
+$=\sum\limits_{k = 1}^{n - 1}F(x_k)[g(x_{k - 1}) - g(x_k)] + F(b)g(x_{n - 1})$
+
+显然 $g(x_{k - 1}) - g(x_{k}) \ge 0$，又因为 $F(x) \in [m, M]$
+
+所以 $II \le \sum\limits_{k = 1}^{n - 1}M[g(x_{k - 1}) - g(x_{k})] + F(b)g(x_{n - 1}) = M[g(a) - g(x_{n - 1})] + F(b)g(x_{n - 1}) = g(x_{n - 1})[F(b) - M] + Mg(a)$
+
+$F(b) - M \le 0$，所以 $II \le Mg(a)$
+
+同理可证明 $II \ge mg(a)$。
+
+由于 $-L\epsilon \le I \le L \epsilon$。
+
+那么就有办法得到：
+
+$m - \dfrac{L}{g(a)}\epsilon \le \dfrac{1}{g(a)}\displaystyle\int_{a}^{b}f(x)g(x)\text{d}x \le M - \dfrac{L}{g(a)}\epsilon$
+
+令 $\epsilon \to 0^+$，就证明了想要的式子。
+
+再用介值定理可以证明 (1)
+
+`TODO`：不看这个证明 (2)
+
+证明 (3)：若 $g$ 在 $[a, b]$ 单调，则 $\exists \theta \in [a, b] \text{ s.t. } \displaystyle\int_{a}^{b}f(x)g(x)\text{d}x = g(a)\displaystyle\int_{a}^{\theta}f(x)\text{d}x + g(b)\displaystyle\int_{\theta}^{b}f(x)\text{d}x$
+
+不妨认为 $g$ 是单调递减的，可以利用 (1)。
+
+但是没法保证非负，不妨假设 $h(x) = g(x) - g(b)$，显然 $h(x)$ 是单调递减且非负的。
+
+根据 (1) 可以有：
+
+$\exists\theta \in [a, b] \text{ s.t. } \displaystyle\int_{a}^{b}f(x)h(x)\text{d}x = h(a)\displaystyle\int_{a}^{\theta}f(x)\text{d}x = g(a)\displaystyle\int_{a}^{\theta}f(x)\text{d}x - g(b)\displaystyle\int_{a}^{\theta}f(x)\text{d}x$
+
+然后左边 $\displaystyle\int_{a}^{b}[f(x)g(x) - f(x)g(b)]\text{d}x$
+
+于是移项就得到了原式。
+
+### Riemann 积分的计算
+
+#### 命题 换元公式
+
+> 如果 $f\in C([a, b]), \varphi \in [\alpha, \beta]$ 上具有连续的导数。
+> 
+> 令 $x = \varphi(t), \text{ when } t$ 的取值从 $\alpha$ 到 $\beta$ 时，$\varphi(t)$ 连续地从 $a$ 变化到 $b$，$\varphi(t) \in [a, b]$。
+>
+> 有公式：$\displaystyle\int_{a}^{b}f(x)\text{d}x = \displaystyle\int_{\alpha}^{\beta}f(\varphi(t)) \text{d}[\varphi(t)] = \displaystyle\int_{\alpha}^{\beta}f(\varphi(t)) \varphi^\prime(t)\text{d}t$。
+
+左边 $= \displaystyle\int_{\varphi(\alpha)}^{\varphi(\beta)}f(x)\text{d}x$
+
+设 $F$ 为 $f$ 的一个原函数，由 Newton-Leibniz 公式：
+
+左边 $F(\varphi(\beta)) - F(\varphi(\alpha))$
+
+右边：$[F(\varphi(x))]^{\prime} = F^{\prime}(\varphi(x))\cdot \varphi^{\prime}(x) = f(\varphi(x))\cdot \varphi^{\prime}(x)$
+
+所以 $F(\varphi(x))$ 是 $f(\varphi(x))\cdot \varphi^{\prime}(x)$ 的一个原函数
+
+所以右边也 $= F(\varphi(\beta)) - F(\varphi(\alpha))$
+
+**注：**
+
+称将 $x$ 换元为 $\varphi(t)$ 为正向换元，反过来，将 $f(x)$ 换元为 $t$ 则是逆向换元
+
+公式本身其实不要求换元的函数为单调函数，但问题出在对 $\text{d}x$ 的处理上，正向换元直接算 $\varphi^{\prime}(t)$ 就行，逆向换元需要反解出 $x = f^{-1}(t)$，如果 $f(x)$ 并不是单调的那么它不存在反函数就会有问题
+
+e.g. $\displaystyle\int_{0}^{\pi}f(\sin x)\text{d}x$。
+
+尝试直接换元成 $t = \sin x$ 会有问题（$0 \to \pi$ 导致的），因为 $\text{d}t$ 就难以解出，这里实际上 $x = \sin^{-1}t$，但是 $[0, \pi]$ 上 $\sin x$ 并不单调，没有办法将 $x$ 表示成关于 $t$ 的单值函数。
+
+一般拆成两段，就可以换元了。
+
+于是这里给出一个相对一般的使用情况：
+
+1) $f\in C([a, b]), \varphi$ 在 $[\alpha, \beta]$ 上有连续导数，当 $t: \alpha \to \beta$ 时，$\varphi(t)$ 从 $\varphi(\alpha)$ **单调递增地** 到 $\varphi(\beta)$，此时会有：$\displaystyle\int_{\alpha}^{\beta}f(\varphi(t))\varphi^{\prime}(t)\text{d}t = \displaystyle\int_{\varphi(\alpha)}^{\varphi(\beta)}f(x)\text{d}x$
+2) 单调递减也可以（不过注意负号）
+3) 不单调的时候一般拆成单调的再做。
+
+#### 例
+
+> $\displaystyle\int_{0}^{a}\sqrt{a^2 - x^2}\text{d}x, a > 0$。
+
+令 $x = a\sin t, t \in [0, \dfrac{\pi}{2}]$（注意范围和端点值）
+
+那么 $=\displaystyle\int_{0}^{\frac{\pi}{2}}a\sqrt{1-\sin^2t}a\cos t\text{d}t =\displaystyle\int_{0}^{\frac{\pi}{2}}a^2\cos^2t\text{d}t$
+
+$=a^2\displaystyle\int_{0}^{\frac{\pi}{2}}\dfrac{1 + \cos(2t)}{2}\text{d}t = \dfrac{a^2}{2}\displaystyle\int_{0}^{\frac{\pi}{2}}1 + \cos(2t)\text{d}t = \dfrac{\pi a^2}{4}$
+
+其实这个东西是在证明圆的面积公式
+
+#### 例
+
+> $\displaystyle\int_{0}^{\pi}\dfrac{x\sin x}{1 + \cos^2 x}\text{d}x$
+
+可以尝试分成两个：
+
+$=\displaystyle\int_{0}^{\frac{\pi}{2}} + \displaystyle\int_{\frac{\pi}{2}}^{\pi} = I_1 + I_2$
+
+$I_2 = \displaystyle\int_{\frac{\pi}{2}}^{\pi}\dfrac{x\sin x}{1 + \cos^2 x}\text{d}x$
+
+令 $t = x - \dfrac{\pi}{2}$
+
+然后 $I_2 = \displaystyle\int_{0}^{\frac{\pi}{2}} \dfrac{xxx}{xxx}\text{d}t$
+
+这一坨并不好和 $I_1$ 合并
+
+所以不妨考虑直接换元，令 $t = \pi - x, x : 0 \to \pi \Rightarrow t : \pi \to 0$。
+
+$I = \displaystyle\int_{\pi}^{0}\dfrac{(\pi - t)\sin(\pi - t)}{1 + \cos^2(\pi - t)}\text{d}t = -\displaystyle\int_{\pi}^{0}\dfrac{(\pi - t)\sin t}{1 + \cos^2 t} \text{d}t= \displaystyle\int_{0}^{\pi}\dfrac{\pi \sin t - t \sin t}{1 + \cos^2 t}\text{d}t = \displaystyle\int_{0}^{\pi}\dfrac{\pi \sin t}{1 + \cos^2 t}\text{d}t$
+
+（TODO，倒数第二步是啥）
+
+于是 $I = \dfrac{\pi}{2}\displaystyle\int_{0}^{\pi}\dfrac{\sin t}{1 + \cos^2 t}\text{d}t$，这个是好算的
+
+### 分部积分公式
+
+> 设 $f^{\prime}, g^{\prime} \in C([a, b])$ 则：
+> 
+> $\displaystyle\int_{a}^{b}f(x)g^{\prime}(x)\text{d}x = f(x)g(x)|_{a}^{b} - \displaystyle\int_{a}^{b}f^{\prime}(x)g(x)\text{d}x$
+
+和不定积分同理。
+
+#### 例
+
+> $I_n = \displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^n\text{d}x, n \in \mathbb N^\star$
+
+$I_n = \displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^{n - 1}\sin x\text{d}x = -\displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^{n - 1}\text{d}(\cos x) = -\cos x \cdot (\sin x)^{n - 1}|_{0}^{\frac{\pi}{2}} + \displaystyle\int_{0}^{\frac{\pi}{2}} \cos^2x\cdot(n - 1)(\sin)^{n - 2}\text{d}x$
+
+$=(n - 1)\displaystyle\int_{0}^{\frac{\pi}{2}}(1 - \sin^2 x)(\sin x)^{n - 2}\text{d}x = (n - 1)I_{n - 1} - (n - 1)I_{n}$
+
+所以 $I_n = \dfrac{n - 1}{n}I_{n - 2}$
+
+1. $n \equiv 0\mod 2$ 时：$I_n = \dfrac{(n - 1)(n - 3)(n - 5)\cdots 3}{n(n - 2)(n - 4)\cdots 4}I_2$，其中 $I_2 = \dfrac{\pi}{4}$
+2. $\text{otherwise.}$：$I_n = \dfrac{(n - 1)(n - 3)(n - 5)\cdots 2}{n(n - 2)(n - 4)\cdots 3}I_1$，其中 $I_1 = 1$
+
+#### 例
+
+> 计算数列极限：
+>
+> $\lim\limits_{n \to \infty}\left(\dfrac{1}{n + 1} + \dfrac{1}{n + 2}\cdots + \dfrac{1}{2n}\right)$
+
+分子分母除 $n$：
+
+$= \lim\limits_{n \to \infty}\left(\dfrac{\dfrac{1}{n}}{1 + \dfrac{1}{n}} + \dfrac{\dfrac{1}{n}}{1 + \dfrac{2}{n}} + \cdots + \dfrac{\dfrac{1}{n}}{1 + \dfrac{1}{n}}\right) = \lim\limits_{n \to \infty}\left(\displaystyle\sum\limits_{k = 1}^{n}\dfrac{1}{1 + \dfrac{k}{n}}\cdot \dfrac{1}{n}\right)$
+
+这符合 Riemann 积分的定义。
+
+设 $f(x) = \dfrac{1}{1 + x}, x \in [0, 1]$，其在 $[0, 1]$ 上连续，故其是 Riemann 可积的，上式收敛于：
+
+$\displaystyle\int_{0}^{1}\dfrac{1}{1 + x}\text{d}x =\ln2$
+
+#### 例
+
+> $\lim\limits_{n \to \infty}\dfrac{\sqrt[n]{n!}}{n}$
+
+$\dfrac{\sqrt[n]{n!}}{n}= \sqrt[n]{\dfrac{n!}{n^n}} = \sqrt[n]{\dfrac{1\cdot2\cdot3\cdot4\cdots n}{n^n}}$
+
+为了找出求和的形式取对数。
+
+$A = \ln\sqrt[n]{\dfrac{n!}{n^n}} = \dfrac{1}{n}[\ln(\dfrac{1}{n}) + \ln(\dfrac{2}{n}) + \cdots + \ln(\dfrac{n}{n})]$
+
+$A = \displaystyle\sum\limits_{k = 1}^{n}\ln(\dfrac{k}{n})\cdot \dfrac{1}{n}$
+
+希望 $\ln x$ 在 $[0, 1]$ 上是 Riemann 可积的（这里先承认）
+
+$\lim\limits_{n \to \infty}A = \displaystyle\int_{0}^{1}\ln(x)\text{d}x = \lim\limits_{\epsilon \to 0^+}\displaystyle\int_{\epsilon}^{1}\ln(x)\text{d}x = -1 - \lim\limits_{\epsilon \to 0^+}(\epsilon \ln \epsilon - \epsilon) = -1$
+
+原式 $e^{A} = \dfrac{1}{e}$
+
+#### 命题
+
+> 设 $f$ 在 $[-a, a]$ 上连续， $a > 0$。
+> 
+> 1) 若 $f$ 是奇函数，则 $\displaystyle\int_{-a}^{a}f(x)\text{d}x = \displaystyle\int_{-a}^{0}f(x)\text{d}x + \displaystyle\int_{0}^{a}f(x)\text{d} = I + II$
+
+ $I = \displaystyle\int_{a}^{0}-f(-t)\text{d}t = \displaystyle\int_{a}^{0}f(t)\text{d}t = -\displaystyle\int_{0}^{a}f(t)\text{d}t = -II$。
+
+ 所以 $\displaystyle\int_{-a}^{a}f(x)\text{d}x = 0$
+
+> 2) 若 $f$ 是偶函数，则 $\displaystyle\int_{-a}^{a}f(x)\text{d}x = 2\displaystyle\int_{0}^{a}f(x)\text{d}x$。
+
+这两个命题在计算的时候可以起到简化的作用。
+
+> 3) 设 $f$ 是以 $T > 0$ 为周期的连续函数，那么 $\displaystyle\int_{a}^{a + T}f(x)\text{d}x = \displaystyle\int_{0}^{T}f(x)\text{d}x$
+
+### Riemann-Lebesgue 引理
+
+#### 定义 特征函数、简单函数、阶梯函数
+
+> 设 $E \subset \mathbb R$ 为一非空集，定义函数 $\chi_E(x) = \begin{cases}1, x \in E \\ 0, x \not\in E\end{cases}$ 为 $E$ 上的特征函数。
+>
+> 特征函数的有限线性组合（$a_1\chi_{E_1}(x) + a_2\chi_{E_2}(x) + \cdots + a_3\chi_{E_3}(x) + \cdots + a_n\chi_{E_n}(x), E_i \cap E_j = \empty$）称为简单函数
+>
+> 特别的，当每个 $E$ 都是直线区间的时候，则称 $f$ 为阶梯函数。
+
+#### 定义 区间上的阶梯函数
+
+> 设闭区间 $[a, b]$ 可以分解为 $[a, b] = \bigcup\limits_{k = 1}^{N}I_k$，其中 $I_k \subset [a, b], I_k \cap I_j = \empty, (k \not= j)$。
+>
+> 称 $\varphi(x) = \sum\limits_{k = 1}^{N}C_k\chi_{I_k}(x)$ 为 $[a, b]$ 上的阶梯函数，其中 $C_k$ 为一常数。
+
+#### 定理 Riemann-Lebesgue
+
+> 设 $f$ 在闭区间 $[a, b]$ 上 Riemann 可积，则：
+>
+> $\lim\limits_{p \to +\infty}\displaystyle\int_{a}^{b}f(x)\sin(px)\text{d}x = \lim\limits_{p \to +\infty}\displaystyle\int_{a}^{b}f(x)\cos(px)\text{d}x = 0$
+
+证明：
+
+先证明一个引理：
+
+> 若 $f \in R([a, b])$，则 $\forall \epsilon > 0, \exists [a, b]$ 上的阶梯函数 $\varphi(x), \psi(x) \text{ s.t. } \varphi(x) \le f(x) \le \psi(x)$ 且 $\displaystyle\int_{a}^{b}|f(x) - \varphi(x)|\text{d}x < \epsilon$ 且 $\displaystyle\int_{a}^{b}|f(x) - \psi(x)|\text{d}x < \epsilon$ 
+
+由于 $f$ Riemann 可积，所以 $\forall \epsilon > 0, \exists P: a = x_0 < x_1 < x_2 < \cdots < x_n = b \text{ s.t. } \sum\limits_{k = 1}^{n}w_k\Delta x_k < \epsilon$
+
+不妨令 $\varphi(x) = m_k = \inf\{f(x) | x \in [x_{k - 1}, x_k]\}, x \in [x_{k - 1}, x_k]$。同理 $\psi(x) = M_k$。
+
+显然 $\varphi(x), \psi(x)$ 都为 $[a, b]$ 上的阶梯函数，且满足 $\varphi(x) \le f(x) \le \psi(x)$。
+
+那么原式 $=\displaystyle\int_{a}^{b}|f(x) - \varphi(x)|\text{d}x = \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_{k}}|f(x) - \varphi(x)|\text{d}x = \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}|f(x) - m_k|\text{d}x \le \sum\limits_{k = 1}^{n}\displaystyle\int_{x_{k - 1}}^{x_k}|M_k - m_k|\text{d}x = \sum\limits_{k = 1}^{n}w_k \Delta x_k < \epsilon$，对于 $\psi(x)$ 同理，引理得证。
+
+为什么要使用这个引理，其实就是做一个转化，可以把原式中的 $f$ 换为更特殊的阶梯函数。
+
+也就是将 $f$ 拆成 $f - \varphi(x) + \varphi(x)$。
+
+于是我们只需要证明：$\lim\limits_{p \to +\infty}\displaystyle\int_{a}^{b}\varphi(x)\sin(px)\text{d}x = 0$。
+
+而 $\varphi(x)$ 是一个阶梯函数，可以写作 $\sum\limits_{k = 1}^{n}m_k\chi_{I_k}$
+
+所以就是证明：$\lim\limits_{p \to +\infty}\displaystyle\int_{a}^{b}\sum\limits_{k = 1}^{n}m_k\chi_{I_k}\sin(px)\text{d}x = 0$
+
+$=\lim\limits_{p \to +\infty}\sum\limits_{k = 1}^{n}m_k\displaystyle\int_{a}^{b}\chi_{I_k}\sin(px)\text{d}x$
+
+$=\lim\limits_{p \to +\infty}\sum\limits_{k = 1}^{n}m_k\left[\displaystyle\int_{a}^{x_{k - 1}}\chi_{I_k}\sin(px)\text{d}x + \displaystyle\int_{x_{k - 1}}^{x_k}\chi_{I_k}\sin(px)\text{d}x + \displaystyle\int_{a}^{b}\chi_{I_k}\sin(px)\text{d}x\right]$
+
+根据 $\chi$ 的定义：
+
+$=\lim\limits_{p \to +\infty}\sum\limits_{k = 1}^{n}m_k\displaystyle\int_{x_{k - 1}}^{x_{k}}\sin(px)\text{d}x = \lim\limits_{p \to +\infty}\sum\limits_{k = 1}^{n}m_k \dfrac{\cos(px_{k - 1}) - \cos(px_{k})}{p} = 0$
+
+代回去用一次三角不等式就行了。
+
+$\psi$ 同理。证毕。

@@ -437,4 +437,231 @@ $D_{2n} = adD_{2(n - 1)} - bcD_{2(n-1)}$
 
 ### 例子
 
+### Laplace 法则
+
+### 克拉默 法则
+
+### 高斯消元法
+
+处理带未知数的行列式的时候一般都想要提出公因子
+
+### n 维向量空间
+
+线性方程组要化成阶梯形才能判断有效方程
+
+能够不化阶梯形直接判断？
+
+$n$ 元线性方程可以写做有序行向量：$(a_1, a_2, \cdots a_n, b)$
+
+那么方程组就是一个有序向量组。
+
+定义：
+
+> 数域 $P$ 上的 $n$ 个数组成的有序数组称为数域 $P$ 上的一个 $n$ 维向量。，$a_i$ 称为其的第 $i$ 个分量。
+>
+> 一般用 $\alpha, \beta, \gamma$ 表示。
+>
+> 分为行向量列向量, $(a_1, a_2, \cdots, a_n), \begin{pmatrix}a_1 \\ a_2 \\ \vdots \\ a_n\end{pmatrix}$。
+>
+> 一般默认向量为列向量。
+
+如果 $\alpha, \beta$ 两个向量的对应分量皆相等，那么 $\alpha = \beta$
+
+分量全为 $0$ 的向量称为零向量，记作 $0$。（所以可能 $0\not=0$）
+
+运算：
+
+- $\alpha + \beta$ 就是对应分量相加 $(a_1 + b_1, a_2 + b_2, \cdots, a_n + b_n)$
+
+- 数乘：$k\alpha$ 就是每个分量乘上 $k$
+
+向量的加法和数乘称为向量的线性运算，它们需要满足以下条件（此处实质是在定义加法和乘法）。
+
+交换律：$\alpha + \beta = \beta + \alpha$
+
+结合律：$\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$
+
+有零元：$\alpha + 0 = \alpha$
+
+有负元：$\alpha + (-\alpha) = 0$
+
+数对向量结合律 $k(\alpha + \beta) = k\alpha + k\beta$
+
+向量对数分配律 $(k + l)\alpha = k\alpha + l\alpha$
+
+数因子结合律 $k(l\alpha) = (kl)\alpha$
+
+单位律：$1 \alpha = \alpha$
+
+若 $k\not=0, \alpha\not=0, k\alpha\not=0$
+
+### 向量运算的应用
+
+方程组的向量表示法：
+
+$\begin{cases}a_{11}x_1 + a_{12}x_2 + a_{13}x_3 = b_1 \\ a_{21}x_1 + a_{22}x_2 + a_{23}x_3 = b_2 \\ a_{31}x_1 + a_{32}x_2 + a_{33}x_3 = b_3\end{cases}$
+
+可以写作：
+
+$x_1 \begin{pmatrix}a_{11} \\ a_{21} \\ a_{31}\end{pmatrix} + x_2 \begin{pmatrix}a_{12} \\ a_{22} \\ a_{32}\end{pmatrix} + x_3 \begin{pmatrix}a_{13} \\ a_{23} \\ a_{33}\end{pmatrix} = \begin{pmatrix}b_1 \\ b_2 \\ b_3\end{pmatrix}$
+
+也就是 $x_1\alpha_1 + x_2 \alpha_2 + x_3 \alpha_3 = \beta$
+
+方程组有解等价于，$\beta$ 能被 $\alpha_1, \alpha_2, \alpha_3$ 线性表示
+
+方程组解的个数就是 $\beta$ 能被向量组 $\alpha_1, \alpha_2, \alpha_3$ 线性表示的总数。
+
+还有一种方程组的矩阵表示法：
+
+$\begin{bmatrix}a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}\end{bmatrix} \begin{pmatrix}x_1 \\ x_2 \\ x_3\end{pmatrix} = \begin{pmatrix}b_1 \\ b_2 \\ b_3\end{pmatrix}$
+
+这里的乘法就是矩阵乘法了
+
+$Ax = \beta$
+
+当然也可以写作 $(\alpha_1, \alpha_2, \alpha_3)\begin{pmatrix}x_1 \\ x_2 \\ x_3\end{pmatrix} = \begin{pmatrix}b_1 \\ b_2 \\ b_3\end{pmatrix}$
+
+### 向量空间
+
+> 数域 $P$ 上全体 $n$ 维向量与它们的线性运算称为数域 $P$ 上的 $n$ 维向量空间 $P^n$
+
+### 线性组合
+
+> 设 $\beta_1, \beta_2, \beta_3 \cdots \beta_s \in P^n$。
+>
+> 若 $\forall k_1, k_2, \cdots k_s \in P$，$\alpha = k_1\beta_1 + k_2\beta_2 + \cdots + k_s\beta_s$。
+>
+> 那么称 $\alpha$ 为向量组 $\beta_1, \beta_2, \cdots, \beta_s$ 的一个线性组合
+>
+> 也称 $\alpha$ 能被向量组线性表示。
+
+注：若 $\alpha = k\beta$，称 $\alpha$ 与 $\beta$ 称比例
+
+零向量 $0$ 可以由任意向量组线性表示
+
+向量组中任意向量都可以被向量组线性表示。
+
+任意 $n$ 维向量都可以由向量组 $\epsilon_1 = (1, 0, \cdots 0), \epsilon_2 = (0, 1, \cdots 0), \cdots \epsilon_n = (0, 0, \cdots 1)$ 表示。
+
+$\alpha = a_1\epsilon_1 + a_2\epsilon_2 + \cdots a_n\epsilon_n$
+
+称 $\epsilon_1, \epsilon_2, \cdots, \epsilon_n$ 为 $n$ 维单位坐标向量组（类比退化到二维的单位坐标向量）。
+
+### 一个考研题的例子
+
+### 线性相关
+
+> 设 $\alpha_1, \alpha_2, \cdots \alpha_s \in P^n, (s\ge 1)$
+>
+> 若存在不全为零的 $P$ 中的数 $\lambda_1, \lambda_2, \cdots, \lambda_s \text{ s.t. }$
+>
+> $\lambda_1 \alpha_1 + \lambda\alpha_2 + \cdots + \lambda_s \alpha_s = 0$
+> 
+> 则称 $\alpha_1, \alpha_2, \cdots, \alpha_s$ 线性相关，否则称其线性无关
+
+线性相关等价于系数不全为零，线性组合等于零
+
+### 线性无关
+
+> 设 $\alpha_1, \alpha_2, \cdots \alpha_s \in P^n, (s\ge 1)$
+>
+> 不存在不全为零的 $P$ 中的数 $\lambda_1, \lambda_2, \cdots, \lambda_s \text{ s.t. }$
+>
+> $\lambda_1 \alpha_1 + \lambda\alpha_2 + \cdots + \lambda_s \alpha_s = 0$
+> 
+> 则称 $\alpha_1, \alpha_2, \cdots, \alpha_s$ 线性无关
+
+只有系数全为零，才有线性组合等于零
+
+注：
+
+1. 为什么要叫线性相关无关：除平凡情况 $x_1\alpha_1 + x_2\alpha_2 + \cdots + x_s\alpha_s = 0$ 此式是否成立，如果成立，就说明这些向量 $\alpha_i$ 存在一个关于线性组合的关系。
+2. 任意向量组要么线性相关要么线性无关（定义中有“否则”）
+3. 和线性方程组的关系：如果 $\alpha_1, \alpha_2, \alpha_3$ 线性相关，那么对应的齐次线性方程组存在非零解 $x_1, x_2, x_3$。若 $A = (\alpha_1, \alpha_2, \alpha_3)$ 为方阵，那么 $\det A = 0$；
+    
+    如果线性无关则只有零解，若 $A = (\alpha_1, \alpha_2, \alpha_3)$ 为方阵，那么 $\det A \not= 0$
+4. 如何判定：
+    1. 假设线性组合 $x_1\alpha_1 + x_2 \alpha_2 + \cdots x_n\alpha_n=0$
+    2. 写出对应的齐次方程组（向量形式）
+    3. 解方程组
+
+    或者：
+    - 假设 $= 0$。
+    - 算系数。
+    - 判断系数不全为零
+
+### 例
+
+> 若向量组只有一个向量 $\alpha$。
+>
+> $\alpha$ 线性相关等价于 $k\not=0, k\alpha = 0 \iff \alpha = 0$
+
+> 若向量组有两个向量 $\alpha, \beta$。
+>
+> $\alpha, \beta$ 线性相关等价于对应分量成比例。
+
+证明，设 $\alpha, \beta$ 线性相关。
+
+等价于：$\exists k_1, k_2$ 不全为 $0$ 使得 $k_1\alpha + k_2 \beta = 0$.
+
+不妨设 $k_1\not=0$ 那么 $\alpha = -\dfrac{k_2}{k_1}\beta$
+
+> $n$ 维单位坐标向量组是线性无关的。
+
+因为你 $i$ 这个位置只有一个 $\not=0$ 的，没有办法做抵消，那么一定线性无关。
+
+### 例
+
+> 设 $A$ 是 $n$ 阶矩阵，若存在正整数 $k$ 使得 $A^kx = 0$ 有解向量 $\alpha$ 并且 $A^{k - 1}\alpha \not=0$ 证明 $\alpha, A\alpha, \cdots A^{k - 1}\alpha$ 线性无关。
+
+$l_0 \alpha + l_1 A\alpha + \cdots + l_{k - 1}A^{k - 1}\alpha = 0$。
+
+为了利用已知条件 $A^k\alpha = 0$。
+
+两边同乘 $A$ 然后变成 $l_0A\alpha + l_1 A^2\alpha + \cdots l_{k - 2}A^{k - 1}\alpha = 0$
+
+那么最后得到 $l_{0}A^{k - 1}\alpha= 0$。
+
+那么 $A^{k - 1}\alpha\not= 0 \Rightarrow l_0 = 0$，以此类推 $l_i = 0$。
+
+那么向量组线性无关。
+
+### 3-3.2.9
+
+继续用定义，假设向量组线性无关。
+
+### 相关性判定定理
+
+（有一个定理）
+
+> 向量组线性相关 $\iff$ 向量组中至少有一个向量能够有其余向量线性表示
+
+证明：
+
+$\Rightarrow$
+
+$\Leftarrow$
+
+推论：（哪一个定理）
+
+> 已知 $\alpha_1, \alpha_2, \cdots, \alpha_m, \beta$ 线性相关。
+>
+> 钦定 $\alpha_1, \alpha_2, \cdots, \alpha_m$ 线性无关。
+>
+> 那么 $\beta$ 可以被 $\alpha_1, \alpha_2, \cdots, \alpha_m$ 线性表示且表示方式唯一。
+
+证明
+
+推论2：（部分相关则整体相关）
+
+> 向量组 $\alpha_1, \alpha_2, \cdots \alpha_m$线性相关。
+>
+> 向量组 $\alpha_1, \alpha_2, \cdots, \alpha_m, \alpha_{m + 1}, \cdots \alpha_n$ 线性相关。
+
+其逆否命题就是整体不相关，则部分不相关。
+
+特例：含零向量的向量组线性相关（其它系数全部为 $0$，零向量系数不为 $0$ 即可）。
+
+### 例
+
 
