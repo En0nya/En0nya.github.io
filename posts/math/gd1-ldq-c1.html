@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/code.css">
+	<link rel="stylesheet" href="/css/toc.css">
+	<link rel="stylesheet" href="/css/to-top.css">
+
+	<script src="/js/highlight.min.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((el) => {
+		  hljs.highlightElement(el);
+		});
+	  });
+	</script>
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+
+    <script src="/js/Mathjax.js" async></script>
+	<script src="/js/toc.js"></script>
+	<script src="/js/to-top.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>高等代数(I) Chapter 1 行列式</h2>
+<p>由于高等代数记笔记相对于数分要麻烦很多。</p>
+<p>所以这部分笔记都是课后做的思维整理。</p>
+<h3>行列式定义</h3>
+<p>行列式的引入一开始是为了给出 $n$ 元线性方程的公式解。</p>
+<p>对于二元和三元的情况较为简洁。</p>
+<p>例如 $\begin{cases}a_{11}x_1 + a_{12}x_2 = b_1 \\ a_{21}x_1 + a_{22}x_2 = b_2\end{cases}$</p>
+<p>当 $a_{11}a_{22} - a_{12}a_{21} \not=0$ 时其解为 $x_1 = \dfrac{b_1a_{22} - b_2a_{12}}{a_{11}a_{22}-a_{12}a_{21}}, x_2 = \dfrac{a_{11}b_2 - a_{12}b_1}{a_{11}a_{22}-a_{12}a_{21}}$</p>
+<p>定义 $\begin{vmatrix}a_{11} &amp; a_{12} \\a_{21} &amp; a_{22}\end{vmatrix}$ 为二阶行列式。</p>
+<p>一般的：定义 $n$ 阶行列式为：</p>
+<p>$D_n = \begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix} = \sum\limits_{j_1,j_2,j_3,\cdots,j_n}^{}(-1)^{\tau(j_1,j_2,j_3,\cdots,j_n)} a_{1j_1} a_{2j_2}a_{3j_3}\cdots a_{nj_n}$</p>
+<p>也就是行列式中所有处在不同行不同列的 $n!$ 组元素之积的和，$\tau$ 表示逆序数。</p>
+<p>可以类比的认为，$n$ 阶行列式不等于零 $\iff$ 对应的线性方程组有唯一解</p>
+<h3>排列</h3>
+<blockquote>
+<p><strong>性质</strong>：排列中两元素交换位置一定改变 $\tau$ 的奇偶性。</p>
+</blockquote>
+<p>先考虑相邻的情况，可以发现逆序对只改变 $1$。</p>
+<p>考虑不相邻的情况，本质就是多个相邻交换构成的，显然交换次数一定是奇数次。</p>
+<h3>特殊行列式</h3>
+<ol>
+<li>（主）对角行列式：除了主对角线的元素均为 $0$，其值等于主对角线上的元素之积。</li>
+</ol>
+<p>$$\begin{vmatrix}a_{11} &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; a_{22} &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; a_{nn}\end{vmatrix}$$</p>
+<ol>
+<li>反对角行列式：反对角线的元素不为 $0$ 其余均为 $0$。值的负号取决于 $(-1)^{\dfrac{n(n-1)}{2}}$。</li>
+</ol>
+<p>可以发现这就是冒泡排序的最坏情况。</p>
+<ol>
+<li>上三角行列式：主对角线下方均为 $0$，其值等于主对角线的元素乘积。</li>
+</ol>
+<p>$$\begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ 0 &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; a_{nn}\end{vmatrix}$$</p>
+<ol>
+<li>
+<p>下三角行列式：同理。</p>
+</li>
+<li>
+<p>反上三角行列式：类比反对角行列式。</p>
+</li>
+<li>
+<p>反下三角行列式：同理。</p>
+</li>
+<li>
+<p>转置：$D=\begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix}$，称 $D^T = \begin{vmatrix}a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1} \\ a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{nn}\end{vmatrix}$ 为 $D$ 的转置行列式，可以发现值不变。</p>
+</li>
+</ol>
+<h3>行列式的特殊性质</h3>
+<ol>
+<li>行与列的地位相等：$D = D^T$</li>
+<li>
+<p>交换两行，符号取反：$D = -D^{\prime}$</p>
+<p>本质和排列相同。
+3. 某一行有公因子 $k$ 可以提出 $D = kD^{\prime}$</p>
+<p>其实就是按行展开然后提取这一行的公因子然后变回去 $=ka_{i1}A_{i1} + ka_{i2}A_{i2} + \cdots + ka_{in}A_{in}$</p>
+<p>$A_{ij}$ 表示所有会和 $a_{ij}$ 相乘的那一坨元素提出 $a_{ij}$ 之后的代数和（其实就是代数余子式）
+4. 行列式中某一行为零则行列式为零 $D = 0$</p>
+<p>根据(3)提出 $0$ 就行了。</p>
+</li>
+<li>
+<p>某一行如果可以写作 $a_i + b_i$ 的形式那么可以拆成两个新行列式 $D = D_a + D_b$。</p>
+<p>可以类比(3)，按行展开，$(a_{ij} + b_{ij})A_{ij}$然后乘法分配律即可。</p>
+</li>
+<li>
+<p>如果某两行成比例则行列式为零 $D = 0$</p>
+<p>先提出 $k$ 变成相等的情况，现在考虑行列式的计算式。</p>
+<p>可以发现在计算选择元素时等价于交换这两行，那么如果我先选 $i$ 再选 $j$，必然会有结果仅有符号相反的先选 $j$ 再选 $i$ 的结果，于是两两抵消。</p>
+</li>
+<li>
+<p>某一行的 $k$ 倍加到另外一行，结果不变 $D = D$。</p>
+<p>加到另外一行之后可以根据 (5) 把它们拆开，拆开后第二项满足 (6) 故等于原行列式</p>
+</li>
+</ol>
+<h3>行列式的计算</h3>
+<p>初等行变换：</p>
+<ol>
+<li>交换两行</li>
+<li>某一行乘 $k$ 倍（$k \in \mathbb P, k\not=0$）</li>
+<li>某一行加上某一行的 $k$ 倍。</li>
+</ol>
+<p>初等行变换需要是可逆的</p>
+<p>通过初等行变换可以将任意一个矩阵变为阶梯形矩阵：</p>
+<ol>
+<li>全零行在矩阵的最下方</li>
+<li>所有非零行第一个非零元素（主元）的左下角均为零。</li>
+</ol>
+<p>$$\begin{bmatrix}0&amp;1&amp;2&amp;3&amp;5\\0&amp;0&amp;4&amp;7&amp;9\\0&amp;0&amp;0&amp;0&amp;0\end{bmatrix}$$</p>
+<p>进一步可以化为最简形矩阵：非零行主元为 $1$ 且主元所在列其他元素均为 $0$</p>
+<p>$$\begin{bmatrix}0&amp;1&amp;0&amp;3&amp;5\\0&amp;0&amp;1&amp;7&amp;9\\0&amp;0&amp;0&amp;0&amp;0\end{bmatrix}$$</p>
+<p>标准型：</p>
+<p>$A = (a_{ij})_{m\times n}$，称 $\begin{vmatrix}E_r &amp;  0\\ 0 &amp; 0\end{vmatrix}$ 为 $A$ 的标准型。</p>
+<p>阶梯形/最简形方阵的行列式是好计算的。</p>
+<p>所以行列式计算的原理就是化成阶梯形或者最简形然后再算。</p>
+<h3>行列式的计算(2) - 按行展开</h3>
+<p>思路就是每一行提出公因子 $k$ 里面的思路，将行列式写作：</p>
+<p>$\det A = a_{i1}A_{i1} + a_{i2}A_{i2} + \cdots + a_{in}A_{in}$ 的形式。</p>
+<p>$A_{ij}$ 是 $a_{ij}$ 的代数余子式，等于 $(-1)^{i + j}M_{ij}$。</p>
+<p>其中 $M_{ij}$ 是划掉第 $i$ 行 $j$ 列之后构成的新行列式，可以发现这就是行列式计算式中所有包含 $a_{ij}$ 项的那一部分提出公因子后的代数和。</p>
+<p>于是上面的式子可以表述为：<strong>行列式的值等于某一行元素和它对应的代数余子式之积的和</strong>。</p>
+<p>当然也可以倒过来写新行列式。</p>
+<blockquote>
+<p><strong>展开法则</strong>：用于快速计算行列式</p>
+<p>如果 $a_{ij}\not=0$ 且它所在行/列的其他元素均为 $0$ 那么 $\det D = a_{ij}A_{ij}$</p>
+</blockquote>
+<p>证明是简单的，直接利用定义展开（因为实际上按行展开是展开法则的推论）。</p>
+<blockquote>
+<p><strong>不匹配</strong>：行列式的某一行元素乘上和它对应的另外一行的代数余子式之和为零</p>
+</blockquote>
+<p><strong>倒着</strong>把这个式子写作一个新的行列式就可以发现存在相同行。</p>
+<h3>行列式的计算(3) - 加边法</h3>
+<p>补一个 $(1, 0, 0, \cdots 0)$ 或者 $\begin{pmatrix}1 \\ 0 \\ 0 \\ \vdots \\ 0\end{pmatrix}$ 然后再做。</p>
+<h3>行列式的计算(4) - 分析因子法</h3>
+<p>通过带入使得行列式 $= 0$ 的 $x$，结合行列式展开式的次数利用待定系数法即可。</p>
+<h3>Vandermonde 行列式</h3>
+<p>$$V_n = \begin{vmatrix}1 &amp; 1 &amp; \cdots &amp; 1 \\ x_1 &amp; x_2 &amp; \cdots &amp; x_n \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ x_{1}^n &amp; x_{2}^n &amp; \cdots &amp; x_{n}^n\end{vmatrix} = \prod\limits_{n \ge i \ge j \ge 1}(x_i - x_j)$$</p>
+<p>如何证明？</p>
+<p>考虑数学归纳法。</p>
+<p>$n = 2$ 明显成立，考虑 $n$ 成立推广到 $n + 1$。</p>
+<p>所以想要消掉一行或者一列，这里让第 $i$ 行减去 $x_1$ 倍的第 $i - 1$ 行。</p>
+<p>于是行列式将会变成：</p>
+<p>$$V_n = \begin{vmatrix}1 &amp; 1 &amp; \cdots &amp; 1 \\ 0 &amp; x_2 - x_1 &amp; \cdots &amp; x_n - x_1 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; (x_2 - x_1)x_{2}^{n - 1} &amp; \cdots &amp; (x_n - x_1)x_{n}^{n - 1}\end{vmatrix} = \prod\limits_{n \ge i \ge j \ge 1}(x_i - x_j)$$</p>
+<p>于是第一行第一列就被消掉了，剩下的部分吗，每一列提出 $x_i - x_1$ 即可。</p>
+<h3>放大版三角行列式</h3>
+<blockquote>
+<p>若行列式形如 $\begin{vmatrix}A &amp; 0 \\ C &amp; D\end{vmatrix}$。</p>
+<p>则 $\det = \det A \cdot \det D$</p>
+</blockquote>
+<p>做法也是归纳法。</p>
+<h3>Cramer 法则</h3>
+<p>对于线性方程组可以写出它的系数矩阵：</p>
+<p>$$A = \begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{pmatrix}$$</p>
+<blockquote>
+<p>Cramer 法则：</p>
+<p>如果 $\det A \not=0$ 那么方程组有唯一解。可表示为 $x_i = \dfrac{d_i}{\det A}$，其中 $d_i$ 表示将第 $i$ 列换做方程的常数项 $b_1, b_2, \cdots, b_n$ 的行列式的值。</p>
+</blockquote>
+<p>$$d_i = \begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots a_{1i-1} &amp; b_{1} &amp; a_{1i + 1} \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots a_{2i-1} &amp; b_{2} &amp; a_{2i + 1} \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\ a_{n1} &amp; a_{n2} &amp; \cdots a_{ni-1} &amp; b_{n} &amp; a_{ni + 1} \cdots &amp; a_{nn}\end{vmatrix}$$</p>
+<blockquote>
+<p><strong>齐次</strong>线性方程组：常数项 $b_i$ 均为 $0$。</p>
+</blockquote>
+<p>显然线性方程组总是有解 $(0, 0, \cdots, 0)$，称为零解。</p>
+<p>根据 Cramer 法则，$\det A\not=0$，方程组应当有唯一解，那么齐次线性方程组的唯一解就是零解。</p>
+<p>如果 $\det A = 0$，方程组有非零解。</p>
+<h3>Laplace 定理（行列式的乘法规则）</h3>
+<p>$k$ 阶子式：对于行列式 $D$，选定 $k$ 行 $k$ 列，这些交叉位置上的 $k^2$ 个元素按原次序组成的行列式 $M$。</p>
+<p>$k$ 阶子式的余子式：$M$ 的余子式等于 $D$ 删去这 $k$ 行 $k$ 列之后构成的行列式 $M^{\prime}$。</p>
+<p>代数余子式：$A = (-1)^{i_{1} + i_{2} + \cdots + i_{k} + j_{1} + j_{2} + \cdots + j_{k}}M^{\prime}$</p>
+<blockquote>
+<p><strong>引理</strong>：对于 $D$ 中的任意一个子式 $M$，$MA$ 中任意一项都为 $D$ 的展开式中的一项且符号相同。</p>
+<p><strong>Laplace</strong>：任取 $D$ 中的 $k$ 行，这 $k$ 行的所有元素组成的所有 $k$ 阶子式和其代数余子式之积的和等于 $D$。</p>
+<p>即：$D = M_{1}A_{1} + M_{2}A_{2} + \cdots M_{t}A_{t}$</p>
+</blockquote>
+<p>根据引理，又因为这 $t$ 个子式不会有重复项，只需要证明两边项数相等即可。</p>
+<p>即证明 $n! = t \cdot k!$，这是显然的。</p>
+<p>Laplace 定理用于计算不是那么方便，主要还是在证明当中使用，比如接下来的定理：</p>
+<h3>行列式的乘法定理（本质就是矩阵乘法）</h3>
+<p>$$A = \begin{vmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix}, B = \begin{vmatrix}b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1n} \\ b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{nn}\end{vmatrix}$$</p>
+<p>$$|A||B| = |C| \text{ s.t. } C = \begin{vmatrix}c_{11} &amp; c_{12} &amp; \cdots &amp; c_{1n} \\ c_{21} &amp; c_{22} &amp; \cdots &amp; c_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ c_{n1} &amp; c_{n2} &amp; \cdots &amp; c_{nn}\end{vmatrix}$$</p>
+<p>其中 $c_{ij} = \sum\limits_{k = 1}^{n}a_{ik}\cdot b_{kj}$</p>
+<p>可以用 Laplace 定理证明，只需要构造这样一个行列式：</p>
+<p>$$D = \begin{vmatrix}A &amp; 0 \\ X &amp; B\end{vmatrix} \text{ s.t. } X = \begin{vmatrix}-1 &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; -1 &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; -1\end{vmatrix}$$</p>
+<p>做一些初等行变换就可以让 $0$ 那一部分变成 $C$，取前 $n$ 行用 Laplace 定理即可证明。</p>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

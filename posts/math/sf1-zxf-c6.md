@@ -478,14 +478,14 @@ $\sum\limits_{w_k \ge \epsilon}^{} \Delta x_k \le \sum\limits_{w_k \ge \epsilon}
 
 Darboux 上和、下和：
 
-$\overline{S}_{cf}(P) = \sum cM_k\Delta x_k = c\sum M_k\Delta x_k = c\overline{S}_f(P)$
+$\overline{S}(cf, P) = \sum cM_k\Delta x_k = c\sum M_k\Delta x_k = c\overline{S}(f, P)$
 
-$\underline{S}_{cf}(P) = \sum cm_k\Delta x_k = c\sum m_k\Delta x_k = c\underline{S}_f(P)$
+$\underline{S}(cf, P) = \sum cm_k\Delta x_k = c\sum m_k\Delta x_k = c\underline{S}(f, P)$
 
-因为 $f$ 可积，对任意 $\epsilon > 0$，存在划分 $P$ 使得 $\overline{S}_f(P) - \underline{S}_f(P) < \frac{\epsilon}{|c| + 1}$，
+因为 $f$ 可积，对任意 $\epsilon > 0$，存在划分 $P$ 使得 $\overline{S}(f, P) - \underline{S}(f, P) < \frac{\epsilon}{|c| + 1}$，
 
-于是 $\overline{S}_{cf}(P) - \underline{S}_{cf}(P)
-= c\big(\overline{S}_f(P) - \underline{S}_f(P)\big) < \epsilon$，
+于是 $\overline{S}(cf, P) - \underline{S}(cf, P)
+= c\left(\overline{S}(f, P) - \underline{S}(f, P)\right) < \epsilon$，
 
 所以 $cf$ 可积。
 
@@ -910,7 +910,7 @@ $I = \displaystyle\int_{\pi}^{0}\dfrac{(\pi - t)\sin(\pi - t)}{1 + \cos^2(\pi - 
 
 > 设 $f^{\prime}, g^{\prime} \in C([a, b])$ 则：
 > 
-> $\displaystyle\int_{a}^{b}f(x)g^{\prime}(x)\text{d}x = f(x)g(x)|_{a}^{b} - \displaystyle\int_{a}^{b}f^{\prime}(x)g(x)\text{d}x$
+> $\displaystyle\int_{a}^{b}f(x)g^{\prime}(x)\text{d}x = f(x)g(x)\big\vert_{a}^{b} - \displaystyle\int_{a}^{b}f^{\prime}(x)g(x)\text{d}x$
 
 和不定积分同理。
 
@@ -918,7 +918,7 @@ $I = \displaystyle\int_{\pi}^{0}\dfrac{(\pi - t)\sin(\pi - t)}{1 + \cos^2(\pi - 
 
 > $I_n = \displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^n\text{d}x, n \in \mathbb N^\star$
 
-$I_n = \displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^{n - 1}\sin x\text{d}x = -\displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^{n - 1}\text{d}(\cos x) = -\cos x \cdot (\sin x)^{n - 1}|_{0}^{\frac{\pi}{2}} + \displaystyle\int_{0}^{\frac{\pi}{2}} \cos^2x\cdot(n - 1)(\sin)^{n - 2}\text{d}x$
+$I_n = \displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^{n - 1}\sin x\text{d}x = -\displaystyle\int_{0}^{\frac{\pi}{2}}(\sin x)^{n - 1}\text{d}(\cos x) = -\cos x \cdot (\sin x)^{n - 1}\big\vert_{0}^{\frac{\pi}{2}} + \displaystyle\int_{0}^{\frac{\pi}{2}} \cos^2x\cdot(n - 1)(\sin)^{n - 2}\text{d}x$
 
 $=(n - 1)\displaystyle\int_{0}^{\frac{\pi}{2}}(1 - \sin^2 x)(\sin x)^{n - 2}\text{d}x = (n - 1)I_{n - 1} - (n - 1)I_{n}$
 
@@ -983,13 +983,13 @@ $\lim\limits_{n \to \infty}A = \displaystyle\int_{0}^{1}\ln(x)\text{d}x = \lim\l
 
 > 设 $E \subset \mathbb R$ 为一非空集，定义函数 $\chi_E(x) = \begin{cases}1, x \in E \\ 0, x \not\in E\end{cases}$ 为 $E$ 上的特征函数。
 >
-> 特征函数的有限线性组合（$a_1\chi_{E_1}(x) + a_2\chi_{E_2}(x) + \cdots + a_3\chi_{E_3}(x) + \cdots + a_n\chi_{E_n}(x), E_i \cap E_j = \empty$）称为简单函数
+> 特征函数的有限线性组合（$a_1\chi_{E_1}(x) + a_2\chi_{E_2}(x) + \cdots + a_3\chi_{E_3}(x) + \cdots + a_n\chi_{E_n}(x), E_i \cap E_j = \emptyset$）称为简单函数
 >
 > 特别的，当每个 $E$ 都是直线区间的时候，则称 $f$ 为阶梯函数。
 
 #### 定义 区间上的阶梯函数
 
-> 设闭区间 $[a, b]$ 可以分解为 $[a, b] = \bigcup\limits_{k = 1}^{N}I_k$，其中 $I_k \subset [a, b], I_k \cap I_j = \empty, (k \not= j)$。
+> 设闭区间 $[a, b]$ 可以分解为 $[a, b] = \bigcup\limits_{k = 1}^{N}I_k$，其中 $I_k \subset [a, b], I_k \cap I_j = \emptyset, (k \not= j)$。
 >
 > 称 $\varphi(x) = \sum\limits_{k = 1}^{N}C_k\chi_{I_k}(x)$ 为 $[a, b]$ 上的阶梯函数，其中 $C_k$ 为一常数。
 
@@ -1051,11 +1051,11 @@ $\psi$ 同理。证毕。
 
 这个形式有点像：Young 不等式：$\forall a, b > 0, \dfrac{1}{p} + \dfrac{1}{q} = 1, p \in [1, +\infty) \Rightarrow a^{\frac{1}{p}}b^{\frac{1}{q}} \le \dfrac{a}{p} + \dfrac{b}{q}$
 
-记 $||f||_{p} = (\displaystyle\int_{a}^{b}|f(x)|^p\text{d}x)^{\frac{1}{p}}$
+记 $||f|\vert_{p} = (\displaystyle\int_{a}^{b}|f(x)|^p\text{d}x)^{\frac{1}{p}}$
 
-令 $a^{\frac{1}{p}}= \dfrac{|f(x)|}{||f||_p}$，如果 $||f||_p = 0$，那么不等式是显然成立的，故不考虑 p,q-范数为零的情况。
+令 $a^{\frac{1}{p}}= \dfrac{|f(x)|}{||f|\vert_p}$，如果 $||f|\vert_p = 0$，那么不等式是显然成立的，故不考虑 p,q-范数为零的情况。
 
-然后 $b^{\frac{1}{q}} = \dfrac{|g(x)|}{||g||_q}$
+然后 $b^{\frac{1}{q}} = \dfrac{|g(x)|}{||g|\vert_q}$
 
 （因为本身 Riemann 积分在 $f, g$ 确定的情况下也就是一个数）
 
@@ -1177,7 +1177,7 @@ $\ge |f(0)| - |f(\xi)|$
 
 $\displaystyle\int_{a}^{\frac{a + b}{2}}f(t)\text{d} = f(\xi_1)\dfrac{b - a}{2} \iff f(\xi_1) = \dfrac{2}{b - a}\displaystyle\int_{a}^{\frac{a + b}{2}}f(t)\text{d}t$
 
-又因为 $\displaystyle\int_{a}^{\frac{a + b}{2}}|f^{\prime}(t)|\text{d}t \ge \displaystyle\int^{\frac{a + b}{2}}_{\xi_1}|f^{\prime}(t)|\text{d}t \ge |\displaystyle\int_{\xi_1}^{\frac{a + b}{2}}f^{\prime}(t)\text{d}t|$
+又因为 $\displaystyle\int_{a}^{\frac{a + b}{2}}|f^{\prime}(t)|\text{d}t \ge \displaystyle\int_{\xi_1}^{\frac{a + b}{2}}|f^{\prime}(t)|\text{d}t \ge |\displaystyle\int_{\xi_1}^{\frac{a + b}{2}}f^{\prime}(t)\text{d}t|$
 
 根据 N-L 可以得到 $= -|f(\xi_1)| + |f(\dfrac{a + b}{2})|$。
 
@@ -1190,3 +1190,276 @@ $\displaystyle\int_{a}^{\frac{a + b}{2}}f(t)\text{d} = f(\xi_1)\dfrac{b - a}{2} 
 $|f(\dfrac{a + b}{2})| \le \dfrac{2}{b - a}\displaystyle\int_{\frac{a +b}{2}}^{b}|f(t)|\text{d}t + \displaystyle\int_{\frac{a + b}{2}}^{b}|f^{\prime}(t)|\text{d}t$
 
 两个合并就可以得到原式。
+
+#### 例题
+
+> 设 $f$ 在 $[a, b]$ 上连续且单调递增，证明：
+>
+> $\displaystyle\int_{a}^{b}xf(x)\text{d}x \ge \dfrac{a + b}{2}\displaystyle\int_{a}^{b}f(x)\text{d}x$
+
+就是要证明：
+
+$\displaystyle\int_{a}^{b}(x - \dfrac{a + b}{2})f(x)\text{d}x \ge 0 \iff \displaystyle\int_{a}^{\frac{a + b}{2}}(x - \dfrac{a + b}{2})f(x)\text{d}x +\displaystyle\int_{\frac{a + b}{2}}^{b} (x - \dfrac{a + b}{2})f(x)\text{d}x\ge 0$
+
+这样做的原因是，这里想要使用积分中值定理，$f$ 是连续的可以拿出来。
+
+但是 $x - \dfrac{a + b}{2}$ 并不是保号的，所以就拆开变成保号的
+
+于是：
+
+$\displaystyle\int_{a}^{\frac{a + b}{2}}(x - \dfrac{a + b}{2})f(x)\text{d}x = f(\xi_{1})\displaystyle\int_{a}^{\frac{a + b}{2}}(x - \dfrac{a + b}{2})\text{d}x = f(\xi_1)\dfrac{(x - \dfrac{a + b}{2})^2}{2}\big\vert_{a}^{\frac{a + b}{2}} = -f(\xi_1)\dfrac{(a - b)^2}{8}$
+
+$\displaystyle\int_{\frac{a + b}{2}}^{b}(x - \dfrac{a + b}{2})f(x)\text{d}x = f(\xi_2)\displaystyle\int_{\frac{a + b}{2}}^{b}(x - \dfrac{a + b}{2})\text{d}x = f(\xi_2)\dfrac{(b - a)^2}{8}$
+
+所以要证明：$\dfrac{(b - a)^2}{8}\left[f(\xi_2) - f(\xi_1)\right] \ge 0$
+
+由于 $\xi_2 \ge \xi_1$，所以 $f(\xi_2) - f(\xi_1) \ge 0$，证毕。
+
+法二：积分第二中值定理（自己做）
+
+法三：构造变上限积分，把所有 $b$ 的地方换成 $t$ 令 $F(t) = \displaystyle\int_{a}^{t}(x - \dfrac{a + t}{2})f(x)\text{d}x$，然后 $F^{\prime}(t) = tf(t) - \dfrac{1}{2}\displaystyle\int_{0}^{t}f(x)\text{d}x - \dfrac{a + t}{2}f(t)$
+
+#### 例题
+
+> 设 $f$ 在 $[0, 1]$ 上可导，并且 $\forall x \in [0, 1], f^{\prime}(x) \in (0, 1), f(0) = 0$
+>
+> 证明：
+>
+> $\left(\displaystyle\int_{0}^{1}f(x)\text{d}x\right)^2 \ge \displaystyle\int_{0}^{1}[f(x)]^3\text{d}x$
+
+这里显然不是用中值定理的，几何意义也不好考虑。
+
+用 Hölder 不等式会发现不等号反向了（$\displaystyle\int_{0}^{1}[f(x)\cdot 1]^3\text{d}x \ge xxx$），也没法做
+
+这里的方法是构造变上限积分（这类方法能拿来干什么，怎么感觉和高中的端点效应 + 构造函数法有点像）
+
+$F(t) = \left(\displaystyle\int_{0}^{t}f(x)\text{d}x\right)^2 - \displaystyle\int_{0}^t [f(x)]^3\text{d}x, t \in [0, 1]$
+
+$F(0) = 0$，要证明的就是 $F(1) \ge 0 = F(0)$，所以只需要证明它是增函数
+
+$F^{\prime}(t) = 2\left(\displaystyle\int_{0}^{t}f(x)\text{d}x\right)^2f(t) - [f(t)]^3$
+
+这里就是把 $F(t) = g^2(t) - h(t)$ 然后再求。
+
+$F^{\prime}(t) = f(t)\left[2\displaystyle\int_{0}^{t}f(x)\text{d}x - [f(t)]^2\right]$
+
+所以就是看括号里的符号，还是不是很好判断。
+
+所以继续构造辅助函数求导：
+
+$G(t) = 2\displaystyle\int_{0}^{t}f(x)\text{d}x - [f(t)]^2 \Rightarrow G^{\prime}(t) = 2f(t) - 2f(t)f^{\prime}(t) = 2f(t) (1 - f^{\prime}(t)) \ge 0$
+
+$G^{\prime}(t) \ge 0, G(t) = 0 \Rightarrow G(t) \ge 0, t\in[0, 1] \Rightarrow F^{\prime}(t) \ge 0$
+
+所以 $F(0) = 0, F^{\prime}(t) \ge 0 \Rightarrow F(1) \ge F(0) = 0$
+
+证毕。
+
+#### 例题
+
+> 设 $f$ 在 $[a, b]$ 上二次连续可微（二阶导连续），$f(\dfrac{a + b}{2}) = 0$
+>
+> 证明：
+>
+> $\left|\displaystyle\int_{a}^{b}f(x)\text{d}x\right| \le \dfrac{M(b - a)^3}{24}$，其中 $M = \sup\{f^{\prime\prime}(x)\}$
+
+含有高阶导数一般使用 Taylor 定理
+
+证明：
+
+$\forall x, \in [a, b], f(x) = f(\dfrac{a + b}{2}) + f^{\prime}(\dfrac{a + b}{2})(x - \dfrac{a + b}{2}) + \dfrac{1}{2!}f^{\prime\prime}(\xi)(x - \dfrac{a + b}{2})^2$
+
+在式子两端同时积分：
+
+$\displaystyle\int_{a}^{b}f(x)\text{d}x \le f(\dfrac{a + b}{2})(b - a) + f^{\prime}(\dfrac{a + b}{2})\displaystyle\int_{a}^{b}(x - \dfrac{a + b}{2})\text{d}x + \dfrac{1}{2}\displaystyle\int_{a}^{b}f^{\prime\prime}(\xi)(x - \dfrac{a + b}{2})^2\text{d}x$
+
+$= \dfrac{1}{2}\displaystyle\int_{a}^{b}f^{\prime\prime}(\xi)(x - \dfrac{a + b}{2})^2\text{d}x \le \dfrac{1}{2}\displaystyle\int_{a}^{b}M(x - \dfrac{a + b}{2})^2\text{d}x = \dfrac{M(b - a)^3}{24}$
+
+这里没加绝对值，问题不大
+
+#### 例题
+
+> 假设 $f$ 在 $[a, b]$ 上具有一阶连续导数。
+>
+> $f(a) = 0$，证明：
+>
+> 1) $\displaystyle\int_{a}^{b}|f(x)f^{\prime}(x)|\text{d}x \le \dfrac{b - a}{2}\displaystyle\int_{a}^{b}|f^{\prime}(x)|^2\text{d}x$
+>
+> 2) 若 $f(b) = 0$，证明：$\displaystyle\int_{a}^{b}|f(x)f^{\prime}(x)| \le \dfrac{b - a}{4}\displaystyle\int_{a}^{b}|f^{\prime}(x)|^2\text{d}x$
+
+证明 (1)：
+
+这东西如果没有绝对值，左边能直接算，右边有种 Cauchy-Schwarz 的感觉（需要把平方拿到里面去变成更像右边的东西）。
+
+但是有绝对值就不好搞，所以还是用最通用（？）的构造变上限积分：
+
+（这里的思路似乎有点区别）
+
+$g(x) = \displaystyle\int_{a}^{x}|f^{\prime}(t)|\text{d}t$
+
+根据条件和微积分基本定理，$g^{\prime}(x) = |f^{\prime}(x)|$，这就换掉了 $f^{\prime}(x)$ 的绝对值
+
+然后 $|f(x)| = |f(x) - f(a)| = |\displaystyle\int_{a}^{x}f^{\prime}(t)\text{d}t| \le \displaystyle\int_{a}^{x}|f^{\prime}(t)|\text{d}t = g(x)$
+
+于是左边就没有绝对值了：$\displaystyle\int_{a}^{b}|f(x)|\cdot|f^{\prime}(x)|\text{d}x \le \displaystyle\int_{a}^{b}g(x)g^{\prime}(x)\text{d}x =\dfrac{1}{2}[g(b)]^2 = \dfrac{1}{2}\left(\displaystyle\int_{a}^{b}|f^{\prime}(t)|\text{d}t\right)^2$。
+
+然后对后面这个里面用 Cauchy-Schwarz 不等式：
+
+$\le \dfrac{1}{2}(\displaystyle\int_{a}^{b}|f^{\prime}(t)|^2\text{d}t) \cdot (\displaystyle\int_{a}^{b}1^2\text{d}t)$（本来有的 $\dfrac{1}{2}$ 次方被外面的 $2$ 消去了）
+
+$=\dfrac{b - a}{2}\displaystyle\int_{a}^{b}|f^{\prime}(t)|^2\text{d}t$
+
+证明(2)：
+
+这里有一个更强的界，如果直接套用 (1) 的办法，$f(b) = 0$ 的条件用不到，思考刚才在 $|f(x) - f(a)|$ 这里用了条件。
+
+所以不妨类似上面的一个习题，将区间拆成两部分来考虑。
+
+注意 $x$ 的不同取值范围！
+
+定义 $g(x) = \displaystyle\int_{a}^{x}|f^{\prime}(t)|\text{d}t$
+
+$h(x) = \displaystyle\int_{x}^{b} |f^{\prime}(t)|\text{d}t = -\displaystyle\int_{b}^{x}|f^{\prime}(t)|\text{d}t$
+
+加符号主要是要变成变上限。
+
+$g^{\prime}(x) = |f^{\prime}(x)|, h^{\prime}(x) = -|f^{\prime}(x)|$
+
+原式 $=\displaystyle\int_{a}^{\frac{a + b}{2}} |f(x)|\cdot|f^{\prime}(x)|\text{d}x + \displaystyle\int_{\frac{a + b}{2}}^{b} |f(x)|\cdot|f^{\prime}(x)|\text{d}x$
+
+记作 $I + II$
+
+对于 $I$，完全复刻刚才的做法：
+
+$I \le \displaystyle\int_{a}^{\frac{a + b}{2}}g(x)g^{\prime}(x)\text{d}x = \dfrac{1}{2}[g(x)]^2\big\vert_{a}^{\frac{a + b}{2}} = \dfrac{1}{2}g(\dfrac{a + b}{2})^2 = \dfrac{1}{2}\left(\displaystyle\int_{a}^{\frac{a + b}{2}}|f^{\prime}(t)|\cdot 1 \text{d}t\right)^2$
+
+$\le \dfrac{b - a}{4}\displaystyle\int_{a}^{\frac{a + b}{2}}|f^{\prime}(t)|^2\text{d}t$
+
+用同样的办法可以得到：
+
+$II \le \dfrac{b - a}{4}\displaystyle\int_{\frac{a + b}{2}}^{b}|f^{\prime}(t)|\text{d}t$
+
+所以原式 $\le \dfrac{b - a}{4}\displaystyle\int_{a}^{b}|f^{\prime}(t)|\text{d}t$
+
+这个题就是用变上限积分把绝对值去掉，然后用 Cauchy-Schwarz 不等式
+
+#### 例题
+
+> 设 $f$ 在 $[0, 1]$ 具有连续的二阶导数。
+>
+> $f(0) = f(1) = 0$，且 $x \in [0, 1]$ 时 $f(x) \not=0$
+>
+> 证明：
+>
+> $\displaystyle\int_{0}^{1}|\dfrac{f^{\prime\prime}(x)}{f(x)}|\text{d}x \ge 4$
+
+如果没有分母，似乎就可以转化成估计 $|f^{\prime}(x) - f^{\prime}(y)|, x,y \in [0, 1]$
+
+有分母怎么办？
+
+根据闭区间上连续函数的性质，显然 $f(x)$ 在 $(0, 1)$ 上保号，不妨假设其 $> 0$
+
+假设其绝对值的最大值 $f(x_0)$ 在 $x_0 \in (0, 1)$ 取到。
+
+$\forall a, b\in (0, 1)$ 且 $a < b$ 那么有：
+
+$\displaystyle\int_{0}^{1}|\dfrac{f^{\prime\prime}(x)}{f(x)}|\text{d}x \ge \displaystyle\int_{0}^{1}\dfrac{|f^{\prime\prime}(x)|}{f(x_0)}\text{d}x = \dfrac{1}{f(x_0)}\displaystyle\int_{0}^{1}|f^{\prime\prime}(x)|\text{d}x$
+
+$\ge \displaystyle\int_{a}^{b} \dfrac{1}{f(x_0)}|f^{\prime\prime}(x)|\text{d}x = \dfrac{1}{f(x_0)}|f^{\prime}(b) - f^{\prime}(a)|$
+
+怎么搞出这个 $4$？又没有额外条件。
+
+在 $[0, x_0], [x_0, 1]$ 上分别用 Lagrange 中值定理：
+
+$\exists \xi_1 \in [0, x_0] \text{ s.t. } f(x_0) - f(0) = f(x_0) = f^{\prime}(\xi_1)x_0$
+
+$\exists \xi_2 \in [x_0, 1] \text{ s.t. } f(1) - f(x_0) = -f(x_0) = f^{\prime}(\xi_2)(1 - x_0)$
+
+可得：$f^{\prime}(\xi_1) = \dfrac{f(x_0)}{x_0}, f^{\prime}(\xi_2) = \dfrac{f(x_0)}{x_0 - 1}$
+
+那么带入上式：$= \dfrac{1}{f(x_0)}[\dfrac{f(x_0)}{x_0 - 1} +\dfrac{f(x_0)}{x_0}] = \dfrac{1}{x_0(1 - x_0)} \ge 4$
+
+#### 例题
+
+> 证明：$\forall n \in \mathbb Z$，有：
+>
+> $\displaystyle\int_{0}^{\frac{\pi}{2}}x[\dfrac{\sin(nx)}{\sin x}]^4\text{d}x \le \dfrac{\pi^2n^2}{4}$
+
+证明：
+
+利用两个常用不等式：
+
+1. Jordan 不等式：$\dfrac{2x}{\pi} \le \sin x \le x, x\in [0, \dfrac{\pi}{2}]$
+2. $|\sin(nx)| \le |n\sin x|, \forall n \in \mathbb Z, x \in \mathbb R$
+
+$\displaystyle\int_{0}^{\frac{\pi}{2}}x[\dfrac{\sin(nx)}{\sin x}]^4\text{d}x \le \displaystyle\int_{0}^{\frac{\pi}{2}}xn^4\text{d}x =n^4 \cdot \dfrac{\pi^2}{8}$
+
+$n = 1$ 显然成立
+
+$n \ge 2$ 的时候 $\dfrac{n^2}{2} \ge 2$ 
+
+所以 $\dfrac{\pi^2 n^4}{8} = \dfrac{\pi^2n^2}{4}\cdot \dfrac{n^2}{2} \iff \dfrac{\pi^2 n^4}{8} \ge \dfrac{\pi^2n^2}{4}$
+
+### Riemann 积分在几何中的应用
+
+设函数 $f(x) \ge 0, x \in [a, b]$，则：
+
+根据 Riemann 积分的定义 $\displaystyle\int_{a}^{b}f(x)\text{d}x =$ 由 $y = f(x), x-axis, x = a, x = b$ 围成的图形面积
+
+![](../../medias/riemann-1.png)
+
+#### 命题
+
+> 设夹在连续曲线 $y = f(x), y = g(x)$ 之间，并且左右分别由直线 $x = a, x = b$ 所界定的区域的面积为 $S$。那么：
+>
+> $S = \displaystyle\int_{a}^{b}|f(x) - g(x)|\text{d}x$
+
+证明：
+
+不妨假设 $f(x) \ge g(x) \ge 0$（否则可以平移上来）
+
+$S = \displaystyle\int_{a}^{b}f(x)\text{d}x - \displaystyle\int_{a}^{b}g(x)\text{d}x = \displaystyle\int_{a}^{b}|f(x) - g(x)|\text{d}x$
+
+#### 例题
+
+> 求曲线 $y = x^2, x = y^2$ 所围的区域的面积。
+
+![img](../../medias/r2.png)
+
+$S = \displaystyle\int_{0}^{1}(\sqrt x - x^2)\text{d}x = \displaystyle\int_{0}^{1}x^{\frac{1}{2}}\text{d}x - \displaystyle\int_{0}^{1}x^2\text{d}x = \dfrac{1}{3}$
+
+#### 命题
+
+> 若 $y = f(x)$ 满足参数方程：$\begin{cases}x = \varphi(t) \\ y = \psi(t)\end{cases}$
+>
+> 其中 $t \in [\alpha, \beta]$，$\varphi$ 在 $[\alpha, \beta]$ 上有连续导函数，且 $\varphi^{\prime}\not=0, \psi$ 在 $[\alpha, \beta]$ 上连续，则 $\varphi(\alpha) < \varphi(\beta)$ 时：
+>
+> $y = f(x), x = \varphi(\alpha), x = \varphi(\beta), y-axis$ 所围成的面积为：
+>
+> $S = \displaystyle\int_{\alpha}^{\beta}|\psi(t)\varphi^{\prime}(t)|\text{d}t$
+
+证明：（自己写）
+
+不妨设 $\varphi^{\prime}(t)$ 总是正的。
+
+$\displaystyle\int_{\alpha}^{\beta}|\psi(t)|\varphi^{\prime}(t)\text{d}t = \displaystyle\int_{\alpha}^{\beta}|\psi(t)|\text{d}(\varphi(t)) = \displaystyle\int_{\alpha}^{\beta}|y(t)|\text{d}(x(t))$
+
+$=\displaystyle\int_{\varphi(\alpha)}^{\varphi(\beta)}|f(x)|\text{d}x = S$
+
+#### 例题
+
+> 求椭圆 $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1$ 围成的面积
+
+假设在第一象限的面积为 $S_1$，由对称性 $S = 4S_1$
+
+椭圆的参数方程为：
+
+$\begin{cases}x = a\cos\theta \\ y = b\sin\theta\end{cases}$
+
+代入上面的公式：
+
+$S_1 = \displaystyle\int_{0}^{\frac{\pi}{2}}|b\sin\theta \cdot a(-\sin \theta)|\text{d}\theta$
+
+$= ab\displaystyle\int_{0}^{\frac{\pi}{2}}\sin^2\theta\text{d}\theta = \dfrac{\pi ab}{4}$
+
+所以 $S = \pi a b$
