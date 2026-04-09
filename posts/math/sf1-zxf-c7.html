@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/code.css">
+	<link rel="stylesheet" href="/css/toc.css">
+	<link rel="stylesheet" href="/css/to-top.css">
+
+	<script src="/js/highlight.min.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((el) => {
+		  hljs.highlightElement(el);
+		});
+	  });
+	</script>
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+
+    <script src="/js/Mathjax.js" async></script>
+	<script src="/js/toc.js"></script>
+	<script src="/js/to-top.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>数学分析(I) Chapter 7 广义积分</h2>
+<h3>广义积分的定义 &amp; 计算</h3>
+<h4>定义 积分区间为无穷的广义积分</h4>
+<blockquote>
+<p>设 $a \in \mathbb R$ 为常量，$f$ 在 $[0, +\infty)$ 上有定义。</p>
+<p>若 $\forall A &gt; a$，$f$ 在 $[a, A]$ 上 Riemann 可积，且 $\lim\limits_{A \to +\infty}\displaystyle\int_{a}^{A}f(x)\text{d}x$ 存在且有限。</p>
+<p>那么称 $f$ 在 $[0, +\infty)$ 上的广义积分收敛。</p>
+<p>记作 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x = \lim\limits_{A \to +\infty}\displaystyle\int_{a}^{A}f(x)\text{d}x$，即为积分区间为无穷的广义积分。</p>
+</blockquote>
+<p>注记：</p>
+<p>1) 可以类比定义 $\displaystyle\int_{-\infty}^{a}f(x)\text{d}x$，左极限存在即可。
+2) 如果不存在则称为广义积分发散
+3) $\displaystyle\int_{-\infty}^{+\infty}f(x)\text{d}x = \lim\limits_{A \to +\infty, B \to -\infty} \displaystyle\int_{B}^{A}f(x)\text{d}x$，如果右边极限存在且有限则称广义积分收敛。
+4) 之后只有 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x, \displaystyle\int_{-\infty}^{a}f(x)\text{d}x$ 均收敛才称 $\displaystyle\int_{-\infty}^{+\infty}f(x)\text{d}x$ 收敛。</p>
+<h4>例题</h4>
+<blockquote>
+<p>$P \in \mathbb R$  判断 $\displaystyle\int_{1}^{+\infty}\dfrac{1}{x^p} \text{d}x$ 的收敛性</p>
+</blockquote>
+<p>任取 $A &gt; 1$，$\displaystyle\int_{1}^{A}\dfrac{1}{x^p}\text{d}x = \begin{cases}\dfrac{1}{1 - p}x^{1 - p}\vert_{1}^A =\dfrac{A^{1 - p} - 1}{1 - p} &amp;p \not=1\\ \ln A &amp;p = 1\end{cases}$</p>
+<p>1) $P = 1$，$\ln A$ 发散，极限不存在
+2) $P &lt; 1$，原式发散，极限不存在。
+3) $P &gt; 1$，原式 $\lim = \dfrac{1}{1 - p}$</p>
+<p>故当 $P &gt; 1$ 时，原广义积分收敛。</p>
+<h4>定义 有限区间上无界函数的广义积分</h4>
+<blockquote>
+<p>对于 $a, b \in \mathbb R$，若 $b$ 是 $f$ 的一个奇点（在 $b$ 的左邻域上无界）</p>
+<p>且对于 $\forall 0 &lt; y &lt; b - a$，$f$ 在 $[a, b - y]$ 上 Riemann 可积，从而有界。</p>
+<p>且极限 $\lim\limits_{y \to 0^+} \displaystyle\int_{a}^{b - y}f(x)\text{d}x$ 存在，那么称广义积分 $\displaystyle\int_{a}^{b}f(x)\text{d}x$ 收敛。</p>
+<p>同理可以定义以 $a$ 为奇点的广义积分 $\displaystyle\int_{a}^{b}f(x)\text{d}x = \lim\limits_{y \to 0^+} \displaystyle\int_{a + y}^{b}f(x)\text{d}x$</p>
+</blockquote>
+<p>补充：称 $b$ 为 $f$ 的奇点，如果 $f$ 在 $b$ 点无定义。例如 $f(x) = \dfrac{1}{x}, b = 0$</p>
+<p>其实本质就是函数趋向无穷的那个临界点。</p>
+<p>注记：</p>
+<p>1) 如果 $c \in [a, b]$ 是 $f$ 的一个奇点，对于广义积分 $\displaystyle\int_{a}^{b}f(x)\text{d}x$，考虑 $\displaystyle\int_{a}^{b}f(x)\text{d}x = \displaystyle\int_{a}^{c}f(x)\text{d}x + \displaystyle\int_{c}^{b}f(x)\text{d}x$</p>
+<div class="codehilite"><pre><span></span><code>规定当两项同时收敛时，$\displaystyle\int_{a}^{b}f(x)\text{d}x$ 收敛。
+
+将这样的广义积分叫做无界函数的广义积分 / 积分区间上有奇点的广义积分 / 瑕积分。
+</code></pre></div>
+
+<h4>例题</h4>
+<blockquote>
+<p>$p \in \mathbb R$，判断 $\displaystyle\int_{0}^{1}\dfrac{1}{x^p}\text{d}x$ 的收敛性。</p>
+</blockquote>
+<p>$0$ 是 $\dfrac{1}{x^p}$ 的一个奇点。那么取 $0 &lt; y &lt; 1$：</p>
+<p>$= \lim\limits_{y \to 0^+}\displaystyle\int_{0 + y}^{1}\dfrac{1}{x^p}\text{d}x = \begin{cases}\dfrac{1 - y^{1 - p}}{1 - p}, &amp;p\not=0 \\ -\ln y &amp;p=0\end{cases}$</p>
+<p>所以 $p &lt; 1$ 的时候 $\displaystyle\int_{0}^{1}\dfrac{1}{x^p}\text{d}x$ 收敛。</p>
+<p>由此我们也可以看出，$\displaystyle\int_{0}^{+\infty}\dfrac{1}{x^p} = \displaystyle\int_{0}^{1} + \displaystyle\int_{1}^{+\infty}$ 总是发散的，因为前后两个广义积分并不能同时收敛。</p>
+<h4>两种积分的互换</h4>
+<p>两种积分本质上是统一的。</p>
+<p>可以这么理解，前一种广义积分的奇点在无穷远处，后一种在有限区间的端点</p>
+<p>我们只需要令 $x = \dfrac{1}{t}$ 即可：</p>
+<p>$\displaystyle\int_{a}^{+\infty}f(x)\text{d}x = \displaystyle\int_{\frac{1}{a}}^{0}f(\dfrac{1}{t})\text{d}(\dfrac{1}{t}) = \displaystyle\int_{0}^{\frac{1}{a}}f(\dfrac{1}{t})\cdot \dfrac{1}{t^2}\text{d}t$</p>
+<p>奇点就从 $+\infty$ 变为 $0$ 了。</p>
+<p>两种积分定义里都是只写了一边/端点为奇点的情况。</p>
+<p>所以区间内/正负无穷的情况就是两个拼起来。</p>
+<h4>定义 Cauchy 主值</h4>
+<blockquote>
+<p>若 $\lim\limits_{A \to +\infty} \displaystyle\int_{-A}^{A}f(x)\text{d}x$ 存在。</p>
+<p>那么称 $\lim\limits_{A \to +\infty} \displaystyle\int_{-A}^{A}f(x)\text{d}x$ 为 $\displaystyle\int_{-\infty}^{+\infty}f(x)\text{d}x$ 的 Cauchy 主值。</p>
+<p>记作 $(\mathrm{C.P.V.})\displaystyle\int_{-\infty}^{+\infty}f(x)\text{d}x = \lim\limits_{A \to +\infty}\displaystyle\int_{A}^{-A}f(x)\text{d}x$</p>
+<p>对于区间内有奇点的广义积分，则是 $(\mathrm{C.P.V.})\displaystyle\int_{a}^{b}f(x)\text{d}x = \lim\limits_{\epsilon \to 0^+} \displaystyle\int_{a}^{c - \epsilon}f(x)\text{d}x + \displaystyle\int_{c + \epsilon}^{b}f(x)\text{d}x$</p>
+</blockquote>
+<p>可以证明的是：</p>
+<p>若 $\displaystyle\int_{-\infty}^{+\infty}f(x)\text{d}x$ 收敛，那么 $(\mathrm{C.P.V.})\displaystyle\int_{-\infty}^{+\infty}f(x)\text{d}x = \displaystyle\int_{-\infty}^{+\infty}f(x)\text{d}x = \lim\limits_{A \to +\infty, B \to -\infty}\displaystyle\int_{B}^{A}f(x)\text{d}x$</p>
+<p>但是反过来，$(\mathrm{C.P.V.})$ 存在不代表原式收敛。</p>
+<p>反例：</p>
+<p>$\displaystyle\int_{-1}^{1}f(x)\text{d}x = \displaystyle\int_{-1}^{0}f(x)\text{d}x + \displaystyle\int_{0}^{1}f(x)\text{d}x$，这两边并不是<strong>同时</strong>收敛的，因为极限里控制变量是两个。</p>
+<p>但是 $(\mathrm{C.P.V.})$ 则是同一个，根据奇函数的性质：</p>
+<p>$(\mathrm{C.P.V.})\displaystyle\int_{-1}^{1}f(x)\text{d}x = 0$。</p>
+<h4>例题</h4>
+<blockquote>
+<p>计算 $\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}x}{1 + x^2}, \displaystyle\int_{0}^{+\infty}\dfrac{\text{d}x}{(1 + x^2)(1 + x^{2026})}$</p>
+</blockquote>
+<p>1) $=\lim\limits_{A \to +\infty}\displaystyle\int_{0}^{A}\dfrac{\text{d}x}{1 + x^2} = \lim\limits_{A \to +\infty}\arctan x\vert_{0}^{A} = \dfrac{\pi}{2} - \lim\limits_{A \to +\infty}\arctan x = \dfrac{\pi}{2}$</p>
+<p>2) 这种 $0 \sim +\infty$，分子有 $(2 + x^{\alpha})$ 的，很多时候都会用倒数代换。</p>
+<p>令 $I =$ 原式，$t = \dfrac{1}{x} \Rightarrow I = \displaystyle\int_{+\infty}^{0}\dfrac{d(\dfrac{1}{t})}{(1 + (\dfrac{1}{t})^2)(1 + (\dfrac{1}{t})^{2026})}$ </p>
+<p>$= \displaystyle\int_{0}^{+\infty}\dfrac{t^{2026}}{(1 + t^2)(1 + t^{2026})}\text{d}t$</p>
+<p>将 $t$ 换成 $x$，和 $I$ 相加可以得到：$2I = \displaystyle\int_{0}^{+\infty}\dfrac{1}{(1 + x^2)}\text{d}x = \dfrac{\pi}{2}$</p>
+<h3>广义积分收敛性的判别法</h3>
+<h4>定理 Cauchy 收敛原理</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, + \infty)$ 上没有奇点。</p>
+<p>$\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛 $\iff \forall \epsilon &gt; 0, \exists A &gt; a \text{ s.t. } A_2 &gt; A_1 \ge A : |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x| &lt; \epsilon$</p>
+</blockquote>
+<p>证明：</p>
+<p>$\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛就是 $\lim\limits_{A \to +\infty}\displaystyle\int_{a}^{A}f(x)\text{d}x$ 存在。</p>
+<p>用 N-L：$\lim\limits_{A \to +\infty} |F(A) - F(a)|$ 存在即 $\lim\limits_{A \to +\infty}F(A)$ 存在。</p>
+<p>转写成 $\delta - \epsilon$ 语言：</p>
+<p>$\forall \epsilon &gt; 0, \exists N, \forall A_2 &gt; A_1 \ge N, |F(A_2) - F(A_1)| &lt; \epsilon$</p>
+<p>展开后就是原式。</p>
+<p>理解：</p>
+<p>可以和数列收敛对比，意义就是：</p>
+<p><strong>只要充分靠近奇点的任意一小段积分都能任意小，整个积分就收敛。</strong></p>
+<p>注：不收敛可以类比写出：设 $f$ 在 $[a, +\infty)$ 上没有奇点。</p>
+<p>$f$ 的广义积分不收敛 $\iff \exists \epsilon_0, \forall A &gt; a, \exists A_2 &gt; A_1 \ge A, |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x|\ge \epsilon_0$</p>
+<h4>定义 绝对收敛</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, +\infty)$ 上无奇点，且 $\forall [a, b] \subset [a, +\infty), f \in R([a, b])$。</p>
+<p>如果广义积分 $\displaystyle\int_{a}^{+\infty}|f(x)|\text{d}x$ 收敛，则称 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 绝对收敛。</p>
+</blockquote>
+<p>有什么用？</p>
+<h4>命题</h4>
+<blockquote>
+<p>若 $\displaystyle\int_{a}^{+\infty}|f(x)|\text{d}x$ 收敛，则 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 必收敛。</p>
+<p>反之不然。</p>
+</blockquote>
+<p>证明：</p>
+<p>先绝对值再积分之后绝对值小于 $\epsilon$ 只能够 $\Rightarrow$ 不绝对值积分之后绝对值小于 $\epsilon$</p>
+<p>写一下等价条件就可以。</p>
+<h4>定义 条件收敛</h4>
+<blockquote>
+<p>收敛但不绝对收敛的广义积分，称为条件收敛的广义积分。</p>
+</blockquote>
+<h4>定理 比较判别法</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, +\infty)$ 上无奇点，$\forall [a, b] \subset [a, +\infty), f \in R([a, b])$。</p>
+<p>存在常量 $c &gt; 0 \text{ s.t. } 0 \le f(x) \le c \psi(x), x \in [a, +\infty)$。</p>
+<p>则：</p>
+<p>当 $\displaystyle\int_{a}^{+\infty}\psi(x)\text{d}x$ 收敛时，$\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 也收敛。</p>
+<p>当 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 发散时，$\displaystyle\int_{a}^{+\infty}\psi(x)\text{d}x$ 也发散。</p>
+</blockquote>
+<p>两个都是充分条件。证明只需要直接写定义然后用这个 $c$ 把 $\epsilon$ 变成 $c\epsilon$ 就可以了。</p>
+<h4>定理 比较判别法的极限形式</h4>
+<blockquote>
+<p>设 $[a, +\infty)$ 上恒有 $f(x) \ge 0, \psi(x) \ge 0$，且 $\lim\limits_{x \to +\infty}\dfrac{f(x)}{\psi(x)} = L$ 则：</p>
+<p>1) 若 $0 &lt; L &lt; +\infty$，则 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛 $\iff \displaystyle\int_{a}^{+\infty}\psi(x)\text{d}x$ 收敛</p>
+<p>2) 若 $L = 0$，则当 $\displaystyle\int_{a}^{+\infty}\psi(x)\text{d}x$ 收敛时，$\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛（$f$ 更低阶，没法推 $\psi$）</p>
+<p>3) 若 $L = \infty$，则当 $\displaystyle\int_{a}^{+\infty}\psi(x)\text{d}x$ 发散时，$\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 发散（$f$ 更高阶，$\psi$ 发散则 $f$ 也发散）。</p>
+</blockquote>
+<p>其实非常直观，肯定想转化成比较判别法。</p>
+<p>证明 (1)：</p>
+<p>根据 $\lim\limits_{x \to +\infty} \dfrac{f(x)}{\psi(x)} = L \Rightarrow \forall \epsilon &gt; 0, \exists N \text{ s.t. } x &gt; N : |\dfrac{f(x)}{\psi(x)} - L| &lt; \epsilon$</p>
+<p>取 $\epsilon = \dfrac{L}{2}$，那么 $\dfrac{L}{2}\psi(x) \le f(x) \le \dfrac{3L}{2}\psi(x)$</p>
+<p>$\displaystyle\int_{N}^{+\infty}\psi(x)\text{d}x$ 收敛显然说明 $\displaystyle\int_{a}^{+\infty}\psi(x)\text{d}x$ 收敛。</p>
+<p>那么由于 $\dfrac{L}{2}\psi(x) \le f(x)$，根据比较判别法可以得到一边。</p>
+<p>另外一边也是同理</p>
+<p>(2)：</p>
+<p>取 $\epsilon = 1$ 可以得到 $0 \le f(x) &lt; \psi(x)$。</p>
+<p>比较判别法即可。</p>
+<p>(3)：</p>
+<p>反转一下，变成 $0 \le \psi(x) &lt; f(x)$。</p>
+<p>比较判别法即可。</p>
+<h4>推论 Cauchy 判别法的极限形式</h4>
+<blockquote>
+<p>设 $a &gt; 0; f(x) \ge 0, x \in [a, +\infty)$，且  $\lim\limits_{x \to +\infty}\dfrac{f(x)}{\frac{1}{x^p}} = L$，则：</p>
+<p>1) $p &gt; 1$ 且 $0 \le L &lt; +\infty$ 时，$\displaystyle\int_{a}^{+\infty}\dfrac{1}{x^p}\text{d}x$ 收敛，有 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛。</p>
+<p>2) $p \le 1$ 且 $0 &lt; L &lt; +\infty$ 时，$\displaystyle\int_{a}^{+\infty}\dfrac{1}{x^p}$ 发散，有 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 发散</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>讨论 $\displaystyle\int_{0}^{+\infty}\dfrac{x + 1}{\sin(x^2)}\text{d}x$ 的收敛性。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>讨论 $\displaystyle\int_{1}^{+\infty}\dfrac{\text{d}x}{\sqrt[3]{2x^4 + 2x^2 + 6x + 10}}$ 的收敛性。</p>
+</blockquote>
+<h4>定理 Abel 判别法</h4>
+<blockquote>
+<p>设 $f, g$ 在 $[a, +\infty)$ 上均无奇点。</p>
+<p>若  $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛，$g(x)$ 在 $[a, +\infty)$ 上单调有界，则 $\displaystyle\int_{a}^{+\infty}f(x)g(x)\text{d}x$ 收敛。</p>
+</blockquote>
+<p>证明：</p>
+<p>由 Cauchy 收敛原理：$\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛 $\iff \forall \epsilon &gt; 0, \exists A \text{ s.t. } A_2 &gt; A_1 \ge A : |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x| &lt; \epsilon$</p>
+<p>由积分第二中值定理：</p>
+<p>$\exists \xi \in [A_1, A_2] \text{ s.t. } |\displaystyle\int_{A_1}^{A-2}f(x)g(x)\text{d}x| = |g(A_1)\displaystyle\int_{A_1}^{\xi}f(x)\text{d}x + g(A_2)\displaystyle\int_{\xi}^{A_2}f(x)\text{d}x|$</p>
+<p>由于 $g(x)$ 单调有界，令 $M = \sup\{g(x)\}, x \in [A_1, A_2]$。</p>
+<p>则 $\le M|\displaystyle\int_{A_1}^{\xi}f(x)\text{d}x + \displaystyle\int_{\xi}^{A_2}f(x)\text{d}x| &lt; 2M\epsilon$</p>
+<p>根据 Cauchy 收敛原理，原命题正确。</p>
+<h4>定理 Dirichlet 判别法</h4>
+<blockquote>
+<p>设 $f, g$ 在 $[a, +\infty)$ 上均无奇点。</p>
+<p>若 $F(x) = \displaystyle\int_{a}^{x}f(t)\text{d}t$ 有界，即 $\exists c &gt; 0 \text{ s.t. } |\displaystyle\int_{a}^{x}f(t)\text{d}t| \le c$。</p>
+<p>且 $g(x)$ 在 $[a, +\infty)$ 上单调, $\lim\limits_{x \to +\infty}g(x) = 0$，则 $\displaystyle\int_{a}^{+\infty}f(x)g(x)\text{d}x$ 收敛。</p>
+</blockquote>
+<p>证明：</p>
+<p>$\forall A_2 &gt; A_1 \ge a, |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x| = |\displaystyle\int_{a}^{A_2}f(x)\text{d}x - \displaystyle\int_{a}^{A_1}f(x)\text{d}x| \le 2c$</p>
+<p>由积分第二中值定理，$\exists \xi \in [A_1, A_2] \text{ s.t. } |\displaystyle\int_{A_1}^{A_2}f(x)g(x)\text{d}x| \le 2c(|g(A_1)| + |g(A_2)|)$。</p>
+<p>由于 $\lim\limits_{x \to +\infty}g(x) = 0$，那么 $\forall \epsilon &gt; 0, \exists A \text{ s.t. } x &gt; A : |g(x)| &lt; \epsilon$</p>
+<p>所以 $A_2 &gt; A_1 \ge A$ 时，$\displaystyle\int_{A_1}^{A_2}f(x)g(x)\text{d}x \le 4c\epsilon$，故其收敛。</p>
+<h4>例题</h4>
+<blockquote>
+<p>证明 $\displaystyle\int_{1}^{+\infty}\dfrac{\sin x}{x}\text{d}x$ 收敛</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>证明 $\displaystyle\int_{1}^{+\infty}\dfrac{\sin x}{x}\text{d}x$ 条件收敛。</p>
+</blockquote>
+<h4>定理 Cauchy 收敛原理（瑕积分）</h4>
+<blockquote>
+<p>设 $b \not = 0$ 为 $f$ 在 $[a, b)$ 上的唯一奇点，则：</p>
+<p>广义积分 $\displaystyle\int_{a}^{b}f(x)\text{d}x$ 收敛 $\iff \forall \epsilon &gt; 0, \exists \delta &gt; 0, \text{ s.t. } \eta_1, \eta_2 \in (0, \delta) : |\displaystyle\int_{b - \eta_1}^{b - \eta_2} f(x)\text{d}x| &lt; \epsilon$ </p>
+</blockquote>
+<p>证明：</p>
+<p>广义积分收敛 $\iff \lim\limits_{t \to 0^+} \displaystyle\int_{a}^{b - t}f(x)\text{d}x$ 收敛</p>
+<p>$\iff \lim\limits_{t \to 0^+} F(t)$ 存在</p>
+<p>$\iff \forall \epsilon &gt; 0, \exists \delta &gt; 0 \text{ s.t. } \eta_1, \eta_2 \in (0, \delta) : |F(\eta_2) - F(\eta_1)| &lt; \epsilon$</p>
+<p>那么 $|\displaystyle\int_{b - \eta_1}^{b - \eta_1}f(x)\text{d}x| = |F(\eta_2) - F(\eta_1)| &lt; \epsilon$，证毕。</p>
+<h4>定理 Cauchy 收敛原理的极限形式（瑕积分）</h4>
+<blockquote>
+<p>设 $b \not = 0$ 为 $f$ 在 $[a, b)$ 上的唯一奇点，且 $f(x)\ ge 0, x \in [a, b)$。</p>
+<p>且 $\lim\limits_{x \to b^-} \dfrac{f(x)}{\frac{1}{(x - b)^p}} = L$ 则：</p>
+<p>1) 若 $p &lt; 1, 0 \le L &lt; +\infty$，则 $\displaystyle\int_{a}^{b}f(x)\text{d}x$ 收敛。</p>
+<p>2) 若 $p \ge 1, 0 \le L &lt; +\infty$，则 $\displaystyle\int_{a}^{b}f(x)\text{d}x$ 发散。</p>
+</blockquote>
+<p>证明其实就是做个转化：</p>
+<p>$\displaystyle\int_{a}^{b}\dfrac{\text{d}x}{(x - b)^p}$，令 $t = x - b$</p>
+<p>$\displaystyle\int_{a - b}^{0}\dfrac{\text{d}t}{t^p} = -\displaystyle\int_{0}^{a - b}\dfrac{\text{d}t}{t^p}$（P 积分的形式）</p>
+<p>然后就可以很容易的得出这个定理。</p>
+<p>注：</p>
+<p>对于两类广义积分，Cauchy 收敛原理判定收敛性的这个 $p$ 是完全相反的。</p>
+<p>但是当 $p = 1$ 的时候都是发散的。</p>
+<h4>例题</h4>
+<p>（很重要）</p>
+<blockquote>
+<p>设 $p &gt; 0$。</p>
+<p>讨论 $\displaystyle\int_{0}^{\frac{1}{3}}\dfrac{\text{d}x}{x^p\ln x}$ 的收敛性。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>设 $p \in \mathbb R$。</p>
+<p>讨论 $\displaystyle\int_{0}^{1}\dfrac{1}{x^p}\sin(\dfrac{1}{x})\text{d}x$ 的收敛性。</p>
+</blockquote>
+<h4>定理 极限在无穷远点为零的充分条件</h4>
+<blockquote>
+<p>设 $f$ 在 $[a, +\infty)$ 上没有奇点。</p>
+<p>且广义积分 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛则：</p>
+<p>1) 若 $\lim\limits_{x \to +\infty}f(x) = L \in \mathbb R$ 存在，则 $L = 0$；</p>
+<p>2) 若 $f$ 在 $[a ,+\infty)$ 上具有一阶连续导数，且 $\displaystyle\int_{a}^{+\infty}f^{\prime}(x)\text{d}x$ 也是收敛的，$\lim\limits_{x \to +\infty}f(x) = 0$</p>
+<p>3) 若 $f$ 在 $[a, +\infty)$ 上一致连续，则 $\lim\limits_{x \to +\infty}f(x) = 0$</p>
+</blockquote>
+<p>证明 (1)：</p>
+<p>假设 $L \not = 0$，不妨认为 $L &gt; 0$。</p>
+<p>那么 $\forall \epsilon &gt; 0, \exists N &gt; a \text{ s.t. } x &gt; N : |f(x) - L| &lt; \epsilon$</p>
+<p>特别的，取 $\epsilon = \dfrac{L}{2}$，则 $x &gt; N : |f(x)| &gt; \dfrac{L}{2}$。</p>
+<p>任取 $A &gt; a$，取 $A_{1} = \max\{A, N\}, A_2 = A_1 + 1,$ 满足 $A_2 &gt; A_1 \ge A$</p>
+<p>于是 $|\displaystyle\int_{A_1}^{A_1 + 1}f(x)\text{d}x| \ge \dfrac{L}{2} = \epsilon_0$</p>
+<p>这就说明，$\exists \epsilon_0, \forall A, \exists A_2 &gt; A_1 \ge A : |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x| \ge \epsilon_0$。这也就说明矛盾。</p>
+<p>证明：(2) 利用归结原则（Heine 定理）</p>
+<p>$\lim\limits_{x \to +\infty}f(x) = 0$，由 (1) 只需要证明 $\lim\limits_{x \to +\infty}f(x)$ 存在</p>
+<p>$\lim\limits_{x \to +\infty}f(x) = L \in \mathbb R \iff \forall \{x_n\} \to +\infty, \lim\limits_{n \to +\infty}f(x_n) \to L$</p>
+<p>由 Cauchy 收敛原理 $\displaystyle\int_{a}^{+\infty}f^{\prime}(x)\text{d}x \iff \forall \epsilon &gt; 0, \exists A &gt; a \text{ s.t. } A_2 &gt; A_1 \ge A : |\displaystyle\int_{A_1}^{A_2}f^{\prime}(x)\text{d}x| &lt; \epsilon$</p>
+<p>即 $|f(A_2) - f(A_1)| &lt; \epsilon$</p>
+<p>特别的，可以任取 $\forall \{x_n\} \to +\infty$ 使得，$\exists N\in\mathbb{Z+} \text{ s.t. } m, n &gt; N : x_m &gt; x_n &gt; A$</p>
+<p>那么显然 $|f(x_m) - f(x_n)| &lt; \epsilon$，根据数列的 Cauchy 收敛原理这说明 $\{f(x_n)\}$ 收敛。</p>
+<p>这里不需要证明收敛于 $0$，只要说明存在性就行，利用 Heine 定理：</p>
+<p>那么 $\lim\limits_{x \to +\infty} = 0$</p>
+<p>证明 (3)：</p>
+<p>仍旧只需要证明极限存在，也可以反证法证明 $= 0$。</p>
+<p>反证，$\exists \epsilon_0$（后略）</p>
+<p>由一致连续的条件：$\forall \epsilon &gt; 0, \exists \delta=\delta(\epsilon) \text{ s.t. } x, y \in [a, +\infty), |x - y| &lt; \delta : |f(x) - f(y)| &lt; \epsilon$</p>
+<p>对于上面的 $\epsilon_0$，$\exists \delta_0 &gt; 0, \forall x, y \ge a, |x - y| &lt; \delta_0 : |f(x) - f(y)|\le \epsilon_0 / 2$</p>
+<p>任取 $A$，取 $X = A$，存在相应的 $x_0 \ge X$ 满足 $|f(x_0)| \ge \epsilon_0$</p>
+<p>对于 $(x_0 - \delta, x_0 + \delta)$ 中的 $x$ 必有 $|f(x) - f(x_0)| &lt; \epsilon_0 / 2$</p>
+<p>所以可以得到 $|f(x)| \ge \epsilon / 2$</p>
+<p>取 $A_1 = x_0 - \delta, A_2 = x_0 + \delta \Rightarrow |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x| = \epsilon\delta$</p>
+<p>这里 $A_1 &lt; A$ 了，所以稍微修改一下 $\delta$ 的取值，可以取 $\delta \in (0, 1)$，然后 $X = A + 1$</p>
+<p>由 Cauchy 收敛原理，矛盾。</p>
+<p>注：不可以只是连续，反例：$\displaystyle\int_{1}^{+\infty}\sin(x^2)\text{d}x$ 收敛，但是 $\lim\limits_{x \to +\infty}\sin(x^2)$ 不存在。</p>
+<h3>广义积分收敛性判别 例题</h3>
+<h4>例题 1</h4>
+<blockquote>
+<p>讨论广义积分 $\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}x}{1 + x|\sin  x|}$ 的收敛性</p>
+</blockquote>
+<p>函数除了无穷远点无奇点。</p>
+<p>$0 \le |\sin x| \le 1$，所以 $\dfrac{1}{1 + x|\sin x|} \ge \dfrac{1}{1 + x}$</p>
+<p>后者在 $[0, +\infty)$ 上的广义积分是发散的，根据比较判别法可以知道原积分发散</p>
+<h4>例题 2</h4>
+<blockquote>
+<p>假设 $p, q &gt; 0$，讨论广义积分 $\displaystyle\int_{1}^{+\infty}\dfrac{x^q}{1 + x^p}\text{d}x$ 的收敛性。</p>
+</blockquote>
+<p>函数除了无穷远点没有奇点</p>
+<p>所以其实本质和 $\displaystyle\int_{1}^{+\infty}\dfrac{x^q}{x^p}$ 差不多。</p>
+<p>用比较判别法的极限形式就好。</p>
+<p>考虑 $\lim\limits_{x \to +\infty}\dfrac{\dfrac{x^q}{1 + x^p}}{\dfrac{x^q}{x^p}}$ 即可。</p>
+<p>$= \lim\limits_{x \to +\infty}\dfrac{x^p}{1 + x^p} = \lim\limits_{x \to +\infty}\dfrac{1}{1 + x^p} = 1 \in (0, +\infty)$</p>
+<p>所以其收敛性和 $\dfrac{x^q}{x^p}$ 的广义积分一致。</p>
+<p>这就是 p 积分，当且仅当 $p - q &gt; 1$ 的时候收敛。</p>
+<h4>例题 3</h4>
+<blockquote>
+<p>设 $p, q &gt; 0$，讨论：</p>
+<p>$\displaystyle\int_{2}^{+\infty}\dfrac{\text{d}x}{x^p(\ln x)^q}$ 的收敛性。</p>
+</blockquote>
+<p>函数除了无穷远点没有奇点。</p>
+<p>注意到 $p = 1$ 的时候积分可以算出来，$t =\ln x \Rightarrow \displaystyle\int_{\ln 2}^{+\infty} \dfrac{\text{d}t}{t^q}$，其收敛等价于 $q &gt; 1$</p>
+<p>考虑 $p &gt; 1$，这里有一个小技巧（小技巧在哪儿）：</p>
+<p>设 $p = 1 + \delta, \delta &gt; 0$，由于 $\ln x&lt;&lt; x^\alpha (x \to +\infty)$</p>
+<p>用比较判别法：</p>
+<p>$\lim\limits_{x \to +\infty}\dfrac{\dfrac{1}{x^{1 + \delta}(\ln x)^q}}{\dfrac{1}{x^{1 + \delta}}} = \lim\limits_{x\to+\infty} \dfrac{1}{(\ln x)^q} = 0$</p>
+<p>然而 $\displaystyle\int_{2}^{+\infty}\dfrac{\text{d}x}{x^{1 + \delta}}$ 已经是收敛的，所以原式收敛。和 $q$ 没有关系。</p>
+<p>那么 $p \ge 1, q &gt; 0$ 时，原积分总是收敛的。</p>
+<p>$0 &lt; p &lt; 1$ 时，大概猜就是发散的，找一个发散的给它比，$x^p$ 的话不太够，弄一个 $\dfrac{p + 1}{2}$。</p>
+<p>$\lim\limits_{x \to +\infty}\dfrac{}{} = \lim\limits_{x\to\infty}\dfrac{x^{\frac{1 - p}{2}}}{(\ln x)^q} = +\infty$</p>
+<p>所以积分发散。</p>
+<h4>例题 4</h4>
+<blockquote>
+<p>设 $p, q \in \mathbb R, q &gt; 0$（没有 $q &gt; 0$ 的话情况会非常多）</p>
+<p>讨论 $\displaystyle\int_{0}^{+\infty}\dfrac{x^p\sin x}{1 + x^q}\text{d}x$ 的收敛性（包括条件收敛 / 绝对收敛）。</p>
+</blockquote>
+<p>分两种情况讨论，一种有奇点一种没有，每种情况里先证明收敛性再证明是否绝对收敛。</p>
+<p>1) $p \ge 0$ 时，此时积分区间上没有奇点。</p>
+<p>先讨论原积分的收敛性 $\dfrac{x^p}{1 + x^q} \sin x$。</p>
+<p>观察形式可以想到使用 Dirichlet 判别法，因为：</p>
+<p>$\forall A &gt; 0, |\displaystyle\int_{0}^{A}\sin x \text{d}x| \le 2$</p>
+<p>另外一个则需要单调且无限处极限为 $0$，这是例题 2 就做过的，当 $x$ 充分大的时候，它的收敛性和 $\dfrac{x^p}{x^q} = \dfrac{1}{x^{q - p}}$ 一致（同阶）。</p>
+<p>所以当 $q &gt; p$ 时，$\dfrac{x^p}{1 + x^q}$ 在 $x$ 足够大时单调递减趋于零（这满足 Dirichlet 的条件（充分大时单调也可以））。</p>
+<p>说明一下：$(\dfrac{x^p}{1 + x^q})^{\prime} = \dfrac{px^{p - 1} + px^{p - 1 + q} - qx^{q - 1 + p}}{(1  + x^q)^2} = \dfrac{x^{p - 1}(p + px^q - qx^q)}{(1 + x^q)^2}$</p>
+<p>$=\dfrac{x^{p - 1}[p + x^q(p - q)]}{(1 + x^q)^2}$所以 $q &gt; p$，$x$ 充分大时它小于零。</p>
+<p>所以根据 Dirichlet 判别法，当 $p \ge 0, q &gt; p$ 时原积分收敛。</p>
+<p>目前只得到了一个充分条件，所以考虑 $0 \le q \le p$ 时的收敛性。</p>
+<p>猜测他是发散的。这里没什么别的判别方法，所以用 Cauchy 收敛原理。</p>
+<p>即：$\exists \epsilon_0, \forall A &gt; 0, \exists A_2 \ge A_1 &gt; A \text{ s.t. } |\displaystyle\int_{A_1}^{A_2}\dfrac{x^p}{1 + x^q}\sin x\text{d}x| \ge \epsilon_0$</p>
+<p>所以就是要找这个大于某一个数，$\sin x$ 有界的很好找，就看前面部分就行。</p>
+<p>所以这里取 $A_2 = 2n\pi + \dfrac{\pi}{2}, A_2 = 2n\pi + \dfrac{\pi}{6}$</p>
+<p>那么 $|\displaystyle\int_{A_1}^{A_2}\sin x\text{d}x| \ge \dfrac{\pi}{6} \ge \dfrac{1}{2}$</p>
+<p>而 $\dfrac{x^p}{1 + x^q} \ge \dfrac{x^p}{2x^q} = \dfrac{1}{2x^{q - p}} \ge \dfrac{1}{2} \cdot 1, x \in [A_1, A_2]$ 这是显然的。</p>
+<p>所以 $|\displaystyle\int_{A_1}^{A_2} \dfrac{x^p}{1 + x^q}\sin x\text{d}x| \ge \displaystyle\int_{A_1}^{A_2} \dfrac{x^p}{1 + x^q}\sin x\text{d}x \ge \displaystyle\int_{A_1}^{A_2} \dfrac{1}{2} \cdot \dfrac{1}{2}\text{d}x = \dfrac{\pi}{12} = \epsilon_0$</p>
+<p>根据 Cauchy 收敛原理，$p \ge 0, q \le p$ 时，原积分发散。</p>
+<p>现在应该讨论绝对收敛性。</p>
+<p>前面部分本来就是非负的，所以讨论 $\displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q}|\sin x| \text{d}x$。</p>
+<p>由于 $\displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q}|\sin x| \text{d}x \le \displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q} \text{d}x = \displaystyle\int_{0}^{1}\dfrac{x^p}{1 + x^q} \text{d}x + \displaystyle\int_{1}^{+\infty}\dfrac{x^p}{1 + x^q}\text{d}x$</p>
+<p>拆一项主要是为了避免产生奇点。</p>
+<p>前一项总是收敛的，后一项收敛的条件已经做过了 $q - p &gt; 1$，根据比较判别法可以得到原积分收敛需要 $q - p &gt; 1$。</p>
+<p>类似的，还需要说明 $q - p\le 1\iff 0 \le q \le 1 + p$ 时，原积分不是绝对收敛的。</p>
+<p>之前也提过这个例子，由于 $\sin x$ 加了绝对值非负，所以可以比较判别法：</p>
+<p>$\displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q} |\sin x|\text{d}x \ge \displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q} \sin^2x\text{d}x = \dfrac{1}{2}\displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q}(1 - \cos(2x))\text{d}x$</p>
+<p>$=\dfrac{1}{2}\displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q}\text{d}x - \dfrac{1}{2}\displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q}\cos(2x)\text{d}x$</p>
+<p>前一项当 $q - p \le 1$ 时发散（刚才写过了），后一项根据 Dirichlet 可以知道收敛，一减之后就是发散的。</p>
+<p>所以，当 $0 &lt; q \le 1 + p$ 时，原积分发散。</p>
+<p>那么，原积分绝对收敛 $\iff q &gt; p + 1$</p>
+<p>原积分收敛 $\iff q &gt; p$</p>
+<p>2) $p &lt; 0$ 时</p>
+<p>先讨论收敛性，此时原积分有奇点 $0, +\infty$</p>
+<p>将原积分写为 $\displaystyle\int_{0}^{1} + \displaystyle\int_{1}^{+\infty} = I + II$</p>
+<p>分别讨论它们的收敛性就行</p>
+<p>$I = \displaystyle\int_{0}^{1}\dfrac{x^p}{1 + x^q}\sin x\text{d}x$。</p>
+<p>当 $x \to 0$ 时，$\sin x \approx x \Rightarrow \lim\limits_{x \to 0} \dfrac{\dfrac{x^p\sin x}{1 + x^q}}{\dfrac{x^{p + 1}}{1 + x^q}} = 1$</p>
+<p>所以只需要考虑 $\displaystyle\int_{0}^{1}\dfrac{x^{p + 1}}{1 + x^q}\text{d}x$ 的收敛性，由于 $0 &lt; \dfrac{x^{p + 1}}{1 + x^q} \le x^{p + 1} \iff 0 \le \dfrac{x^{p + 1}}{2} &lt; \dfrac{x^{p + 1}}{1 + x^q} \le x^{p + 1}$</p>
+<p>那么原积分收敛等价于 $\displaystyle\int_{0}^{1}x^{p + 1}\text{d}x$ 收敛，改写成 p 积分可以知道 $I$ 收敛的充分条件为 $-p - 1 &lt; 1 \iff 0 &gt; p &gt; -2$</p>
+<p>当然其实是充分必要条件（因为这就是 p 积分收敛的充分必要条件）。</p>
+<p>然后考虑 $II$ 的充分性</p>
+<p>$II = \displaystyle\int_{1}^{+\infty}\dfrac{x^p}{1 + x^q}\sin x\text{d}x$</p>
+<p>仍旧用 Dirichlet 判别法，$\forall A &gt; 0, |\displaystyle\int_{1}^{A}\sin x\text{d}x| \le 2$。</p>
+<p>然后当 $x \to +\infty$ 时，前一项单调递减趋于 $0$。</p>
+<p>所以 $p &lt; 0$ 时 $II$ 无论如何都收敛。</p>
+<p>于是可以得到：$-2 &lt; p &lt; 0$ 时，原积分收敛（当 $p \le -2$ 时 $I$ 发散，所以这其实是充分必要条件）。</p>
+<p>即：$-2 &lt; p &lt; 0 \iff$ 原积分收敛。</p>
+<p>现在讨论绝对收敛性（在 $-2 &lt; p &lt; 0$ 的条件下）</p>
+<p>$\displaystyle\int_{0}^{+\infty}\dfrac{x^p}{1 + x^q}|\sin x|\text{d}x = \displaystyle\int_{0}^{1}\dfrac{x^p}{1 + x^q}\sin x \text{d}x + \displaystyle\int_{1}^{+\infty}\dfrac{x^p}{1 + x^q}|\sin x|\text{d}x$</p>
+<p>前一项就是 $I$，后一项记为 $III$，$I$ 收敛的充分必要条件就是前提条件。</p>
+<p>所以只需要讨论 $III$ 的收敛性。</p>
+<p>$III \le \displaystyle\int_{1}^{+\infty}\dfrac{x^p}{1 + x^q}\text{d}x$</p>
+<p>令 $t = -p \Rightarrow \displaystyle\int_{1}^{+\infty}\dfrac{1}{x^t + x^{t + q}}\text{d}x$</p>
+<p>当 $x \to +\infty$ 时 $x^{t + q}$ 起决定作用。</p>
+<p>用比较判别法：$\lim\limits_{x\to +\infty}\dfrac{\dfrac{1}{x^t + x^{t + q}}}{\dfrac{1}{x^{t + q}}} = \lim\limits_{x \to +\infty}\dfrac{x^{t + q}}{x^t + x^{t + q}} = 1$</p>
+<p>而 $\displaystyle\int_{1}^{+\infty}\dfrac{1}{x^{t + q}}\text{d}x$ 收敛的充分条件就是 $t + q &gt; 1 \iff q - p &gt; 1$</p>
+<p>还需要说明必要性</p>
+<p>当 $q - p \le 1$ 时 $\displaystyle\int_{1}^{+\infty}\dfrac{x^p}{1 + x^q}|\sin x|\text{d}x \ge \dfrac{1}{2}\displaystyle\int_{1}^{+\infty}\dfrac{x^p}{1 + x^q}\text{d}x - \dfrac{1}{2}\displaystyle\int_{1}^{+\infty}\dfrac{x^p}{1 + x^q}\cos(2x)\text{d}x$</p>
+<p>$q - p \le 1$ 时后者总是收敛，前者总是发散。</p>
+<p>所以 $III$ 收敛的充分必要条件就是 $q - p &gt; 1$。</p>
+<p>于是：原积分绝对收敛 $\iff \begin{cases}-2 &lt; p &lt; 0 \\ q &gt; p + 1\end{cases}$</p>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
