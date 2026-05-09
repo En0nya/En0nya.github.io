@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/code.css">
+	<link rel="stylesheet" href="/css/toc.css">
+	<link rel="stylesheet" href="/css/to-top.css">
+
+	<script src="/js/highlight.min.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((el) => {
+		  hljs.highlightElement(el);
+		});
+	  });
+	</script>
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+
+    <script src="/js/Mathjax.js" async></script>
+	<script src="/js/toc.js"></script>
+	<script src="/js/to-top.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>高等代数(I) Chapter 4 矩阵</h2>
+<h3>矩阵运算</h3>
+<ul>
+<li>加减法：$A + B = C \iff C_{ij} = A_{ij} + B_{ij}$ <ul>
+<li>重要性质：$r(A + B) \le r(A) + r(B)$</li>
+</ul>
+</li>
+<li>数乘：$kA = B \iff B_{ij} = kA_{ij}$</li>
+<li>乘法： $A_{(n \times s)}, B_{(s \times m)}; AB = C_{(n \times m)} \iff c_{ij} = \sum\limits_{k = 1}^{s} a_{ik} \times b_{kj}$<ul>
+<li>矩阵乘法不具有对矩阵的交换律，有对数乘的交换律（$AB\not=BA, kAB = AkB$）</li>
+<li>具有结合律，分配律（$A(BC) = (AB)C, A(B + C) = AB + AC$（顺序不能乱））</li>
+<li>若 $A$ 为方阵，可以定义矩阵幂：$A^k = A\times \cdots \times A$</li>
+<li>定义 $A^0 = E_n$（$n$ 阶单位矩阵 $\begin{pmatrix}1 &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; 1 &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; 1\end{pmatrix}$），$kE$ 称为数量矩阵。</li>
+<li>由于矩阵乘法没有交换律，所以 $(AB)^k \not= A^k B^k$（本质是交换乘法次序） </li>
+</ul>
+</li>
+<li>转置：$A^T$<ul>
+<li>$(A + B)^T = A^T + B^T$</li>
+<li>$(kA)^T = kA^T$</li>
+<li>$(AB)^T = B^TA^T$（转置是行列反转，所以转置之后乘法次序也需要交换，称为穿脱原理）</li>
+<li>$A^T = A$ 则称 $A$ 为对称矩阵，$A^T = -A$ 则称为反对称矩阵</li>
+</ul>
+</li>
+</ul>
+<p>$$\begin{pmatrix}a&amp;b&amp;c\\b&amp;d&amp;e\\c&amp;e&amp;f\end{pmatrix}$$</p>
+<p>$$\begin{pmatrix}0&amp;b&amp;-c\\-b&amp;0&amp;e\\c&amp;-e&amp;0\end{pmatrix}$$</p>
+<ul>
+<li>矩阵乘法的逆用：</li>
+</ul>
+<p>$(a_1 + 2a_2, a_2 + 3a_3, a_3 + 4a_1) = (a_1, a_2, a_3)\begin{pmatrix} 1 &amp; 0 &amp; 4\\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 3 &amp; 1\end{pmatrix}$</p>
+<ul>
+<li>幂等矩阵 $A^2 = A \iff r(A) + r(E - A) = n$</li>
+<li>对合矩阵 $A^2 = E \iff r(E + A) + r(E - A) = n$</li>
+</ul>
+<h3>矩阵乘积的行列式和秩</h3>
+<h4>定理</h4>
+<blockquote>
+<p>若 $A, B$ 为数域 $P$ 上的两个 $n \times n$ 方阵。</p>
+<p>$\det A \cdot \det B = \det (AB)$</p>
+</blockquote>
+<p>这是在 Laplace 定理实例中证明过的。</p>
+<p>当然它可以推广到 $k$ 项的情况。</p>
+<h4>定义 退化矩阵</h4>
+<blockquote>
+<p>如果 $A$ 为 $n$ 阶方阵，且 $\det A \not =0$ 则称 $A$ 是非退化的。</p>
+<p>可以知道方阵非退化的充分必要条件是 $r(A) = n$ 即矩阵满秩。</p>
+</blockquote>
+<p>可以得到推论：若 $A, B$ 至少有一个退化矩阵，则 $AB$ 为退化矩阵（此为充分必要条件）。</p>
+<h4>定理 乘积的秩</h4>
+<blockquote>
+<p>如果 $A \times B = C$，则 $r(C) \le \min\{r(A), r(B)\}$。</p>
+</blockquote>
+<p>$A, B$ 在秩这方面上没什么差别，只需要证明 $r(C)$ 小于其中一个，另一个同理。</p>
+<p>不难想到形如 $r \le r$ 的形式在线性表示那部分出现过，所以：</p>
+<p>设 $C$ 的列向量组为 $C_{i}$</p>
+<p>由于 $c_{ij} = \sum\limits_{k = 1}^{n}a_{ik}\times b_{kj}$，这是 $C_{i}$ 的第 $j$ 个分量。</p>
+<p>固定 $i$，所以可以写出 $C_{i} = \sum\limits_{k = 1}^{n}a_{ik}\times B_{k}, (i = 1,2,\cdots n)$</p>
+<p>所以 $C$ 的列向量组可以被写作 $B$ 的列向量组的线性组合。</p>
+<p>那么 $r(C) \le r(B)$，$A$ 同理得证。</p>
+<h3>矩阵的逆</h3>
+<p>由于定义了幂，不难想到若 $AB = E$，应该有 $B = A^{-1}$。</p>
+<p>下面来定义这个 $A^{-1}$，有一个巧妙的构造。</p>
+<p>假设 $A = \begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{pmatrix}$</p>
+<p>构造 $A^{\star} = \begin{pmatrix}A_{11} &amp; A_{12} &amp; \cdots &amp; A_{1n} \\ A_{21} &amp; A_{22} &amp; \cdots &amp; A_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ A_{n1} &amp; A_{n2} &amp; \cdots &amp; A_{nn}\end{pmatrix}^T$，这称为 $A$ 的伴随矩阵。</p>
+<p>其中 $A_{ij}$ 为 $a_{ij}$ 的代数余子式</p>
+<p>根据按行展开法则：</p>
+<p>$AA^{\star} = A^{\star}A = \begin{pmatrix}d &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; d &amp; \cdots &amp; 0 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; d\end{pmatrix}= d \cdot E, d = \det A$</p>
+<p>那么可以知道 $A \cdot (\dfrac{A^{\star}}{d}) = E$</p>
+<p>于是我们就找到了 $A^{-1}$，注意到 $d = 0$ 的时候等式不成立。</p>
+<p>由于 $\det A \det A^{-1} = \det E = 1 \iff \det A^{-1} = \dfrac{1}{d}$</p>
+<p>上述构造没有任何限制，故：</p>
+<blockquote>
+<p>$A$ 可逆的充分必要条件是 $A$ 非退化。</p>
+</blockquote>
+<p>可以很容易的得到推论：$(AB)^{-1} = B^{-1}A^{-1}$。</p>
+<p>只需要证明 $(AB)B^{-1}A^{-1} = E$ 就可以，根据结合律可以很容易证明。</p>
+<h4>Cramer 法则的第二种证法</h4>
+<p>对于 $AX = B$ 做如下变换：</p>
+<p>$AX = A(A^{-1}B) \iff X = A^{-1}B$。（<strong>注意</strong>不要简单的把逆当作乘法逆运算，移过去的时候要使用恒等式 $B = A(A^{-1}B)$ 然后再两边消掉，否则顺序就是乱的了）</p>
+<p>可以发现这样的变换是唯一的，所以解唯一，带入 $A^{-1}$ 之后就是 Cramer 法则的表达式。</p>
+<h4>定理 乘积的秩和原秩的关系</h4>
+<blockquote>
+<p>$A_{(s\times n)}, P_{(s \times s)}, Q_{(n \times n)}$，且 $P, Q$ 非退化。</p>
+<p>则 $r(A) = r(PA) = r(AQ)$</p>
+</blockquote>
+<p>$P, Q$ 非退化则 $P, Q$ 满秩。</p>
+<p>由于 $r(PA) \le \min\{r(A), r(P)\} = r(A)$</p>
+<p>且 $P \times A = PA \iff P\times A =P(P^{-1}PA) \iff A= P^{-1}(PA)$</p>
+<p>所以 $r(A) \le r(PA)$</p>
+<p>于是 $r(A) = r(PA)$</p>
+<h3>矩阵分块</h3>
+<p>假设有两个矩阵 $A, B$ 可以写作这样的形式（当然只要保证行列相等就行）：</p>
+<p>$A = \begin{pmatrix}R_{11} &amp; R_{12} &amp; \cdots &amp; R_{1n} \\ R_{21} &amp; R_{22} &amp; \cdots &amp; R_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ R_{n1} &amp; R_{n2} &amp; \cdots &amp; R_{nn}\end{pmatrix}, B = \begin{pmatrix}S_{11} &amp; S_{12} &amp; \cdots &amp; S_{1n} \\ S_{21} &amp; S_{22} &amp; \cdots &amp; S_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ S_{n1} &amp; S_{n2} &amp; \cdots &amp; S_{nn}\end{pmatrix}$</p>
+<p>其中 $R, S$ 都是一个个小矩阵（大小也不一定相等）。</p>
+<p>那么我们可以把 $R, S$ 当作元素，直接做矩阵乘法，最后的结果是一致的。</p>
+<p>这个只需要用矩阵乘法的定义展开一下结果矩阵就好。</p>
+<p>注：</p>
+<p>其实在推导矩阵的秩的定理的时候就用过矩阵分块了。</p>
+<p>也就是：<strong>矩阵的的行列向量组也是一种矩阵分块</strong></p>
+<p>那么 $C = (A_1, A_2, A_3, \cdots A_n)\begin{pmatrix}B_1 \\ B_2 \\ B_3 \\ \vdots \\ B_n\end{pmatrix} = \begin{pmatrix}\sum\limits_{k = 1}^{n}a_{1k} \cdot B_1 \\ \sum\limits_{k = 1}^{n}a_{2k}\cdot B_2 \\ \vdots \\ \sum\limits_{k = 1}^{n}a_{nk}\cdot B_n \end{pmatrix}$</p>
+<p>由此可以发现 $C$ 的行向量组就是 $B$ 的行向量组的一个线性组合。</p>
+<p>反过来也一样，$C$ 的列向量组就是 $A$ 的列向量组的一个线性组合。</p>
+<h4>准对角矩阵</h4>
+<p>我更想叫广义对角矩阵。</p>
+<p>其实就是把对角矩阵的元素换成了矩阵。</p>
+<p>可以得到几个性质：</p>
+<p>如果 $A, B$ 的分块同阶，那么 $AB$ 的对角元素就是这俩的对角元素相乘。</p>
+<p>加法更不用说。</p>
+<p>并且 $A^{-1}$ 的对角元素就是对角元素各自的逆。</p>
+<h3>初等矩阵</h3>
+<h4>定义</h4>
+<blockquote>
+<p>初等矩阵就是单位矩阵 $E$ 经过一次初等行（列）变换得到的那些矩阵。</p>
+</blockquote>
+<p>第一类：交换 $(i, j)$ 行</p>
+<p>$$E_{i,j}=\begin{pmatrix}1&amp;&amp;&amp;&amp;&amp;&amp;\\&amp;\ddots&amp;&amp;&amp;&amp;&amp;\\&amp;&amp;0&amp;\cdots&amp;1&amp;&amp;\\&amp;&amp;\vdots&amp;\ddots&amp;\vdots&amp;&amp;\\&amp;&amp;1&amp;\cdots&amp;0&amp;&amp;\\&amp;&amp;&amp;&amp;&amp;\ddots&amp;\\&amp;&amp;&amp;&amp;&amp;&amp;1\end{pmatrix}$$</p>
+<p>第二类：某行乘 $k$</p>
+<p>$$E_i(k)=\begin{pmatrix}1&amp;&amp;&amp;&amp;\\&amp;\ddots&amp;&amp;&amp;\\&amp;&amp;k&amp;&amp;\\&amp;&amp;&amp;\ddots&amp;\\&amp;&amp;&amp;&amp;1\end{pmatrix}$$</p>
+<p>第三类：某行加某行 $k$ 倍</p>
+<p>$$E_{i,j}(k)=\begin{pmatrix}1&amp;&amp;&amp;&amp;&amp;&amp;\\&amp;\ddots&amp;&amp;&amp;&amp;&amp;\\&amp;&amp;1&amp;\cdots&amp;k&amp;&amp;\\&amp;&amp;&amp;\ddots&amp;\vdots&amp;&amp;\\&amp;&amp;&amp;&amp;1&amp;&amp;\\&amp;&amp;&amp;&amp;&amp;\ddots&amp;\\&amp;&amp;&amp;&amp;&amp;&amp;1\end{pmatrix}$$</p>
+<h4>应用</h4>
+<blockquote>
+<p>对某个矩阵 $A_{(n \times m)}$ 做初等行变换</p>
+<p>就等价于在矩阵左边乘上对应种类的初等矩阵。</p>
+<p>做初等列变换，就等于在矩阵右边乘上对应种类的初等矩阵。</p>
+</blockquote>
+<p>这是不难证明的。</p>
+<h4>定义 矩阵等价</h4>
+<blockquote>
+<p>$A, B$ 等价当且仅当 $A$ 可由 $B$ 经过一系列初等行变换得到。</p>
+</blockquote>
+<h4>标准型</h4>
+<blockquote>
+<p>任意一个矩阵都和他的标准型 $\begin{pmatrix}E_r &amp; 0\\ 0 &amp; 0\end{pmatrix}$ 等价。</p>
+</blockquote>
+<p>$r$ 为矩阵的秩。</p>
+<p>长这样：</p>
+<p>$$\begin{pmatrix}1&amp;&amp;&amp;&amp;\\&amp;\ddots&amp;&amp;\\&amp;&amp;1&amp;&amp;\\&amp;&amp;&amp;0&amp;\\&amp;&amp;&amp;&amp;\ddots\\&amp;&amp;&amp;&amp;&amp;0\end{pmatrix}$$</p>
+<h4>推论</h4>
+<blockquote>
+<p>如果 $A, B$ 等价，那么存在一系列初等矩阵 $P_1 \sim P_p, Q_1 \sim Q_q \text{ s.t. }$</p>
+<p>$A = P_1P_2 \cdots P_p B Q_1Q_2\cdots Q_q$</p>
+</blockquote>
+<p>这是显然的。</p>
+<blockquote>
+<p>$A$ 为 $n$ 阶可逆矩阵的充要条件是存在 $n$ 阶初等矩阵 $Q_1 \sim Q_q \text{ s.t.}$</p>
+<p>$A = Q_1 Q_2 \cdots Q_q$。</p>
+</blockquote>
+<p>$n$ 阶可逆矩阵行列式不为零即满秩，所以 $A$ 的标准型必为单位矩阵。</p>
+<p>那么只需要做初等行变换就行。</p>
+<p>这也反过来说明可逆矩阵必可化为单位矩阵。</p>
+<h4>更好的求逆方法</h4>
+<p>根据上面的几个推论。不难写出：</p>
+<p>$P_1P_2\cdots P_p A = E \iff P_1P_2\cdots P_p A= A(A^{-1}E) \iff P_1P_2\cdots P_p = A^{-1}E = A^{-1}$</p>
+<p>换句话说，用什么样的变换使得 $A$ 变为 $E$。</p>
+<p>这些变换对应的矩阵乘积就是矩阵的逆。</p>
+<p>于是可以得到一个更好的求逆方法：</p>
+<p>写出一个 $n \times 2n$ 的矩阵：$\begin{pmatrix}A &amp; E\end{pmatrix}$</p>
+<p>左边乘上 $P_1P_2\cdots P_p$ 那么 $=\begin{pmatrix}P_1P_2\cdots P_p A &amp; P_1P_2\cdots P_p E\end{pmatrix} = (E A^{-1})$。</p>
+<p>于是我们只需要将这个矩阵的左边<strong>通过初等行变换</strong>化为单位矩阵，右边就是所求的逆。</p>
+<h3>习题记录和一些注意事项</h3>
+<h4>关于数乘</h4>
+<p>比如 $kA$，实际上是给每一行都乘了一个 $k$，所以计算结果的时候：</p>
+<p>$|kA| = k^n|A|$</p>
+<p>这点一定一定要注意！</p>
+<p>包括 $|A|B$ 这种如果要你求 $||A|B|$ 也一定要记得 $|A|^n|B|$</p>
+<h4>关于 det</h4>
+<p>$|AB| = |A||B| = \dfrac{1}{|AB|^{-1}}$</p>
+<h4>重要结论</h4>
+<p>$r(A^{\star}) = \begin{cases}n &amp; r(A) = n \\ 1 &amp; r(A) = n - 1 \\ 0 &amp; r(A) &lt; n - 1\end{cases}$</p>
+<p>证明：</p>
+<ol>
+<li>$r(A) = n$：由于满秩所以可逆，进而 $A^{\star}$ 可逆所以满秩。</li>
+<li>$r(A) = n - 1$：根据秩的定义，至少存在一个 $n - 1$ 阶子式不为零。</li>
+<li>$r(A) &lt; n - 1$：所有 $n - 1$ 阶子式都为零，自然余子式也是零。</li>
+</ol>
+<h4>矩阵等于伴随矩阵</h4>
+<p>$+E, -E$ 都要考虑（因为式子是 $A^2 = |A|E$）</p>
+<p>还要考虑零矩阵的情况。</p>
+<h4>AB = A + B 的推论</h4>
+<blockquote>
+<p>$AB = A + B \iff AB = BA$</p>
+</blockquote>
+<p>证明：$AB - A - B = 0 \iff AB - A - B + E = E \iff (A - E)(B - E) = E$</p>
+<p>所以 $A - E, B - E$ 互逆，进而 $(B - E)(A - E) = E \iff BA - A - B + E = E \iff BA = A + B = AB$</p>
+<p>这个题主要就像说明 $E$ 之于矩阵类似于 $1$ 之于实数那样可以空拆的地位。 </p>
+<p>因式分解是常见操作：</p>
+<h4>一个配方/因式分解实例</h4>
+<blockquote>
+<p>$A^2 + A - 4E = 0$，求 $(A - E)^{-1}$</p>
+</blockquote>
+<p>可以配方：$A^{2} + A - 2E = 2E \iff (A - E)(A + 2E) = 2E$</p>
+<p>所以 $(A - E)^{-1} = \dfrac{A + 2E}{2}$</p>
+<h4>inv(A + B) 和 inv(A) + inv(B)</h4>
+<p>求逆的里边不能随便乱拆开的！</p>
+<p>这里要算就只能按定义老老实实算。</p>
+<p>$A^{-1} + B^{-1} = A^{-1}(A + B)B^{-1}$</p>
+<p>若 $A, B, A + B$ 可逆那么：</p>
+<p>$(A^{-1} + B^{-1})^{-1} = (A^{-1}(A + B)B^{-1})^{-1}$</p>
+<p>这里有推广结论：乘积的逆就是逆反向相乘：</p>
+<p>$=B^{-1^{-1}}(A + B)^{-1}A^{-1^{-1}} = B(A + B)^{-1}A$</p>
+<p>加法里交换次序也可以知道原式 $= A(A + B)^{-1}B$</p>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

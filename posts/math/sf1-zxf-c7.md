@@ -223,7 +223,7 @@ $\displaystyle\int_{N}^{+\infty}\psi(x)\text{d}x$ 收敛显然说明 $\displayst
 
 比较判别法即可。
 
-#### 推论 Cauchy 判别法的极限形式
+#### 推论 Cauchy 判别法的极限形式（p-积分）
 
 > 设 $a > 0; f(x) \ge 0, x \in [a, +\infty)$，且  $\lim\limits_{x \to +\infty}\dfrac{f(x)}{\frac{1}{x^p}} = L$，则：
 >
@@ -233,11 +233,25 @@ $\displaystyle\int_{N}^{+\infty}\psi(x)\text{d}x$ 收敛显然说明 $\displayst
 
 #### 例题
 
-> 讨论 $\displaystyle\int_{0}^{+\infty}\dfrac{x + 1}{\sin(x^2)}\text{d}x$ 的收敛性。
+> 讨论 $\displaystyle\int_{0}^{+\infty}\dfrac{\sin(x^2)}{x^2 + 1}\text{d}x$ 的收敛性。
+
+奇点为 $+\infty$。
+
+由于 $0 \le |\dfrac{\sin(x^2)}{x^2 + 1}| \le |\dfrac{1}{x^2 + 1}|$
+
+而 $\displaystyle\int_{0}^{+\infty}\dfrac{1}{x^2 + 1}\text{d}x$ 根据 $p$ 积分推论可以知道是收敛的，所以原积分收敛。
 
 #### 例题
 
 > 讨论 $\displaystyle\int_{1}^{+\infty}\dfrac{\text{d}x}{\sqrt[3]{2x^4 + 2x^2 + 6x + 10}}$ 的收敛性。
+
+奇点为 $+\infty$。
+
+当 $x \to +\infty$ 时，$\lim\limits_{x\to +\infty} \dfrac{\dfrac{1}{\sqrt[3]{2x^4 + 2x^2 + 6x + 10}}}{\dfrac{1}{\sqrt[3]{2x^4}}} = 1$，故原积分收敛性与：
+
+$\displaystyle\int_{1}^{+\infty}\dfrac{\text{d}x}{\sqrt[3]{2x^4}}$ 相同，而根据 $p$ 积分推论该积分收敛。
+
+故原积分收敛。
 
 #### 定理 Abel 判别法
 
@@ -281,9 +295,33 @@ $\forall A_2 > A_1 \ge a, |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x| = |\displ
 
 > 证明 $\displaystyle\int_{1}^{+\infty}\dfrac{\sin x}{x}\text{d}x$ 收敛
 
+由于 $[1, +\infty)$ 上 $\displaystyle\int_{1}^{+\infty}\sin x\text{d}x$ 有界即 $\displaystyle\int_{1}^{+\infty}\sin x \text{d}x\le 2$。
+
+而 $\dfrac{1}{x}$ 单调递减趋近于 $0$，根据 Dirichlet 判别原积分收敛。
+
 #### 例题
 
 > 证明 $\displaystyle\int_{1}^{+\infty}\dfrac{\sin x}{x}\text{d}x$ 条件收敛。
+
+前一个例题已经证明了收敛，现在证明不绝对收敛。
+
+即证明：$\displaystyle\int_{1}^{+\infty}|\dfrac{\sin x}{x}|\text{d}x$ 发散。
+
+那两个判别法只能说明收敛，没法说明发散，所以还是要用定义 / Cauchy 收敛原理 / 比较判别法。
+
+那么：
+
+$0 \le |\sin x| \le 1 \iff \sin^2 x \le |\sin x|$。
+
+所以 $\displaystyle\int_{1}^{+\infty}|\dfrac{\sin x}{x}|\text{d}x \ge \displaystyle\int_{1}^{+\infty}\dfrac{\sin^2 x}{x}\text{d}x$
+
+而 $\sin^2 x = \dfrac{1 - \cos 2x}{2}$
+
+所以 $= \displaystyle\int_{1}^{+\infty}\dfrac{1}{2x}\text{d}x + \displaystyle\int_{1}^{+\infty}\dfrac{\cos 2x}{2x}\text{d}x$。
+
+后者根据 Dirichlet 可以知道收敛。前者根据 $p$ 积分，发散。
+
+故积分发散，根据比较判别法可以知道原积分发散，进而 $\displaystyle\int_{1}^{+\infty}\dfrac{\sin x}{x}\text{d}x$ 条件收敛。
 
 #### 定理 Cauchy 收敛原理（瑕积分）
 
@@ -303,7 +341,7 @@ $\iff \forall \epsilon > 0, \exists \delta > 0 \text{ s.t. } \eta_1, \eta_2 \in 
 
 #### 定理 Cauchy 收敛原理的极限形式（瑕积分）
 
-> 设 $b \not = 0$ 为 $f$ 在 $[a, b)$ 上的唯一奇点，且 $f(x)\ ge 0, x \in [a, b)$。
+> 设 $b \not = 0$ 为 $f$ 在 $[a, b)$ 上的唯一奇点，且 $f(x)\ge 0, x \in [a, b)$。
 >
 > 且 $\lim\limits_{x \to b^-} \dfrac{f(x)}{\frac{1}{(x - b)^p}} = L$ 则：
 >
@@ -311,17 +349,23 @@ $\iff \forall \epsilon > 0, \exists \delta > 0 \text{ s.t. } \eta_1, \eta_2 \in 
 > 
 > 2) 若 $p \ge 1, 0 \le L < +\infty$，则 $\displaystyle\int_{a}^{b}f(x)\text{d}x$ 发散。
 
-证明其实就是做个转化：
+证明：
 
 $\displaystyle\int_{a}^{b}\dfrac{\text{d}x}{(x - b)^p}$，令 $t = x - b$
 
 $\displaystyle\int_{a - b}^{0}\dfrac{\text{d}t}{t^p} = -\displaystyle\int_{0}^{a - b}\dfrac{\text{d}t}{t^p}$（P 积分的形式）
 
-然后就可以很容易的得出这个定理。
+瑕点变为 $t = 0$。
+
+用定义：$= \lim\limits_{\epsilon \to 0^+} \displaystyle\int_{\epsilon}^{a - b}\dfrac{\text{d}t}{t^p} = \lim\limits_{\epsilon \to 0^+}\dfrac{t^{1 - p}}{1 - p}\vert_{\epsilon}^{a} = \dfrac{a^{1 - p}}{1 - p} - \lim\limits_{\epsilon \to 0+}\dfrac{\epsilon^{1 - p}}{1 - p}$
+
+$p = 1$ 时发散，$p > 1$ 时原式发散，$p < 1$ 时原式才收敛。
 
 注：
 
 对于两类广义积分，Cauchy 收敛原理判定收敛性的这个 $p$ 是完全相反的。
+
+因为最后用定义写出来的时候变量趋向的点不同，在无穷远处希望的是**更快的减少**，有限瑕点处希望是**更慢的增长**。
 
 但是当 $p = 1$ 的时候都是发散的。
 
@@ -332,6 +376,9 @@ $\displaystyle\int_{a - b}^{0}\dfrac{\text{d}t}{t^p} = -\displaystyle\int_{0}^{a
 > 设 $p > 0$。
 >
 > 讨论 $\displaystyle\int_{0}^{\frac{1}{3}}\dfrac{\text{d}x}{x^p\ln x}$ 的收敛性。
+
+令 $\ln x = t, x = e^t$，那么 $\text{d}t = \dfrac{1}{x}\text{d}x \iff \text{d}x = e^t\text{d}t$
+
 
 #### 例题
 
@@ -594,3 +641,101 @@ $q - p \le 1$ 时后者总是收敛，前者总是发散。
 所以 $III$ 收敛的充分必要条件就是 $q - p > 1$。
 
 于是：原积分绝对收敛 $\iff \begin{cases}-2 < p < 0 \\ q > p + 1\end{cases}$
+
+#### 例题 5
+
+> 设 $p \in \mathbb R$，讨论 $\displaystyle\int_{0}^{+\infty}\dfrac{e^{\sin x}\sin(2x)}{x^p}\text{d}x$ 的收敛性
+
+#### 例题 6
+
+> 设 $p \in \mathbb R$，讨论 $\displaystyle\int_{0}^{+\infty}\dfrac{\sin(x + \dfrac{1}{x})}{x^{p}}\text{d}x$ 的收敛性。
+
+#### 例题 7
+
+> 设 $p, q \in \mathbb R$，讨论 $\displaystyle\int_{0}^{+\infty}x^p\sin(x^q)\text{d}x$ 的收敛性
+
+#### 例题 8
+
+> 讨论 $\displaystyle\int_{0}^{1}x^p(\ln x)^q\text{d}x$ 的收敛性
+
+#### 例题 9
+
+> 设 $f$ 在 $[a, +\infty]$
+
+#### 例题 10
+
+> 设 $[a, +\infty)$ 上 $f(x)$ 单调递减且 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 收敛。
+>
+> 证明：$\lim\limits_{x \to +\infty}xf(x) = 0$
+
+由条件：$\lim\limits_{A \to +\infty}\displaystyle\int_{a}^{A}f(x)\text{d}x$ 存在。
+
+这等价于积分的尾巴为 $0$：$\lim\limits_{A \to +\infty}\displaystyle\int_{A}^{+\infty}f(x)\text{d}x = 0$ 
+
+还等价于 Cauchy 收敛原理：$\forall \epsilon > 0, \exists A > a, \text{ s.t. } A_2 > A_2 \ge A : |\displaystyle\int_{A_1}^{A_2}f(x)\text{d}x|< \epsilon$
+
+题目所想要证明的也是 $xf(x) < \epsilon$ 这样的，所以用 Cauchy 收敛原理：
+
+$\forall \epsilon > 0, \exists A \ge 1, \forall \dfrac{x}{2} \ge A$ 有：$|\displaystyle\int_{\frac{x}{2}}^{x}f(t)\text{d}t| < \epsilon$
+
+$1\le \dfrac{x}{2} \le t \le x$
+
+$f(x) \le f(t) \le f(\dfrac{x}{2})$
+
+先证明：$f(t) \ge 0, \forall t \ge a$
+
+若不然则 $\exists x_1 \ge a \text{ s.t. } f(x_1) < 0$ 则：
+
+$f(t) < f(x_1) < 0, t \ge x_1$：那么 $\displaystyle\int_{x_1}^{+\infty}f(t)\text{d}t \le \displaystyle\int_{x_1}^{+\infty}f(x_1)\text{d}t = -\infty$，这与收敛矛盾。
+
+于是，$\epsilon > \displaystyle\int_{\frac{x}{2}}^{x}f(t)\text{d}t \ge \displaystyle\int_{\frac{x}{2}}^{x}f(x)\text{d}t \ge \dfrac{x}{2}f(x) \ge 0$
+
+进而可以证明 $|xf(x)| < \epsilon$
+
+#### 例题 11
+
+> 设 $f$ 在 $[0, +\infty)$ 的有限子区间 $[0, b]$ 上 Riemann 可积。
+>
+> 且 $\lim\limits_{x \to +\infty}f(x)=  \alpha$，证明：
+>
+> $\lim\limits_{t \to 0+} \left[t\displaystyle\int_{0}^{+\infty}e^{-tx} f(x)\text{d}x\right] = \alpha$
+
+这个方法叫做拟合法，就是，等号两边形式不一样于是尝试写成一样的。
+
+或者说常见于极限里套积分的题目。
+
+思路：做一个改写：$\alpha = t\displaystyle\int_{0}^{+\infty}\alpha e^{-tx}\text{d}x$（这步算一下就知道是对的）
+
+取个极限移到左边
+
+那么只要证明 $\lim\limits_{t \to 0+} t\displaystyle\int_{0}^{+\infty}\left[f(x)e^{-tx} - \alpha e^{-tx}\right]\text{d}x = 0$
+
+即证 $\lim\limits_{t \to 0^+} t\displaystyle\int_{0}^{+\infty}[f(x) - \alpha] e^{-tx}\text{d}x = 0$
+
+由于 $\lim\limits_{}f(x) = \alpha \iff \forall \epsilon > 0, \exists A > 0 \text{ s.t. } x \ge A : |f(x) - \alpha| < \epsilon$
+
+那么 $\left|t\displaystyle\int_{0}^{+\infty}[f(x) - \alpha] e^{-tx}\text{d}x\right| = \left|t\displaystyle\int_{0}^{A} + t\displaystyle\int_{A}^{+\infty}\right|$
+
+$\le t\displaystyle\int_{0}^{A}|f(x) - \alpha| e^{-tx}\text{d}x + t\displaystyle\int_{A}^{+\infty}|f(x) - \alpha| e^{-tx}\text{d}x = I + II$
+
++ 对于 $II$：$< \epsilon t\displaystyle\int_{A}^{+\infty}e^{-tx}\text{d}x = \epsilon \displaystyle\int_{A}^{+\infty}e^{-tx}d(tx) =\epsilon \displaystyle\int_{tA}^{+\infty}e^{-y}\text{d}t$
+
+$= \epsilon(e^{-tA} - 0)$。
+
+由于括号内小于 $1$, $II < \epsilon$
+
+**注意**：这里本质是先求积分再取极限，所以本质是固定 $t$ 之后来做积分。
+
++ 对于 $I$：根据题目条件 $f(x) - \alpha$ 在 $[0, A]$ 上 Riemann 可积进而有界。    
+
+所以 $\exists M \text{ s.t. } |f(x) - \alpha| \le M, \forall x \in [0, A]$
+
+故 $I \le t \displaystyle\int_{0}^{A}M e^{-tx}\text{d}x$，同理可得：
+
+$I < M(1 - e^{-tA})$
+
++ 对整体：
+
+令 $t \to 0^+$，原极限 $\le \epsilon + M(1 - e^{-tA}) =\epsilon + 0$
+
+这是因为 $A$ 这里实质上不变。由极限任意性，原极限 $= 0$

@@ -1,8 +1,8 @@
 ## Categories
 
-*文章总数: 26*
+*文章总数: 29*
 
-*Last update: 2026 年 04 月 09 日 16:55*
+*Last update: 2026 年 05 月 09 日 09:53*
 
 ### algor
 
@@ -28,6 +28,8 @@
 - [⌈高等代数(I) Chapter 1 行列式⌋](posts\math\gd1-ldq-c1.html)  最后更新时间：*`26 年 03 月 30 日`*
 - [⌈高等代数(I) Chapter 2 线性方程组⌋](posts\math\gd1-ldq-c2.html)  最后更新时间：*`26 年 03 月 31 日`*
 - [⌈高等代数(I) Chapter 3 - 矩阵⌋](posts\math\gd1-ldq-c3.html)  最后更新时间：*`26 年 04 月 01 日`*
+- [⌈高等代数(I) Chapter 4 矩阵⌋](posts\math\gd1-ldq-c4.html)  最后更新时间：*`26 年 04 月 13 日`*
+- [⌈memo.md⌋](posts\math\memo.html)  最后更新时间：*`26 年 05 月 01 日`*
 - [⌈数学分析(I) 杂题⌋](posts\math\sf1-problem.html)  最后更新时间：*`26 年 01 月 19 日`*
 - [⌈数学分析(I) 定理理解⌋](posts\math\sf1-theory.html)  最后更新时间：*`26 年 01 月 19 日`*
 - [⌈数学分析(I) Chapter 1 数列极限⌋](posts\math\sf1-zxf-c1.html)  最后更新时间：*`26 年 01 月 19 日`*
@@ -36,7 +38,8 @@
 - [⌈数学分析(I) Chapter 4 微分中值定理及其应用⌋](posts\math\sf1-zxf-c4.html)  最后更新时间：*`26 年 01 月 19 日`*
 - [⌈数学分析(I) Chapter 5 不定积分⌋](posts\math\sf1-zxf-c5.html)  最后更新时间：*`26 年 03 月 16 日`*
 - [⌈数学分析(I) Chapter 6 定积分⌋](posts\math\sf1-zxf-c6.html)  最后更新时间：*`26 年 03 月 30 日`*
-- [⌈数学分析(I) Chapter 7 广义积分⌋](posts\math\sf1-zxf-c7.html)  最后更新时间：*`26 年 04 月 08 日`*
+- [⌈数学分析(I) Chapter 7 广义积分⌋](posts\math\sf1-zxf-c7.html)  最后更新时间：*`26 年 04 月 20 日`*
+- [⌈数学分析(I) Chapter 8 数项级数⌋](posts\math\sf1-zxf-c8.html)  最后更新时间：*`26 年 05 月 01 日`*
 ### misc
 
 - [⌈神秘菜谱收集⌋](posts\misc\cuisine.html)  最后更新时间：*`26 年 03 月 23 日`*

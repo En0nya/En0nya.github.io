@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonya's Blog</title>
+
+	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="/css/code.css">
+	<link rel="stylesheet" href="/css/toc.css">
+	<link rel="stylesheet" href="/css/to-top.css">
+
+	<script src="/js/highlight.min.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((el) => {
+		  hljs.highlightElement(el);
+		});
+	  });
+	</script>
+    
+	<script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    addMenu: [0, '', '']
+                }
+            },
+            chtml: {
+                displayAlign: 'center',
+                displayIndent: '2em'
+            }
+        };
+    </script>
+
+    <script src="/js/Mathjax.js" async></script>
+	<script src="/js/toc.js"></script>
+	<script src="/js/to-top.js"></script>
+    
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="site-title">Mercury Lamp</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/index.html" class="nav-link">Index</a></li>
+                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
+                    <li><a href="/links.html" class="nav-link">Links</a></li>
+                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <article>
+            <h2>数学分析(I) Chapter 8 数项级数</h2>
+<h3>数项级数的收敛性</h3>
+<h4>定义 级数</h4>
+<blockquote>
+<p>假设 $\{x_{n}\}^{+\infty}$ 是一个实数列。</p>
+<p>称 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 为无穷级数。</p>
+<p>此时称 $x_{n}$ 为该级数的通项，该级数的部分和序列定义为 $S_i = \sum\limits_{n = 1}^{i}x_{n}$。</p>
+</blockquote>
+<h4>定义 收敛</h4>
+<blockquote>
+<p>称一个级数 $\sum\limits_{n = 1}^{\infty} x_{n}$ 收敛。</p>
+<p>如果它的部分和序列 $\{S_n\}^{+\infty}$ 是收敛的，则称该级数收敛。</p>
+<p>即 $\lim\limits_{n \to +\infty} S_n$ 存在。</p>
+</blockquote>
+<p>也可以写成 $\lim\limits_{n \to +\infty}\sum\limits_{n = 1}^{n}x_{n}$</p>
+<p>比如：</p>
+<p>等比级数 $\sum\limits_{n = 0}^{+\infty} q^{n}$ 在 $|q| &lt; 1$ 时收敛。</p>
+<p>$S_n = \dfrac{1 (1 - q^{n - 1})}{(1 - q)} = \dfrac{1 - q^{n - 1}}{1 - q}, q\not = 1$</p>
+<p>注：</p>
+<ol>
+<li>不收敛的级数称之为发散的。</li>
+<li>如果级数收敛，那么一定有 $x_n \to 0$，反之不然（因为 $x_n = S_n - S_{n - 1}$，反例为 $\dfrac{1}{n}$）。</li>
+</ol>
+<p>当然这个反例也可以用广义积分来证明发散。</p>
+<h4>例题</h4>
+<blockquote>
+<p>用广义积分证明：$\sum\limits_{n = 1}^{+\infty}\dfrac{1}{n^p}$ 收敛的充分必要条件为 $p &gt; 1$。</p>
+</blockquote>
+<p>令 $f(x) = \dfrac{1}{x^p}$。</p>
+<p>由于 $f$ 在 $[1, +\infty)$ 上单调递减，所以 $\forall x \in [k, k + 1], k \in \mathbb N^{\star}$：</p>
+<p>$\displaystyle\int_{k}^{k + 1}f(k + 1)\text{d}x \le \displaystyle\int_{k}^{k + 1}f(x)\text{d}x \le \displaystyle\int_{k}^{k + 1} f(k)\text{d}x$</p>
+<p>所以 $f(k + 1) \le \displaystyle\int_{k}^{k + 1}f(x)\text{d}x \le f(k)$。</p>
+<p>两边累加</p>
+<p>$\sum\limits_{k = 2}^{n + 1}f(k) \le \displaystyle\int_{1}^{n + 1}f(x)\text{d}x \le \sum\limits_{k = 1}^{n}f(k)$</p>
+<p>左边就是 $S_{n} - f(1)$</p>
+<p>那么 $S_{n} \le \displaystyle\int_{1}^{n + 1}f(x)\text{d}x + f(1)$</p>
+<p>进而 $S_{n}$ 有上界且单调递增，所以 $\{S_{n}\}$ 收敛进而级数收敛。</p>
+<h4>定义 余项</h4>
+<blockquote>
+<p>称 $r_n = \sum\limits_{k = n + 1}^{+\infty}x_{k}$ 为级数 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 的余项。</p>
+<p>显然有：$\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛 $\iff r_{n} \to 0$。</p>
+</blockquote>
+<h4>命题</h4>
+<blockquote>
+<p>若 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛，$\sum\limits_{n = 1}^{+\infty}y_{n}$ 收敛，则它们的线性组合 $\alpha\sum\limits_{n = 1}^{+\infty}x_{n} + \beta \sum\limits_{n = 1}^{+\infty}y_{n} = \sum\limits_{n = 1}^{n}(\alpha x_{n} + \beta y_{n})$ 也是收敛的。</p>
+</blockquote>
+<p>证明：</p>
+<p>$\lim\limits_{n \to +\infty}S_n = A, \lim\limits_{n \to +\infty} T_n = B$</p>
+<p>那么：$R_{n} = \alpha S_{n} + \beta T_{n} \Rightarrow \lim\limits_{n \to +\infty}R_{n} = \alpha A + \beta B$</p>
+<p>而 $\sum\limits_{n = 1}^{+\infty}x_{n} = A, \sum\limits_{n = 1}^{+\infty} y_{n} = B$。</p>
+<p>所以 $\alpha \sum\limits_{n = 1}^{+\infty}x_{n} + \beta \sum\limits_{n = 1}^{+\infty}y_{n} = \alpha A + \beta B$。</p>
+<p>这与 $\lim\limits_{n \to +\infty} R_{n}$ 结果相等，而 $R_{n}$ 就是它们的前 $n$ 项和。进而是收敛的。 </p>
+<p>这里 $\sum\limits_{n = 1}^{+\infty}x_{n} = A$ 蕴含了 $\lim\limits_{n \to +\infty}S_{n} = A$</p>
+<h4>命题</h4>
+<blockquote>
+<p>设 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛，则在其求和表达式中，任意添加括号得到的新级数也是收敛的</p>
+<p>即收敛的级数满足加法的结合律</p>
+</blockquote>
+<p>设 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛，即 $\sum\limits_{n = 1}^{+\infty} = x_1 + x_2 + x_3 + x_4 + x_5 + x_6 + \cdots$</p>
+<p>设加括号之后的新级数 $\sum\limits_{n = 1}^{+\infty}y_{n}$ 为：</p>
+<p>$(x_1 + x_2 + \cdots + x_{n_1}), (x_{n_1 + 1}, x_{n_1 + 2}, \cdots x_{n_2}), (x_{n_2 + 1}, x_{n_2 + 2}, \cdots x_{n_3}) \cdots$</p>
+<p>下证 $\sum\limits_{n = 1}^{+\infty}x_{n} = \sum\limits_{n = 1}^{\infty}y_{n}$</p>
+<p>$y_n$ 的部分和：$T_{1} = y_{1} = S_{n_1}, T_2 = y_1 + y_2 = S_{n_2}$</p>
+<p>进而有：$T_{k} = S_{n_k}$，所以 $\{T_k\}$ 是 $\{S_{n_k}\}$ 进而是 $S_{n}$ 的子列。</p>
+<p>根据子列收敛性，$T_{k}$ 收敛于 $S_{n}$ 同一点。</p>
+<p>所以 $\sum\limits_{n = 1}^{+\infty} x_{n} = \sum\limits_{n = 1}^{+\infty}y_{n}$</p>
+<h3>数列的上下极限</h3>
+<h4>定义 极限点</h4>
+<blockquote>
+<p>设 $\{x_{n}\}^{\infty}$ 是有界的，若存在一个子列 $\{x_{n_k}\}^{\infty} \subset \{x_{n}\}^{\infty}$ 使得 $\lim\limits_{k \to +\infty} x_{n_k} = \xi$，则称 $\xi$ 为 $x_{n}$ 的一个极限点（聚点）。</p>
+<p>对于无界数列，称 $+\infty\text{ or } -\infty$ 为 $\{x_{n}\}^{\infty}$ 的一个极限点。</p>
+</blockquote>
+<p>例：$x_{n} = (-1)^{n}, y_n = \sin(\dfrac{n\pi}{2})$</p>
+<p>$x_{2k} = 1, x_{2k + 1} = -1$ 所以 $+-1$ 为其极限点。</p>
+<p>$y_{2k} = 0, y_{2k + 1} = 1 / -1 \Rightarrow y_{4k + 1} = 1, y_{4k + 3} = -1$，所以 $0, +-1$ 为其极限点。</p>
+<h4>命题</h4>
+<blockquote>
+<p>假设 $\{x_{n}\}$ 是有界的，令 $E = \{\xi\}$ 为其极限点的集合。</p>
+<p>那么 $H = \sup E, h = \inf E$ 都存在，进而 $H = \max E, h = \min E$</p>
+</blockquote>
+<p>证明：</p>
+<p>利用上确界的定义，$\exists \{\xi_k\} \subset E \text{ s.t. } \xi_k \to H$</p>
+<ul>
+<li>$\xi_1 \in E \Rightarrow$ $\{x_n\}$ 有无穷多项属于 $(\xi_1 - 1, \xi_1 + 1)$，取其中一项 $x_{n_1}$。</li>
+<li>$\xi_2 \in E \Rightarrow$ $\{x_n\}$ 有无穷多项属于 $(\xi_2 - \dfrac{1}{2}, \xi_2 + \dfrac{1}{2})$，取其中一项 $x_{n_2}, n_2 &gt; n_1$。</li>
+<li>$\cdots$</li>
+<li>进而 $|x_{n_k} - \xi_k| &lt; \dfrac{1}{n}$，进而可以说明 $\{x_{n_k}\} \to H$，这表明 $H$ 也是一个极限点。</li>
+</ul>
+<p>又因为 $H$ 是上确界，进而 $H = \max E$</p>
+<p>这个取法和之前数列极限里是一致的。</p>
+<h4>定义 上下极限</h4>
+<blockquote>
+<p>$E$ 的最大值 $H$，即 $\{x_{n}\}^{\infty}$ 的最大极限点定义为 $\{x_{n}\}^{\infty}$ 的上极限，记作 $\limsup\limits_{n \to +\infty} x_n$。</p>
+<p>$E$ 的最小值 $h$，即 $\{x_{n}\}^{\infty}$ 的最小极限点定义为 $\{x_{n}\}^{\infty}$ 的下极限，记作 $\liminf\limits_{n \to +\infty} x_{n}$</p>
+</blockquote>
+<h4>命题 上下极限与收敛</h4>
+<blockquote>
+<p>$\{x_n\}^{\infty}$ 收敛的充分比较条件是 $\limsup\limits_{}, \liminf\limits_{}$ 存在且相等。</p>
+</blockquote>
+<p>$\Rightarrow$：收敛的数列极限点唯一，那么 $|E| = 1$，进而 $\limsup\limits_{} = \lim\limits_{} = \liminf\limits_{}$</p>
+<p>$\Leftarrow$：$\limsup\limits_{} = \liminf\limits_{} = A \in \mathbb R$</p>
+<p>由于 $\min E = \max E$，进而 $|E| = 1, E = \{A\}$</p>
+<p>$\Rightarrow \forall \{x_{n_k}\} \subset \{x_n\}, \{x_{n_k}\} \to A (n \to +\infty)\Rightarrow x_{n} \to A (n \to +\infty)$</p>
+<h4>例题</h4>
+<ul>
+<li>$\limsup\limits_{n \to +\infty} \sin(\dfrac{n\pi}{2}) = 1$</li>
+<li>$\liminf\limits_{n \to +\infty} (-1)^n = -1$</li>
+<li>$\{x_n\} = \{-10, -5, 7, 3 + (-1)^n (n \ge 4)\}\Rightarrow \limsup\limits_{n \to +\infty}x_n = 4, \liminf\limits_{n \to +\infty}x_n = 2$</li>
+</ul>
+<p>所以注意，上极限是所有子列<strong>极限</strong>的上确界</p>
+<p><strong>区分子列和数列！</strong></p>
+<h4>定义 函数的上下极限</h4>
+<blockquote>
+<p>对实值函数 $f$，同样可以定义上下极限。</p>
+<p>$\limsup\limits_{x \to x_0} f(x)$ 定义为:</p>
+<p>设 $f$ 在非空集 $E$ 上有定义，$x_{0}$ 是 $E$ 的一个极限点。</p>
+<p>$\limsup\limits_{x \to x_0} f(x)= \sup \{\alpha : \exists {x_n\}^{\infty} \subset E \text{ s.t. } x_n \to x_0 (n \to +\infty), f(x_n) \to \alpha, n \to +\infty}$</p>
+</blockquote>
+<p>这个定义方式和函数极限有点类似，都是用数列的极限来定义。</p>
+<h4>命题</h4>
+<blockquote>
+<p>若 $\{x_n\}^{\infty}$ 为有界数列，则：$\limsup\limits_{n \to +\infty} x_{n} = H$ 当且仅当，$\forall \epsilon &gt; 0$
+  1) $\exists N \in \mathbb N^{\star} \text{ s.t. } x_n &lt; H + \epsilon, n &gt; N$
+  2) $\{x_n\}$ 当中有无穷多项满足 $x_n &gt; H - \epsilon$</p>
+<p>若 $\{x_n\}^{\infty}$ 为有界数列，则：$\liminf\limits_{n \to +\infty} x_{n} = h$ 当且仅当，$\forall \epsilon &gt; 0$</p>
+<p>1) $\exists N \in \mathbb N^{\star} \text{ s.t. } x_n &gt; h - \epsilon, n &gt; N$
+  2) $\{x_n\}$ 中有无穷多项满足 $x_n &lt; h + \epsilon$</p>
+</blockquote>
+<p>证明 $\limsup\limits_{}$</p>
+<p>$\Rightarrow$：设 $H$ 为 $\{x_n\}$ 的最大极限点，对于 $\epsilon &gt; 0$，由极限点的定义，在 $[H + \epsilon, +\infty)$ 中最多只有有限个 $x_n$</p>
+<p>（因为，如果有无穷多项，根据 Weierstrass 定理必存在收敛子列，那么一定会有一个不小于 $H + \epsilon$ 的极限点，这就和 $H$ 的假设矛盾。）</p>
+<p>设其中最大下标为 $n_0$，那么 $n &gt; n_0$ 时必有 $x_{n} &lt; H + \epsilon$（就是补集，不要误以为数列是单调的），此时 (1) 得证。</p>
+<p>根据定义，$\exists \{x_{n_k}\}^{\infty} \sub \{x_n\}$ 使得 $x_{n_k} \to H$</p>
+<p>所以 $n &gt; N$（数列极限定义里的那个 $N$）时，$x_n \in (H - \epsilon, H + \epsilon)$，这是无穷数列的尾巴，有无穷项，</p>
+<p>所以，在开区间 $(H - \epsilon, H + \epsilon)$ 有 $\{x_{n_k}\}$ 的无穷多项进而可以证明 (2)</p>
+<p>$\Leftarrow$：</p>
+<p>由 (1)：$x_n &lt; H + \epsilon, n &lt; N$。</p>
+<p>两边同时取上极限：$\limsup\limits_{n \to +\infty} x_n \le H + \epsilon$</p>
+<p>根据 $\epsilon$ 的任意性，令其 $\to 0^{+}$，所以 $\limsup\limits_{n \to +\infty} \le H$</p>
+<p>由 (2)：$\limsup\limits_{n \to +\infty}x_n \ge H - \epsilon$，这是因为由无穷多项都大于 $H - \epsilon$，那他们的极限点最大的那一个也应该大于这个数。</p>
+<p>$\epsilon$ 趋近于零可以得到 $\limsup\limits_{n \to +\infty}x_n \ge H$，进而得到原式。</p>
+<p><strong>注意不是所有项而是可以找到无穷多项</strong></p>
+<h4>定理 上下极限的等价定义</h4>
+<blockquote>
+<p>有界数列 $\{x_n\}^{\infty}$ 的上下极限有如下等价定义。</p>
+<p>$\limsup\limits_{n \to +\infty} x_n = \lim\limits_{n \to +\infty}(\sup\limits_{k \ge n}\{x_k\})$</p>
+<p>$\liminf\limits_{n \to +\infty}x_{n} = \lim\limits_{n \to +\infty}(\inf\limits_{k \ge n}\{x_k\})$</p>
+</blockquote>
+<p>证明：</p>
+<p>$\forall n \ge 1$，令 $b_{n} = \sup\limits_{k \ge n}\{x_k\} = \sup\{x_{n + 1}, x_{n + 2}, \cdots\}$</p>
+<p>于是 $\{b_{n}\}$ 有界，且单调递减（按这样的方式，数量变少了上确界不增）。</p>
+<p>单调有界数列必是收敛数列，从而 $\lim\limits_{n \to +\infty}\{b_n\}$ 存在，记为 $H^{\star}$。</p>
+<p>$a_{n}$ 同理定义，极限记为 $h^{\star}$</p>
+<p>下证：若 $\xi$ 为 $\{x_{n}\}$ 的一个极限点，那么，$\xi \in [h^{\star}, H^{\star}]$</p>
+<p>取 $\{x_{n_k}\} \subset \{x_{n}\} \text{ s.t. } x_{n_k} \to \xi$</p>
+<p>利用 $\{a_n, b_n\}$ 的定义，那么 $a_{n_{k - 1}}\le x_{n_k}\le b_{n_{k - 1}}$</p>
+<p>令 $k \to +\infty$，可以得到：$h^{\star} \le \lim\limits_{k \to +\infty}x_{n_k} \le H^{\star}$ 即得到所需要命题。</p>
+<p>由于我们没法说明 $h^{\star}, H^{\star}$ 都是极限点，还需要再证明一下：</p>
+<p>$\exists \{y_{n_k}\} \subset \{x_n\}\to h^{\star}, \{z_{n_k}\} \subset \{x_n\} \to H^{\star}$</p>
+<ul>
+<li>$b_1 = \sup\limits_{k &gt; 1}\{x_{k}\} \Rightarrow \exists n_1 \in \mathbb N \text{ s.t. } b_1-1 \le x_{n_{1}}\le b_{1}$</li>
+<li>$b_{n_1} = \sup\limits_{k &gt; n_1}\{x_{k}\} \Rightarrow \exists n_2 \in \mathbb N \text{ s.t. } b_{n_1} - \dfrac{1}{2} \le x_{n_2} \le b_{n_1}$</li>
+<li>$\cdots$</li>
+</ul>
+<p>重复操作可以得到 $\{b_{n_k}\} \subset \{b_n\}$ 且 $b_{n_{j - 1}} - \dfrac{1}{j} \le x_{n_{j}} \le b_{n_{j - 1}}$ </p>
+<p>令 $j \to +\infty$ 进而找到了一个 $\{x_{n_k}\} \to H^{\star}$。</p>
+<p>另一个同理。</p>
+<p>进而，我们甚至可以得到：</p>
+<blockquote>
+<p>$\limsup\limits_{n \to +\infty}x_{n} = \lim\limits_{n \to +\infty}\sup\limits_{k &gt; n}\{x_k\} = \inf\limits_{n \ge 1}\{\sup\limits_{k &gt; n}{x_k\}}$</p>
+</blockquote>
+<p>这是因为单调递减的数列极限就是它的下确界。</p>
+<h4>定理</h4>
+<blockquote>
+<p>设 $\{x_{n}\}^{\infty}, \{y_{n}\}^{\infty}$ 是两个有界数列</p>
+<p>1) $\limsup\limits_{n \to +\infty}(x_{n} + y_{n}) \le \limsup\limits_{n \to +\infty}\{x_{n}\} + \limsup\limits_{n \to +\infty}\{y_{n}\}$（因为不是极限，只能取个小于等于）</p>
+<p>2) $\liminf\limits_{n \to +\infty}(x_n + y_n) \ge \liminf\limits_{n \to +\infty}\{x_{n}\} + \liminf\limits_{n \to +\infty}\{y_n\}$</p>
+<p>3) 若 $x_{n}$ 收敛，(1), (2) 可以取等号（因为此时上下极限相等等于极限）</p>
+</blockquote>
+<p>证明：</p>
+<p>(1) 分别设为 $A, B$</p>
+<p>$\forall \epsilon &gt; 0, \exists N \text{ s.t. } \begin{cases}x_n &lt; A + \epsilon \\ y_n &lt; B + \epsilon\end{cases}, n &gt; N$</p>
+<p>所以 $x_{n} + y_{n} &lt; A + B + 2\epsilon, n &gt; N$</p>
+<p>左边取极限就可以证明。</p>
+<p>(2) 同理。</p>
+<p>(3) 也说明过了。</p>
+<h4>命题 9</h4>
+<blockquote>
+<p>设 $\{x_{n}\}^{\infty}, \{y_{n}\}^{\infty}$ 是两个有界数列</p>
+<p>1) $\limsup\limits_{n \to +\infty}(-x_n) = -\liminf\limits_{n \to +\infty}(x_n)$</p>
+<p>2) $x_n \ge 0, y_{n} \ge 0$ 则：
+  $\begin{cases}\limsup\limits_{n \to +\infty}(x_ny_n) \le (\limsup\limits_{n \to +\infty}x_n)\cdot (\limsup\limits_{n \to +\infty}y_n) \\ \liminf\limits_{n \to +\infty}(x_ny_n) \ge (\liminf\limits_{n \to +\infty}x_n)\cdot (\liminf\limits_{n \to +\infty}y_n)\end{cases}$</p>
+<p>3) 若 $x_{n}$ 收敛，则 (2) 中两不等式可以取等。</p>
+</blockquote>
+<h3>正项级数的收敛性</h3>
+<h4>定义</h4>
+<blockquote>
+<p>若级数 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 满足 $x_{n} \ge 0,\forall n \ge 1$。</p>
+<p>则称该级数为正项级数。</p>
+</blockquote>
+<h4>命题</h4>
+<blockquote>
+<p>正项级数 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛的充分必要条件是：</p>
+<p>其部分和序列 $\{S_{n}\}$ 有上界。</p>
+<p>若部分和无上界则级数一定发散到正无穷。</p>
+</blockquote>
+<p>证明：</p>
+<p>设 $x_{n} \ge 0$，那么 $S_{n} \ge 0$，且 $\{S_{n}\}$ 单调递增。</p>
+<p>那么 $\{S_{n}\}$ 有上界即其收敛，必要性即可证明。</p>
+<p>反过来类似。</p>
+<h4>命题 正项级数的比较判别法</h4>
+<blockquote>
+<p>设 $x_{n},y_{n} \ge 0$ 且存在常数 $c &gt; 0 \text{ s.t. }$</p>
+<p>$n$ 足够大的时候 $x_{n} \le cy_{n}$</p>
+<p>则 $\sum\limits_{n = 1}^{+\infty}y_{n}$ 收敛时，$\sum\limits_{n = 1}^{+\infty}x_{n}$ 也收敛。</p>
+<p>且 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 发散时，$\sum\limits_{n = 1}^{+\infty}y_{n}$ 也发散。</p>
+</blockquote>
+<p>证明：</p>
+<p>设 $\sum\limits_{n = 1}^{+\infty}y_{n}$ 收敛。</p>
+<p>故 $\exists M &gt; 0 \text{ s.t. } \sum\limits_{k = 1}^{n}y_{n} \le M$</p>
+<p>所以 $\sum\limits_{k = 1}^{n}x_{n} \le \sum\limits_{k = 1}^{n}y_{n} \le cM$，进而 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 的部分和单调递增有上界。</p>
+<p>进而 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛。</p>
+<p>$n$ 足够大的条件并不影响，因为可以把前面有限部分拿出来当作一个常数。</p>
+<h4>例题</h4>
+<blockquote>
+<p>讨论级数 $\sum\limits_{n = 1}^{+\infty}\sin(\dfrac{\pi}{n}), \sum\limits_{n = 1}^{+\infty}\dfrac{\ln n}{n^2}$ 的收敛性。</p>
+</blockquote>
+<p>第一个：</p>
+<p>根据 Jordan 不等式：$\dfrac{2}{\pi}x\le \sin x \le x, x \in [0, \dfrac{pi}{2}]$</p>
+<p>所以 $\sin(\dfrac{\pi}{n}) \ge \dfrac{2}{\pi}\cdot \dfrac{\pi}{n} = \dfrac{2}{n}$</p>
+<p>因为 $\sum\limits_{n = 1}^{+\infty}\dfrac{2}{n}$ 发散，故原级数发散。</p>
+<p>第二个：</p>
+<p>由于 $\ln n \le \sqrt{n}$ 在 $n$ 足够大（$\ge 2$）时正确。</p>
+<p>所以 $0 \le \dfrac{\ln n}{n^2} \le \dfrac{1}{n^{\frac{3}{2}}}$</p>
+<p>而 $\sum\limits_{n = 1}^{+\infty}\dfrac{1}{n^{\frac{3}{2}}}$ 收敛，所以原级数收敛。</p>
+<h4>命题 比较判别法的极限形式</h4>
+<blockquote>
+<p>设 $x_{n},y_{n} \ge 0$ 且存在常数 $c &gt; 0 \text{ s.t. }$</p>
+<p>$\lim\limits_{n \to +\infty}\dfrac{x_n}{y_n} = L$</p>
+<p>1) 若 $L \in (0, +\infty)$ 则 $\sum\limits_{n = 1}^{+\infty}x_{n}, \sum\limits_{n = 1}^{+\infty}y_{n}$ 收敛性一致。</p>
+<p>2) 若 $L = 0$ 则 $\sum\limits_{n = 1}^{+\infty}y_{n}$ 收敛时，$\sum\limits_{n = 1}^{+\infty}x_{n}$ 也收敛。</p>
+<p>3) 若 $L = +\infty$ 则 $\sum\limits_{n = 1}^{+\infty}y_{n}$ 发散时，$\sum\limits_{n = 1}^{+\infty}x_{n}$ 也发散。</p>
+</blockquote>
+<p>只证明 (1)：</p>
+<p>由于 $\forall \epsilon &gt; 0, \exists N \text{ s.t. } n &gt; N : |\dfrac{x_n}{y_n} - L| &lt; \epsilon$</p>
+<p>令 $\epsilon = \dfrac{L}{2}$ 所以 $0\le \dfrac{L}{2}y_{n} \le x_{n} \le \dfrac{3L}{2}y_{n}$</p>
+<p>用两次比较判别法可以知道 $y_n$ 与 $x_n$ 同收敛。</p>
+<h4>例题</h4>
+<blockquote>
+<p>讨论级数 $\sum\limits_{n = 1}^{+\infty}e^{\frac{1}{n^2}} - \cos(\dfrac{1}{n})$ 的收敛性。</p>
+</blockquote>
+<p>可以得知它为正项级数。</p>
+<p>想找阶数，所以 $e, \cos$ 这里用 Talyor 定理。</p>
+<p>$$
+\begin{cases}e^x = 1 + x + \dfrac{1}{2!}x^2 + \cdots + \dfrac{1}{n!}x^{n} + o(x^n) \\ \cos x = 1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4 + \cdots + \dfrac{(-1)^{n}}{(2n)!}x^{2n} + o(x^{2n})\end{cases}
+$$</p>
+<p>代回原式可以得到：</p>
+<p>$=\dfrac{3}{2n^2}  + o(\dfrac{1}{n^2})$</p>
+<p>所以取 $y_{n} = \dfrac{1}{n^2}$ 即可, $L = 1$。</p>
+<p>所以原级数必定收敛。</p>
+<h4>定理 Cauchy 判别法</h4>
+<blockquote>
+<p>设 $x_{n} \ge 0$，令 $r = \limsup\limits_{n \to +\infty}\sqrt[n]{x_{n}}$</p>
+<p>若 $r &lt; 1$ 则 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛</p>
+<p>若 $r &gt; 1$ 则 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 发散。</p>
+<p>否则没法使用。</p>
+</blockquote>
+<p>本质就是比较判别法。</p>
+<p>证明 (1)：</p>
+<p>若 $r \in [0, 1)$，可以取 $q\in \mathbb R \text{ s.t. } 0 &lt; r &lt; q &lt; 1$</p>
+<p>根据条件：$\forall \epsilon&gt;  0, \exists N \text{ s.t. } n &gt; N : \sqrt[n]{x_{n}} &lt; r + \epsilon$</p>
+<p>令 $\epsilon = q - r$</p>
+<p>进而 $x_{n}^{\frac{1}{n}} &lt; q &lt; 1 \iff x_{n} &lt; q^n &lt; 1$。</p>
+<p>这是等比级数，所以只需要 $q &lt; 1$ 即可。</p>
+<p>(2)：</p>
+<h4>引理</h4>
+<blockquote>
+<p>设 $x_{n} &gt; 0$。</p>
+<p>则 $\liminf\limits_{n \to +\infty} \dfrac{x_{n + 1}}{x_{n}} \le \liminf\limits_{n \to +\infty} \sqrt[n]{x_{n}} \le \limsup\limits_{n \to +\infty} \sqrt[n]{x_{n}} \le \limsup\limits_{n \to +\infty} \dfrac{x_{n + 1}}{x_{n}}$</p>
+</blockquote>
+<p>先证明最后一个 $\le$</p>
+<p>设 $\limsup\limits_{n \to +\infty}\dfrac{x_{n + 1}}{x_{n}} = A$</p>
+<p>那么 $\forall \epsilon &gt; 0, \exists N \text{ s.t. } n &gt; N : \dfrac{x_{n + 1}}{x_{n}} &lt; A + \epsilon$</p>
+<p>做累乘可以得到：</p>
+<p>$\dfrac{x_{n + 1}}{x_{N}} \le (A + \epsilon)^{n - N + 1}$</p>
+<p>进而 $x_{n + 1} \le (A + \epsilon)^{n - N + 1}x_{N}$</p>
+<p>$\Rightarrow x_{n} \le (A + \epsilon)^{n - N}x_{N}$</p>
+<p>所以 $\sqrt[n]{x_{n}} \le (A + \epsilon)^{\frac{n - N}{n}} \sqrt[n]{x_{N}}$</p>
+<p>两边同取上极限：$\limsup\limits_{n \to +\infty}\sqrt[n]{x_{n}} \le \limsup\limits_{n \to +\infty} (A + \epsilon)^{\frac{n - N}{n}} \sqrt[n]{x_{N}}$</p>
+<p>左边 $\lim\limits_{} = (A + \epsilon) = \limsup$</p>
+<p>令 $\epsilon \to 0$ 可以得到不等式。</p>
+<h4>定理 d' Alembert 判别法</h4>
+<blockquote>
+<p>设 $x_{n} &gt; 0$，那么：</p>
+<p>$\limsup\limits_{n \to +\infty} \dfrac{x_{n + 1}}{x_{n}} = R &lt; 1$ 则级数 $\sum\limits_{n = 1}^{+\infty} x_{n}$收敛。 </p>
+<p>$\liminf\limits_{n \to +\infty} \dfrac{x_{n + 1}}{x_{n}} = R &gt; 1$ 则级数 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 发散。</p>
+</blockquote>
+<p>证明：</p>
+<p>根据引理和 Cauchy 判别法可得。</p>
+<h4>例题</h4>
+<blockquote>
+<p>讨论 $\sum\limits_{n = 1}^{+\infty}\dfrac{n^n}{3^n\cdot n!}$ 的收敛性。</p>
+</blockquote>
+<p>$\dfrac{\dfrac{(n + 1)^{n + 1}}{3^{n + 1} \cdot (n + 1)!}}{\dfrac{n^n}{3^n\cdot n!}} = \dfrac{(n + 1)^{n + 1}}{n^{n}} \cdot \dfrac{1}{3 (n + 1)} = \dfrac{1}{3}(1 + \dfrac{1}{n})^n$</p>
+<p>$\lim\limits_{n \to +\infty}\dfrac{1}{3}(1 + \dfrac{1}{n})^n = \dfrac{e}{3} &lt; 1$</p>
+<p>根据 d'Alembert，故原级数收敛。</p>
+<h4>定理 Raabe 判别法</h4>
+<blockquote>
+<p>设 $x_{n} &gt; 0$，那么：</p>
+<p>令 $R = \lim\limits_{n \to +\infty}n(\dfrac{x_{n}}{x_{n + 1}} - 1) = R$</p>
+<p>则：</p>
+<p>1) $R &gt; 1$，级数 $\sum\limits_{n = 1}^{+\infty} x_{n}$ 收敛</p>
+<p>2) $R &lt; 1$，发散。</p>
+<p>3) $R = 1$：该判别法不适用。</p>
+</blockquote>
+<p>其本质上是对 d'Alembert 判别法中比值 $= 1$ 的一个强化。</p>
+<p>思路是将其与 p-级数 做对比。</p>
+<p>证明：</p>
+<p>注意到 $\lim\limits_{n \to +\infty}n((\dfrac{n + 1}{n})^{p} - 1) = p$</p>
+<p>当 $R &gt; 1$ 时，不妨取 $1 &lt; p &lt; R$。</p>
+<p>所以 $\lim\limits_{n \to +\infty}\dfrac{n((\dfrac{n + 1}{n})^p - 1)}{n(\dfrac{x_{n}}{x_{n + 1}} - 1)} = \dfrac{p}{R} &lt; 1$</p>
+<p>根据结论：若 $\lim\limits_{n \to +\infty}\dfrac{x_{n}}{y_{n}} = \lambda &lt; 1$ 则 $\exists N, n &gt; N: x_{n} &lt; y_{n}$ 可以得到：</p>
+<p>$(\dfrac{n + 1}{n})^p &lt; \dfrac{x_{n}}{x_{n + 1}}$</p>
+<p>进而 $\dfrac{\frac{1}{n^p}}{\frac{1}{(n + 1)^p}} &lt; \dfrac{x_{n}}{x_{n + 1}}$</p>
+<p>故 $\{\dfrac{x_{n}}{\frac{1}{n^p}}\}$ 单调递减有下界 $0$ 进而有界。</p>
+<p>所以 $x_{n} \le C\cdot \dfrac{1}{n^p}$，根据比较判别法 $x_{n}$ 收敛。</p>
+<p>$R &lt; 1$ 的时候同理，取 $R &lt; p &lt; 1$ 就可。</p>
+<h4>例题</h4>
+<blockquote>
+<p>讨论 $\sum\limits_{n = 1}^{+\infty}\dfrac{(2n)!!}{(2n - 1)!!} \cdot \dfrac{1}{(2n + 1)}$ 的收敛性。</p>
+</blockquote>
+<p>$\dfrac{x_{n}}{x_{n + 1}} = \dfrac{\dfrac{(2n)!!}{(2n - 1)!!} \cdot \dfrac{1}{(2n + 1)}}{\dfrac{(2n + 2)!!}{(2n + 1)!!} \cdot \dfrac{1}{(2n + 3)}} = \dfrac{2n + 3}{2n + 1} \cdot \dfrac{(2n + 1)}{(2n + 2)} = \dfrac{2n + 3}{2n + 2}$</p>
+<p>$\lim\limits_{n \to +\infty}n(1 + \dfrac{1}{2n + 2} - 1) = \dfrac{1}{2}$，根据 Raabe，原级数发散。</p>
+<p>（似乎抄错题了，如果分子分母颠倒一下算出来是 $\dfrac{3}{2}$ 从而是收敛的）</p>
+<h4>例题 广义积分和级数的关系</h4>
+<blockquote>
+<p>若 $p, q \in \mathbb R$，讨论 $\sum\limits_{n = 2}^{+\infty}\dfrac{1}{x^p(\ln x)^q}$ 的收敛性。</p>
+</blockquote>
+<p>其实在 p-级数那里就写过了。</p>
+<p>只要<strong>充分远处</strong> $f(x)$ 单调递减且非负，那么 $\displaystyle\int_{a}^{+\infty}f(x)\text{d}x$ 的收敛性可以转化为 $\sum\limits_{n = a}^{+\infty}f(n)$ 的收敛性。</p>
+<p>只需要任取 $k \in \mathbb N^{\star}, k \ge a$。</p>
+<p>在 $[k, k + 1)$ 上 $f$ 单调进而：</p>
+<p>$\displaystyle\int_{k}^{k + 1}f(k + 1)\text{d}x \le \displaystyle\int_{k}^{k + 1}f(x)\text{d}x \le \displaystyle\int_{k}^{k + 1}f(k)\text{d}x$</p>
+<p>然后两边累加：</p>
+<p>$\sum\limits_{k = a + 1}^{n + 1}f(n) \le \displaystyle\int_{a}^{n + 1} f(x)\text{d}x \le \sum\limits_{k = a}^{n}f(n)$</p>
+<p>左边就是 $S_{n} - f(a)$，积分可以看做定值进而 $S_{n}$ 单调递减有下界，收敛。</p>
+<p>反过来完全一样。</p>
+<h4>例题</h4>
+<blockquote>
+<p>证明：</p>
+<p>1) $\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}x}{1 + x^2\sin^2 x}$ 是发散的</p>
+<p>2) $\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}x}{1 + x^4 \sin^2 x}$ 是收敛的。</p>
+</blockquote>
+<p>如果直接用比较判别法会发现完全没辙。</p>
+<p>问题是怎么对 $\sin^2 x$ 做一个比较好的估计</p>
+<p>将其和级数联系起来：</p>
+<p>$\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}x}{1 + x^2\sin^2x} = \sum\limits_{0}^{+\infty}\displaystyle\int_{n\pi}^{(n + 1)\pi}\dfrac{\text{d}x}{1 + x^2\sin^2x}$</p>
+<p>令 $t = x - n\pi, t \in [0, \pi]$</p>
+<p>$=\displaystyle\sum\limits_{0}^{+\infty}\displaystyle\int_{0}^{\pi}\dfrac{\text{d}t}{1 + (t + n\pi)^2 \sin^2 t} \ge \sum\limits_{0}^{+\infty}\displaystyle\int_{0}^{\pi}\dfrac{\text{d}t}{1 + (t + n\pi)^2}$</p>
+<p>然后发现怎么换都换不好，说明这个 $\sin t$ 可能还需要保留？</p>
+<p>前者 $\ge \sum\limits_{0}^{+\infty}\displaystyle\int_{0}^{\pi}\dfrac{\text{d}t}{1 + (n\pi + \pi)^2 t^2} = \sum\limits_{n = 0}^{+\infty}\displaystyle\int_{0}^{\pi}\dfrac{\text{d}t}{1 + \pi^2t^2(n + 1)^2}$</p>
+<p>$\ge \sum\limits_{n = 0}^{+\infty}\displaystyle\int_{0}^{\frac{1}{(n + 1)\pi}} \dfrac{\text{d}t}{1 + [\pi t(n + 1)]^2} \ge \sum\limits_{n = 0}^{+\infty}\displaystyle\int_{0}^{\frac{1}{(n + 1)\pi}} \dfrac{1}{2}\text{d}t = \dfrac{1}{2\pi}\sum\limits_{n = 0}^{+\infty}\dfrac{1}{n + 1}$</p>
+<p>根据比较判别法，级数发散，可以说明原积分发散。</p>
+<p>(2)</p>
+<p>$=\sum\limits_{n = 0}^{+\infty}(\displaystyle\int_{0}^{\frac{\pi}{2}} + \displaystyle\int_{\frac{\pi}{2}}^{\pi})$</p>
+<p>对前一部分用 Jordan 不等式：</p>
+<p>$\le \sum\limits_{n = 0}^{+\infty}\displaystyle\int_{0}^{\frac{\pi}{2}} \dfrac{\text{d}t}{1 + (n\pi + t)^4(\dfrac{2}{\pi}t)^2} \le \sum\limits_{n = 0}^{+\infty}\displaystyle\int_{0}^{\frac{\pi}{2}} \dfrac{\text{d}t}{(n\pi + t)^4(\dfrac{2}{\pi}t)^2}$</p>
+<hr />
+<p>在 $\displaystyle\sum\limits_{0}^{+\infty}\displaystyle\int_{0}^{\pi}\dfrac{\text{d}t}{1 + (t + n\pi)^2 \sin^2 t}$ 这一步直接换元：</p>
+<p>令 $u = \tan t, \text{d}t = \dfrac{1}{1 + u^2}\text{d}u, \sin^2 t = \dfrac{u^2}{1 + u^2}$</p>
+<p>$t$ 由 $0 \to \dfrac{\pi}{2}$, $u: 0 \to +\infty$，根据对称性：</p>
+<p>$=\displaystyle\sum\limits_{n = 0}^{+\infty}2\displaystyle\int_{0}^{+\infty}\dfrac{\dfrac{1}{1 + u^2}\text{d}u}{1 + (n\pi + \pi)^2 \dfrac{u^2}{1 + u^2}}$</p>
+<p>令 $k = (n\pi + \pi)$。</p>
+<p>里面 $=2\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}u}{(1 + u^2) + k^2u^2} = 2\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}u}{1 + (1 + k^2)u^2}$</p>
+<p>令 $v = \sqrt{1 + k^2}u, \text{d}v = \sqrt{1 + k^2}\text{d}u$</p>
+<p>$=2\dfrac{1}{\sqrt{1 + k^2}}\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}v}{1 + v^2} = \dfrac{1}{\sqrt{1 + k^2}} \pi \approx \dfrac{1}{n}$</p>
+<p>根据比较判别法积分 (1) 发散，(2) 同理可得为 $\dfrac{1}{\sqrt{1 + k^4}}\pi$，收敛。</p>
+<p>对于：$\displaystyle\int_{0}^{+\infty}\dfrac{\text{d}x}{1 + x^{\alpha}|\sin x|^{\beta}}$：</p>
+<p>仍旧套用相同的方法，可以近似写成 $n^{-\frac{\alpha}{\beta}}$，</p>
+<p>当 $\alpha &gt; \beta$ 的时候原积分收敛。发散还需要另证。</p>
+<h3>一般项级数的收敛性</h3>
+<h4>定理 Cauchy 收敛原理</h4>
+<blockquote>
+<p>级数 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛的充分必要条件是：
+$\forall \epsilon &gt; 0, \exists N \in \mathbb N^{\star}$，当 $m &gt; n \ge N$ 时有 $|\sum\limits_{k = n + 1}^{m}x_{k}| &lt; \epsilon$ 
+证明：</p>
+</blockquote>
+<p>级数收敛等价于部分和 $\{S_{n}\}$ 收敛。</p>
+<p>所以可以改写成 $|S_{n} - S_{m}| &lt; \epsilon$</p>
+<h4>定理 Leibniz</h4>
+<blockquote>
+<p>设 $\{x_{n}\} \ge 0$, 称 $\sum\limits_{n = 1}^{+\infty}(-1)^{n + 1}x_{n}$ 为交错级数。</p>
+<p>若 $x_{n}$ 单调递减，则称其为 Leibniz 级数。</p>
+<p>对 Leibniz 级数，它是收敛的。</p>
+</blockquote>
+<p>用 Cauchy 收敛原理即可。</p>
+<p>$|\sum\limits_{k = n + 1}^{m}x_{k}| = |(x_{n + 1} - x_{n + 2}) + (x_{n + 3} - x_{n + 4}) + \cdots + (-1)^{m - n - 1}x_{m}|$</p>
+<p>若 $m - n$ 是偶数：</p>
+<p>奇数：</p>
+<p>注：从证明可以得出结论：</p>
+<p>若 $\sum\limits_{n = 1}^{+\infty}(-1)^{n + 1}x_{n}$ 为 Leibniz 级数：$|\sum\limits_{k = n + 1}^{m}x_{n}| \le x_{n + 1}$</p>
+<h4>例题</h4>
+<blockquote>
+<p>证明 $\sum\limits_{n = 1}^{+\infty}(-1)^{n}\sin(\dfrac{1}{n})$ 收敛。</p>
+</blockquote>
+<p>$\dfrac{1}{n} \le 1 &lt; \dfrac{\pi}{2}$，故 $\sin (\dfrac{1}{n})$ 在 $[1, +\infty)$ 上单调递减。</p>
+<p>根据 Leibniz 定理，级数收敛。</p>
+<h4>例题</h4>
+<blockquote>
+<p>讨论 $\sum\limits_{n = 1}^{+\infty}\sin(\sqrt{n^2 + 1}\pi)$ 的收敛性。</p>
+</blockquote>
+<p>一般的，$\sin(n\pi + \alpha) = (-1)^{n} \sin(\alpha)$</p>
+<p>所以 $\sin(\sqrt{n^2 + 1}\pi) = \sin(n\pi + (\sqrt{n^2 + 1}\pi - n\pi)) = (-1)^{n} \sin(\sqrt{n^2 + 1}\pi - n\pi)$</p>
+<p>而 $\sqrt{n^2 + 1} - n = \dfrac{n^2 + 1 - n^2}{\sqrt{n^2 + 1} + n}$ 在 $n$ 增大时递减。</p>
+<p>所以根据 Leibniz 定理原级数收敛。</p>
+<h4>引理 Abel 变换</h4>
+<blockquote>
+<p>设有数列 $\{a_{n}\}, \{b_{n}\}$，记 $B_{k} = \sum\limits_{n = 1}^{k}b_{n}$。</p>
+<p>则 $\sum\limits_{k = 1}^{p}a_{k}b_{k} = a_{p}B_{p} + \sum\limits_{k = 1}^{p - 1}(a_{k + 1} - a_{k})B_{k}$</p>
+</blockquote>
+<p>证明：</p>
+<p>$=a_{1}b_{1} + \sum\limits_{k = 2}^{p}a_{k}b_{k} = a_{1}b_{1} + \sum\limits_{k = 2}^{p}a_{k}(B_{k} - B_{k - 1})$</p>
+<p>$=a_{1}b_{1} + \sum\limits_{k = 2}^{p}a_{k}B_{k} - \sum\limits_{k = 1}^{p - 1}a_{k + 1}B_{k}$</p>
+<p>$=a_{p}B_{p} + \sum\limits_{k = 1}^{p - 1}(a_{k + 1} - a_{k})B_{k}$</p>
+<h4>引理 Abel 引理</h4>
+<blockquote>
+<p>设有数列 $\{a_{n}\}, \{b_{n}\}$，$B_{n}$ 为 $b_{n}$ 的部分和序列。</p>
+<p>若 $B_{n}$ 有界即 $\exists M &gt; 0 \text{ s.t. } \forall N, |B_{N}| \le M$，则：</p>
+<p>$|\sum\limits_{k = 1}^{p}a_{k}b_{k}| \le M(|a_{1}| + 2|a_{p}|)$</p>
+</blockquote>
+<p>利用 Abel 变换容易证明。</p>
+<h4>定理 Abel 判别法</h4>
+<blockquote>
+<p>若 $\{a_{n}\}$ 单调有界，$\sum\limits_{n = 1}^{+\infty}b_{n}$ 收敛，则 $\sum\limits_{n = 1}^{+\infty}a_{n}b_{n}$ 收敛。</p>
+</blockquote>
+<h4>定理 Dirichlet 判别法</h4>
+<blockquote>
+<p>若 $\{a_{n}\}$ 单调递减趋于 $0$，$\sum\limits_{n = 1}^{+\infty}b_{n}$ 的部分和序列 $B_{n}$ 有界，则 $\sum\limits_{n = 1}^{+\infty}a_{n}b_{n}$ 收敛。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>设 $\{a_{n}\}$ 单调趋于 $0$。</p>
+<p>证明：</p>
+<p>1) $\forall x \in \mathbb R$，级数 $\sum\limits_{n = 1}^{+\infty} a_{n}\sin(nx)$ 收敛。</p>
+<p>2) $\forall x \in \mathbb R \ \{2k\pi : k \in \mathbb Z\}$，级数 $\sum\limits_{n = 1}^{+\infty}a_{n}\cos(nx)$ 收敛。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>设 $\{x_{n}\}$ 是非负且单调递减的，且 $\{x_{n}\}$ 收敛。</p>
+<p>证明 $\lim\limits_{n \to +\infty}nx_{n} = 0$</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>设 $\forall n \ge 1, x_{n} \ge 0$ 且 $x_{1} &gt; 1$，$\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛。</p>
+<p>证明：</p>
+<p>1) $\sum\limits_{n = 1}^{+\infty}\dfrac{x_{n}}{S_{n}}$ 发散</p>
+<p>2) $\sum\limits_{n = 1}^{+\infty}\dfrac{x_{n}}{(S_{n})^p}$ 发散，其中 $p &gt; 1$ 为参数。</p>
+<p>3) $\sum\limits_{n = 1}^{\infty}\dfrac{x_{n}}{S_{n}\ln S_{n}}$ 发散。</p>
+<p>4) $\sum\limits_{n = 1}^{\infty}\dfrac{x_{n}}{S_{n}\ln^2 S_{n}}$ 收敛。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>设 $\sum\limits_{n = 1}^{+\infty}x_{n}$ 收敛，$\forall n \ge 1, x_{n} &gt; 0$。</p>
+<p>记 $r_{n} = \sum\limits_{k = n + 1}^{+\infty}x_{k}$。</p>
+<p>证明 </p>
+<p>1) $\sum\limits_{n = 1}^{\infty}\dfrac{x_{n}}{\sqrt{r_{n}} \sqrt{r_{n - 1}}}$ 收敛。</p>
+<p>2) $\sum\limits_{n = 1}^{+\infty}\dfrac{x_{n}}{r_{n - 1}}$ 发散。</p>
+<p>3) $\sum\limits_{n = 1}^{+\infty}\dfrac{x_{n}}{\sqrt{r_{n - 1}}}$ 收敛。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>设 $f$ 在 $[0, 1]$ 上二次连续可微，且 $\lim\limits_{x\to 0^{+}} \dfrac{f(x)}{x} = 0$。</p>
+<p>证明：$\sum\limits_{n = 1}^{+\infty}f(\dfrac{1}{n})$ 绝对收敛。</p>
+</blockquote>
+<h4>例题</h4>
+<blockquote>
+<p>证明 $\sum\limits_{n = 1}^{+\infty}\left[e - (1 + \dfrac{1}{1!} + \dfrac{1}{2!} + \dfrac{1}{3!} + \dfrac{1}{4!} + \cdots + \dfrac{1}{n!})\right]$ 收敛。</p>
+</blockquote>
+        </article>
+        
+        <footer>
+            <div class="footer-content">
+                <span class="copyright">Copyright © Enonya since 2019</span>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.startup.defaultReady();
+                MathJax.typesetPromise().catch(function(err) {
+                    console.log('MathJax typeset error:', err);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
