@@ -1,133 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enonya's Blog</title>
-
-	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
-
-	<link rel="stylesheet" href="/css/code.css">
-	<link rel="stylesheet" href="/css/toc.css">
-	<link rel="stylesheet" href="/css/to-top.css">
-
-	<script src="/js/highlight.min.js"></script>
-	<script>
-	  document.addEventListener('DOMContentLoaded', (event) => {
-		document.querySelectorAll('pre code').forEach((el) => {
-		  hljs.highlightElement(el);
-		});
-	  });
-	</script>
-    
-	<script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true,
-                processEnvironments: true
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                renderActions: {
-                    addMenu: [0, '', '']
-                }
-            },
-            chtml: {
-                displayAlign: 'center',
-                displayIndent: '2em'
-            }
-        };
-    </script>
-
-    <script src="/js/Mathjax.js" async></script>
-	<script src="/js/toc.js"></script>
-	<script src="/js/to-top.js"></script>
-    
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Mercury Lamp 的文章分类。">
+  <meta name="author" content="Enonya">
+  <meta name="generator" content="Mercury Lamp">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="分类 · Mercury Lamp">
+  <meta property="og:description" content="Mercury Lamp 的文章分类。">
+  <meta property="og:site_name" content="Mercury Lamp">
+  <title>分类 · Mercury Lamp</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1 class="site-title">Mercury Lamp</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/index.html" class="nav-link">Index</a></li>
-                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
-                    <li><a href="/links.html" class="nav-link">Links</a></li>
-                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
-                </ul>
-            </nav>
-        </header>
+<body id="top" class="page-categories">
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="app-bar" id="app-bar">
+    <div class="app-bar-inner">
+      <button class="icon-button drawer-trigger" type="button" data-drawer-open="site-drawer"
+              aria-label="打开文章文件树" aria-controls="site-drawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+
+      <a class="brand" href="/" aria-label="Mercury Lamp 首页">
+        <span class="brand-name">Mercury Lamp</span>
+      </a>
+
+      <nav class="app-nav" aria-label="主导航">
+        <a href="/">首页</a>
+        <a href="/categories.html" aria-current="page">分类</a>
+        <a href="/about.html">关于</a>
+      </nav>
+
+      <div class="app-actions">
         
-        <article>
-            <h2>Categories</h2>
-<p><em>文章总数: 29</em></p>
-<p><em>Last update: 2026 年 05 月 09 日 09:53</em></p>
-<h3>algor</h3>
-<ul>
-<li><a href="posts\algor\ccpc-final-19-vp.html">⌈CCPC Final 2019 VP⌋</a>  最后更新时间：<em><code>25 年 11 月 11 日</code></em></li>
-<li><a href="posts\algor\ccpc-harbin-19-vp.html">⌈CCPC 哈尔滨 2019 VP⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-<li><a href="posts\algor\ccpc-xiamen-19-vp.html">⌈CCPC 厦门 2019 VP⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-<li><a href="posts\algor\ccpc-zhengzhou-25.html">⌈CCPC 郑州 2025⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-<li><a href="posts\algor\comp-geo.html">⌈计算几何⌋</a>  最后更新时间：<em><code>25 年 10 月 10 日</code></em></li>
-<li><a href="posts\algor\icpc-shenyang-25.html">⌈ICPC Asia Regional 沈阳 2025⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-<li><a href="posts\algor\icpc-xian-25-vp.html">⌈ICPC Asia Reginal 西安 2025 VP⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-<li><a href="posts\algor\problem-training.html">⌈ACM 杂题训练⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-</ul>
-<h3>cs</h3>
-<ul>
-<li><a href="posts\cs\domjudge-guide.html">⌈DOMjudge 搭建记录 &amp; 理解⌋</a>  最后更新时间：<em><code>26 年 03 月 16 日</code></em></li>
-</ul>
-<h3>logs</h3>
-<ul>
-<li><a href="posts\logs\2025-10-04.html">⌈缙云山⌋</a>  最后更新时间：<em><code>25 年 10 月 04 日</code></em></li>
-<li><a href="posts\logs\2026-03-23.html">⌈豆花肉片⌋</a>  最后更新时间：<em><code>26 年 03 月 23 日</code></em></li>
-<li><a href="posts\logs\ccpc-zhengzhou-25-log.html">⌈CCPC 郑州 2025 游记⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-<li><a href="posts\logs\icpc-shenyang-25-log.html">⌈ICPC Asia Regional 沈阳 2025 游记⌋</a>  最后更新时间：<em><code>25 年 12 月 05 日</code></em></li>
-</ul>
-<h3>math</h3>
-<ul>
-<li><a href="posts\math\gd1-ldq-c1.html">⌈高等代数(I) Chapter 1 行列式⌋</a>  最后更新时间：<em><code>26 年 03 月 30 日</code></em></li>
-<li><a href="posts\math\gd1-ldq-c2.html">⌈高等代数(I) Chapter 2 线性方程组⌋</a>  最后更新时间：<em><code>26 年 03 月 31 日</code></em></li>
-<li><a href="posts\math\gd1-ldq-c3.html">⌈高等代数(I) Chapter 3 - 矩阵⌋</a>  最后更新时间：<em><code>26 年 04 月 01 日</code></em></li>
-<li><a href="posts\math\gd1-ldq-c4.html">⌈高等代数(I) Chapter 4 矩阵⌋</a>  最后更新时间：<em><code>26 年 04 月 13 日</code></em></li>
-<li><a href="posts\math\memo.html">⌈memo.md⌋</a>  最后更新时间：<em><code>26 年 05 月 01 日</code></em></li>
-<li><a href="posts\math\sf1-problem.html">⌈数学分析(I) 杂题⌋</a>  最后更新时间：<em><code>26 年 01 月 19 日</code></em></li>
-<li><a href="posts\math\sf1-theory.html">⌈数学分析(I) 定理理解⌋</a>  最后更新时间：<em><code>26 年 01 月 19 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c1.html">⌈数学分析(I) Chapter 1 数列极限⌋</a>  最后更新时间：<em><code>26 年 01 月 19 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c2.html">⌈数学分析(I) Chapter 2 函数极限 &amp; 连续函数⌋</a>  最后更新时间：<em><code>26 年 01 月 19 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c3.html">⌈数学分析(I) Chapter 3 一元函数的微分学⌋</a>  最后更新时间：<em><code>26 年 01 月 19 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c4.html">⌈数学分析(I) Chapter 4 微分中值定理及其应用⌋</a>  最后更新时间：<em><code>26 年 01 月 19 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c5.html">⌈数学分析(I) Chapter 5 不定积分⌋</a>  最后更新时间：<em><code>26 年 03 月 16 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c6.html">⌈数学分析(I) Chapter 6 定积分⌋</a>  最后更新时间：<em><code>26 年 03 月 30 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c7.html">⌈数学分析(I) Chapter 7 广义积分⌋</a>  最后更新时间：<em><code>26 年 04 月 20 日</code></em></li>
-<li><a href="posts\math\sf1-zxf-c8.html">⌈数学分析(I) Chapter 8 数项级数⌋</a>  最后更新时间：<em><code>26 年 05 月 01 日</code></em></li>
-</ul>
-<h3>misc</h3>
-<ul>
-<li><a href="posts\misc\cuisine.html">⌈神秘菜谱收集⌋</a>  最后更新时间：<em><code>26 年 03 月 23 日</code></em></li>
-</ul>
-        </article>
-        
-        <footer>
-            <div class="footer-content">
-                <span class="copyright">Copyright © Enonya since 2019</span>
-            </div>
-        </footer>
+      </div>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof MathJax !== 'undefined') {
-                MathJax.startup.defaultReady();
-                MathJax.typesetPromise().catch(function(err) {
-                    console.log('MathJax typeset error:', err);
-                });
-            }
-        });
-    </script>
+  </header>
+
+  <aside id="site-drawer" class="drawer drawer-left" aria-label="文章文件树" aria-hidden="true" inert>
+  <div class="drawer-head">
+    <div>
+      <p class="drawer-eyebrow">EXPLORER</p>
+      <h2>文章</h2>
+    </div>
+    <button class="icon-button drawer-close" type="button" data-drawer-close aria-label="关闭文章文件树"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="drawer-scroll">
+    <nav class="drawer-quick has-three" aria-label="快捷导航">
+      <a href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 10 8-6 8 6v9.5h-5v-5H9v5H4z"/></svg><span>首页</span></a>
+      <a href="/categories.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg><span>分类</span></a>
+      <a href="/about.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.9"/></svg><span>关于</span></a>
+    </nav>
+    <nav class="tree-nav" aria-label="文章文件树">
+      <ul class="tree-root" data-tree-root><li class="tree-folder is-open" data-tree-folder data-tree-path="cs"><button class="tree-folder-toggle" type="button" data-tree-toggle aria-expanded="true" aria-controls="tree-folder-1"><span class="tree-chevron"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span><span class="tree-label">cs</span><span class="tree-count">1</span></button><ul class="tree-children" id="tree-folder-1"><li class="tree-file"><a href="/cs/domjudge-guide.html" title="cs/domjudge-guide.md — DOMjudge 搭建记录 &amp; 理解"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">domjudge-guide</span></a></li></ul></li><li class="tree-folder is-open" data-tree-folder data-tree-path="math"><button class="tree-folder-toggle" type="button" data-tree-toggle aria-expanded="true" aria-controls="tree-folder-2"><span class="tree-chevron"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span><span class="tree-label">math</span><span class="tree-count">11</span></button><ul class="tree-children" id="tree-folder-2"><li class="tree-folder is-open" data-tree-folder data-tree-path="math/ma"><button class="tree-folder-toggle" type="button" data-tree-toggle aria-expanded="true" aria-controls="tree-folder-3"><span class="tree-chevron"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span><span class="tree-label">ma</span><span class="tree-count">11</span></button><ul class="tree-children" id="tree-folder-3"><li class="tree-file"><a href="/math/ma/sf1-problem.html" title="math/ma/sf1-problem.md — 数学分析(I) 习题记录"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf1-problem</span></a></li><li class="tree-file"><a href="/math/ma/sf1-theory.html" title="math/ma/sf1-theory.md — 数学分析(I) 定理理解"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf1-theory</span></a></li><li class="tree-file"><a href="/math/ma/sf1-zxf-c1.html" title="math/ma/sf1-zxf-c1.md — 数学分析(I) Chapter.1 数列极限"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf1-zxf-c1</span></a></li><li class="tree-file"><a href="/math/ma/sf1-zxf-c2.html" title="math/ma/sf1-zxf-c2.md — 数学分析(I) Chapter.2 函数极限 &amp; 连续函数"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf1-zxf-c2</span></a></li><li class="tree-file"><a href="/math/ma/sf1-zxf-c3.html" title="math/ma/sf1-zxf-c3.md — 数学分析(I) Chapter.3 一元函数的微分学"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf1-zxf-c3</span></a></li><li class="tree-file"><a href="/math/ma/sf1-zxf-c4.html" title="math/ma/sf1-zxf-c4.md — 数学分析(I) Chapter.4 微分中值定理及其应用"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf1-zxf-c4</span></a></li><li class="tree-file"><a href="/math/ma/sf1-zxf-c5.html" title="math/ma/sf1-zxf-c5.md — 数学分析(I) Chapter.5 不定积分"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf1-zxf-c5</span></a></li><li class="tree-file"><a href="/math/ma/sf2-zxf-c6.html" title="math/ma/sf2-zxf-c6.md — 数学分析(II) Chapter.6 定积分"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf2-zxf-c6</span></a></li><li class="tree-file"><a href="/math/ma/sf2-zxf-c7.html" title="math/ma/sf2-zxf-c7.md — 数学分析(II) Chapter.7 广义积分"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf2-zxf-c7</span></a></li><li class="tree-file"><a href="/math/ma/sf2-zxf-c8.html" title="math/ma/sf2-zxf-c8.md — 数学分析(II) Chapter.8 数项级数"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf2-zxf-c8</span></a></li><li class="tree-file"><a href="/math/ma/sf2-zxf-c9.html" title="math/ma/sf2-zxf-c9.md — 数学分析(II) Chapter.9 函数项级数"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">sf2-zxf-c9</span></a></li></ul></li></ul></li><li class="tree-folder is-open" data-tree-folder data-tree-path="xcpc"><button class="tree-folder-toggle" type="button" data-tree-toggle aria-expanded="true" aria-controls="tree-folder-4"><span class="tree-chevron"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></span><span class="tree-label">xcpc</span><span class="tree-count">1</span></button><ul class="tree-children" id="tree-folder-4"><li class="tree-file"><a href="/xcpc/comp-geo.html" title="xcpc/comp-geo.md — 计算几何基础"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">comp-geo</span></a></li></ul></li><li class="tree-file"><a href="/about.html" title="about.md — 关于"><span class="tree-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/></svg></span><span class="tree-label">about</span></a></li></ul>
+    </nav>
+  </div>
+  <div class="drawer-foot"><span>14 篇文章</span><span class="mono">content/</span></div>
+</aside>
+
+  <div class="scrim" data-drawer-scrim></div>
+
+  <main id="main" class="page-main">
+    <div class="index-wrap">
+  <header class="index-header">
+    <p class="eyebrow">INDEX / CATEGORIES</p>
+    <h1>分类</h1>
+    <p class="index-lead">按主题浏览所有笔记。每篇文章都属于一个或多个分类。</p>
+    <p class="index-meta mono">08 CATEGORIES · 14 ARTICLES</p>
+  </header>
+  <section class="category-grid" aria-label="全部分类">
+    <a class="category-card" href="/categories/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90.html"><div class="category-card-head"><span class="category-index mono">CAT / 数学分析</span><span class="category-count">11</span></div><h2>数学分析</h2><p>共 11 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a><a class="category-card" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%AC%94%E8%AE%B0.html"><div class="category-card-head"><span class="category-index mono">CAT / 专业课笔记</span><span class="category-count">09</span></div><h2>专业课笔记</h2><p>共 9 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a><a class="category-card" href="/categories/todo.html"><div class="category-card-head"><span class="category-index mono">CAT / TODO</span><span class="category-count">03</span></div><h2>TODO</h2><p>共 3 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a><a class="category-card" href="/categories/%E6%83%B3%E6%B3%95%E8%AE%B0%E5%BD%95.html"><div class="category-card-head"><span class="category-index mono">CAT / 想法记录</span><span class="category-count">02</span></div><h2>想法记录</h2><p>共 2 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a><a class="category-card" href="/categories/%E5%85%B3%E4%BA%8E.html"><div class="category-card-head"><span class="category-index mono">CAT / 关于</span><span class="category-count">01</span></div><h2>关于</h2><p>共 1 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a><a class="category-card" href="/categories/%E6%8A%80%E6%9C%AF.html"><div class="category-card-head"><span class="category-index mono">CAT / 技术</span><span class="category-count">01</span></div><h2>技术</h2><p>共 1 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a><a class="category-card" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B.html"><div class="category-card-head"><span class="category-index mono">CAT / 算法竞赛</span><span class="category-count">01</span></div><h2>算法竞赛</h2><p>共 1 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a><a class="category-card" href="/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95.html"><div class="category-card-head"><span class="category-index mono">CAT / 计算几何</span><span class="category-count">01</span></div><h2>计算几何</h2><p>共 1 篇文章</p><span class="category-arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a>
+  </section>
+</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="copyright">Copyright Enonya since 2019</p>
+      <nav class="footer-nav" aria-label="页脚导航">
+        <a class="footer-top-link" href="#top">
+          <span>回到顶部</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

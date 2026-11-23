@@ -1,88 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enonya's Blog</title>
-
-	<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
-
-	<link rel="stylesheet" href="/css/code.css">
-	<link rel="stylesheet" href="/css/toc.css">
-	<link rel="stylesheet" href="/css/to-top.css">
-
-	<script src="/js/highlight.min.js"></script>
-	<script>
-	  document.addEventListener('DOMContentLoaded', (event) => {
-		document.querySelectorAll('pre code').forEach((el) => {
-		  hljs.highlightElement(el);
-		});
-	  });
-	</script>
-    
-	<script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: true,
-                processEnvironments: true
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                renderActions: {
-                    addMenu: [0, '', '']
-                }
-            },
-            chtml: {
-                displayAlign: 'center',
-                displayIndent: '2em'
-            }
-        };
-    </script>
-
-    <script src="/js/Mathjax.js" async></script>
-	<script src="/js/toc.js"></script>
-	<script src="/js/to-top.js"></script>
-    
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="页面不存在。">
+  <meta name="generator" content="Mercury Lamp">
+  <title>404 · Mercury Lamp</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1 class="site-title">Mercury Lamp</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/index.html" class="nav-link">Index</a></li>
-                    <li><a href="/categories.html" class="nav-link">Categories</a></li>
-                    <li><a href="/links.html" class="nav-link">Links</a></li>
-                    <li><a href="/contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="/resource.html" class="nav-link">Resource</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        <article>
-            <p>Oops! 好像什么都没有呢！</p>
-<p><img alt="水银灯" src="./assets/lamp.png" /></p>
-        </article>
-        
-        <footer>
-            <div class="footer-content">
-                <span class="copyright">Copyright © Enonya since 2019</span>
-            </div>
-        </footer>
+<body id="top" class="page-404">
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="app-bar app-bar-static">
+    <div class="app-bar-inner">
+      <a class="icon-button" href="/" aria-label="返回首页">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 10 8-6 8 6v9.5h-5v-5H9v5H4z"/></svg>
+      </a>
+      <a class="brand" href="/" aria-label="Mercury Lamp 首页">
+        <span class="brand-name">Mercury Lamp</span>
+      </a>
+      <nav class="app-nav" aria-label="主导航">
+        <a href="/">首页</a>
+        <a href="/categories.html">分类</a>
+        <a href="/about.html">关于</a>
+      </nav>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof MathJax !== 'undefined') {
-                MathJax.startup.defaultReady();
-                MathJax.typesetPromise().catch(function(err) {
-                    console.log('MathJax typeset error:', err);
-                });
-            }
-        });
-    </script>
+  </header>
+
+  <main id="main" class="page-main not-found-main">
+    <section class="not-found">
+      <p class="not-found-code" aria-hidden="true">404</p>
+      <p class="eyebrow">LOST IN THE DARK</p>
+      <h1>这一页没有被点亮。</h1>
+      <p class="not-found-lead">你访问的页面不存在，或者它已经被移动到了别处。</p>
+      <div class="not-found-actions">
+        <a class="button button-primary" href="/">返回首页</a>
+        <a class="button button-ghost" href="/categories.html">浏览分类</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="copyright">Copyright Enonya since 2019</p>
+      <nav class="footer-nav" aria-label="页脚导航">
+        <a class="footer-top-link" href="#top">
+          <span>回到顶部</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
